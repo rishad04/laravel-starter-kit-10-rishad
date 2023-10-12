@@ -1,0 +1,45 @@
+/*-------------------------------------------------------
+24. Text COlor css 
+---------------------------------------------------------*/
+
+.txt-body-heading {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6{
+		color: var(--clr-heading);
+		font-family: var(--font-1);
+	}
+}
+
+.txt-body-p {
+	p,
+	li,
+	div,
+	blockquote,
+	span,
+	b,
+	strong{
+		color: var(--clr-body);
+		font-family: var(--font-2);
+		font-size: 14px;
+	}
+}
+
+.txt-clr-green {
+	color: var(--clr-green)!important;
+}
+
+.txt-clr-red {
+	color: var(--clr-red)!important;
+}
+
+.copyright {
+	p {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 1;
+	}
+}
