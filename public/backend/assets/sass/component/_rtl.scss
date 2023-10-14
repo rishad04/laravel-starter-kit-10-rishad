@@ -1,0 +1,130 @@
+/*-------------------------------------------------------
+15. RTL css
+---------------------------------------------------------*/
+
+body.rtl-mode {
+	direction: rtl;
+	//Demo
+	.item-area {
+		direction: ltr;
+	}
+	//Price
+	
+	.price-wpr {
+		direction: rtl;
+	}
+	
+	//Menu
+	@media (min-width: 992px) {
+		.navbar-brand {
+			margin-left: 3rem;
+		}
+		.navbar .nav-item .nav-link {
+			margin-left: 3rem;
+			margin-right: 0;
+		}
+	}
+}
+
+.rtl-mode {
+	padding: 16px 12px;
+	font-size: 16px;
+	color:var(--clr-white);
+	background: rgba(0,0,0,.5);
+	border: none;
+	bottom: 300px;
+	right: 0;
+	margin-top: -115px;
+	z-index: 7777;
+	line-height: 1;
+	position: fixed;
+	text-align: left;
+	display: inline-block;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+[dir="rtl"] {
+	
+	//Header
+	
+	.nav-control {
+		right: inherit;
+		top: 43%;
+		left: 0;
+	}
+	
+	.header {
+		padding-left: 0;
+	}
+	
+	.nav-control {
+		display: none;
+	}
+	
+	[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .content-body {
+		margin-left: 0!important;
+	}
+	
+	.quixnav .metismenu > li a > i {
+		padding-left: 15px;
+	}
+	
+	.quixnav .metismenu .has-arrow:after {
+		right: inherit;
+	}
+	
+	.quixnav .metismenu > li.mm-active ul li a::before {
+		left: inherit;
+		right: 20px;
+	}
+	
+	.quixnav .metismenu > li.mm-active ul li a {
+		padding-left: 0;
+		padding-right: 35px;
+	}
+	
+	.j-search-form .j-form-btn {
+		right: inherit;
+		left: 10px;
+	}
+	
+	.dropdown-menu-right {
+		right: auto;
+		left: 0;
+	}
+	
+	//Content body
+	
+	.content-body {
+		margin-left: 0!important;
+		margin-right: 17.1875rem;
+	}
+	
+	.j-chart-parent {
+		grid-template-columns: 1fr 910px;
+	}
+	
+	select.form-control.input-style-2.form-select {
+		background-position: top 20px left 20px;
+	}
+	.styledSelect::after {
+		right: unset;
+		left: 10px;
+	}
+	.styledSelect {
+		padding-left: 0;
+		padding-right: 1rem;
+	}
+}
+
+[dir="ltr"] nav {
+  margin-left: auto;
+}
+
+[dir="rtl"] nav {
+  margin-right: auto;
+}
+

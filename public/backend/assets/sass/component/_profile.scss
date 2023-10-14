@@ -1,0 +1,111 @@
+/*-------------------------------------------------------
+16. Profile css
+---------------------------------------------------------*/
+
+
+.custom-tab-1 {
+	.nav {
+		display: grid;
+		grid-template-columns: repeat(2,1fr);
+		border-radius: 8px 8px 0px 0px;
+		border-bottom: 1px solid #DEE5F0;
+		background: #EEF3FA;
+	}
+}
+
+.wel-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+	.wel-user-bio {
+		h5 {
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 1;
+			margin-bottom: 10px;
+		}
+		p {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1;
+		}
+	}
+}
+
+.j-text-body {
+	padding: 20px;
+	p {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 30px;
+		color: var(--clr-heading);
+		margin-bottom: 0;
+	}
+}
+
+.profile-tab .nav-item .nav-link {
+	font-size: 18px;
+	padding: 16px 20px;;
+	color: var(--clr-heading);
+	font-weight: 500;
+	line-height: 1;
+	display: table-cell;
+}
+
+.profile-tab .nav-item .nav-link:hover, .profile-tab .nav-item .nav-link.active {
+    border-bottom: 0.2px solid var(--clr-primary-2);
+    color: var(--clr-primary-2);
+}
+
+.profile-pd-0 {
+	padding: 0;
+}
+
+.card-border {
+	border: 1px solid var(--clr-white);
+}
+
+.j-eml-card {
+	border: 1px solid var(--clr-white);
+	border-radius: 8px;
+	background: var(--clr-white);
+	margin-bottom: 20px;
+	h5 {
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 1;
+		border-radius: 8px 8px 0px 0px;
+		background: var(--clr-bg);
+		padding: 15px 20px;
+	}
+}
+
+.j-eml-list {
+	display: flex;
+    flex-direction: column;
+    padding: 18px 18px 0 18px;
+	li {
+		display: grid;
+		grid-template-columns: 40px 1fr;
+		grid-gap:100px;
+		border-bottom: 1px solid #DEE5F0;
+		padding-bottom: 18px;
+		margin-bottom: 18px;
+		h6 {
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1;
+			color: #38414D;
+		}
+		span {
+			display: inline-block;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1;
+
+		}
+	}
+}
+
+
