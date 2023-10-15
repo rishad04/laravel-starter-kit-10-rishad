@@ -81,8 +81,8 @@
                 </div>
 
                 <div class="j-create-btns">
-                    <div class="drp-btns">
-                        <button type="submit" class="j-td-btn">{{ __('signup') }}</button>
+                    <div class="text-center">
+                        <button type="submit" class="j-td-btn">{{ __('signin') }}</button>
                     </div>
                 </div>
 

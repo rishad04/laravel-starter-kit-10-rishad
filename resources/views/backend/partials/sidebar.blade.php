@@ -9,19 +9,19 @@
       </li>
 
       <li>
-        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+        <a class="has-arrow {{ (request()->is('admin/role*','admin/user*','admin/staff*')? 'mm-active':'') }}" href="javascript:void()" aria-expanded="false">
           <i class="icon-people"></i>
           <span class="nav-text">{{__('menus.user_roles')}}</span>
         </a>
         <ul aria-expanded="false">
           <li>
-            <a href="#">{{__('menus.user')}}</a>
+            <a href="{{ route('user.index') }}">{{__('menus.users')}}</a>
           </li>
           <li>
-            <a href="#">{{__('menus.roles')}}</a>
+            <a href="{{ route('roles.index') }}">{{__('menus.roles')}}</a>
           </li>
           <li>
-            <a href="#">{{__('menus.staffs')}}</a>
+            <a href="{{ route('staff.index') }}">{{__('menus.staffs')}}</a>
           </li>
         </ul>
       </li>
