@@ -18,7 +18,7 @@
             <a href="{{ route('user.index') }}">{{__('menus.users')}}</a>
           </li>
           <li>
-            <a href="{{ route('roles.index') }}">{{__('menus.roles')}}</a>
+            <a href="{{ route('role.index') }}">{{__('menus.roles')}}</a>
           </li>
           <li>
             <a href="{{ route('staff.index') }}">{{__('menus.staffs')}}</a>
