@@ -1,18 +1,20 @@
 @extends('auth.master')
+@section('title') {{ __('menus.login') }} @endsection
 
 @section('main')
 <div class="row no-gutters">
 <div class="col-xl-12">
-    <div class="auth-form">
+    <div class="auth-form" >
         <h4 class="text-center mb-4">Sign in your account</h4>
-        <form action="index.html">
+        <form action="{{route('admin.login')}}"  method="POST" >
+            @csrf
             <div class="form-group">
                 <label><strong>Email</strong></label>
-                <input type="email" class="form-control  input-style-1" value="hello@example.com">
+                <input type="email" name="email" class="form-control  input-style-1" >
             </div>
             <div class="form-group">
                 <label class="label-style-1"><strong>Password</strong></label>
-                <input type="password" class="form-control  input-style-1" value="Password">
+                <input type="password" name="password" class="form-control  input-style-1" >
             </div>
             <div class="form-row d-flex justify-content-between mt-4 mb-2">
                 <div class="form-group">
@@ -27,13 +29,15 @@
                     <a href="page-forgot-password.html">Forgot Password?</a>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-block">Sign me in</button>
+             <div class="j-create-btns">
+                <div class="text-center">
+                    <button type="submit" class="j-td-btn">{{ __('signin') }}</button>
+                </div>
             </div>
         </form>
         <div class="new-account mt-3">
             <p>Don't have an account? <a class="text-primary"
-                    href="./page-register.html">Sign up</a></p>
+                    href="{{route('registerForm')}}">Sign up</a></p>
         </div>
     </div>
 </div>

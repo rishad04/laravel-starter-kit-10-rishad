@@ -16,7 +16,19 @@ use App\Http\Controllers\backend\DashboardController;
 */
 
 
-Route::get('/login', [AuthController::class,'login']);
-Route::get('/',      [AuthController::class,'login']);
+Route::get('/', [AuthController::class,'showForm']);
+Route::post('/admin-login', [AuthController::class,'adminLogin'])->name('admin.login');
+Route::get('/register', [AuthController::class,'registerForm'])->name('registerForm');
+Route::post('/admin-register', [AuthController::class,'register'])->name('admin.register');
 
-Route::get('/dashboard', [DashboardController::class,'index']);
+Route::group(['Middleware' => 'auth'], function(){
+  Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.index');
+  Route::get('/logout',   [AuthController::class,'logout'])->name('admin.logout');
+});
+
+
+
+
+
+
+
