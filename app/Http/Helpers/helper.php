@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Upload;
+use Illuminate\Support\Facades\File;
+
 
 
 
@@ -12,5 +15,16 @@ if (!function_exists('static_asset')) {
         } else {
             return  app('url')->asset('public/' . $path);
         }
+    }
+}
+
+if (!function_exists('favicon')) {
+    function favicon($upload_id = null)
+    {
+        $favicon   = Upload::find($upload_id);
+        if ($favicon && File::exists(public_path($favicon->original))) :
+            return asset($favicon->original);
+        endif;
+        return asset('Backend/images/favicon.png');
     }
 }

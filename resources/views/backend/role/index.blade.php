@@ -3,6 +3,8 @@
 {{ __('role.title') }} {{ __('levels.list') }}
 @endsection
 @section('maincontent')
+
+
 <div class="container-fluid  dashboard-content">
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -26,11 +28,11 @@
 
                 <div class="card-header mb-3">
                     <h4 class="title-site">{{ __('role.title') }}</h4>
-                    {{-- @if(hasPermission('role_create') )
-                    <a href="{{route('roles.create')}}" class="j-td-btn">
-                        <img src="{{ static_asset('backend') }}/assets/img/icon/plus-white.png" class="jj" alt="no image"> <span>{{ __('levels.add') }} </span>
+                    {{-- @if(hasPermission('role_create') ) --}}
+                    <a href="{{route('role.create')}}" class="j-td-btn">
+                        <img src="{{ asset('backend') }}/assets/img/icon/plus-white.png" class="jj" alt="no image"> <span>{{ __('levels.add') }} </span>
                     </a>
-                    @endif --}}
+                 
                 </div>
 
 
