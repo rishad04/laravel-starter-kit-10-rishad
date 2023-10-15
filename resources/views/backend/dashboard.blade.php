@@ -12,7 +12,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/box-primary.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/box-primary.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Parcel</h6>
@@ -23,12 +23,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									12%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-primary.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-primary.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -36,7 +36,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/user-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/user-green.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total User</h6>
@@ -47,12 +47,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									08%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-green.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-green.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/user-red.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/user-red.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Merchant</h6>
@@ -71,12 +71,12 @@
 							<div class="j-box-right">
 								<span class="j-clr-red">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-down-red.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-down-red.png" alt="no image">
 									</i>
 									0.3%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-red.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-red.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -84,7 +84,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/user-primary-2.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/user-primary-2.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Delivery Man</h6>
@@ -95,12 +95,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									12%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-primary-2.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-primary-2.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -108,7 +108,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/home-red.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/home-red.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Branch</h6>
@@ -119,12 +119,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									12%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-red.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-red.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -132,7 +132,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/dollar-primary-2.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/dollar-primary-2.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Accounts</h6>
@@ -143,12 +143,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									12%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-primary-2.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-primary-2.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/cart-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/cart-green.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Partial Delivered</h6>
@@ -167,12 +167,12 @@
 							<div class="j-box-right">
 								<span>
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-up-green.png" alt="no image">
 									</i>
 									07%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-green.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-green.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -180,7 +180,7 @@
 							<div class="j-box-left">
 								<div class="j-box-icon">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/box-ylw.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/box-ylw.png" alt="no image">
 									</i>
 									<div class="j-box-txt">
 										<h6 class="heading-6">Total Parcel Delivered</h6>
@@ -191,12 +191,12 @@
 							<div class="j-box-right">
 								<span class="j-clr-red">
 									<i>
-										<img src="{{static_asset('backend')}}/assets/img/icon/arrow-down-red.png" alt="no image">
+										<img src="{{asset('backend')}}/assets/img/icon/arrow-down-red.png" alt="no image">
 									</i>
 									0.4%
 								</span>
 								<p class="mb-0">
-									<img src="{{static_asset('backend')}}/assets/img/shape/wave-ylw.png" alt="no image">
+									<img src="{{asset('backend')}}/assets/img/shape/wave-ylw.png" alt="no image">
 								</p>
 							</div>
 						</div>
@@ -470,4 +470,3 @@
 		</div>
 
 @endsection
-		

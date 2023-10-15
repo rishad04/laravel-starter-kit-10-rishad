@@ -11,14 +11,14 @@
 	<!-- <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png"> -->
 
 
-    <link rel="stylesheet" href="{{static_asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/vendor/chartist/css/chartist.min.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/css/style.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/assets/style.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/css/custom.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/assets/css/responsive.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/vendor/chartist/css/chartist.min.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/css/style.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/assets/style.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/css/custom.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/assets/css/responsive.css" />
     {{-- select 2 css  --}}
-    <link rel="stylesheet" href="{{static_asset('backend')}}/vendor/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/vendor/select2/css/select2.min.css" />
 
 
 

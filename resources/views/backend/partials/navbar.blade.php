@@ -3,7 +3,12 @@
       ***********************************-->
       <div class="nav-header">
         <a href="/" class="brand-logo">
-          <img src="{{static_asset('backend')}}/assets/img/logo/logo.png" alt="no image">
+          <img src="{{asset('backend')}}/assets/img/logo/logo.png" alt="no image">
+
+
+        </a>
+        <a class="logo-icon" href="#">
+            <img src="{{asset('backend')}}/assets/img/logo/favicon.png" alt="Logo">
         </a>
         <div class="nav-control">
           <div class="hamburger ham-nav">
@@ -13,7 +18,7 @@
         </div>
       </div>
       <!--********************************** Nav header end***********************************-->
-  
+
       <!--********************************** Header start***********************************-->
       <div class="header">
         <div class="header-content">
@@ -26,14 +31,14 @@
                       <input class="j-form-control" type="search" placeholder="Search">
                       <button type="submit" class="j-form-btn">
                         <i>
-                          <img src="{{static_asset('backend')}}/assets/img/icon/search.png" alt="no image">
+                          <img src="{{asset('backend')}}/assets/img/icon/search.png" alt="no image">
                         </i>
                       </button>
                     </form>
                   </div>
                   <div class="j-to-do">
                     <a href="#" class="j-td-btn">
-                      <img src="{{static_asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image">
+                      <img src="{{asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image">
                       <span>To Do</span>
                     </a>
                   </div>
@@ -41,34 +46,34 @@
                     <div class="dropdown custom-dropdown">
                       <button type="button" class="btn-ami" data-toggle="dropdown">
                         <span>
-                          <img src="{{static_asset('backend')}}/assets/img/flag/flg-english.png" alt="no image"> En <i
+                          <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image"> En <i
                             class="fa fa-angle-down"></i>
                         </span>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">
                           <span class="flg-lfex">
-                            <img src="{{static_asset('backend')}}/assets/img/flag/flg-english.png" alt="no image"> English
+                            <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image"> English
                           </span>
                         </a>
                         <a class="dropdown-item" href="#">
                           <span class="flg-lfex">
-                            <img src="{{static_asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image"> Arabic
+                            <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image"> Arabic
                           </span>
                         </a>
                         <a class="dropdown-item" href="#">
                           <span class="flg-lfex">
-                            <img src="{{static_asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image"> Bangla
+                            <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image"> Bangla
                           </span>
                         </a>
                         <a class="dropdown-item" href="#">
                           <span class="flg-lfex">
-                            <img src="{{static_asset('backend')}}/assets/img/flag/flg-spanish.png" alt="no image"> Spanish
+                            <img src="{{asset('backend')}}/assets/img/flag/flg-spanish.png" alt="no image"> Spanish
                           </span>
                         </a>
                         <a class="dropdown-item" href="#">
                           <span class="flg-lfex">
-                            <img src="{{static_asset('backend')}}/assets/img/flag/flg-india.png" alt="no image"> Hindi
+                            <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image"> Hindi
                           </span>
                         </a>
                       </div>
@@ -77,14 +82,14 @@
                   <div class="day-night">
                     <a class="j-nav-lk" href="#">
                       <i class="nav-bell">
-                        <img src="{{static_asset('backend')}}/assets/img/icon/d.png" alt="no image">
+                        <img src="{{asset('backend')}}/assets/img/icon/d.png" alt="no image">
                       </i>
                     </a>
                   </div>
                   <div class="dropdown notification_dropdown">
                     <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown">
                       <i class="nav-bell">
-                        <img src="{{static_asset('backend')}}/assets/img/icon/bell.png" alt="no image">
+                        <img src="{{asset('backend')}}/assets/img/icon/bell.png" alt="no image">
                       </i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
