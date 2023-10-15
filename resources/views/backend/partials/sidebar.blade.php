@@ -42,7 +42,7 @@
 
       <li>
         <a href="javascript:void()" aria-expanded="true">
-          <i class="fa fa-database"></i>
+          <i class="icon-docs"></i>
           <span class="nav-text">{{__('menus.backup')}}</span>
         </a>
       </li>
