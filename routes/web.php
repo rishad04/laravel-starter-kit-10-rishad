@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\backend\DashboardController;
 
 /*
@@ -15,27 +16,7 @@ use App\Http\Controllers\backend\DashboardController;
 */
 
 
+Route::get('/login', [AuthController::class,'login']);
+Route::get('/',      [AuthController::class,'login']);
 
-
-Route::get('/', [DashboardController::class,'index']);
-
-
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('Dashboard');
-//     })->name('dashboard');
-// });
+Route::get('/dashboard', [DashboardController::class,'index']);

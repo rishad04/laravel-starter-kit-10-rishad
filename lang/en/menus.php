@@ -92,6 +92,7 @@ return [
   'banks'                       => 'Banks',
   'contact_us_message'                       => 'Contact Us Message',
   'coupon'                       => 'Coupon',
+  'mail_settings'                       => 'Mail Settings'
 
 
 ];
