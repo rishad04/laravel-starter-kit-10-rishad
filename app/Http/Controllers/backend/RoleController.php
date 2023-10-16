@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repositories\Role\RoleInterface;
 
 class RoleController extends Controller
 {
+
+    protected $repo;
+
+    public function __construct (RoleInterface $repo){
+        $this->repo = $repo;
+
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(RoleInterface $model)
     {
-        return view('backend.role.index');
+        $roles = $this->repo->all();
+        return view('backend.role.index',compact('roles'));
     }
 
     /**
@@ -20,15 +29,22 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions    = $this->repo->permissions();
+        return view('backend.role.create',compact('permissions'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        if($this->repo->store($request)):
+            toast(__('role_added'),'success');
+            return redirect()->route('role.index');
+        else:
+            toast(__('error','error'));
+            return redirect()->back()->withInput();
+        endif;
     }
 
     /**
@@ -44,7 +60,7 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.role.edit');
     }
 
     /**

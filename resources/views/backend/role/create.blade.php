@@ -10,9 +10,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('levels.create') }}</a></li>
                         </ol>
                     </nav>
@@ -28,7 +28,7 @@
                         <h4 class="title-site"> {{ __('role.create_role') }}</h4>
                     </div>
 
-                    <form action="{{route('roles.store')}}" method="POST" enctype="multipart/form-data" id="basicform">
+                    <form action="{{route('role.store')}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         <div class="form-row">
                             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -41,19 +41,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label class=" label-style-1" for="status">{{ __('levels.status') }}</label>
-                                    <select name="status" class="form-control input-style-1 ">
-                                        @foreach(trans('status') as $key => $status)
-                                        <option value="{{ $key }}" {{ (old('status',\App\Enums\Status::ACTIVE) == $key) ? 'selected' : '' }}>{{ $status }}</option>
-                                        @endforeach
+                                    <select name="status" class="form-control input-style-1 select2">
+                                        <option value="{{ \App\Enums\Status::ACTIVE }}" selected>{{ __('levels.active')}} </option>
+                                        <option value="{{ \App\Enums\Status::INACTIVE }}">{{ __('levels.inactive')}} </option>
                                     </select>
-                                    @error('status')
-                                    <small class="text-danger mt-2">{{ $message }}</small>
-                                    @enderror
+                                    @error('status') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                                 </div>
                             </div>
+                          
                             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="">
-                                    <table class="table border permission-table" style="width:100%">
+                                    <table class="table border permission-table">
                                         <thead>
                                             <tr>
                                                 <th>{{ __('permissions.modules') }}</th>
@@ -83,7 +81,7 @@
                         <div class="j-create-btns">
                             <div class="drp-btns">
                                 <button type="submit" class="j-td-btn">{{ __('levels.save') }}</button>
-                                <a href="{{ route('roles.index') }}" class="j-td-btn btn-red"> <span>{{ __('levels.cancel') }}</span> </a>
+                                <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('levels.cancel') }}</span> </a>
                             </div>
                         </div>
 
@@ -94,6 +92,11 @@
     </div>
 </div>
 @endsection()
+
 @push('scripts')
-<script src="{{ static_asset('backend/js/roles/roles.js') }}"></script>
+<script src="{{ asset('backend/js/roles/roles.js') }}"></script>
 @endpush
+
+{{-- @push('scripts')
+<script src="{{ static_asset('backend/js/role/role.js') }}"></script>
+@endpush --}}
