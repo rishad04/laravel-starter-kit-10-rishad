@@ -15,7 +15,7 @@
         </a>
         <ul aria-expanded="false">
           <li>
-            <a href="{{ route('user.index') }}">{{__('menus.users')}}</a>
+            <a href="{{ route('users.index') }}">{{__('menus.users')}}</a>
           </li>
           <li>
             <a href="{{ route('role.index') }}">{{__('menus.roles')}}</a>

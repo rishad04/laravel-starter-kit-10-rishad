@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Upload;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 
@@ -26,5 +27,17 @@ if (!function_exists('favicon')) {
             return asset($favicon->original);
         endif;
         return asset('Backend/images/favicon.png');
+    }
+}
+
+//permission
+if (!function_exists('hasPermission')) {
+    function hasPermission($permission = null)
+    {
+
+        if (in_array($permission, Auth::user()->permissions)) {
+            return true;
+        }
+        return false;
     }
 }

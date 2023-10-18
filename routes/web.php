@@ -26,14 +26,23 @@ Route::post('/admin-register',  [AuthController::class,'register'])->name('admin
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.index');
+    Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::get('/logout',   [AuthController::class,'logout'])->name('admin.logout');
+
+    Route::prefix('role')->name('role.')->group(function(){
+        Route::get('/',                             [RoleController::class,    'index'])->name('index');
+        Route::get('/create',                       [RoleController::class,    'create'])->name('create');
+        Route::post('/store',                       [RoleController::class,    'store'])->name('store');
+        Route::get('/edit/{id}',                    [RoleController::class,    'edit'])->name('edit');
+        Route::put('/update',                       [RoleController::class,    'update'])->name('update');
+        Route::delete('/delete/{id}',               [RoleController::class,    'delete'])->name('delete');
+    });
 });
 
 
 
         // user
-        Route::prefix('user')->name('user.')->group(function(){
+        Route::prefix('user')->name('users.')->group(function(){
             Route::get('/',                             [UserController::class,   'index'])->name('index');
             Route::get('/create',                       [UserController::class,   'create'])->name('create');
             Route::post('/store',                       [UserController::class,   'store'])->name('store');
@@ -82,7 +91,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
   
-//   Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.index');
+//   Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.index');
 //   Route::get('/logout',   [AuthController::class,'logout'])->name('admin.logout');
 
 //         //user

@@ -6,7 +6,11 @@ use App\Interfaces\AuthInterface;
 use App\Repositories\AuthRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
+use App\Repositories\User\UserInterface;
 use App\Repositories\Role\RoleRepository;
+use App\Repositories\User\UserRepository;
+use App\Repositories\Upload\UploadInterface;
+use App\Repositories\Upload\UploadRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
 
@@ -25,6 +29,8 @@ class RepositoryServiceProvider extends ServiceProvider
 
 
         $this->app->bind(RoleInterface::class,                RoleRepository::class);
+        $this->app->bind(UserInterface::class,                UserRepository::class);
+        $this->app->bind(UploadInterface::class,                UploadRepository::class);
 
     }
 

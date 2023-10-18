@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repositories\Role\RoleInterface;
+use App\Repositories\User\UserInterface;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $repo, $role;
+
+    public function __construct(UserInterface $repo, RoleInterface $role)
     {
-      
+        $this->repo = $repo;
+        $this->role = $role;
+    }
+
+    public function index(Request $request)
+    {
+        $users = $this->repo->all();
+        return view('backend.user.index', compact('users', 'request'));
+    }
+    public function filter(Request $request)
+    {
+        $users = $this->repo->filter($request);
+        return view('backend.user.index', compact('users', 'request'));
     }
 
     /**
