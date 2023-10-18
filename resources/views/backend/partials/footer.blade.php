@@ -35,7 +35,7 @@
             Scripts
         ***********************************-->
 
-        <script src="{{asset('backend')}}/vendor/global/global.min.js"></script>
+    <script src="{{asset('backend')}}/vendor/global/global.min.js"></script>
     <script src="{{asset('backend')}}/js/quixnav-init.js"></script>
     <script src="{{asset('backend')}}/js/custom.min.js"></script>
 
@@ -66,7 +66,91 @@
 
     <script src="{{asset('backend')}}/js/dashboard/dashboard-1.js"></script>
 
+    <script src="{{static_asset('backend')}}/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+    <!-- select 2 js -->
+<script src="{{static_asset('backend')}}/vendor/select2/js/select2.full.min.js"></script>
+
+<script src="{{static_asset('backend')}}/vendor/flatpickr/flatpickr.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".select2").select2({
+          tags: "true"
+          , placeholder: "Select an option"
+          , allowClear: true
+      });
+
+      $(".flatpickr").flatpickr({
+          altInput: true
+          , altFormat: "F j, Y"
+          , dateFormat: "Y-m-d"
+      });
+
+      $(".flatpickr-range").flatpickr({
+          mode: "range"
+          , altInput: true
+          , altFormat: "F j, Y"
+          , dateFormat: "Y-m-d"
+      });
+
+  });
+
+
+
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+
+
+  // var yes = "{{ __('delete.yes') }}";
+  // var cancel = "{{ __('delete.cancel') }}";
+
+</script>
+
+<script type="text/javascript">
+  "use strict";
+  $(function() {
+      $('#demo-admin').click(function() {
+          $('#email').attr('value', $(this).data('email'));
+          $('#password').attr('value', $(this).data('password'));
+      });
+      $('#demo-merchant').click(function() {
+          $('#email').attr('value', $(this).data('email'));
+          $('#password').attr('value', $(this).data('password'));
+      });
+      $('#demo-deliveryman').click(function() {
+          $('#email').attr('value', $(this).data('email'));
+          $('#password').attr('value', $(this).data('password'));
+      });
+  });
+
+</script>
+
+
+
+@stack('scripts')
+
+
+<script>
+  const language = "{{ app()->getLocale() }}";
+
+  var body = document.body;
+
+  // Toggle the dir attribute between "ltr" and "rtl"
+  if (language === "ar") {
+      body.setAttribute("dir", "rtl");
+  } else {
+      body.setAttribute("dir", "ltr");
+  }
+
+</script>
+
+
+
+
 
     </body>
-
     </html>

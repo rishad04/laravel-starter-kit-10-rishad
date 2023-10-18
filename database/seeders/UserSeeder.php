@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'role_id'           => 1,
             'date_of_birth'     => '2022-09-07',
             'upload_id'          => 1,
+            'status'            => 'ACTIVE',
             'designation_id'    => rand(1, 5),
             'permissions' => [
                 'user_read',
@@ -89,6 +90,7 @@ class UserSeeder extends Seeder
             'role_id'           => 3,
             'date_of_birth'     => '2022-09-07',
             'upload_id'          => 3,
+            'status'            => 1,
             'designation_id'    => rand(1, 5),
             'permissions' => [
                 'user_read',

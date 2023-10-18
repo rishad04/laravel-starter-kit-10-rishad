@@ -110,7 +110,6 @@
                                             </div>
                                         </div>
                                     </td>
-                                    {{-- <td>{{@$user->hub->name}}</td> --}}
                                     <td>{{@$user->role_id}}</td>
                                     <td>
                                         @if(!empty($user->permissions) )

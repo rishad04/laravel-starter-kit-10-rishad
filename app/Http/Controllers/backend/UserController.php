@@ -33,7 +33,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+       // $roles        = $this->role->getRole();
+        return view('backend.user.create');
     }
 
     /**
