@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         User::create([
             'name'              => 'Jarret Waelchi',
             'phone'             => '01811000000',
-            'email'             => 'superadmin@onest.com',
+            'email'             => 'superadmin@bugbuild.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
         User::create([
             'name'              => 'Faye Clether',
             'phone'              => '01811000001',
-            'email'             => 'admin@onest.com',
+            'email'             => 'admin@bugbuild.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
@@ -82,7 +82,7 @@ class UserSeeder extends Seeder
         User::create([
             'name'              => 'Anna Littlical',
             'phone'              => '01811000002',
-            'email'             => 'manager@onest.com',
+            'email'             => 'manager@bugbuild.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
@@ -108,7 +108,7 @@ class UserSeeder extends Seeder
             User::create([
                 'name'              =>  'Al Annon ' . $i,
                 'phone'              =>  '134578978456' . $i,
-                'email'             => 'user' . $i . '@onest.com',
+                'email'             => 'user' . $i . '@bugbuild.com',
                 'email_verified_at' => now(),
                 'password'          => Hash::make('123456'),
                 'remember_token'    => Str::random(10),
