@@ -9,6 +9,7 @@
 
 	<!-- Favicon icon -->
 	<!-- <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png"> -->
+	<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ favicon() }}">
 
 
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" />
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="{{asset('backend')}}/assets/css/responsive.css" />
     {{-- select 2 css  --}}
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/select2/css/select2.min.css" />
+
+		@stack('styles')
 
 
 

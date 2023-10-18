@@ -4,24 +4,24 @@
       <li>
         <a href="javascript:void()" aria-expanded="true">
           <i class="icon icon-chart-bar-33"></i>
-          <span class="nav-text">Dashboard</span>
+          <span class="nav-text">{{__('menus.dashboard')}}</span>
         </a>
       </li>
 
       <li>
-        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+        <a class="has-arrow {{ (request()->is('admin/role*','admin/user*','admin/staff*')? 'mm-active':'') }}" href="javascript:void()" aria-expanded="false">
           <i class="icon-people"></i>
-          <span class="nav-text">Users & Roles</span>
+          <span class="nav-text">{{__('menus.user_roles')}}</span>
         </a>
         <ul aria-expanded="false">
           <li>
-            <a href="./app-profile.html">Users</a>
+            <a href="{{ route('user.index') }}">{{__('menus.users')}}</a>
           </li>
           <li>
-            <a href="./app-calender.html">Roles</a>
+            <a href="{{ route('role.index') }}">{{__('menus.roles')}}</a>
           </li>
           <li>
-            <a href="./app-calender.html">Staffs</a>
+            <a href="{{ route('staff.index') }}">{{__('menus.staffs')}}</a>
           </li>
         </ul>
       </li>
@@ -42,7 +42,7 @@
 
       <li>
         <a href="javascript:void()" aria-expanded="true">
-          <i class="fa fa-database"></i>
+          <i class="icon-docs"></i>
           <span class="nav-text">{{__('menus.backup')}}</span>
         </a>
       </li>
@@ -64,10 +64,10 @@
             <a href="./app-profile.html">{{__('menus.general_settings')}}</a>
           </li>
           <li>
-            <a href="./app-calender.html">{{__('menus.mail_settings')}}</a>
+            <a href="#">{{__('menus.mail_settings')}}</a>
           </li>
           <li>
-            <a href="./app-calender.html">{{__('menus.recapcha')}}</a>
+            <a href="#">{{__('menus.recapcha')}}</a>
           </li>
         </ul>
       </li>
