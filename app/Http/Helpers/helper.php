@@ -32,8 +32,7 @@ if (!function_exists('getImage')) {
         $upload = Upload::find($upload_id);
 
         if ($upload && $image = $upload->{$version}) {
-            $imagePath = public_path($image);
-            if (File::exists($imagePath)) {
+            if (File::exists(public_path($image))) {
                 return asset($image);
             }
         }
