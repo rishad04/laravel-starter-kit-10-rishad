@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="{{asset('backend')}}/css/custom.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/assets/css/responsive.css" />
     {{-- select 2 & flatfikr for date css  --}}
-    <link rel="stylesheet" href="{{static_asset('backend')}}/vendor/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="{{static_asset('backend')}}/vendor/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="{{asset('backend')}}/vendor/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="{{asset('backend')}}/vendor/flatpickr/flatpickr.min.css">
 
 		@stack('styles')
 

@@ -12,16 +12,20 @@ class UploadSeeder extends Seeder
     public function run()
     {
         Upload::create([
-            'original'              => 'backend/uploads/users/user-icon-1.png',
+            'original'              => 'backend/uploads/users/user.png',
+            'image_one'              => 'backend/uploads/users/user.png',
         ]);
         Upload::create([
-            'original'              => 'backend/uploads/users/user-icon-2.png',
+            'original'              => 'backend/uploads/users/user.png',
+            'image_one'              => 'backend/uploads/users/user.png',
         ]);
         Upload::create([
-            'original'              => 'backend/uploads/users/user-icon-3.png',
+            'original'              => 'backend/uploads/users/user.png',
+            'image_one'              => 'backend/uploads/users/user.png',
         ]);
         Upload::create([
-            'original'              => 'backend/uploads/users/user-icon-4.png',
+            'original'              => 'backend/uploads/users/user.png',
+            'image_one'              => 'backend/uploads/users/user.png',
         ]);
     }
 }

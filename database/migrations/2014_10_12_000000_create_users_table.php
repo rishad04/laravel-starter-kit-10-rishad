@@ -23,12 +23,14 @@ return new class extends Migration
             $table->string('token')->nullable()->comment('Token for email/phone verification, if null then verifield, not null then not verified');
             $table->string('phone')->nullable()->unique();
             $table->string('password');
+            $table->string('nid_number')->nullable();
+            $table->string('address')->nullable();
             $table->longText('permissions')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->tinyInteger('status')->default(Status::ACTIVE);
 
-            $table->unsignedBigInteger('upload_id')->nullable();
-            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('set null');
+            $table->unsignedBigInteger('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('uploads')->onDelete('set null');
 
             $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('set null');

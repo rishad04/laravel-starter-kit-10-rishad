@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
+use App\Http\Requests\User\StoreUserRequest;
+
 
 class UserController extends Controller
 {
@@ -34,7 +36,8 @@ class UserController extends Controller
     public function create()
     {
        // $roles        = $this->role->getRole();
-        return view('backend.user.create');
+       $roles        = $this->role->get();
+       return view('backend.user.create',compact('roles'));
     }
 
     /**
@@ -42,7 +45,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->repo->store($request);
+        if ($result['status']) {
+            return redirect()->route('users.index')->with('success', $result['message']);
+        }
+        return back()->with('danger', $result['message']);
+        // dd($request->all());
     }
 
     /**

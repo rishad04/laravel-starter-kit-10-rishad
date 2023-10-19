@@ -75,41 +75,29 @@ class UserRepository implements UserInterface
     public function store($request)
     {
 
-        try {
+        // try {
             $role                   = $this->model::where('id', $request->role_id)->first();
             $user                   = new User();
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
-            $user->mobile           = $request->mobile;
+            $user->phone           = $request->phone;
             $user->nid_number       = $request->nid_number;
-            $user->designation_id   = $request->designation_id;
-            $user->department_id    = $request->department_id;
-
-            if ($request->filled('hub_id')) :
-                $user->hub_id           = $request->hub_id ? $request->hub_id : null;
-            endif;
 
             $user->image_id         = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
 
-            $user->joining_date     = $request->joining_date;
             $user->address          = $request->address;
             $user->role_id          = $request->role_id;
-            $user->salary           = $request->salary !== "" ? $request->salary : 0;
-            if ($request->hub_id) {
-                $user->permissions     = $this->hubPermissions();
-            } else {
-                if ($role->permissions !== null) {
-                    $user->permissions  = $role->permissions;
-                }
-            }
+            // if ($role->permissions !== null) {
+            //     $user->permissions  = $role->permissions;
+            // }
             $user->status           = $request->status;
             $user->save();
 
             return $this->responseWithSuccess(__('alert.successfully_added'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
-        }
+        // } catch (\Throwable $th) {
+        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
+        // }
     }
 
     // All request data update in User tabel.

@@ -26,32 +26,35 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="#" method="GET">
+                    <form action="{{route('users.filter')}}" method="GET">
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-12 col-xl-3 col-md-4 col-sm-6">
+                            <div class="form-group col-md-4">
                                 <label class=" label-style-1" for="name">{{ __('levels.name') }}</label>
                                 <input type="text" id="name" name="name" placeholder="{{ __('levels.user') }} {{ __('levels.name') }}" class="form-control input-style-1" value="{{old('name', $request->name)}}">
                                 @error('name')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group col-12 col-xl-3 col-md-4 col-sm-6">
+                            <div class="form-group col-md-4">
                                 <label class=" label-style-1" for="email">{{ __('levels.email') }}</label>
                                 <input type="text" id="email" name="email" placeholder="{{ __('levels.user') }} {{ __('levels.email') }}" class="form-control input-style-1" value="{{old('email', $request->email)}}">
                                 @error('email')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group col-12 col-xl-3 col-md-4 col-sm-6">
+                            <div class="form-group col-md-4">
                                 <label class=" label-style-1" for="phone">{{ __('levels.phone')}}</label> <span class="text-danger"></span>
                                 <input type="text" id="phone" name="phone" placeholder="{{ __('levels.phone') }}" class="form-control input-style-1" value="{{old('phone', $request->phone)}}">
                                 @error('phone')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group col-12 col-xl-3 col-md-4 col-sm-6 pt-1">
-                                <div class="d-flex mt-4 pt-2 gap-2">
+                        
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md6">
+                                <div class="d-flex gap-2">
                                     <button type="submit" class="j-td-btn mr-2"><i class="fa fa-filter "></i> {{ __('levels.filter') }}</button>
                                     <a href="{{ route('users.index') }}" class="j-td-btn btn-red mr-2"><i class="fa fa-eraser"></i> {{ __('levels.clear') }}</a>
                                 </div>
@@ -62,7 +65,7 @@
             </div>
             <div class="card">
 
-                <div class="card-header mb-5">
+                <div class="card-header mb-3">
                     <h4 class="title-site">{{ __('user.title') }}
                     </h4>
                     @if (hasPermission('user_create'))
@@ -80,10 +83,8 @@
                                 <tr>
                                     <th>{{ __('levels.id') }}</th>
                                     <th>{{ __('levels.details') }}</th>
-                                    {{-- <th>{{ __('levels.hub') }}</th> --}}
                                     <th>{{ __('levels.role') }}</th>
                                     <th>{{ __('permissions.permissions') }}</th>
-                                    {{-- <th>{{ __('levels.salary') }}</th> --}}
                                     <th>{{ __('levels.status') }}</th>
                                     @if(
                                     hasPermission('permission_update') == true ||
@@ -101,9 +102,9 @@
                                     <td>{{$i++}}</td>
                                     <td>
                                         <div class="row">
-                                            {{-- <div class="pr-3">
-                                                <img src="{{$user->image}}" alt="user" class="rounded" width="40" height="40">
-                                            </div> --}}
+                                            <div class="pr-3">
+                                                <img src="{{$user->upload->original}}" alt="user" class="rounded" width="40" height="40">
+                                            </div>
                                             <div>
                                                 <strong>{{$user->name}}</strong>
                                                 <p>{{$user->email}}</p>
@@ -120,7 +121,7 @@
                                         @endif
                                     </td>
                                     {{-- <td>{{@$user->salary}}</td> --}}
-                                    <td>{!! $user->MyStatus !!}</td>
+                                    <td>{!! @$user->MyStatus !!}</td>
                                     @if(
                                     hasPermission('permission_update') == true ||
                                     hasPermission('user_update') == true ||

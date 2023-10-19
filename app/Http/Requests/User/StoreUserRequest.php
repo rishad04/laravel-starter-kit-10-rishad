@@ -27,14 +27,12 @@ class StoreUserRequest extends FormRequest
             'name'           => ['required', 'string', 'max:191'],
             'email'          => ['required', 'string', 'unique:users'],
             'password'       => ['required', 'string'],
-            // 'mobile'         => ['required', 'numeric', 'digits_between:11,14', 'unique:users'],
             'mobile'         => ['required', 'regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/', 'unique:users,mobile'],
+
             'nid_number'     => ['nullable', 'numeric', 'digits_between:1,20'],
-            'designation_id' => ['required', 'numeric'],
-            'department_id'  => ['required', 'numeric'],
-            'image'          => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
-            'joining_date'   => ['required'],
-            'salary'         => ['numeric'],
+            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
+    
+
             'address'        => ['required', 'string', 'max:191'],
             'status'         => ['required', 'numeric'],
             'role_id'        => 'required|exists:roles,id',

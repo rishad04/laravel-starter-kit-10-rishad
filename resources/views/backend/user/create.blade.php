@@ -37,9 +37,9 @@
                                     @error('name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="mobile">{{ __('levels.phone') }}</label> <span class="text-danger">*</span>
-                                    <input id="mobile" type="number" name="mobile" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_mobile') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('mobile') }}">
-                                    @error('mobile') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                    <label class=" label-style-1" for="phone">{{ __('levels.phone') }}</label> <span class="text-danger">*</span>
+                                    <input id="phone" type="number" name="phone" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_mobile') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('phone') }}">
+                                    @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="address">{{ __('levels.address') }}</label> <span class="text-danger">*</span>
@@ -104,14 +104,30 @@
                                     @error('password') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
+                                    <label class=" label-style-1">{{ __('levels.role') }}</label> <span class="text-danger">*</span>
+                                    <select class="form-control input-style-1 select2" name="role_id" >
+                                        <option></option>
+                                        @foreach($roles as $role)
+                                        <option value="{{$role->id}}" {{ (old('role_id') == $role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('role_id') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                </div>
+
+                                <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="nid_number">{{ __('levels.nid') }}</label>
-                                    <input id="nid_number" type="number" name="nid_number" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_nid_number') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('nid_number') }}">
+                                    <input id="nid_number" type="number" name="nid_number" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_nid_number') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('nid_number') }}">
                                     @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
+
                                 <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="joining_date">{{ __('levels.joining_date') }}</label> <span class="text-danger">*</span>
-                                    <input id="joining_date" type="text" readonly="readonly" data-toggle="datepicker" name="joining_date" data-parsley-trigger="change" placeholder="yyyy-mm-dd" autocomplete="off" class="form-control input-style-1 " value="{{ old('joining_date',date('Y-m-d')) }}">
-                                    @error('joining_date') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                    <label class=" label-style-1" for="status">{{ __('levels.status') }}</label>
+                                    <select name="status" id="status" class="form-control input-style-1 select2">
+                                        @foreach(trans('status') as $key => $status)
+                                        <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
 
                                 {{-- <div class="form-group col-md-6 col-md-6">
@@ -124,11 +140,11 @@
                                     </select>
                                     @error('hub_id') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div> --}}
-                                <div class="form-group col-md-6">
+                                {{-- <div class="form-group col-md-6">
                                     <label class=" label-style-1">{{ __('levels.salary') }}</label>
                                     <input type="number" step="any" class="form-control input-style-1 " value="{{ old('salary') }}" placeholder="{{ __('salary.title') }}" name="salary" />
                                     @error('salary') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="image">{{ __('levels.image') }}</label>
                                     <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" data-parsley-trigger="change" placeholder="Enter image" autocomplete="off" class="form-control input-style-1 " value="{{ old('image') }}">
@@ -150,3 +166,4 @@
     </div>
 </div>
 @endsection()
+
