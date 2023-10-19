@@ -8,7 +8,8 @@
         <div class="auth-form">
 
             <h4 class="text-center mb-4">Sign up your account</h4>
-            <form action="{{route('admin.register')}}" method="post">
+            <form action="{{route('register')}}" method="post">
+                @csrf
 
                 <div class="form-group">
                     <label class="label-style-1"><strong>{{ __('name') }}</strong> <span class="text-danger">*</span></label>
@@ -30,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="label-style-1"><strong>{{ __('gender') }}</strong> <span class="text-danger">*</span></label>
+                    <label class="label-style-1"><strong>{{ __('label.gender') }}</strong> <span class="text-danger">*</span></label>
                     <div class="form-group">
                         <div class="form-check form-check-inline">
                             <label class="label-style-1" class="form-check-label">
@@ -57,33 +58,28 @@
 
 
                 <div class="form-group">
-                    <label class="label-style-1"><strong>{{ __('password') }}</strong> <span class="text-danger">*</span></label>
+                    <label class="label-style-1"><strong>{{ __('label.password') }}</strong> <span class="text-danger">*</span></label>
                     <input type="password" name="password" value="{{ old('password') }}" class="form-control input-style-1">
-                    @error('password')
-                    <p class="pt-2 text-danger">{{ $message }}</p>
-                    @enderror
+                    @error('password') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                 </div>
 
 
                 <div class="form-group">
-                    <label class="label-style-1"><strong>{{ __('confirm_password') }}</strong> <span class="text-danger">*</span></label>
-                    <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control input-style-1">
-                    @error('password_confirmation')
-                    <p class="pt-2 text-danger">{{ $message }}</p>
-                    @enderror
+                    <label class="label-style-1"><strong>{{ __('label.c_password') }}</strong> <span class="text-danger">*</span></label>
+                    <input type="password" name="c_password" value="{{ old('c_password') }}" class="form-control input-style-1">
+                    @error('c_password') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                 </div>
 
                 <div class="j-create-btns">
                     <div class="text-center">
-                        <button type="submit" class="j-td-btn">{{ __('signin') }}</button>
+                        <button type="submit" class="j-td-btn">{{ __('label.signup') }}</button>
                     </div>
                 </div>
 
 
             </form>
             <div class="new-account mt-3">
-                <p>Already have an account? <a class="text-primary" href="page-login.html">Sign
-                        in</a></p>
+                <p>Already have an account? <a class="text-primary" href="{{ route('login') }}">Sign in</a></p>
             </div>
         </div>
     </div>

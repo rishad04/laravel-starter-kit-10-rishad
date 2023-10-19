@@ -18,6 +18,8 @@ return [
   'inactive'               => 'Inactive',
   'hub'                    => 'Hub',
   'name'                   => 'Name',
+  'dob'                    => 'Birth Day',
+  'gender'                 => 'Gender',
   'email'                  => 'Email',
   'username'               => 'Username',
   'phone'                  => 'Phone',
@@ -149,7 +151,6 @@ return [
   'confirm_password'       =>  'Confirm Password',
   'pickup'                 =>  'Pickup',
   'customer_phone'         =>  'Customer phone',
-  'estimetad_parcel'       => 'Estimetad Parcel',
   'total_vat'              => 'Total Vat Amount',
   'payment_period'         => 'Payment Period (days)',
   'fcm_secret_key'         => 'Firebase Secret Key',
@@ -162,34 +163,6 @@ return [
   'client_secret'          =>  'Client secret',
   'hindi'                  => 'हिन्दी',
   'arabic'                 => 'عربي',
-
-  'stripe_publishable_key'=> 'Stripe Publishable Key',
-  'stripe_secret_key'     => 'Stripe Secret Key',
-  'amount_usd'            => 'Amount (USD)',
-  'card_type'             => 'Card Type',
-  'transaction_id'        => 'Transaction Id',
-
-  'sslcommerz_store_id'       => 'SSl Commerz Store ID',
-  'sslcommerz_store_password' => 'SSl Commerz Store Password',
-
-  //new
-  'test_mode'                  => 'Sendbox Mode',
-  'paypal_client_id'           => 'Client ID',
-  'paypal_client_secret'       => 'Client Secret',
-  'paypal_mode'                => 'Paypal Mode',
-
-  'skrill_merchant_email'     => 'Skrill Merchant Email',
-  'skrill_status'             => 'Skrill Status',
-  'bkash_app_id'              => 'App ID',
-  'bkash_app_secret'          => 'App Secret',
-  'bkash_username'            => 'Username',
-  'bkash_password'            => 'Password',
-  'bkash_status'              => 'Status',
-  'bkash_test_mode'           => 'Sendbox Mode',
-  'sendbox_mode'              => 'Sendbox Mode',
-
-  'aamarpay_store_id'          => 'Aamarpay store id',
-  'aamarpay_signature_key'     => 'Aamarpay signature key',
   'save'                       => 'Save',
 
   //new
@@ -203,35 +176,6 @@ return [
   'return_charges'         => 'Return Charges',
   'prefix'                 => 'Prefix',
 
-  //new
-  'aamarpay_payment_details' => 'Aamarpay Payment Details',
-  'bkash_payment_details'    => 'bKash Payment Details',
-  'paypal_payment_details'   => 'Paypal Payment Details',
-  'skrill_payment_details'   => 'Skrill Payment Details',
-  'sslcommerz_payment_details' => 'SSLCommerz Payment Details',
-  'stripe_payment_details'    => 'Stripe Payment Details',
-  'author'                    => 'Author',
-  'aamarpay_payout_details' => 'Aamarpay Payout Details',
-  'bkash_payout_details'    => 'bKash Payout Details',
-  'paypal_payout_details'   => 'Paypal Payout Details',
-  'skrill_payout_details'   => 'Skrill Payout Details',
-  'sslcommerz_payout_details' => 'SSLCommerz Payout Details',
-  'stripe_payout_details'    => 'Stripe Payout Details',
-  'cash_on_delivery'         => 'Cash On Delivery',
-  'delivery_info'            => 'Delivery Info',
-  'sender_info'              => 'Sender Info',
-  'recipient_info'           => 'Recipient Info',
-  'paypal'                    => 'Paypal',
-  'stripe'                    => 'Stripe',
-  'skrill'                    => 'Skrill',
-  'aamarpay'                  => 'Aamarpay',
-  'sslcommerz'                => 'SSLCommerz',
-  'bkash'                     => 'bKash',
-  'import_title'              => 'Please check this before importing your file',
-  'import_title_2'            => 'Uploaded File type must be xlsx',
-  'import_title_3'            => 'The file must contain pickup_address, pickup_phone,
-    cash_collection, selling_price, customer_name, invoice_no, customer_phone, customer_address.',
-  'import_title_4'            => 'must be numeric',
   'category'                  => 'Category',
   'pay_now'                   => 'Pay Now',
 
@@ -240,7 +184,6 @@ return [
   'outside_city'              => 'Outside City',
   'liquid_fragile'            => 'Liquid/Fragile',
   'position'                  => 'Position',
-  'in_banglali'               => 'In Banglali',
 
   'mentioned'               => 'Mentioned',
   'blog'                    => 'Blog',
@@ -267,12 +210,20 @@ return [
   'enter_name'  => 'Enter Name',
   'payout'      => 'Payout',
   'is_cash_collection' => 'Is Cash Collection',
-   'reports' => 'Reports',
-   'statements' => 'Statements',
-   'count'      => 'Count',
+  'reports' => 'Reports',
+  'statements' => 'Statements',
+  'count'      => 'Count',
   'edit_bank'   => 'Edit Bank',
   'section'     => 'Section',
-  'widgets'     => 'Widgets'
+  'widgets'     => 'Widgets',
+
+
+  'login'         => 'Login',
+  'signin'        => 'Signin',
+  'signup'        => 'Signup',
+  'logout'        => 'Logout',
+  'register'      => 'Register',
+  'registration'  => 'Registration',
 
 
 

@@ -17,26 +17,23 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->date('date_of_birth')->nullable();
-            $table->tinyInteger('gender')->default(Gender::MALE);
-            $table->timestamp('email_verified_at')->nullable()->comment('if null then verifield, not null then not verified');
-            $table->string('token')->nullable()->comment('Token for email/phone verification, if null then verifield, not null then not verified');
             $table->string('phone')->nullable()->unique();
             $table->string('password');
+            $table->date('date_of_birth')->nullable();
+            $table->tinyInteger('gender')->default(Gender::MALE);
+            $table->string('address')->nullable();
+            $table->timestamp('email_verified_at')->nullable()->comment('if null then verified, not null then not verified');
+            $table->string('token')->nullable()->comment('Token for email/phone verification, if null then verified, not null then not verified');
             $table->longText('permissions')->nullable();
-            $table->timestamp('last_login')->nullable();
+
+            $table->foreignId('upload_id')->nullable()->constrained('uploads')->nullOnDelete();
+            $table->foreignId('role_id')->nullable()->constrained('roles')->nullOnDelete();
+            $table->foreignId('designation_id')->nullable()->constrained('designations')->nullOnDelete();
+
             $table->tinyInteger('status')->default(Status::ACTIVE);
 
-            $table->unsignedBigInteger('upload_id')->nullable();
-            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('set null');
-
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('set null');
-
-            $table->unsignedBigInteger('designation_id')->nullable();
-            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('set null');
-
             $table->rememberToken();
+            $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
     }

@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\backend\RoleController;
-use App\Http\Controllers\backend\UserController;
-use App\Http\Controllers\backend\StaffController;
-use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\StaffController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
-use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         // profile 
         Route::get('profile/{id}',              [UserController::class, 'profile'])->name('profile');
-        // Route::get('profile/edit/{id}',         [UserController::class, 'profileEdit'])->name('profile.edit');
-        Route::put('profile/update/',           [UserController::class, 'profileUpdate'])->name('profile.update');
+        Route::get('profile/edit',              [UserController::class, 'profileEdit'])->name('profile.edit');
+        Route::put('profile/update',            [UserController::class, 'profileUpdate'])->name('profile.update');
 
         Route::get('change-password/{id}',      [UserController::class, 'passwordChange'])->name('password.change');
         Route::put('update-password/{id}',      [UserController::class, 'passwordUpdate'])->name('password.update');

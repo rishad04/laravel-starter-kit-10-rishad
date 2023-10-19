@@ -21,15 +21,14 @@ class UserController extends Controller
         return view('backend.user.profile', compact('user'));
     }
 
-    public function profileEdit($id)
+    public function profileEdit()
     {
-        // $user = $this->repo->get($id);
-        return view('backend.profile.update', compact('user'));
+        $user = auth()->user();
+        return view('backend.user.update_profile', compact('user'));
     }
 
     public function changePassword($id)
     {
-
         // $user = $this->repo->get($id);
         return view('backend.profile.change_password', compact('user'));
     }
