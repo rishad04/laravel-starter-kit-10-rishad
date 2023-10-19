@@ -1,64 +1,61 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $repo;
+
+    public function __construct(UserInterface $repo)
     {
-      
+        $this->repo = $repo;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function profile($id)
     {
-        //
+        $user = $this->repo->get($id);
+        return view('backend.user.profile', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function profileEdit($id)
     {
-        //
+        // $user = $this->repo->get($id);
+        return view('backend.profile.update', compact('user'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function changePassword($id)
     {
-        //
+
+        // $user = $this->repo->get($id);
+        return view('backend.profile.change_password', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function profileUpdate(UpdateRequest $request)
     {
-        //
+        $result = $this->repo->profileUpdate($request);
+
+        if ($result['status']) {
+            return redirect()->route('profile.index', $id)->with('success', $result['message']);
+        }
+        return back()->with('danger', $result['message']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        //
+        $result = $this->repo->updatePassword($request);
+
+        if ($result['status']) {
+            return redirect()->route('profile.index', $id)->with('success', $result['message']);
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy($id)
     {
         //
     }

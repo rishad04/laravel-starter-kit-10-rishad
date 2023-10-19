@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Traits;
+
 use Illuminate\Support\Facades\Validator;
 
-trait ReturnFormatTrait {
-    
-    protected function responseWithSuccess($message='', $data=[])
+trait ReturnFormatTrait
+{
+
+    protected function responseWithSuccess($message = '', $data = [])
     {
         return [
             'status'    => true,
@@ -14,7 +16,7 @@ trait ReturnFormatTrait {
         ];
     }
 
-    protected function responseWithError($message='', $data=[])
+    protected function responseWithError($message = '', $data = [])
     {
         return [
             'status'    => false,

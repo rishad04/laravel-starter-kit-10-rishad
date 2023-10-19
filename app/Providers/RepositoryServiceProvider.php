@@ -9,6 +9,12 @@ use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
+use App\Repositories\Profile\ProfileInterface;
+use App\Repositories\Profile\ProfileRepository;
+use App\Repositories\Upload\UploadInterface;
+use App\Repositories\Upload\UploadRepository;
+use App\Repositories\User\UserInterface;
+use App\Repositories\User\UserRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -23,9 +29,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(LoginActivityInterface::class, LoginActivityRepository::class);
         $this->app->bind(LoginActivityInterface::class, LoginActivityRepository::class);
 
+        $this->app->bind(UserInterface::class,                  UserRepository::class);
 
-        $this->app->bind(RoleInterface::class,                RoleRepository::class);
+        $this->app->bind(RoleInterface::class,                  RoleRepository::class);
 
+        $this->app->bind(UploadInterface::class,                UploadRepository::class);
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,51 +9,42 @@ use App\Repositories\LoginActivity\LoginActivityInterface;
 
 class AuthController extends Controller
 {
-
-
-
     protected $LoginActivity;
-    
+
     public function __construct(LoginActivityInterface $LoginActivity)
     {
         $this->middleware('guest')->except('logout');
         $this->LoginActivity  = $LoginActivity;
-
     }
 
-    
-    public function showForm()
+
+    public function loginForm()
     {
         return view('auth.login');
     }
 
-
-
-    public function adminLogin(Request $request){
-
-        //add user  login activity
-         
-
-          if(auth()->attempt(request()->only(['email','password']))){
+    public function login(Request $request)
+    {
+        if (auth()->attempt(request()->only(['email', 'password']))) {
             return redirect('/dashboard');
-          }
-          return redirect('/');
-       
-
+        }
+        return redirect('/');
     }
 
-    public function logout (){
+    public function logout()
+    {
         Session()->flush();
         Auth::logout();
         return redirect('/');
-
     }
 
-    public function registerForm (){
+    public function registerForm()
+    {
         return view('auth.register');
     }
 
-    public function register (Request $request){
+    public function register(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required',
@@ -65,7 +55,7 @@ class AuthController extends Controller
             'password' => 'required',
             'confirm_password' => 'required'
         ]);
-        
+
 
         User::create([
             'name'          => $request->name,
@@ -76,12 +66,9 @@ class AuthController extends Controller
             'password'      => $request->password
         ]);
 
-        if( Auth::attempt($request->only('email','password'))){
+        if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/dashboard');
         }
         // return redirect ('/')->withErrors('error');
     }
-
- 
-    
 }

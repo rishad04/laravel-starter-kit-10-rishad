@@ -24,5 +24,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PermissionSeeder::class,
         ]);
+
+
+        $this->call(SettingSeeder::class);
     }
 }
