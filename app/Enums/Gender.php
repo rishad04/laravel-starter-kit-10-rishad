@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-class GENDER
+interface GENDER
 {
     const MALE   = 1;
     const FEMALE = 2;

@@ -4,7 +4,6 @@ namespace App\Enums;
 
 interface ImageSize
 {
-
     // General Image size
     const IMAGE_16x16       = [16, 16]; // favicon
     const IMAGE_32x32       = [32, 32]; // favicon

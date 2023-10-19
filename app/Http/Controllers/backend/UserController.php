@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
-use App\Http\Requests\User\StoreUserRequest;
-
 
 class UserController extends Controller
 {
