@@ -33,8 +33,7 @@ class StoreUserRequest extends FormRequest
             'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
 
             'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
-
+            'image'         => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
 
             'address'       => ['required', 'string', 'max:191'],
 

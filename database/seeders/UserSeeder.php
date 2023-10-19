@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        $img_id = DB::table('uploads')->insertGetId(['original' => 'backend/uploads/users/user.png']);
+        // $img_id = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
 
         User::create([
             'name'              => 'Jarret Waelchi',
@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
             'role_id'           => 1,
-            'image_id'          => $img_id,
+            'image_id'          => DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']),
             // $user->image_id     = 1;
             'dob'     => '2022-09-07',
 

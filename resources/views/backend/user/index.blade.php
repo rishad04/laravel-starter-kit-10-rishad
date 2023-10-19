@@ -103,7 +103,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="pr-3">
-                                                <img src="{{$user->image->original}}" alt="user" class="rounded" width="40" height="40">
+                                                <img src="{{@$user->image->original}}" alt="user" class="rounded" width="40" height="40">
                                             </div>
                                             <div>
                                                 <strong>{{$user->name}}</strong>
@@ -114,10 +114,10 @@
                                     <td>{{@$user->role_id}}</td>
                                     <td>
                                         @if(!empty($user->permissions) )
-                                        <label class=" label-style-1" class="badge badge-primary">{{ count($user->permissions) }}</label>
+                                        <label class="label-style-1" class="badge badge-primary">{{ count($user->permissions) }}</label>
                                         @endif
                                         @if(empty($user->permissions) )
-                                        <label class=" label-style-1" class="badge badge-primary">{{ count($user->permissions) }}</label>
+                                        <label class="label-style-1" class="badge badge-primary">{{ count($user->permissions) }}</label>
                                         @endif
                                     </td>
                                     {{-- <td>{{@$user->salary}}</td> --}}

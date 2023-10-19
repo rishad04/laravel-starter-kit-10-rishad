@@ -51,11 +51,11 @@ class UserRepository implements UserInterface
         $user->name             = $request->name;
         $user->email            = $request->email;
         $user->password         = Hash::make($request->password);
-        $user->mobile           = $request->mobile;
+        $user->phone           = $request->phone;
 
         $user->nid_number       = $request->nid_number;
-        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
-        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        // $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        // $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
 
         $user->address          = $request->address;
         $user->role_id          = $request->role_id;
