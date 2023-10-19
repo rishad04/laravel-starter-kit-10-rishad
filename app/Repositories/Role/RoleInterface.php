@@ -4,6 +4,7 @@ Interface RoleInterface{
     public function permissions();
     public function all();
     public function get();
+    public function getRole();
     public function store($request);
     public function edit($id);
     public function update($request);

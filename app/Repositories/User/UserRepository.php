@@ -4,9 +4,21 @@ namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\User\UserInterface;
+=======
+use App\Models\Backend\Hub;
+use App\Models\Backend\Department;
+use App\Models\Backend\Designation;
+use App\Models\Backend\Upload;
+use App\Traits\ReturnFormatTrait;
+use Illuminate\Support\Facades\Hash;
+use App\Repositories\User\UserInterface;
+use App\Enums\UserType;
+use App\Models\Backend\Role;
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
 use App\Repositories\Upload\UploadInterface;
 
 class UserRepository implements UserInterface
@@ -20,6 +32,7 @@ class UserRepository implements UserInterface
         $this->upload   = $upload;
     }
 
+<<<<<<< HEAD
     public function all(int $paginate = null, bool $status = null)
     {
         $query = $this->model::query();
@@ -47,10 +60,64 @@ class UserRepository implements UserInterface
     public function store($request)
     {
         try {
+=======
+    // get all rows in User model with Upload & Hub model row same as foreign key.
+    public function all()
+    {
+        return $this->model::orderByDesc('id')->paginate(10);
+    }
+
+    public function filter($request)
+    {
+        return $this->model::where(function ($query) use ($request) {
+            if ($request->name) {
+                $query->where('name', 'like', '%' . $request->name . '%');
+            }
+            if ($request->email) {
+                $query->where('email', 'like', '%' . $request->email . '%');
+            }
+            if ($request->phone) :
+                $query->where('mobile', 'like', '%' . $request->phone . '%');
+            endif;
+        })->orderByDesc('id')->paginate(10);
+    }
+
+    // get all rows in Hub model
+    // public function hubs()
+    // {
+    //     return Hub::orderBy('name')->get();
+    // }
+
+    // // get all rows in Department model
+    // public function departments()
+    // {
+    //     return Department::active()->orderBy('title')->get();
+    // }
+
+    // get all rows in Designation model
+    public function designations()
+    {
+        return Designation::active()->orderBy('title')->get();
+    }
+
+    // get single row in User model with Upload model row same as foreign key.
+    public function get($id)
+    {
+        return $this->model::with('upload', 'role')->find($id);
+    }
+
+    // All request data store in User tabel.
+    public function store($request)
+    {
+
+        // try {
+            $role                   = $this->model::where('id', $request->role_id)->first();
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
             $user                   = new User();
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
+<<<<<<< HEAD
             $user->mobile           = $request->mobile;
 
             $user->upload_id         = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
@@ -60,10 +127,23 @@ class UserRepository implements UserInterface
 
             $user->permissions      = [];
 
+=======
+            $user->phone           = $request->phone;
+            $user->nid_number       = $request->nid_number;
+
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+
+            $user->address          = $request->address;
+            $user->role_id          = $request->role_id;
+            // if ($role->permissions !== null) {
+            //     $user->permissions  = $role->permissions;
+            // }
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
             $user->status           = $request->status;
             $user->save();
 
             return $this->responseWithSuccess(__('alert.successfully_added'), []);
+<<<<<<< HEAD
         } catch (\Throwable $th) {
             return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
@@ -86,6 +166,50 @@ class UserRepository implements UserInterface
             $user->permissions      = [];
 
             $user->status           = $request->status;
+=======
+        // } catch (\Throwable $th) {
+        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
+        // }
+    }
+
+    // All request data update in User tabel.
+    public function update($request)
+    {
+        try {
+            $role = $this->model::where('id', $request->role_id)->first();
+
+            $user                       = $this->model::find($request->id);
+            $user->name                 = $request->name;
+            $user->email                = $request->email;
+            $user->mobile               = $request->mobile;
+            $user->nid_number           = $request->nid_number;
+
+            if ($request->id != 1) {
+                $user->hub_id           = $request->hub_id ? $request->hub_id : null;
+                $user->designation_id   = $request->designation_id;
+                $user->department_id    = $request->department_id;
+                $user->status           = $request->status;
+            }
+
+            $user->joining_date         = $request->joining_date;
+            $user->address              = $request->address;
+
+            if ($request->password != null) {
+                $user->password = Hash::make($request->password);
+            }
+
+            $user->image_id             = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
+
+            $user->role_id              = $request->role_id;
+            $user->salary               = $request->salary !== "" ? $request->salary : 0;
+            if ($request->hub_id) {
+                $user->permissions     = $this->hubPermissions();
+            } elseif ($role) {
+                if ($role->permissions !== null) {
+                    $user->permissions  = $role->permissions;
+                }
+            }
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
             $user->save();
 
             return $this->responseWithSuccess(__('alert.successfully_updated'), []);
@@ -94,6 +218,7 @@ class UserRepository implements UserInterface
         }
     }
 
+<<<<<<< HEAD
     public function passwordUpdate($request)
     {
         try {
@@ -109,6 +234,25 @@ class UserRepository implements UserInterface
         }
     }
 
+=======
+    private function hubPermissions()
+    {
+        return [
+            'dashboard_read',
+            'hub_payment_read',
+            'parcel_read',
+            'cash_received_from_delivery_man_read',
+            'cash_received_from_delivery_man_create',
+            'cash_received_from_delivery_man_update',
+            'cash_received_from_delivery_man_delete',
+            'hub_payment_request_read',
+            'hub_payment_request_create',
+            'hub_payment_request_delete',
+        ];
+    }
+
+    // Delete single row in User Model with Delete single row in Upload model and delete image in public/upload/user folder..
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
     public function delete($id)
     {
         try {
@@ -124,8 +268,41 @@ class UserRepository implements UserInterface
         }
     }
 
+<<<<<<< HEAD
     public function permissionUpdate($id, $request)
     {
+=======
+    // Request image Store in Upload Model and image copy file attach in public/upload/user folder.
+    public function file($image_id = '', $image)
+    {
+        try {
+            $image_name = '';
+            if (!blank($image)) {
+                $destinationPath       = public_path('uploads/users');
+                $profileImage          = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $image_name            = 'uploads/users/' . $profileImage;
+            }
+            if (blank($image_id)) {
+                $upload           = new Upload();
+            } else {
+                $upload           = Upload::find($image_id);
+                if (file_exists(public_path($upload->original))) {
+                    unlink(public_path($upload->original));
+                }
+            }
+            $upload->original     = $image_name;
+            $upload->save();
+            return $upload->id;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public function permissionUpdate($id, $request)
+    {
+
+>>>>>>> 717dc7f581371d2949afbdcc8ed1cfdb6f8b9277
         try {
             $user = $this->model::where('id', $id)->first();
             if ($request->permissions !== null) {

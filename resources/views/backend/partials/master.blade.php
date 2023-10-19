@@ -51,7 +51,6 @@
     </script>
 
     @stack('scripts')
-    {{-- <script src="https://kit.fontawesome.com/8de252ef57.js" crossorigin="anonymous"></script> --}}
 </body>
 
 </html>

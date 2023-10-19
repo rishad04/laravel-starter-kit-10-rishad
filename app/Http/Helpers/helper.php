@@ -2,6 +2,7 @@
 
 use App\Models\Backend\Setting;
 use App\Models\Upload;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 

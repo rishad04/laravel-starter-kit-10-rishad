@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable()->unique();
             $table->string('password');
-            $table->date('date_of_birth')->nullable();
+            $table->date('dob')->nullable()->comment('Birth date');
             $table->tinyInteger('gender')->default(Gender::MALE);
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable()->comment('if null then verified, not null then not verified');

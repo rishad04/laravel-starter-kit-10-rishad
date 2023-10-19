@@ -57,7 +57,7 @@ class UploadRepository implements UploadInterface
     public function unlinkImage($image_id = '')
     {
         try {
-            $upload  = ModelsUpload::find($image_id);
+            $upload  = Upload::find($image_id);
             if ($upload && $upload->original && File::exists(public_path($upload->original))) :
                 unlink(public_path($upload->original));
             endif;

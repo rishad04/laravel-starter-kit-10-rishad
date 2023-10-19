@@ -28,6 +28,10 @@ Class RoleRepository implements RoleInterface {
     public function get(){
         return $this->model::orderByDesc('id')->paginate(10);
     }
+    public function getRole()
+    {
+        return $this->model::where('status', Status::ACTIVE)->get();
+    }
 
     //role store
     public function store($request){

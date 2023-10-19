@@ -32,3 +32,33 @@
 <script src="{{asset('backend')}}/vendor/jquery.counterup/jquery.counterup.min.js"></script>
 
 <script src="{{asset('backend')}}/js/dashboard/dashboard-1.js"></script>
+
+<!-- select 2 js -->
+<script src="{{asset('backend')}}/vendor/select2/js/select2.full.min.js"></script>
+
+<script src="{{asset('backend')}}/vendor/flatpickr/flatpickr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".select2").select2({
+            tags: "true"
+            , placeholder: "Select an option"
+            , allowClear: true
+        });
+
+        $(".flatpickr").flatpickr({
+            altInput: true
+            , altFormat: "F j, Y"
+            , dateFormat: "Y-m-d"
+        });
+
+        $(".flatpickr-range").flatpickr({
+            mode: "range"
+            , altInput: true
+            , altFormat: "F j, Y"
+            , dateFormat: "Y-m-d"
+        });
+
+    });
+
+</script>
