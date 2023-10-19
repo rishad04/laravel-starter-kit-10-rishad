@@ -8,6 +8,7 @@
     <!-- Favicon icon -->
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ favicon() }}">
 
+    {{-- <link rel="stylesheet" href="{{asset('backend')}}/vendor/font_awesome/6.4.2/all.min.css" /> --}}
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/chartist/css/chartist.min.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/css/style.css" />
