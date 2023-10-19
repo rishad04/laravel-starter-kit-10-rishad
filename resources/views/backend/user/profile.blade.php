@@ -21,7 +21,9 @@
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        @if($user->id == auth()->user()->id)
                         <a href="{{ route('profile.edit') }}" class="j-btn-sm">{{ __('label.edit') }}</a>
+                        @endif
                     </div>
                 </div>
                 <div class="j-eml-card">

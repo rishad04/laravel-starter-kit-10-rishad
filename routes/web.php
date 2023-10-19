@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
-use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 
 /*
@@ -26,7 +25,6 @@ Route::middleware('guest')->group(function () {
     Route::get('register',          [AuthController::class, 'registerForm'])->name('registerForm');
     Route::post('register',         [AuthController::class, 'register'])->name('register');
 });
-
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard');
