@@ -103,7 +103,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="pr-3">
-                                                <img src="{{@$user->image->original}}" alt="user" class="rounded" width="40" height="40">
+                                                <img src="{{ getImage($user->image_id,'original') }}" alt="user" class="rounded" width="40" height="40">
                                             </div>
                                             <div>
                                                 <strong>{{$user->name}}</strong>

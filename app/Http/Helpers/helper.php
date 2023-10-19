@@ -27,6 +27,20 @@ if (!function_exists('globalSettings')) {
 }
 
 //logo
+if (!function_exists('getImage')) {
+    function getImage($upload_id = null, $version = 'original')
+    {
+        $image   = Upload::find($upload_id);
+
+        if ($image != null &&  File::exists(public_path($image->$version))) {
+            return asset($image->original);
+        }
+
+        return "https://placehold.co/400x400?text=No+Image";
+    }
+}
+
+//logo
 if (!function_exists('logo')) {
     function logo($upload_id = null)
     {
