@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Repositories\Role;
-Interface RoleInterface{
+
+interface RoleInterface
+{
     public function permissions();
-    public function all();
+
+    public function all(int $paginate = null, bool $status = null);
+
     public function get();
     public function getRole();
     public function store($request);

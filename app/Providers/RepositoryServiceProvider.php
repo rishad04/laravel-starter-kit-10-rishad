@@ -12,6 +12,7 @@ use App\Repositories\User\UserRepository;
 use App\Repositories\Upload\UploadRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
+use App\Repositories\Upload\UploadInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

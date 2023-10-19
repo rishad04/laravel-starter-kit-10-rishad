@@ -30,16 +30,21 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
-    public function upload()
+    public function image()
     {
-        return $this->belongsTo(Upload::class, 'upload_id', 'id');
+        return $this->belongsTo(Upload::class, 'image_id', 'id');
     }
 
-    public function getImageAttribute()
+    public function nid()
     {
-        if (!empty($this->upload->original['original']) && file_exists(public_path($this->upload->original['original']))) {
-            return static_asset($this->upload->original['original']);
-        }
-        return static_asset('backend/images/avatar/user-profile.png');
+        return $this->belongsTo(Upload::class, 'nid', 'id');
     }
+
+    // public function getImageAttribute()
+    // {
+    //     if (!empty($this->upload->original['original']) && file_exists(public_path($this->upload->original['original']))) {
+    //         return static_asset($this->upload->original['original']);
+    //     }
+    //     return static_asset('backend/images/avatar/user-profile.png');
+    // }
 }

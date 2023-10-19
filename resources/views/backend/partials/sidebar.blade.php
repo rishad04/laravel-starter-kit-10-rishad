@@ -19,9 +19,6 @@
                     <li>
                         <a href="{{ route('role.index') }}">{{__('menus.roles')}}</a>
                     </li>
-                    <li>
-                        <a href="{{ route('staff.index') }}">{{__('menus.staffs')}}</a>
-                    </li>
                 </ul>
             </li>
 

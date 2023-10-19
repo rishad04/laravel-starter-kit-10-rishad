@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -11,6 +12,8 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
+        $img_id = DB::table('uploads')->insertGetId(['original' => 'backend/uploads/users/user.png']);
+
         User::create([
             'name'              => 'Jarret Waelchi',
             'phone'             => '01811000000',
@@ -19,10 +22,10 @@ class UserSeeder extends Seeder
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
             'role_id'           => 1,
-            'image_id'          => 1,
+            'image_id'          => $img_id,
             // $user->image_id     = 1;
-            'date_of_birth'     => '2022-09-07',
-            'designation_id'    => rand(1, 5),
+            'dob'     => '2022-09-07',
+
             'address'          => "Lorem ipsum dolor sit amet consectetur adipisicing elit. At, sit quaerat! Inventore esse!",
             'permissions' => [
                 'user_read',
@@ -59,9 +62,9 @@ class UserSeeder extends Seeder
         //     'password'          => Hash::make('123456'),
         //     'remember_token'    => Str::random(10),
         //     'role_id'           => 2,
-        //     'date_of_birth'     => '2022-09-07',
+        //     'dob'     => '2022-09-07',
         //     'image_id'          => 1,
-        //     'designation_id'    => rand(1, 5),
+        //     
         //     'permissions' => [
         //         'user_read',
         //         'user_create',
@@ -91,9 +94,9 @@ class UserSeeder extends Seeder
         //     'password'          => Hash::make('123456'),
         //     'remember_token'    => Str::random(10),
         //     'role_id'           => 3,
-        //     'date_of_birth'     => '2022-09-07',
+        //     'dob'     => '2022-09-07',
         //     'image_id'          => 1,
-        //     'designation_id'    => rand(1, 5),
+        //     
         //     'permissions' => [
         //         'user_read',
         //         'user_create',
@@ -117,9 +120,9 @@ class UserSeeder extends Seeder
         //         'password'          => Hash::make('123456'),
         //         'remember_token'    => Str::random(10),
         //         'role_id'           => 4,
-        //         'date_of_birth'     => '2022-09-07',
+        //         'dob'     => '2022-09-07',
         //         'image_id'          => 1,
-        //         'designation_id'    => rand(1, 5),
+        //         
         //         'permissions' => [
         //             'user_read',
         //             'role_read',

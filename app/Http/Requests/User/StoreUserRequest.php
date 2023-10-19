@@ -23,19 +23,24 @@ class StoreUserRequest extends FormRequest
      */
     public function rules()
     {
+        // dd($this->all());
         return [
-            'name'           => ['required', 'string', 'max:191'],
-            'email'          => ['required', 'string', 'unique:users'],
-            'password'       => ['required', 'string'],
-            'mobile'         => ['required', 'regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/', 'unique:users,mobile'],
+            'name'          => ['required', 'string', 'max:100'],
+            'email'         => ['required', 'email', 'unique:users'],
+            'password'      => ['required', 'string', 'min:6', 'max:32'],
+            'phone'         => ['required', 'regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/', 'unique:users,phone'],
 
-            'nid_number'     => ['nullable', 'numeric', 'digits_between:1,20'],
-            'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
-    
+            'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
 
-            'address'        => ['required', 'string', 'max:191'],
-            'status'         => ['required', 'numeric'],
-            'role_id'        => 'required|exists:roles,id',
+            'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
+
+
+            'address'       => ['required', 'string', 'max:191'],
+
+            'status'        => ['required', 'boolean'],
+
+            'role_id'       => 'required|exists:roles,id',
         ];
     }
 }

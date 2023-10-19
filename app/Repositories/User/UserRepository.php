@@ -30,7 +30,7 @@ class UserRepository implements UserInterface
 
         $query->latest('updated_at');
 
-        $query->with('upload');
+        $query->with('image');
 
         if ($paginate !== null) {
             return  $query->paginate($paginate);
@@ -46,27 +46,29 @@ class UserRepository implements UserInterface
 
     public function store($request)
     {
-        try {
-            $user                   = new User();
-            $user->name             = $request->name;
-            $user->email            = $request->email;
-            $user->password         = Hash::make($request->password);
-            $user->mobile           = $request->mobile;
+        // try {
+        $user                   = new User();
+        $user->name             = $request->name;
+        $user->email            = $request->email;
+        $user->password         = Hash::make($request->password);
+        $user->mobile           = $request->mobile;
 
-            $user->upload_id         = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        $user->nid_number       = $request->nid_number;
+        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
 
-            $user->address          = $request->address;
-            $user->role_id          = $request->role_id;
+        $user->address          = $request->address;
+        $user->role_id          = $request->role_id;
 
-            $user->permissions      = [];
+        $user->permissions      = [];
 
-            $user->status           = $request->status;
-            $user->save();
+        $user->status           = $request->status;
+        $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
-        }
+        return $this->responseWithSuccess(__('alert.successfully_added'), []);
+        // } catch (\Throwable $th) {
+        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
+        // }
     }
 
     public function profileUpdate($request)
@@ -78,7 +80,7 @@ class UserRepository implements UserInterface
             $user->password         = Hash::make($request->password);
             $user->mobile           = $request->mobile;
 
-            $user->upload_id         = $this->upload->uploadImage($request->image, 'users/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+            $user->upload_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
 
             $user->address          = $request->address;
             $user->role_id          = $request->role_id;
