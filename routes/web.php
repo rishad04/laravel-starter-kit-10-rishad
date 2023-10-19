@@ -20,10 +20,6 @@ use App\Http\Controllers\Backend\UserController;
 |
 */
 
-//end social authentication
-Route::get('localization/{language}', [SettingController::class, 'setLocalization'])->name('setLocalization');
-
-
 Route::middleware('guest')->group(function () {
     Route::get('login',             [AuthController::class, 'loginForm'])->name('loginForm');
     Route::post('login',            [AuthController::class, 'login'])->name('login');
@@ -34,7 +30,7 @@ Route::middleware('guest')->group(function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/logout',       [AuthController::class, 'logout'])->name('logout');
+    Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 
     // user
     Route::prefix('user')->group(function () {
@@ -49,8 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('profile/edit',              [UserController::class, 'profileEdit'])->name('profile.edit');
         Route::put('profile/update',            [UserController::class, 'profileUpdate'])->name('profile.update');
 
-        Route::get('change-password/{id}',      [UserController::class, 'passwordChange'])->name('password.change');
-        Route::put('update-password/{id}',      [UserController::class, 'passwordUpdate'])->name('password.update');
+        Route::get('change-password/{id}',      [UserController::class, 'passwordChange'])->name('passwordChange');
+        Route::put('update-password/{id}',      [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
 
         Route::delete('/delete/{id}',           [UserController::class,   'delete'])->name('delete');
 

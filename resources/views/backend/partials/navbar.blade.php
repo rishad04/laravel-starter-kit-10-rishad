@@ -125,7 +125,7 @@
                                 <a href="{{route('profile',Auth::user()->id)}}" class="dropdown-item">
                                     <i class="icon-user"></i> <span class="ml-2">{{ __('menus.profile') }} </span>
                                 </a>
-                                <a href="{{route('password.change',Auth::user()->id)}}" class="dropdown-item">
+                                <a href="{{route('passwordChange',Auth::user()->id)}}" class="dropdown-item">
                                     <i class=" icon-key"></i> <span class="ml-2">{{ __('menus.change_password') }} </span>
                                 </a>
                                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

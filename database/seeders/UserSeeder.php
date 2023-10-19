@@ -43,7 +43,9 @@ class UserSeeder extends Seeder
                 'recaptcha_settings_read',
                 'recaptcha_settings_update',
                 'email_settings_read',
-                'email_settings_update'
+                'email_settings_update',
+                'language_settings_read',
+                'language_settings_update',
             ],
         ]);
 
