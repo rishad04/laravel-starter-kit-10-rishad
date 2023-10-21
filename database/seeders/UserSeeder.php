@@ -60,30 +60,43 @@ class UserSeeder extends Seeder
     {
         return [
 
+            'dashboard_read',
+
             'user_read',
             'user_create',
             'user_update',
             'user_delete',
+
             'role_read',
             'role_create',
             'role_update',
             'role_delete',
+
             'language_read',
             'language_create',
             'language_update',
             'language_update_terms',
             'language_delete',
+
             'general_settings_read',
             'general_settings_update',
+
             'storage_settings_read',
             'storage_settings_update',
+
             'recaptcha_settings_read',
             'recaptcha_settings_update',
+
             'email_settings_read',
             'email_settings_update',
+
             'language_settings_read',
             'language_settings_update',
-            'dashboard_read'
+
+            'todo_read',
+            'todo_create',
+            'todo_update',
+            'todo_delete'
 
         ];
     }
@@ -91,24 +104,39 @@ class UserSeeder extends Seeder
 
     private function adminPermissions()
     {
-        return [       
+        return [    
+            
+            'dashboard_read',
+
             'user_read',
             'user_create',
             'user_update',
             'user_delete',
+
             'role_read',
             'role_create',
             'role_update',
             'role_delete',
+
             'language_read',
             'language_create',
+
             'language_update_terms',
             'general_settings_read',
+
             'general_settings_update',
             'storage_settings_read',
-            'storage_settings_read',
+
+            'recaptcha_settings_read',
             'recaptcha_settings_update',
+
             'email_settings_read',
+
+            
+            'todo_read',
+            'todo_create',
+            'todo_update',
+            'todo_delete'
          ];
     }
 }

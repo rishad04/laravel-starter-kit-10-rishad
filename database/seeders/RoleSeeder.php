@@ -54,6 +54,11 @@ class RoleSeeder extends Seeder
                 'email_settings_update',
                 'language_settings_read',
                 'language_settings_update',
+                
+                'todo_read',
+                'todo_create',
+                'todo_update',
+                'todo_delete'
 
             ];
         }
@@ -75,9 +80,14 @@ class RoleSeeder extends Seeder
                 'general_settings_read',
                 'general_settings_update',
                 'storage_settings_read',
-                'storage_settings_read',
+                'recaptcha_settings_read',
                 'recaptcha_settings_update',
-                'email_settings_read'
+                'email_settings_read',
+
+                'todo_read',
+                'todo_create',
+                'todo_update',
+                'todo_delete'
             ];
         }
 

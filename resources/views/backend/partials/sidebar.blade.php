@@ -7,7 +7,6 @@
             @endif
 
             <li>
-
                 <a class="has-arrow" href="javascript:void()" aria-expanded="true">
                     <i class="icon-people"></i>
                     <span class="nav-text">{{__('menus.user_roles')}}</span>
@@ -21,13 +20,14 @@
                     </li>
                 </ul>
             </li>
-
-            <li>
-                <a href="javascript:void()" aria-expanded="true">
-                    <i class="icon-notebook"></i>
-                    <span class="nav-text">{{__('menus.todo_list')}}</span>
-                </a>
-            </li>
+            @if(hasPermission('todo_read') == true)
+                <li>
+                    <a href="{{ route('todo.index') }}" aria-expanded="true">
+                        <i class="icon-notebook"></i>
+                        <span class="nav-text">{{__('menus.todo_list')}}</span>
+                    </a>
+                </li>
+            @endif
 
             <li>
                 <a href="javascript:void()" aria-expanded="true">

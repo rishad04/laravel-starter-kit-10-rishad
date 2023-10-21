@@ -32,10 +32,11 @@
                             </form>
                         </div>
 
+                        {{-- id="todoModal1" data-url="{{route('todo.modal')}}" --}}
                         @if(hasPermission('todo_create')== true)
                         <div class="j-to-do">
-                            <a href="#" class="j-td-btn" id="todoModal1" data-target="#todoModal" data-toggle="modal" data-url="{{route('todo.modal')}}">
-                                <img src="{{static_asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image" />
+                            <a href="#" class="j-td-btn"  data-target="#todoModal" data-toggle="modal" >
+                                <img src="{{asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image" />
                                 <span>{{ __('to_do.to_do')}}</span>
                             </a>
                         </div>
@@ -46,29 +47,29 @@
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
                                     <span>
                                         @if(app()->getLocale() == "en")
-                                        <img src="{{static_asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> En
+                                        <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> En
                                         @elseif(app()->getLocale() == 'bn')
-                                        <img src="{{static_asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> Bn
+                                        <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> Bn
                                         @elseif(app()->getLocale() == 'in')
-                                        <img src="{{static_asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> In
+                                        <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> In
                                         @elseif(app()->getLocale() == 'ar')
-                                        <img src="{{static_asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> Ar
+                                        <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> Ar
                                         @endif
                                         <i class="fa fa-angle-down"></i>
                                     </span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('setLocalization','en') }}">
-                                        <span class="flg-lfex"> <img src="{{static_asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ __('levels.english') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ __('levels.english') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','ar') }}">
-                                        <span class="flg-lfex"> <img src="{{static_asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ __('levels.arabic') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ __('levels.arabic') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','bn') }}">
-                                        <span class="flg-lfex"> <img src="{{static_asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ __('levels.bangla') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ __('levels.bangla') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','in') }}">
-                                        <span class="flg-lfex"> <img src="{{static_asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ __('levels.hindi') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ __('levels.hindi') }} </span>
                                     </a>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@
                         <div class="day-night">
                             <a class="j-nav-lk" href="#">
                                 <i class="nav-bell">
-                                    <img src="{{static_asset('backend')}}/assets/img/icon/d.png" alt="no image" />
+                                    <img src="{{asset('backend')}}/assets/img/icon/d.png" alt="no image" />
                                 </i>
                             </a>
                         </div>
@@ -85,7 +86,7 @@
                         <div class="dropdown notification_dropdown">
                             <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown">
                                 <i class="nav-bell">
-                                    <img src="{{static_asset('backend')}}/assets/img/icon/bell.png" alt="no image" />
+                                    <img src="{{asset('backend')}}/assets/img/icon/bell.png" alt="no image" />
                                 </i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -143,3 +144,12 @@
         </nav>
     </div>
 </div>
+
+
+{{-- @include('backend.todo.to_do_list') --}}
+
+@push('scripts')
+
+<script src="{{ static_asset('backend/js/navber.js') }}"></script>
+
+@endpush

@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 
     // user
-    Route::prefix('user')->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('/',                         [UserController::class,   'index'])->name('user.index');
         Route::get('/create',                   [UserController::class,   'create'])->name('user.create');
         Route::post('/store',                   [UserController::class,   'store'])->name('user.store');
@@ -62,7 +62,19 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/update',                       [RoleController::class,    'update'])->name('role.update');
             Route::delete('/delete/{id}',               [RoleController::class,    'delete'])->name('role.delete');
         });
+
+          // To_do List route
+          Route::get('todo/todo_list',                [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');
+          Route::post('todo/todo_add',                [TodoController::class, 'store'])->name('todo.store')->middleware('hasPermission:todo_create');
+          Route::post('todo/momal',                   [TodoController::class, 'todoModal'])->name('todo.modal');
+          Route::post('todo/processing',              [TodoController::class, 'todoProcessing'])->name('todo.processing')->middleware('hasPermission:todo_update');
+          Route::post('todo/completed',               [TodoController::class, 'todoComplete'])->name('todo.completed')->middleware('hasPermission:todo_update');
+          Route::put('todo/update',                   [TodoController::class, 'update'])->name('todo.update')->middleware('hasPermission:todo_update');
+          Route::delete('todo/delete/{id}',           [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
+
     });
+
+
     //end user 
 
-});
+}); //auth
