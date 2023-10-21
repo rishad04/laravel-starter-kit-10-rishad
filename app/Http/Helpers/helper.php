@@ -87,3 +87,19 @@ if (!function_exists('dateFormat')) {
         return  $day . ' ' . $month . ' ' . $yearly;
     }
 }
+
+function ___($key = null, $replace = [], $locale = null)
+{
+    $input       = explode('.', $key);
+    $file        = $input[0];
+    $term         = $input[1];
+    $app_local   = app()->getLocale();
+
+    $jsonString  = file_get_contents(base_path('lang/' . $app_local . '/' . $file . '.json'));
+    $data        = json_decode($jsonString, true);
+    if (@$data[$term]) {
+        return $data[$term];
+    }
+
+    return $term;
+}

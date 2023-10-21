@@ -4,18 +4,26 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Schema;
 use App\Repositories\Role\RoleInterface;
 use App\Http\Requests\role\StoreRoleRequest;
 use App\Http\Requests\role\UpdateRoleRequest;
+use App\Repositories\Permission\PermissionInterface;
 
 class RoleController extends Controller
 {
 
-    protected $repo;
+    private $repo;
+    private $permission;
 
-    public function __construct(RoleInterface $repo)
+    function __construct(RoleInterface $repo, PermissionInterface $permission)
     {
-        $this->repo = $repo;
+
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+            abort(400);
+        }
+        $this->repo       = $repo;
+        $this->permission = $permission;
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +39,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions    = $this->repo->permissions();
+        $data['title']       = ___('common.create_role');
+        $data['permissions'] = $this->permission->all();
         return view('backend.role.create', compact('permissions'));
     }
 
@@ -60,7 +69,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        
+
         $role = $this->repo->get($id);
         $permissions = $this->repo->permissions($role->slug);
         return view('backend.role.edit', compact('role', 'permissions'));
