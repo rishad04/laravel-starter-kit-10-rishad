@@ -35,7 +35,7 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="name">{{ __('label.name') }}</label> <span class="text-danger">*</span>
-                                <input id="name" type="text" name="name" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1 ">
+                                <input id="name" type="text" name="name" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name') }}">
                                 @error('name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
@@ -44,24 +44,20 @@
                                 @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
-                                <input id="address" type="text" name="address" placeholder="{{ __('placeholder.Enter_address') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('address') }}">
-                                @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
-
-
-                            <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="email">{{ __('label.email') }}</label> <span class="text-danger">*</span>
                                 <input id="email" type="email" name="email" placeholder="{{ __('placeholder.enter_email') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('email') }}">
                                 @error('email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="password">{{ __('label.password') }}</label> <span class="text-danger">*</span>
                                 <input id="password" type="password" name="password" placeholder="{{ __('placeholder.Enter_password') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('password') }}">
                                 @error('password') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
+                            <div class="form-group col-md-6">
+                                <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
+                                <input id="address" type="text" name="address" placeholder="{{ __('placeholder.Enter_address') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('address') }}">
+                                @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1">{{ __('label.role') }}</label> <span class="text-danger">*</span>
                                 <select class="form-control input-style-1 select2" name="role_id">
@@ -72,19 +68,16 @@
                                 </select>
                                 @error('role_id') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="nid_number">{{ __('label.nid_number') }}</label>
                                 <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.Enter_nid_number') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('nid_number') }}">
                                 @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="nid">{{ __('label.nid') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="nid" id="nid" class="form-control input-style-1 ">
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
@@ -94,13 +87,11 @@
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="image">{{ __('label.image') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
                                 @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-
                         </div>
 
                         <div class="j-create-btns">

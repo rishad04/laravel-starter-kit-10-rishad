@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->string('status')->default(App\Enums\Status::ACTIVE);
             $table->longText('permissions')->nullable();
             $table->timestamps();

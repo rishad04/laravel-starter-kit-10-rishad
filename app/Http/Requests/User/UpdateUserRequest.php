@@ -28,30 +28,27 @@ class UpdateUserRequest extends FormRequest
 
         if (Request::input('id') != 1) {
             return [
-                'name'           => ['required', 'string', 'max:191'],
+                'name'          => ['required', 'string', 'max:100'],
                 'email'          => 'required|string|unique:users,email,' . Request::input('id'),
-                'password'       => ['nullable'],
-                // 'mobile'         => 'required|numeric|digits_between:11,14|unique:users,mobile,' . Request::input('id'),
-                'mobile'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,mobile,' . Request::input('id'),
-                'nid_number'     => ['nullable', 'numeric', 'digits_between:1,20'],
-
-                'designation_id' => ['required', 'numeric'],
-                'department_id'  => ['required', 'numeric'],
-                'image'          => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
-                'salary'         => ['numeric'],
-                'joining_date'   => ['required'],
-                'address'        => ['required', 'string', 'max:191'],
-                'status'         => ['required', 'numeric'],
-                'role_id'        => 'required|exists:roles,id',
+                'password'      => ['required', 'string', 'min:6', 'max:32'],
+                'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,phone,' . Request::input('id'),
+                'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
+                'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
+                'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
+                'address'       => ['required', 'string', 'max:191'],
+                'status'        => ['required', 'boolean'],
+                'role_id'       => 'required|exists:roles,id',
             ];
         } else {
             return [
                 'name'           => ['required', 'string', 'max:191'],
                 'email'          => 'required|string|unique:users,email,' . Request::input('id'),
                 'password'       => ['nullable'],
-                'mobile'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,mobile,' . Request::input('id'),
-                'image'          => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
+                'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,phone,' . Request::input('id'),
+                'image'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
                 'address'        => ['required', 'string', 'max:191'],
+                'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
+                'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
             ];
         }
     }

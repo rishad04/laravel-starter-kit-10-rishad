@@ -10,9 +10,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('levels.edit') }}</a></li>
                         </ol>
                     </nav>
@@ -21,29 +21,29 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="form-input-header">
                         <h4 class="title-site"> {{ __('role.edit_role') }}</h4>
                     </div>
-                    <form action="{{route('roles.update',['id'=>$role->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
+                    <form action="{{route('role.update',['id'=>$roles->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         @if (isset($role))
                         @method('PUT')
                         @endif
-                        <div class="row">
+                        <div class="form-row">
                             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="name">{{ __('levels.name') }}</label> <span class="text-danger">*</span>
                                     <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name',$role->name) }}" require>
                                     @error('name')
                                     <span class="text-danger mt-2">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="status">{{ __('levels.status') }}</label> <span class="text-danger">*</span>
-                                    <select name="status" class="form-control input-style-1">
+                                    <select name="status" class="form-control input-style-1 select2">
                                         @foreach(trans('status') as $key => $status)
                                         <option value="{{ $key }}" {{ (old('status',$role->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
                                         @endforeach
@@ -80,10 +80,10 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right ">
-                                <button type="submit" class="btn btn-space btn-primary">{{ __('levels.save_change') }}</button>
-                                <a href="{{ route('roles.index') }}" class="btn btn-space btn-secondary">{{ __('levels.cancel') }}</a>
+                        <div class="j-create-btns">
+                            <div class="drp-btns">
+                                <button type="submit" class="j-td-btn">{{ __('label.save_change') }}</button>
+                                <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
                             </div>
                         </div>
                     </form>

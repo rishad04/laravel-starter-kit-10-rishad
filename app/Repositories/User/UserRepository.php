@@ -41,34 +41,57 @@ class UserRepository implements UserInterface
 
     public function get($id)
     {
-        return $this->model::with('upload', 'role')->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 
     public function store($request)
     {
-        try {
+        // try {
             $user                   = new User();
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
             $user->phone           = $request->phone;
-
             $user->nid_number       = $request->nid_number;
             $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
             $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
-
             $user->address          = $request->address;
             $user->role_id          = $request->role_id;
-
             $user->permissions      = [];
-
             $user->status           = $request->status;
             $user->save();
 
             return $this->responseWithSuccess(__('alert.successfully_added'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
-        }
+    //     } catch (\Throwable $th) {
+    //         return $this->responseWithError(__('alert.something_went_wrong'), []);
+    //     }
+    }
+
+    public function update ($request){
+
+
+        // $user                       = $this->model::find($request->id);
+        // try {
+            $user                   = $this->model::find($request->id);
+            $user->name             = $request->name;
+            $user->email            = $request->email;
+            $user->password         = Hash::make($request->password);
+            $user->phone            = $request->phone;
+            $user->nid_number       = $request->nid_number;
+
+            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
+
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
+            $user->address          = $request->address;
+            $user->role_id          = $request->role_id;
+            $user->permissions      = [];
+            $user->status           = $request->status;
+            $user->save();
+
+            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+        // } catch (\Throwable $th) {
+        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
+        // }
     }
 
     public function profileUpdate($request)
@@ -124,6 +147,8 @@ class UserRepository implements UserInterface
         } catch (\Throwable $th) {
             return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
+
+        
     }
 
     public function permissionUpdate($id, $request)

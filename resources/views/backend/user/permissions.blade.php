@@ -11,7 +11,7 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ __('user.title') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('permissions.permissions') }}</a></li>
@@ -70,7 +70,7 @@
                         <div class="j-create-btns">
                             <div class="drp-btns">
                                 <button type="submit" class="j-td-btn">{{ __('levels.save_change') }}</button>
-                                <a href="{{ route('users.index') }}" class="j-td-btn btn-red"> <span>{{ __('levels.cancel') }}</span> </a>
+                                <a href="{{ route('user.index') }}" class="j-td-btn btn-red"> <span>{{ __('levels.cancel') }}</span> </a>
                             </div>
                         </div>
                     </form>

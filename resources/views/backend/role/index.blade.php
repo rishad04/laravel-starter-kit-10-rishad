@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('role.title') }} {{ __('levels.list') }}
+{{ __('role.title') }} {{ __('label.list') }}
 @endsection
 @section('maincontent')
 
@@ -12,10 +12,10 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('levels.list') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.list') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -30,7 +30,7 @@
                     <h4 class="title-site">{{ __('role.title') }}</h4>
                     @if(hasPermission('role_create') )
                     <a href="{{route('role.create')}}" class="j-td-btn">
-                        <img src="{{ asset('backend') }}/assets/img/icon/plus-white.png" class="jj" alt="no image"> <span>{{ __('levels.add') }} </span>
+                        <img src="{{ asset('backend') }}/assets/img/icon/plus-white.png" class="jj" alt="no image"> <span>{{ __('label.add') }} </span>
                     </a>
                     @endif
 
@@ -42,18 +42,18 @@
                         <table class="table  table-responsive-sm ">
                             <thead class="bg">
                                 <tr>
-                                    <th>{{ __('levels.id') }}</th>
-                                    <th>{{ __('levels.name') }}</th>
-                                    <th>{{ __('levels.slug') }}</th>
-                                    <th>{{ __('levels.permission') }}</th>
-                                    <th>{{ __('levels.status') }}</th>
+                                    <th>{{ __('label.id') }}</th>
+                                    <th>{{ __('label.name') }}</th>
+                                    <th>{{ __('label.slug') }}</th>
+                                    <th>{{ __('label.permission') }}</th>
+                                    <th>{{ __('label.status') }}</th>
 
-                                    {{-- @if(hasPermission('role_update') == true || hasPermission('role_delete') == true)
-                                    <th>{{ __('levels.actions') }}</th>
-                                    @endif --}}
+                                    @if(hasPermission('role_update') == true || hasPermission('role_delete') == true)
+                                    <th>{{ __('label.actions') }}</th>
+                                    @endif
                                 </tr>
                             </thead>
-                            {{-- <tbody>
+                             <tbody>
                                 @php $i=1; @endphp
                                 @forelse($roles as $role)
                                 <tr id="row_{{ $role->id }}">
@@ -75,11 +75,11 @@
                                 </div>
                                 <div class="dropdown-menu">
                                     @if(hasPermission('role_update') == true )
-                                    <a href="{{route('roles.edit',$role->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('levels.edit') }}</a>
+                                    <a href="{{route('role.edit',$role->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
                                     @endif
                                     @if( hasPermission('role_delete') == true )
                                     <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/role/delete', {{$role->id}})">
-                                        <i class="fa fa-trash" aria-hidden="true"></i> {{ __('levels.delete') }}
+                                        <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                     </a>
                                     @endif
                                 </div>
@@ -90,15 +90,16 @@
                             @empty
                             <x-nodata-found :colspan="6" />
                             @endforelse
-                            </tbody> --}}
+                            </tbody> 
                         </table>
                     </div>
                 </div>
                 <!-- pagination component -->
-                {{-- @if(count($roles))
-                <x-paginate-show :items="$roles" />
-                @endif --}}
-                <!-- end pagination component -->
+                @if(count($roles))
+                <x-paginate-show :items= "$roles" />
+                @endif
+         
+              
             </div>
         </div>
     </div>

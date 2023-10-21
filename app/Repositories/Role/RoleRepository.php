@@ -2,15 +2,17 @@
 
 namespace App\Repositories\Role;
 
+use App\Models\Role;
 use App\Enums\Status;
 use App\Models\Permission;
-use App\Models\Role;
+use App\Traits\ReturnFormatTrait;
 use App\Repositories\Role\RoleInterface;
 
 class RoleRepository implements RoleInterface
 {
 
-
+    use ReturnFormatTrait;
+    
     protected $model, $repo_permission;
 
     public function __construct(Role $model, Permission $repo_permission)
@@ -20,10 +22,14 @@ class RoleRepository implements RoleInterface
     }
 
 
-    public function permissions()
-    {
-        return  $this->repo_permission::all();
-    }
+    // public function permissions($role)
+    // {
+    //     return  $this->repo_permission::all();
+    // }
+
+  
+
+
 
     public function all(int $paginate = null, bool $status = null)
     {
@@ -57,13 +63,13 @@ class RoleRepository implements RoleInterface
         try {
             $role             = new Role();
             $role->name       = $request->name;
-            $role->slug       = str_replace(' ', '-', strtolower($request->name));
             $role->permissions = $request->permissions ? $request->permissions : [];
-            $role->status     = $request->status == 'on' ? Status::ACTIVE : Status::INACTIVE;
+            $role->slug       = str_replace(' ', '-',  strtolower($request->name));
+            $role->status     = $request->status == '1' ? Status::ACTIVE : Status::INACTIVE;
             $role->save();
-            return true;
+            return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
         } catch (\Throwable $th) {
-            return false;
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }
 
@@ -76,17 +82,16 @@ class RoleRepository implements RoleInterface
     public function update($request)
     {
         try {
-
-            $role             = $this->model::find($request->id);
-            $role->name       = $request->name;
-            $role->slug       = str_replace(' ', '-', strtolower($request->name));
-            $role->permissions = $request->permissions ? $request->permissions : [];
-            $role->status     = $request->status == 'on' ? Status::ACTIVE : Status::INACTIVE;
+            $role               = $this->model::find($request->id);
+            $role->name         = $request->name;
+            $role->permissions  = $request->permissions;
+            $role->status       = $request->status;
+            $role->slug         = str_replace(' ', '-',  strtolower($request->name));
             $role->save();
-            return true;
-        } catch (\Throwable $th) {
 
-            return false;
+            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }
 
@@ -98,5 +103,10 @@ class RoleRepository implements RoleInterface
         } catch (\Throwable $th) {
             return false;
         }
+    }
+
+    public function permissions($role)
+    {
+        return Permission::orderBy('id', 'asc')->get();
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Role\RoleInterface;
+use App\Http\Requests\role\StoreRoleRequest;
+use App\Http\Requests\role\UpdateRoleRequest;
 
 class RoleController extends Controller
 {
@@ -36,15 +38,13 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequest $request)
+    public function store(StoreRoleRequest $request)
     {
-        if ($this->repo->store($request)) :
-            // toast(__('role_added'), 'success');
-            return redirect()->route('role.index');
-        else :
-            // toast(__('error', 'error'));
-            return redirect()->back()->withInput();
-        endif;
+        $result = $this->repo->store($request);
+        if ($result['status']) {
+            return redirect()->route('role.index')->with('success', $result['message']);
+        }
+        return back()->with('danger', $result['message']);
     }
 
     /**
@@ -60,15 +60,22 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        return view('backend.role.edit');
+        $role = $this->repo->get($id);
+        $permissions = $this->repo->permissions($role->slug);
+      
+        return view('backend.role.edit', compact('role', 'permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRoleRequest $request, $id)
     {
-        //
+        $result = $this->repo->store($request);
+        if ($result['status']) {
+            return redirect()->route('role.index')->with('success', $result['message']);
+        }
+        return back()->with('danger', $result['message']);
     }
 
     /**

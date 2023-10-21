@@ -12,9 +12,25 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        Role::create([
-            'name' => 'Super Admin',
-            'permissions' => [
+        $roles = ['Super Admin', 'Admin'];
+
+        for ($n = 0; $n < sizeof($roles); $n++) {
+            $role              = new Role();
+            $role->name        = $roles[$n];
+            $role->slug        = str_replace(' ', '-',  strtolower($roles[$n]));
+            if ($n == 0) {
+                $role->permissions = $this->SuperAdminPermissions();
+            } else {
+                $role->permissions = $this->adminPermissions();
+            }
+            
+            $role->save();
+        }
+    }
+
+        private function SuperAdminPermissions()
+        {
+            return [
                 'user_read',
                 'user_create',
                 'user_update',
@@ -38,11 +54,13 @@ class RoleSeeder extends Seeder
                 'email_settings_update',
                 'language_settings_read',
                 'language_settings_update',
-            ],
-        ]);
-        Role::create([
-            'name' => 'Admin',
-            'permissions' => [
+
+            ];
+        }
+    
+        private function adminPermissions()
+        {
+            return[
                 'user_read',
                 'user_create',
                 'user_update',
@@ -59,30 +77,8 @@ class RoleSeeder extends Seeder
                 'storage_settings_read',
                 'storage_settings_read',
                 'recaptcha_settings_update',
-                'email_settings_read',
-            ],
-        ]);
-        Role::create([
-            'name' => 'Manager',
-            'permissions' => [
-                'user_read',
-                'user_create',
-                'role_read',
-                'language_read',
-                'language_create',
-                'general_settings_read',
-                'storage_settings_read',
-                'recaptcha_settings_read',
-                'email_settings_read',
-            ],
-        ]);
-        Role::create([
-            'name' => 'User',
-            'permissions' => [
-                'user_read',
-                'role_read',
-                'language_read',
-            ],
-        ]);
-    }
+                'email_settings_read'
+            ];
+        }
+
 }

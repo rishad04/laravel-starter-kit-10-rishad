@@ -4,7 +4,6 @@ namespace App\Repositories\Role;
 
 interface RoleInterface
 {
-    public function permissions();
 
     public function all(int $paginate = null, bool $status = null);
 
@@ -14,4 +13,5 @@ interface RoleInterface
     public function edit($id);
     public function update($request);
     public function delete($id);
+    public function permissions($role);
 }

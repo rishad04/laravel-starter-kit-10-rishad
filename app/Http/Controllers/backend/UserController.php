@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Enums\Status;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\StoreUserRequest;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
+use App\Http\Requests\Role\UpdateRequest;
+use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -64,6 +66,22 @@ class UserController extends Controller
         return view('backend.profile.change_password', compact('user'));
     }
 
+    public function edit ($id){
+        $user         = $this->repo->get($id);
+        $roles = $this->roleRepo->all(status: Status::ACTIVE);
+        return view('backend.user.edit',compact('roles','user'));
+    }
+
+    public function update (UpdateUserRequest $request)
+    {
+        $result = $this->repo->update($request);
+        if ($result['status']) {
+            return redirect()->route('user.index')->with('success', $result['message']);
+        }
+        return back()->with('danger', $result['message']);
+    }
+    
+
     // public function profileUpdate(UpdateRequest $request)
     // {
     //     $result = $this->repo->profileUpdate($request);
@@ -85,8 +103,18 @@ class UserController extends Controller
     // }
 
 
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        if ($this->repo->delete($id)) :
+            $success[0] = "Deleted Successfully";
+            $success[1] = 'success';
+            $success[2] = "Deleted";
+            return response()->json($success);
+            else :
+            $success[0] = "Something went wrong, please try again.";
+            $success[1] = 'error';
+            $success[2] = "oops";
+            return response()->json($success);
+            endif;
+    }
 }

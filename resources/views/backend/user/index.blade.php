@@ -63,8 +63,8 @@
                     </form>
                 </div>
             </div>
-            <div class="card">
 
+            <div class="card">
                 <div class="card-header mb-3">
                     <h4 class="title-site">{{ __('user.title') }}
                     </h4>
@@ -108,10 +108,11 @@
                                             <div>
                                                 <strong>{{$user->name}}</strong>
                                                 <p>{{$user->email}}</p>
+                                                {{-- <p>{{$user->nid_number}}</p> --}}
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{@$user->role_id}}</td>
+                                    <td>{{@$user->role->name}}</td>
                                     <td>
                                         @if(!empty($user->permissions) )
                                         <label class="label-style-1" class="badge badge-primary">{{ count($user->permissions) }}</label>
@@ -142,7 +143,7 @@
                                             @endif
                                             @if( hasPermission('user_delete') == true )
                                             @if($user->id != 1 && $user->id != @auth()->user->id)
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/user/delete', {{$user->id}})">
+                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('user/delete/', {{$user->id}})">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                             </a>
                                             @endif
@@ -153,18 +154,19 @@
                                 </tr>
 
                                 @empty
-                                {{-- <x-nodata-found :colspan="8" /> --}}
+                                <x-nodata-found :colspan="6" />
                                 @endforelse
                             </tbody>
 
                         </table>
                     </div>
                 </div>
-                <!-- pagination component -->
-                {{-- @if(count($users))
-                <x-paginate-show :items="$users" />
-                @endif --}}
-                <!-- end pagination component -->
+
+                    @if(count($users))
+                    <x-paginate-show :items="$users" />
+                    @endif
+             
+          
             </div>
         </div>
     </div>
@@ -172,6 +174,6 @@
 
 @endsection()
 
-{{-- @push('scripts')
+@push('scripts')
 @include('backend.partials.delete-ajax')
-@endpush --}}
+@endpush

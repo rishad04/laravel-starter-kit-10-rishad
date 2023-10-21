@@ -29,16 +29,11 @@ class StoreUserRequest extends FormRequest
             'email'         => ['required', 'email', 'unique:users'],
             'password'      => ['required', 'string', 'min:6', 'max:32'],
             'phone'         => ['required', 'regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/', 'unique:users,phone'],
-
             'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
-
             'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
             'image'         => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
-
             'address'       => ['required', 'string', 'max:191'],
-
             'status'        => ['required', 'boolean'],
-
             'role_id'       => 'required|exists:roles,id',
         ];
     }
