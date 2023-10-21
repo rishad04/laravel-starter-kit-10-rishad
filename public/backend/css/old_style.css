@@ -53,7 +53,7 @@
         _page-user-lock
 
 */
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("./../icons/font-awesome-old/css/font-awesome.min.css");
 @import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css");
@@ -306,7 +306,7 @@ section {
 
 body {
     margin: 0;
-    font-family: "Josefin Sans", sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 28px;
@@ -315,7 +315,7 @@ body {
 }
 
 .content-body {
-    background: #eef3fa;
+	background: #EEF3FA;
 }
 
 [tabindex="-1"]:focus {
@@ -631,8 +631,8 @@ h6,
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
-    font-family: "Josefin Sans", sans-serif;
-    color: #38414d;
+    font-family: 'Josefin Sans', sans-serif;
+	color: #38414D;
 }
 
 h1,
@@ -1854,6 +1854,7 @@ pre code {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #eeeeee;
+    
 }
 .table thead th {
     vertical-align: bottom;
@@ -4990,14 +4991,13 @@ input[type="button"].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background: var(--clr-white);
-    border-radius: 8px;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
 }
 
 .breadcrumb-item + .breadcrumb-item {
     padding-left: 0.5rem;
 }
-
 .breadcrumb-item + .breadcrumb-item::before {
     display: inline-block;
     padding-right: 0.5rem;
@@ -13707,9 +13707,7 @@ html[dir="rtl"]
 }
 
 html[dir="rtl"]
-    [direction="rtl"][data-sidebar-style="compact"]:not(
-        [data-layout="horizontal"]
-    )
+    [direction="rtl"][data-sidebar-style="compact"]:not([data-layout="horizontal"])
     .footer {
     padding-right: 9.375rem;
 }
@@ -26332,9 +26330,7 @@ html[dir="rtl"]
 }
 
 html[dir="rtl"]
-    [direction="rtl"][data-sidebar-style="compact"]:not(
-        [data-layout="horizontal"]
-    )
+    [direction="rtl"][data-sidebar-style="compact"]:not([data-layout="horizontal"])
     .footer {
     padding-right: 9.375rem;
 }
@@ -26517,3 +26513,4 @@ html[dir="rtl"]
 }
 
 /*# sourceMappingURL=style.css.map */
+

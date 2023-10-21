@@ -116,7 +116,12 @@ return [
 
 
   'clear'                         => 'Clear',
-  'details'                       => 'Details'
+  'details'                       => 'Details',
 
+  // logs
+
+  'log_name'                       => 'Log name',
+  'event'                          => 'Event',
+  'subject_type'                   => 'Subject Type'
 
 ];

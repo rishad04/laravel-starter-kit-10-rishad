@@ -58,7 +58,12 @@ class RoleSeeder extends Seeder
                 'todo_read',
                 'todo_create',
                 'todo_update',
-                'todo_delete'
+                'todo_delete',
+
+                'activity_logs_read',
+                'activity_logs_view',
+
+                'database_backup_read'
 
             ];
         }
@@ -87,7 +92,12 @@ class RoleSeeder extends Seeder
                 'todo_read',
                 'todo_create',
                 'todo_update',
-                'todo_delete'
+                'todo_delete',
+
+                'activity_logs_read',
+                'activity_logs_view',
+
+                'database_backup_read'
             ];
         }
 

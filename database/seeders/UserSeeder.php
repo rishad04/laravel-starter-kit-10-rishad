@@ -46,14 +46,28 @@ class UserSeeder extends Seeder
         $user->password              = Hash::make('123456');
         $user->phone                 = "01478523691";
         $user->nid_number            = "33422";
-
         $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
         $user->dob                   = "2022-05-08";
         $user->address               = "Mirpur-10, Dhaka-1216";
         $user->role_id               = 2;
-
         $user->permissions           = $this->AdminPermissions();
         $user->save();
+
+        for( $i=0 ; $i <30 ; $i++){
+
+            $user                        = new User();
+            $user->name                  = "Jenith Semz";
+            $user->email                 = "jenith$i@gmail.com";
+            $user->password              = Hash::make('123456');
+            $user->phone                 = "01478523". $i. "2";
+            $user->nid_number            = "33422";
+            $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
+            $user->dob                   = "2022-05-08";
+            $user->address               = "Mirpur-10, Dhaka-1216";
+            $user->role_id               = 2;
+            $user->permissions           = $this->AdminPermissions();
+            $user->save();
+        }
     }
 
     private function supperAdminPermissions()
@@ -96,7 +110,12 @@ class UserSeeder extends Seeder
             'todo_read',
             'todo_create',
             'todo_update',
-            'todo_delete'
+            'todo_delete',
+
+            'activity_logs_read',
+            'activity_logs_view',
+
+            'database_backup_read'
 
         ];
     }
@@ -136,7 +155,12 @@ class UserSeeder extends Seeder
             'todo_read',
             'todo_create',
             'todo_update',
-            'todo_delete'
+            'todo_delete',
+
+            'activity_logs_read',
+            'activity_logs_view',
+
+            'database_backup_read'
          ];
     }
 }

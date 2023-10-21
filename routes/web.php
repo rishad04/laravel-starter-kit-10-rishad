@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\backend\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 
     // user
-    Route::prefix('admin')->group(function () {
+    Route::prefix('user')->group(function () {
         Route::get('/',                         [UserController::class,   'index'])->name('user.index');
         Route::get('/create',                   [UserController::class,   'create'])->name('user.create');
         Route::post('/store',                   [UserController::class,   'store'])->name('user.store');
@@ -71,6 +72,20 @@ Route::group(['middleware' => 'auth'], function () {
           Route::post('todo/completed',               [TodoController::class, 'todoComplete'])->name('todo.completed')->middleware('hasPermission:todo_update');
           Route::put('todo/update',                   [TodoController::class, 'update'])->name('todo.update')->middleware('hasPermission:todo_update');
           Route::delete('todo/delete/{id}',           [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
+
+
+          Route::prefix('activity-logs')->group(function(){
+            Route::get('/',                             [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
+            Route::get('/view/{id}',                    [ActivityLogController::class, 'view'])->name('activity.logs.view');
+        });
+
+             // database backup
+             Route::get('database/backup',           [DatabaseBackupController::class, 'index'])->name('database.backup.index')->middleware('haspermission:database_backup_read');
+             Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
+
+
+
+
 
     });
 

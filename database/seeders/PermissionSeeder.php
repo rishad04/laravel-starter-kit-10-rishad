@@ -24,7 +24,9 @@ class PermissionSeeder extends Seeder
             'recaptcha_settings'=> ['read' =>  'recaptcha_settings_read', 'update' => 'recaptcha_settings_update'],
             'email_settings'    => ['read' =>  'email_settings_read', 'update' => 'email_settings_update'],
             'language_settings' => ['read' =>  'language_settings_read', 'update' => 'language_settings_update'],
-            'todo'              => ['read' =>  'todo_read' , 'create' => 'todo_create', 'update' => 'todo_update','delete' => 'todo_delete']
+            'todo'              => ['read' =>  'todo_read' , 'create' => 'todo_create', 'update' => 'todo_update','delete' => 'todo_delete'],
+            'activity_logs'     => ['read' => 'activity_logs_read' , 'view' => 'activity_logs_view'],
+            'database_backup'   => ['read' => 'database_backup_read']
         ];
 
         foreach ($attributes as $key => $attribute) {

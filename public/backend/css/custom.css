@@ -1,56 +1,56 @@
 .nav-header {
-  display: flex;
-  align-items: center;
-  min-height: 80px;
-  justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    justify-content: flex-start;
 }
 .nav-header .brand-logo {
-  padding-left: inherit;
-  padding-inline-start: 1.25rem;
+    padding-left: inherit;
+    padding-inline-start: 1.25rem;
 }
 .nav-header .logo-icon {
-  display: none;
-  transition: all 0.5s ease;
-  padding-inline-start: 13px;
+    display: none;
+    transition: all 0.5s ease;
+    padding-inline-start: 13px;
 }
 .nav-header .logo-icon img {
-  height: 40px;
-  width: 40px;
-  align-items: center;
+    height: 40px;
+    width: 40px;
+    align-items: center;
 }
 .menu-toggle .nav-header .logo-icon {
-  display: flex;
+    display: flex;
 }
 
 .nav-control {
-  position: static;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  transform: none;
-  margin-inline-start: 65px;
-  transition: 0.3s;
+    position: static;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    transform: none;
+    margin-inline-start: 65px;
+    transition: 0.3s;
 }
 .hamburger {
-  top: 0;
+    top: 0;
 }
 .hamburger.is-active {
-  position: static;
+    position: static;
 }
 .menu-toggle .nav-control {
-  margin-inline-start: 28px;
+    margin-inline-start: 28px;
 }
 
 [dir="rtl"] .menu-toggle .content-body {
-  margin-right: 3.75rem;
+    margin-right: 3.75rem;
 }
 [data-sidebar-style="compact"] .nav-header .brand-logo,
 [data-sidebar-style="mini"] .nav-header .brand-logo {
-  display: none;
+    display: none;
 }
 [data-sidebar-style="compact"] .nav-header .logo-icon,
 [data-sidebar-style="mini"] .nav-header .logo-icon {
-  display: flex;
+    display: flex;
 }
 
 /* [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .metismenu li a {
@@ -59,95 +59,108 @@
   padding-inline: 0.9375rem;
 } */
 
-[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .metismenu > li:hover > a .nav-text {
-  padding-left: inherit;
-  padding-inline-start: 10px;
+[data-sidebar-style="full"][data-layout="vertical"]
+    .menu-toggle
+    .quixnav
+    .metismenu
+    > li:hover
+    > a
+    .nav-text {
+    padding-left: inherit;
+    padding-inline-start: 10px;
 }
-[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .quixnav .metismenu li > ul li:hover ul {
-  left: inherit;
-  inset-inline-start: 11.8125rem;
+[data-sidebar-style="full"][data-layout="vertical"]
+    .menu-toggle
+    .quixnav
+    .metismenu
+    li
+    > ul
+    li:hover
+    ul {
+    left: inherit;
+    inset-inline-start: 11.8125rem;
 }
 [dir="rtl"] .quixnav .metismenu .has-arrow:after {
-  right: inherit;
-  transform: rotate(-45deg);
+    right: inherit;
+    transform: rotate(-45deg);
 }
 [dir="rtl"] .quixnav .metismenu > li a > i {
-  transform: translate(3px, 0px);
+    transform: translate(3px, 0px);
 }
 
 @media screen and (max-width: 991px) {
-  .nav-header .logo-icon {
-    padding-inline-start: 10px;
-  }
-  .nav-header .brand-logo {
-    display: none;
-  }
-  [dir="rtl"] .nav-control {
-    display: none;
-  }
-  [data-header-position="fixed"] .content-body {
-    padding-top: 0;
-  }
+    .nav-header .logo-icon {
+        padding-inline-start: 10px;
+    }
+    .nav-header .brand-logo {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    [data-header-position="fixed"] .content-body {
+        padding-top: 0;
+    }
 }
 [dir="rtl"] .nav-control {
-  display: block;
+    display: block;
 }
 [dir="rtl"] .nav-control {
-  display: flex;
+    display: flex;
 }
 [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .header {
-  padding-left: inherit;
-  padding-inline-start: 3.75rem;
+    padding-left: inherit;
+    padding-inline-start: 3.75rem;
 }
 @media screen and (max-width: 767px) {
-  .header .j-to-do {
-    display: none;
-  }
-  [dir="rtl"] .nav-control {
-    display: none;
-  }
-  .quixnav {
-    left: inherit;
-    inset-inline-start: 0;
-}
+    .header .j-to-do {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    .quixnav {
+        left: inherit;
+        inset-inline-start: 0;
+    }
 }
 @media screen and (max-width: 575px) {
-  .header .j-search {
-    display: none;
-  }
-  .header .j-search-form {
-    width: auto;
-  }
-  .header .j-to-do {
-    display: none;
-  }
+    .header .j-search {
+        display: none;
+    }
+    .header .j-search-form {
+        width: auto;
+    }
+    .header .j-to-do {
+        display: none;
+    }
 }
 @media screen and (max-width: 360px) {
-  .header .nav-lang {
-    display: none;
-  }
+    .header .nav-lang {
+        display: none;
+    }
 }
 @media screen and (max-width: 1199px) {
-  .nav-control {
-    display: none;
-  }
-  [dir="rtl"] .nav-control {
-    display: none;
-  }
-  .menu-toggle .nav-header {
-    justify-content: center;
-  }
-  .nav-header .logo-icon {
-    padding-inline-start: 8px;
-  }
+    .nav-control {
+        display: none;
+    }
+    [dir="rtl"] .nav-control {
+        display: none;
+    }
+    .menu-toggle .nav-header {
+        justify-content: center;
+    }
+    .nav-header .logo-icon {
+        padding-inline-start: 8px;
+    }
 }
 
 .menu-toggle .quixnav.j-custom-style .metismenu > li > a.has-arrow > i {
-  padding: 0;
+    padding: 0;
 }
 
 /* Start pagination  */
-/* .pagination {
+.pagination {
     display: flex !important;
     margin-top: 0rem !important;
     margin-bottom: 0px;
@@ -166,12 +179,117 @@
 
 .card-body p.text-muted {
     margin-bottom: 0rem !important;
-} */
+}
 
 /* End pagination  */
 
+/* Profile Image on profile page  */
 
-/* select2 */
+.profile-img {
+    height: 80px;
+    width: 80px;
+}
 
+.quixnav .metismenu {
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+}
 
-/* select2 */
+.menu-toggle .quixnav .metismenu {
+    width: 100% !important;
+    overflow: visible;
+}
+
+.half-expand .quixnav {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    z-index: 2000;
+    overflow: hide;
+    height: calc(100vh - 100px);
+    transform: translateX(-50%);
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 0px solid #aaa !important;
+    border-radius: 4px;
+}
+
+.select2-container {
+    width: inherit !important;
+    height: 44px;
+    border: 1px solid var(--clr-border);
+    border-radius: 4px;
+    color: var(--clr-body-2);
+    font-size: 14px;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    /* line-height: 44px; */
+    padding: 0.5rem 0.75rem;
+    color: var(--clr-body-2) !important;
+    font-family: inherit;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    height: 42px !important;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+}
+
+.select2-dropdown {
+    border: 1px solid var(--clr-border) !important;
+    border-radius: 4px !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+    border: 1px solid var(--clr-border) !important;
+    border-radius: 4px !important;
+}
+
+/* multiple  */
+.select2-container--default.select2-container--focus
+    .select2-selection--multiple {
+    /* border: 1px solid var(--clr-border) !important; */
+    border-radius: 4px !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 0 !important;
+    border-radius: 4px;
+    cursor: text;
+    height: 42px !important;
+}
+
+.select2-container .selection {
+    height: 42px !important;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    border: 1px solid var(--clr-border) !important;
+    color: var(--clr-white) !important;
+    background-color: var(--clr-primary-2) !important;
+    margin-top: 6px !important;
+}
+
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove {
+    color: var(--clr-white) !important;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+    padding: 0.2rem 0.75rem !important;
+}
+
+/* end select 2 */

@@ -30,14 +30,23 @@
             @endif
 
             <li>
-                <a href="javascript:void()" aria-expanded="true">
+                <a href="{{route('activity.logs.index')}}" aria-expanded="true">
                     <i class="icon-list"></i>
                     <span class="nav-text">{{__('menus.activity_logs')}}</span>
                 </a>
             </li>
 
+            @if(hasPermission('login_activity_read'))
             <li>
-                <a href="javascript:void()" aria-expanded="true">
+                <a href="#" aria-expanded="false">
+                    <i class="fa fa-history font-size20"></i>
+                    <span class="nav-text">{{ __('login_activity') }}</span>
+                </a>
+            </li>
+            @endif
+
+            <li>
+                <a href="{{route('database.backup.index')}}" aria-expanded="true">
                     <i class="icon-docs"></i>
                     <span class="nav-text">{{__('menus.backup')}}</span>
                 </a>
