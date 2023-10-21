@@ -27,7 +27,7 @@
                     <div class="form-input-header">
                         <h4 class="title-site"> {{ __('role.edit_role') }}</h4>
                     </div>
-                    <form action="{{route('role.update',['id'=>$roles->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
+                    <form action="{{route('role.update',['id'=>$role->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         @if (isset($role))
                         @method('PUT')

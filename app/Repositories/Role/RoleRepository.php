@@ -73,11 +73,6 @@ class RoleRepository implements RoleInterface
         }
     }
 
-    public function edit($id)
-    {
-        return $this->model::find($id);
-    }
-
     //role update
     public function update($request)
     {
@@ -105,8 +100,14 @@ class RoleRepository implements RoleInterface
         }
     }
 
-    public function permissions($role)
+        public function permissions($role)
     {
-        return Permission::orderBy('id', 'asc')->get();
+        if ($role == 'admin' || $role == 'super-admin') {
+            $ownerBlockedPermission[]['attribute'] = 'hub_payments_request';
+            $ownerBlockedPermission[]['attribute'] = 'cash_received_from_delivery_man';
+            return Permission::whereNotIn('attribute', $ownerBlockedPermission)->orderBy('id', 'asc')->get();
+        } else {
+            return Permission::orderBy('id', 'asc')->get();
+        }
     }
 }

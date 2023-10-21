@@ -33,14 +33,29 @@
                         </div>
 
                         {{-- id="todoModal1" data-url="{{route('todo.modal')}}" --}}
-                        @if(hasPermission('todo_create')== true)
+                        {{-- old --}}
+                        {{-- @if(hasPermission('todo_create')== true)
                         <div class="j-to-do">
                             <a href="#" class="j-td-btn"  data-target="#todoModal" data-toggle="modal" >
                                 <img src="{{asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image" />
                                 <span>{{ __('to_do.to_do')}}</span>
                             </a>
                         </div>
+                        @endif --}}
+
+                        @if(hasPermission('todo_create')== true)
+                        <div class="j-to-do">
+                            <a href="#" class="j-td-btn" id="todoModal1" data-target="#todoModal" data-toggle="modal" data-url="{{route('todo.modal')}}">
+                                <img src="{{static_asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image" />
+                                <span>{{ __('to_do.to_do')}}</span>
+                            </a>
+                        </div>
                         @endif
+
+                        
+
+                  
+
 
                         <div class="nav-lang">
                             <div class="dropdown custom-dropdown">
@@ -60,16 +75,16 @@
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('setLocalization','en') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ __('levels.english') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ __('label.english') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','ar') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ __('levels.arabic') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ __('label.arabic') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','bn') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ __('levels.bangla') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ __('label.bangla') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','in') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ __('levels.hindi') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ __('label.hindi') }} </span>
                                     </a>
                                 </div>
                             </div>

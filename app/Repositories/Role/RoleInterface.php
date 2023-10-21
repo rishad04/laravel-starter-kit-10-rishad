@@ -10,7 +10,7 @@ interface RoleInterface
     public function get();
     public function getRole();
     public function store($request);
-    public function edit($id);
+   
     public function update($request);
     public function delete($id);
     public function permissions($role);

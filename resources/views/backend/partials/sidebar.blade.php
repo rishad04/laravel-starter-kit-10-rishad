@@ -44,13 +44,13 @@
                 </a>
             </li>
             @endif
-
+{{-- 
             <li>
                 <a href="{{route('database.backup.index')}}" aria-expanded="true">
                     <i class="icon-docs"></i>
                     <span class="nav-text">{{__('menus.backup')}}</span>
                 </a>
-            </li>
+            </li> --}}
 
             @if(hasPermission('language_settings_read') == true)
             <li> <a href="javascript:void()" aria-expanded="true"> <i class="fa fa-language"></i> <span class="nav-text">{{__('menus.language')}}</span> </a> </li>

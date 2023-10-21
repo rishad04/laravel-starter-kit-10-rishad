@@ -22,6 +22,14 @@ return [
 
   'profile'             => 'Profile',
   'change_password'     => 'Change Password',
+  'social_login_settings'     => 'Social Login Settings',
+  'payout_setup'              => 'Payout Setup',
+  'database_backup'              => 'Database Backup',
+  'mail_setting'              => 'Mail Settings',
+  'change_password'     => 'Change Password',
+  'change_password'     => 'Change Password',
+
+
 
 
 
