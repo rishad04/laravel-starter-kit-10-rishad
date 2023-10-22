@@ -108,7 +108,6 @@
                                             <div>
                                                 <strong>{{$user->name}}</strong>
                                                 <p>{{$user->email}}</p>
-                                                {{-- <p>{{$user->nid_number}}</p> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -162,11 +161,11 @@
                     </div>
                 </div>
 
-                    @if(count($users))
-                    <x-paginate-show :items="$users" />
-                    @endif
-             
-          
+                @if(count($users))
+                <x-paginate-show :items="$users" />
+                @endif
+
+
             </div>
         </div>
     </div>

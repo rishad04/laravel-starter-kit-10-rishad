@@ -28,68 +28,57 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 
     // user
     Route::prefix('user')->group(function () {
-        Route::get('/',                         [UserController::class,   'index'])->name('user.index');
-        Route::get('/create',                   [UserController::class,   'create'])->name('user.create');
-        Route::post('/store',                   [UserController::class,   'store'])->name('user.store');
-        Route::get('/edit/{id}',                [UserController::class,   'edit'])->name('user.edit');
-        Route::put('/update',                   [UserController::class,   'update'])->name('user.update');
-        Route::delete('/delete/{id}',           [UserController::class,   'destroy'])->name('user.update');
-        // Route::delete('/delete/{id}',       [UserController::class, 'destroy'])->name('user.delete');
+        Route::get('/',                         [UserController::class, 'index'])->name('user.index')->middleware('hasPermission:user_read');
+        Route::get('/create',                   [UserController::class, 'create'])->name('user.create')->middleware('hasPermission:user_create');
+        Route::post('/store',                   [UserController::class, 'store'])->name('user.store')->middleware('hasPermission:user_create');
+        Route::get('/edit/{id}',                [UserController::class, 'edit'])->name('user.edit')->middleware('hasPermission:user_update');
+        Route::put('/update',                   [UserController::class, 'update'])->name('user.update')->middleware('hasPermission:user_update');
+        Route::delete('/delete/{id}',           [UserController::class, 'delete'])->name('user.delete')->middleware('hasPermission:user_delete');
 
+        Route::get('change-password/{id}',      [UserController::class, 'passwordChange'])->name('passwordChange')->middleware('hasPermission:password_update');
+        Route::put('update-password/{id}',      [UserController::class, 'passwordUpdate'])->name('passwordUpdate')->middleware('hasPermission:password_update');
+        // permissions
+        Route::get('/permissions/{id}',         [PermissionController::class,   'permissions'])->name('permissions')->middleware('hasPermission:permissions_update');
+        Route::put('/permissions/update',       [PermissionController::class,   'permissionsUpdate'])->name('permissions.update')->middleware('hasPermission:permissions_update');
         // profile 
-        Route::get('profile/{id}',              [UserController::class, 'profile'])->name('profile');
-        Route::get('profile/edit',              [UserController::class, 'profileEdit'])->name('profile.edit');
-        Route::put('profile/update',            [UserController::class, 'profileUpdate'])->name('profile.update');
-
-        Route::get('change-password/{id}',      [UserController::class, 'passwordChange'])->name('passwordChange');
-        Route::put('update-password/{id}',      [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
-
-        Route::delete('/delete/{id}',           [UserController::class,   'delete'])->name('delete');
-
-        Route::get('/permissions/{id}',         [PermissionController::class,   'permissions'])->name('permissions');
-        Route::put('/permissions/update',       [PermissionController::class,   'permissionsUpdate'])->name('permissions.update');
+        Route::get('profile/{id}',              [UserController::class, 'profile'])->name('profile')->middleware('hasPermission:profile_read');
+        Route::get('profile/edit',              [UserController::class, 'profileEdit'])->name('profile.edit')->middleware('hasPermission:profile_update');
+        Route::put('profile/update',            [UserController::class, 'profileUpdate'])->name('profile.update')->middleware('hasPermission:profile_update');
 
         //role
         Route::prefix('role')->group(function () {
-            Route::get('/',                             [RoleController::class,    'index'])->name('role.index');
-            Route::get('/create',                       [RoleController::class,    'create'])->name('role.create');
-            Route::post('/store',                       [RoleController::class,    'store'])->name('role.store');
-            Route::get('/edit/{id}',                    [RoleController::class,    'edit'])->name('role.edit');
-            Route::put('/update',                       [RoleController::class,    'update'])->name('role.update');
-            Route::delete('/delete/{id}',               [RoleController::class,    'delete'])->name('role.delete');
+            Route::get('/',                             [RoleController::class,    'index'])->name('role.index')->middleware('hasPermission:role_read');
+            Route::get('/create',                       [RoleController::class,    'create'])->name('role.create')->middleware('hasPermission:role_create');
+            Route::post('/store',                       [RoleController::class,    'store'])->name('role.store')->middleware('hasPermission:role_create');
+            Route::get('/edit/{id}',                    [RoleController::class,    'edit'])->name('role.edit')->middleware('hasPermission:role_update');
+            Route::put('/update',                       [RoleController::class,    'update'])->name('role.update')->middleware('hasPermission:role_update');
+            Route::delete('/delete/{id}',               [RoleController::class,    'delete'])->name('role.delete')->middleware('hasPermission:role_delete');
         });
 
-          // To_do List route
-          Route::get('todo/todo_list',                [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');
-          Route::post('todo/todo_add',                [TodoController::class, 'store'])->name('todo.store')->middleware('hasPermission:todo_create');
-          Route::post('todo/momal',                   [TodoController::class, 'todoModal'])->name('todo.modal');
-          Route::post('todo/processing',              [TodoController::class, 'todoProcessing'])->name('todo.processing')->middleware('hasPermission:todo_update');
-          Route::post('todo/completed',               [TodoController::class, 'todoComplete'])->name('todo.completed')->middleware('hasPermission:todo_update');
-          Route::put('todo/update',                   [TodoController::class, 'update'])->name('todo.update')->middleware('hasPermission:todo_update');
-          Route::delete('todo/delete/{id}',           [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
+        // To_do List route
+        Route::get('todo/todo_list',                [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');
+        Route::post('todo/todo_add',                [TodoController::class, 'store'])->name('todo.store')->middleware('hasPermission:todo_create');
+        Route::post('todo/modal',                   [TodoController::class, 'todoModal'])->name('todo.modal');
+        Route::post('todo/processing',              [TodoController::class, 'todoProcessing'])->name('todo.processing')->middleware('hasPermission:todo_update');
+        Route::post('todo/completed',               [TodoController::class, 'todoComplete'])->name('todo.completed')->middleware('hasPermission:todo_update');
+        Route::put('todo/update',                   [TodoController::class, 'update'])->name('todo.update')->middleware('hasPermission:todo_update');
+        Route::delete('todo/delete/{id}',           [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
 
 
-          Route::prefix('activity-logs')->group(function(){
+        Route::prefix('activity-logs')->group(function () {
             Route::get('/',                             [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
             Route::get('/view/{id}',                    [ActivityLogController::class, 'view'])->name('activity.logs.view');
         });
 
-             // database backup
-             Route::get('database/backup',           [DatabaseBackupController::class, 'index'])->name('database.backup.index')->middleware('haspermission:database_backup_read');
-             Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
-
-
-
-
-
+        // database backup
+        Route::get('database/backup',           [DatabaseBackupController::class, 'index'])->name('database.backup.index')->middleware('haspermission:database_backup_read');
+        Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
     });
-
-
     //end user 
 
 }); //auth
