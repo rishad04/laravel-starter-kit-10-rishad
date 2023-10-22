@@ -114,20 +114,20 @@ return [
   'modules'                    => 'Modules',
   'permissions'                => 'Permissions',
   'update terms'               => 'Update Terms',
-
-
-  'clear'                         => 'Clear',
-  'details'                       => 'Details',
-
+  'clear'                      => 'Clear',
+  'details'                    => 'Details',
   // logs
-
-  'log_name'                       => 'Log name',
-  'designations'                       => 'Designations',
+  'log_name'                    => 'Log name',
+  'designations'                => 'Designations',
   'cover'                       => 'Cover',
-  'dob'                       => 'Date Of Birth',
+  'dob'                         => 'Date Of Birth',
   'about'                       => 'About',
-  'event'                          => 'Event',
-  'subject_type'                   => 'Subject Type'
+  'event'                       => 'Event',
+  'subject_type'                => 'Subject Type',
+
+  'brand_name'                  => 'Brand Name',
+  'logo_with_text'              => 'Logo With Text',
+  'copyright'                   => 'Copyright',
 
   //user add
 

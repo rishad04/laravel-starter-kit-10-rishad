@@ -53,6 +53,12 @@
                                 @error('brand_info_email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label class="label-style-1" for="copyright">{{ __('label.copyright') }}</label>
+                                <input id="copyright" type="text" name="copyright" placeholder="{{ __('placeholder.Enter_copyright') }}" class="form-control input-style-1" value="{{ old('copyright', globalSettings('copyright')) }}" require>
+                                @error('copyright') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+
                             <div class="form-group col-md-6 ">
                                 <div class="row">
                                     <div class="col-12">
@@ -90,12 +96,6 @@
                                         <img src="{{ favicon(globalSettings('favicon')) }}" alt="fabicon" class="rounded mt-3" width="50" style="object-fit: contain">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="label-style-1" for="copyright">{{ __('label.copyright') }}</label>
-                                <input id="copyright" type="text" name="copyright" placeholder="{{ __('placeholder.Enter_copyright') }}" class="form-control input-style-1" value="{{ old('copyright', globalSettings('copyright')) }}" require>
-                                @error('copyright') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                         </div>

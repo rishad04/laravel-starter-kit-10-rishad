@@ -37,7 +37,7 @@ if (!function_exists('getImage')) {
             }
         }
 
-        return "https://placehold.co/400x400?text=No+Image";
+        return "https://placehold.co/200x200?text=No+Image";
     }
 }
 
@@ -50,7 +50,7 @@ if (!function_exists('logo')) {
         if ($logo && File::exists(public_path($logo->original))) :
             return asset($logo->original);
         endif;
-        return asset('Backend/images/logo.png');
+        return asset('backend/assets/img/logo/favicon.png');
     }
 }
 
@@ -62,7 +62,7 @@ if (!function_exists('favicon')) {
         if ($favicon && File::exists(public_path($favicon->original))) :
             return asset($favicon->original);
         endif;
-        return asset('Backend/images/favicon.png');
+        return asset('backend/assets/img/logo/favicon.png');
     }
 }
 
