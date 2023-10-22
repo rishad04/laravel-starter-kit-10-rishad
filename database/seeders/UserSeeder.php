@@ -58,13 +58,13 @@ class UserSeeder extends Seeder
         $user->permissions           = $this->AdminPermissions();
         $user->save();
 
-        for( $i=0 ; $i <30 ; $i++){
+        for ($i = 0; $i < 30; $i++) {
 
             $user                        = new User();
             $user->name                  = "Jenith Semz";
             $user->email                 = "jenith$i@gmail.com";
             $user->password              = Hash::make('123456');
-            $user->phone                 = "01478523". $i. "2";
+            $user->phone                 = "01478523" . $i . "2";
             $user->nid_number            = "33422";
             $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
             $user->dob                   = "2022-05-08";
@@ -120,7 +120,9 @@ class UserSeeder extends Seeder
             'activity_logs_read',
             'activity_logs_view',
 
-            'database_backup_read'
+            'database_backup_read',
+            'route_read',
+            'route_search',
 
         ];
     }
@@ -128,8 +130,8 @@ class UserSeeder extends Seeder
 
     private function adminPermissions()
     {
-        return [    
-            
+        return [
+
             'dashboard_read',
 
             'user_read',
@@ -156,7 +158,7 @@ class UserSeeder extends Seeder
 
             'email_settings_read',
 
-            
+
             'todo_read',
             'todo_create',
             'todo_update',
@@ -166,6 +168,6 @@ class UserSeeder extends Seeder
             'activity_logs_view',
 
             'database_backup_read'
-         ];
+        ];
     }
 }

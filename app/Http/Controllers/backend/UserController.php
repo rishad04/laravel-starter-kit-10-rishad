@@ -69,13 +69,19 @@ class UserController extends Controller
         return view('backend.profile.change_password', compact('user'));
     }
 
-    public function edit ($id){
+    public function edit($id)
+    {
         $user         = $this->repo->get($id);
+<<<<<<< HEAD
         $roles = $this->roleRepo->all();
         return view('backend.user.edit',compact('roles','user'));
+=======
+        $roles = $this->roleRepo->all(status: Status::ACTIVE);
+        return view('backend.user.edit', compact('roles', 'user'));
+>>>>>>> 9ea48f174e46dad837d9294ecc92cd4e840cb6a9
     }
 
-    public function update (UpdateUserRequest $request)
+    public function update(UpdateUserRequest $request)
     {
         $result = $this->repo->update($request);
         if ($result['status']) {
@@ -83,7 +89,7 @@ class UserController extends Controller
         }
         return back()->with('danger', $result['message']);
     }
-    
+
 
     // public function profileUpdate(UpdateRequest $request)
     // {
@@ -113,11 +119,11 @@ class UserController extends Controller
             $success[1] = 'success';
             $success[2] = "Deleted";
             return response()->json($success);
-            else :
+        else :
             $success[0] = "Something went wrong, please try again.";
             $success[1] = 'error';
             $success[2] = "oops";
             return response()->json($success);
-            endif;
+        endif;
     }
 }
