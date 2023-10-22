@@ -13,7 +13,9 @@
             , showCancelButton: true
             , confirmButtonText: 'Yes, delete it!'
         }).then((confirmed) => {
+
             if (confirmed.isConfirmed) {
+
                 $.ajax({
                         type: 'DELETE'
                         , dataType: 'json'

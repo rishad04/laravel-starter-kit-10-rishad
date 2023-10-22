@@ -15,6 +15,8 @@ use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
+use App\Repositories\Settings\GeneralSettingsInterface;
+use App\Repositories\Settings\GeneralSettingsRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UploadInterface::class,                UploadRepository::class);
 
         $this->app->bind(PermissionInterface::class,                PermissionRepository::class);
+        $this->app->bind(GeneralSettingsInterface::class,      GeneralSettingsRepository::class);
     }
 
     /**

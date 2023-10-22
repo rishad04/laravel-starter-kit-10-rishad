@@ -9,7 +9,7 @@ interface UploadInterface
 
     // public function unlinkImage($image_id); //pass only image id
 
-    public function uploadImage($image, $path, $image_sizes, $old_upload_id);
+    public function uploadImage($image, $path, $image_sizes, int $old_upload_id = null);
 
     public function deleteImage($old_upload_id, $slug);
 }

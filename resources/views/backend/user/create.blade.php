@@ -35,39 +35,31 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="name">{{ __('label.name') }}</label> <span class="text-danger">*</span>
-                                <input id="name" type="text" name="name" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name') }}">
+                                <input id="name" type="text" name="name" placeholder="{{ __('placeholder.Enter_name') }}" class="form-control input-style-1" value="{{ old('name') }}">
                                 @error('name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="email">{{ __('label.email') }}</label> <span class="text-danger">*</span>
-                                <input id="email" type="email" name="email" placeholder="{{ __('placeholder.enter_email') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('email') }}">
+                                <input id="email" type="email" name="email" placeholder="{{ __('placeholder.enter_email') }}" class="form-control input-style-1 " value="{{ old('email') }}">
                                 @error('email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="phone">{{ __('label.phone') }}</label> <span class="text-danger">*</span>
-                                <input id="phone" type="tel" name="phone" placeholder="{{ __('placeholder.Enter_mobile') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('phone') }}">
+                                <input id="phone" type="tel" name="phone" placeholder="{{ __('placeholder.Enter_mobile') }}" class="form-control input-style-1 " value="{{ old('phone') }}">
                                 @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" >{{ __('label.designations') }} </label>
-                                <input type="text" placeholder="{{ __('placeholder.enter_designation') }} "
-                                    class="form-control input-style-1" name="designations" value="{{ old('designations') }}" >
-                                @error('designations')
-                                    <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
+                                <label class="label-style-1">{{ __('label.designations') }} </label>
+                                <input type="text" placeholder="{{ __('placeholder.enter_designation') }} " class="form-control input-style-1" name="designations" value="{{ old('designations') }}">
+                                @error('designations') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" >{{ __('label.dob') }}  <span class="text-danger">*</span></label>
-                                <input type="date" id="date" name="dob" class="form-control input-style-1 flatpickr-range" value="{{ old('dob') }}" placeholder="{{ __('placeholder.enter_dob') }}">
-
-                                {{-- <input type="date"
-                                    class="form-control input-style-1 flatpickr" name="date_of_birth"  > --}}
-                                @error('date_of_birth')
-                                    <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
+                                <label class="label-style-1">{{ __('label.dob') }} <span class="text-danger">*</span></label>
+                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob') }}" placeholder="{{ __('placeholder.enter_dob') }}">
+                                @error('dob') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
@@ -82,24 +74,21 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class= "label-style-1">{{ __('label.gender') }}  <span class="text-danger">*</span></label>
-                               <div class="form-check form-check-inline">
-                                   <label class="form-check-label label-style-1">
-                                       <input type="radio" class="mr-2"  name="gender"  value="{{ App\Enums\Gender::MALE }}"
-                                          @if(old('gender') == App\Enums\Gender::MALE) checked @endif>{{ __('male') }}
-                                   </label>
-                               </div>
-                               <div class="form-check form-check-inline">
-                                   <label class="form-check-label label-style-1">
-                                       <input type="radio" class="mr-2" name="gender" value="{{ App\Enums\Gender::FEMALE }}"  @if(old('gender') == App\Enums\Gender::FEMALE) checked @endif>{{ __('female') }}
-                                   </label>
-                               </div>
-                               @error('gender')
-                                  <p class="pt-2 text-danger">{{ $message }}</p>
-                               @enderror
-                           </div>
+                                <label class="label-style-1">{{ __('label.gender') }} <span class="text-danger">*</span></label>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label label-style-1">
+                                        <input type="radio" class="mr-2" name="gender" value="{{ App\Enums\Gender::MALE }}" @if(old('gender')==App\Enums\Gender::MALE) checked @endif>{{ __('male') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label label-style-1">
+                                        <input type="radio" class="mr-2" name="gender" value="{{ App\Enums\Gender::FEMALE }}" @if(old('gender')==App\Enums\Gender::FEMALE) checked @endif>{{ __('female') }}
+                                    </label>
+                                </div>
+                                @error('gender') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+                            </div>
 
-                           <div class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(trans('status') as $key => $status)
@@ -111,18 +100,18 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
-                                <input id="address" type="text" name="address" placeholder="{{ __('placeholder.Enter_address') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('address') }}">
+                                <input id="address" type="text" name="address" placeholder="{{ __('placeholder.Enter_address') }}" class="form-control input-style-1 " value="{{ old('address') }}">
                                 @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="password">{{ __('label.password') }}</label> <span class="text-danger">*</span>
-                                <input id="password" type="password" name="password" placeholder="{{ __('placeholder.Enter_password') }}" autocomplete="off" class="form-control input-style-1 " value="{{ old('password') }}">
+                                <input id="password" type="password" name="password" placeholder="{{ __('placeholder.Enter_password') }}" class="form-control input-style-1 " value="{{ old('password') }}">
                                 @error('password') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="nid_number">{{ __('label.nid_number') }}</label>
-                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.Enter_nid_number') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('nid_number') }}">
+                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.Enter_nid_number') }}" class="form-control input-style-1" value="{{ old('nid_number') }}">
                                 @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
@@ -130,7 +119,7 @@
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="nid" id="nid" class="form-control input-style-1 ">
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
-                           
+
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="image">{{ __('label.image') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
@@ -138,10 +127,10 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class= "label-style-1">{{ __('label.about') }} </label>
+                                <label class="label-style-1">{{ __('label.about') }} </label>
                                 <textarea name="about" class="form-control input-style-1" rows="10">{{ old('about') }}</textarea>
                                 @error('about')
-                                    <p class="pt-2 text-danger">{{ $message }}</p>
+                                <p class="pt-2 text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
 

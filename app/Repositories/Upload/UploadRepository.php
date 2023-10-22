@@ -70,14 +70,14 @@ class UploadRepository implements UploadInterface
         }
     }
 
-    public function uploadImage($image, $path, $image_sizes, $old_upload_id = '')
+    public function uploadImage($image, $path, $image_sizes, int $old_upload_id = null)
     {
         if (blank($image)) {
             return $old_upload_id ?? null;
         }
 
         // delete old uploaded images
-        if ($old_upload_id) {
+        if ($old_upload_id != null) {
             $this->deleteImage($old_upload_id, 'update');
         }
 

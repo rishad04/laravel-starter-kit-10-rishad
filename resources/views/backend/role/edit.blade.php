@@ -32,55 +32,65 @@
                         @if (isset($role))
                         @method('PUT')
                         @endif
-                        <div class="form-row">
-                            <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="name">{{ __('levels.name') }}</label> <span class="text-danger">*</span>
-                                    <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name',$role->name) }}" require>
-                                    @error('name')
-                                    <span class="text-danger mt-2">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="status">{{ __('levels.status') }}</label> <span class="text-danger">*</span>
-                                    <select name="status" class="form-control input-style-1 select2">
-                                        @foreach(trans('status') as $key => $status)
-                                        <option value="{{ $key }}" {{ (old('status',$role->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('status')
-                                    <small class="text-danger mt-2">{{ $message }}</small>
-                                    @enderror
+
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label class=" label-style-1" for="name">{{ __('levels.name') }}</label> <span class="text-danger">*</span>
+                                        <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name',$role->name) }}" require>
+                                        @error('name')
+                                        <span class="text-danger mt-2">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label class=" label-style-1" for="status">{{ __('levels.status') }}</label> <span class="text-danger">*</span>
+                                        <select name="status" class="form-control input-style-1 select2">
+                                            @foreach(trans('status') as $key => $status)
+                                            <option value="{{ $key }}" {{ (old('status',$role->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('status')
+                                        <small class="text-danger mt-2">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
 
                             </div>
-                            <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <table class="table border  permission-table">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ __('permissions.modules') }}</th>
-                                            <th>{{ __('permissions.permissions') }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($permissions as $permission )
-                                        <tr>
-                                            <td>{{__('permissions.'.$permission->attribute) }}</td>
-                                            <td>
-                                                @foreach ($permission->keywords as $key=>$keyword)
-                                                <div class="row align-items-center permission-check-box pb-2 pt-2">
-                                                    <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if($role->permissions !==null && in_array($keyword,$role->permissions)) checked @endif
-                                                    />
-                                                    <label class=" label-style-1" for="{{ $keyword }}">{{ __('permissions.'.$key) }}</label>
-                                                </div>
+                            <div class="col-8">
+                                <div class="form-row">
+                                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <table class="table border  permission-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ __('permissions.modules') }}</th>
+                                                    <th>{{ __('permissions.permissions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($permissions as $permission )
+                                                <tr>
+                                                    <td>{{__('permissions.'.$permission->attribute) }}</td>
+                                                    <td>
+                                                        @foreach ($permission->keywords as $key=>$keyword)
+                                                        <div class="row align-items-center permission-check-box pb-2 pt-2">
+                                                            <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if($role->permissions !==null && in_array($keyword,$role->permissions)) checked @endif
+                                                            />
+                                                            <label class=" label-style-1" for="{{ $keyword }}">{{ __('permissions.'.$key) }}</label>
+                                                        </div>
+                                                        @endforeach
+                                                    </td>
+                                                </tr>
                                                 @endforeach
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
+
                         <div class="j-create-btns">
                             <div class="drp-btns">
                                 <button type="submit" class="j-td-btn">{{ __('label.save_change') }}</button>

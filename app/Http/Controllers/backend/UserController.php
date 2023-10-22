@@ -72,13 +72,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user         = $this->repo->get($id);
-<<<<<<< HEAD
-        $roles = $this->roleRepo->all();
-        return view('backend.user.edit',compact('roles','user'));
-=======
         $roles = $this->roleRepo->all(status: Status::ACTIVE);
         return view('backend.user.edit', compact('roles', 'user'));
->>>>>>> 9ea48f174e46dad837d9294ecc92cd4e840cb6a9
     }
 
     public function update(UpdateUserRequest $request)
@@ -112,7 +107,7 @@ class UserController extends Controller
     // }
 
 
-    public function destroy($id)
+    public function delete($id)
     {
         if ($this->repo->delete($id)) :
             $success[0] = "Deleted Successfully";

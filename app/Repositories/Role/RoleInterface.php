@@ -6,12 +6,10 @@ interface RoleInterface
 {
 
     public function permissions();
-    public function all();
+    public function all(int $paginate = null, bool $status = null);
     public function get();
     public function store($request);
     public function edit($id);
     public function update($request);
     public function delete($id);
-
 }
-

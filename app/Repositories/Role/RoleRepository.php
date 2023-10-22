@@ -12,7 +12,7 @@ class RoleRepository implements RoleInterface
 {
 
     use ReturnFormatTrait;
-    
+
     protected $model, $repo_permission;
 
     public function __construct(Role $model, Permission $repo_permission)
@@ -31,33 +31,52 @@ class RoleRepository implements RoleInterface
     {
         return Permission::all();
     }
-    public function all(){
-        return Role::where('status',Status::ACTIVE)->get();
+
+    public function all(int $paginate = null, bool $status = null)
+    {
+        $query = $this->model::query();
+
+        if ($status !== null) {
+            $query->where('status', $status);
+        }
+
+        $query->latest('updated_at');
+
+        if ($paginate !== null) {
+            return  $query->paginate($paginate);
+        }
+
+        return $query->get();
     }
-    public function get(){
+
+
+    public function get()
+    {
         return $this->model::orderByDesc('id')->paginate(10);
     }
 
-    public function store($request){
+    public function store($request)
+    {
         try {
 
-           $role             = new $this->model();
-           $role->name       = $request->name;
-           $role->slug       = str_replace(' ','-',strtolower($request->name));
-           $role->permissions= $request->permissions ? $request->permissions:[];
-           $role->status     = $request->status;
-           $role->save();
+            $role             = new $this->model();
+            $role->name       = $request->name;
+            $role->slug       = str_replace(' ', '-', strtolower($request->name));
+            $role->permissions = $request->permissions ? $request->permissions : [];
+            $role->status     = $request->status;
+            $role->save();
 
-           return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
+            return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         return Role::find($id);
     }
-  
+
 
 
 

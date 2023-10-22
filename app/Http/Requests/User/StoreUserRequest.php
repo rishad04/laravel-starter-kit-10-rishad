@@ -24,43 +24,22 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         // dd($this->all());
-    //     return [
-    //         'name'          => ['required', 'string', 'max:100'],
-    //         'email'         => ['required', 'email', 'unique:users'],
-    //         'password'      => ['required', 'string', 'min:6', 'max:32'],
-    //         'phone'         => ['required', 'regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/', 'unique:users,phone'],
-    //         'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
-    //         'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
-    //         'image'         => 'required|image|mimes:jpeg,png,jpg,webp|max:5098',
-    //         'address'       => ['required', 'string', 'max:191'],
-    //         'status'        => ['required', 'boolean'],
-    //         'role_id'       => 'required|exists:roles,id',
-    //     ];
-    // }
-
-    
         return [
-            // 'name'          => ['required','min:4'],
-            // 'email'         => ['required','string','unique:users'],
-            // 'date_of_birth' => ['required'],
-            // 'gender'        => ['required','numeric'],
-            // 'phone'         => ['required','numeric'],
-            // 'role'          => ['required','numeric'],
-            // 'password'      => ['required','string','min:8'],
 
-            'name'          => ['required','min:4'],
+            'name'          => ['required', 'string', 'min:4', 'max:50'],
             'email'         => 'required|string|unique:users,email,',
-            'dob'           => ['required'],
-            'gender'        => ['required','numeric'],
-            'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,phone,',
-            'role_id'       => ['required','numeric'],
-            'password'      =>  ['required','string','min:4'],
-            'nid_number'    => ['nullable', 'numeric', 'digits_between:4,20'],
+            'dob'           => ['required', 'date', 'before:today'],
+            'gender'        => ['required', 'numeric'],
+            'phone'         => ['required', 'regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/', 'unique:users,phone'],
+            // 'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,phone,',
+            'role_id'       => ['required', 'exists:roles,id'],
+            'password'      => ['required', 'string', 'min:4'],
+            'nid_number'    => ['nullable', 'numeric', 'digits_between:3,20'],
             'status'        => ['required', 'boolean'],
+
             'nid'           => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
         ];
-
     }
 
     public function messages()

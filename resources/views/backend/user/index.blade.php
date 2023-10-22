@@ -142,7 +142,7 @@
                                             @endif
                                             @if( hasPermission('user_delete') == true )
                                             @if($user->id != 1 && $user->id != @auth()->user->id)
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('user/delete/', {{$user->id}})">
+                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('user/delete', {{$user->id}})">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                             </a>
                                             @endif

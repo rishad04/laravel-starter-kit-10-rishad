@@ -19,7 +19,7 @@ class RoleController extends Controller
     function __construct(RoleInterface $repo, PermissionInterface $permission)
     {
 
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
         }
         $this->repo       = $repo;
@@ -40,7 +40,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions    = $this->repo->permissions();
-        return view('backend.role.create',compact('permissions'));
+        return view('backend.role.create', compact('permissions'));
 
 
         // $permissions = $this->repo->permissions(null);
@@ -78,8 +78,7 @@ class RoleController extends Controller
 
         $permissions     = $this->repo->permissions();
         $role            = $this->repo->edit($id);
-        return view('backend.role.edit',compact('permissions','role'));
-
+        return view('backend.role.edit', compact('permissions', 'role'));
     }
 
     /**
@@ -87,7 +86,7 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request)
     {
-        $result = $this->repo->store($request);
+        $result = $this->repo->update($request);
         if ($result['status']) {
             return redirect()->route('role.index')->with('success', $result['message']);
         }
@@ -97,7 +96,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         //
     }
