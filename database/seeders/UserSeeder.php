@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $user                        = new User();
         $user->name                  = "Percel Fly";
-        $user->email                 = "superadmin@bugbuilg.com";
+        $user->email                 = "superadmin@bugbuild.com";
         $user->password              = Hash::make('123456');
         $user->remember_token        = Str::random(10);
         $user->phone                 = "01912938002";
@@ -23,20 +25,20 @@ class UserSeeder extends Seeder
         $user->dob                   = "2022-01-01";
         $user->address               = "Mirpur-10, Dhaka-1216";
         $user->role_id               = 1;
-        $user->permissions           = $this->supperAdminPermissions();
+        $user->permissions           = Role::find($user->role_id)->permissions;
         $user->save();
 
         // Account user
         $user                        = new User();
         $user->name                  = "Admin";
-        $user->email                 = "admin@bugbuilg.com";
+        $user->email                 = "admin@bugbuild.com";
         $user->password              = Hash::make('123456');
         $user->phone                 = "01478523690";
         $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
         $user->dob                   = "2022-04-20";
         $user->address               = "Mirpur-10, Dhaka-1216";
         $user->role_id               = 2;
-        $user->permissions           = $this->AdminPermissions();
+        $user->permissions           = Role::find($user->role_id)->permissions;
         $user->save();
 
         // Account user
@@ -50,119 +52,9 @@ class UserSeeder extends Seeder
         $user->dob                   = "2022-05-08";
         $user->address               = "Mirpur-10, Dhaka-1216";
         $user->role_id               = 2;
-        $user->permissions           = $this->AdminPermissions();
+        $user->permissions           = Role::find($user->role_id)->permissions;
         $user->save();
 
-        for ($i = 0; $i < 30; $i++) {
-
-            $user                        = new User();
-            $user->name                  = "Jenith Semz";
-            $user->email                 = "jenith$i@gmail.com";
-            $user->password              = Hash::make('123456');
-            $user->phone                 = "01478523" . $i . "2";
-            $user->nid_number            = "33422";
-            $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
-            $user->dob                   = "2022-05-08";
-            $user->address               = "Mirpur-10, Dhaka-1216";
-            $user->role_id               = 2;
-            $user->permissions           = $this->AdminPermissions();
-            $user->save();
-        }
-    }
-
-    private function supperAdminPermissions()
-    {
-        return [
-
-            'dashboard_read',
-
-            'user_read',
-            'user_create',
-            'user_update',
-            'user_delete',
-
-            'role_read',
-            'role_create',
-            'role_update',
-            'role_delete',
-
-            'language_read',
-            'language_create',
-            'language_update',
-            'language_update_terms',
-            'language_delete',
-
-            'general_settings_read',
-            'general_settings_update',
-
-            'storage_settings_read',
-            'storage_settings_update',
-
-            'recaptcha_settings_read',
-            'recaptcha_settings_update',
-
-            'email_settings_read',
-            'email_settings_update',
-
-            'language_settings_read',
-            'language_settings_update',
-
-            'todo_read',
-            'todo_create',
-            'todo_update',
-            'todo_delete',
-
-            'activity_logs_read',
-            'activity_logs_view',
-
-            'database_backup_read',
-            'route_read',
-            'route_search',
-
-        ];
-    }
-
-
-    private function adminPermissions()
-    {
-        return [
-
-            'dashboard_read',
-
-            'user_read',
-            'user_create',
-            'user_update',
-            'user_delete',
-
-            'role_read',
-            'role_create',
-            'role_update',
-            'role_delete',
-
-            'language_read',
-            'language_create',
-
-            'language_update_terms',
-            'general_settings_read',
-
-            'general_settings_update',
-            'storage_settings_read',
-
-            'recaptcha_settings_read',
-            'recaptcha_settings_update',
-
-            'email_settings_read',
-
-
-            'todo_read',
-            'todo_create',
-            'todo_update',
-            'todo_delete',
-
-            'activity_logs_read',
-            'activity_logs_view',
-
-            'database_backup_read'
-        ];
+        UserFactory::times(10)->create(); // Factory seed
     }
 }

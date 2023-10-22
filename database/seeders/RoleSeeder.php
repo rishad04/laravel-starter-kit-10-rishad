@@ -4,23 +4,24 @@ namespace Database\Seeders;
 
 use App\Models\Role;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-
 
 class RoleSeeder extends Seeder
 {
     public function run()
     {
-        $roles = ['Super Admin', 'Admin'];
+        $roles = ['Super Admin', 'Admin', 'User',];
 
         for ($n = 0; $n < sizeof($roles); $n++) {
             $role              = new Role();
             $role->name        = $roles[$n];
             $role->slug        = str_replace(' ', '-',  strtolower($roles[$n]));
-            if ($n == 0) {
+            $role->permissions = $this->generalPermissions();
+
+            if ($role->slug == 'super-admin') {
                 $role->permissions = $this->SuperAdminPermissions();
-            } else {
+            }
+
+            if ($role->slug == 'admin') {
                 $role->permissions = $this->adminPermissions();
             }
 
@@ -38,10 +39,15 @@ class RoleSeeder extends Seeder
             'user_create',
             'user_update',
             'user_delete',
+
+            'profile_read',
+            'profile_update',
+
             'role_read',
             'role_create',
             'role_update',
             'role_delete',
+
             'language_read',
             'language_create',
             'language_update',
@@ -83,10 +89,15 @@ class RoleSeeder extends Seeder
             'user_create',
             'user_update',
             'user_delete',
+
+            'profile_read',
+            'profile_update',
+
             'role_read',
             'role_create',
             'role_update',
             'role_delete',
+
             'language_read',
             'language_create',
             'language_update_terms',
@@ -106,6 +117,16 @@ class RoleSeeder extends Seeder
             'activity_logs_view',
 
             'database_backup_read'
+        ];
+    }
+
+    private function generalPermissions(): array
+    {
+        return [
+
+            'profile_read',
+            'profile_update',
+            'self_user_account_delete',
         ];
     }
 }

@@ -20,6 +20,8 @@ use App\Http\Controllers\backend\ActivityLogController;
 |
 */
 
+
+
 Route::middleware('guest')->group(function () {
     Route::get('login',             [AuthController::class, 'loginForm'])->name('loginForm');
     Route::post('login',            [AuthController::class, 'login'])->name('login');
@@ -27,7 +29,11 @@ Route::middleware('guest')->group(function () {
     Route::post('register',         [AuthController::class, 'register'])->name('register');
 });
 
+
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/',             [DashboardController::class, 'index'])->name('home'); //need to modify as requirement
+
     Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 

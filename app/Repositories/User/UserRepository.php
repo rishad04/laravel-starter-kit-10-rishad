@@ -47,48 +47,49 @@ class UserRepository implements UserInterface
     public function store($request)
     {
         // try {
-            $user                   = new User();
-            $user->name             = $request->name;
-            $user->email            = $request->email;
-            $user->password         = Hash::make($request->password);
-            $user->phone           = $request->phone;
-            $user->nid_number       = $request->nid_number;
-            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
-            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
-            $user->address          = $request->address;
-            $user->role_id          = $request->role_id;
-            $user->permissions      = [];
-            $user->status           = $request->status;
-            $user->save();
+        $user                   = new User();
+        $user->name             = $request->name;
+        $user->email            = $request->email;
+        $user->password         = Hash::make($request->password);
+        $user->phone           = $request->phone;
+        $user->nid_number       = $request->nid_number;
+        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+        $user->address          = $request->address;
+        $user->role_id          = $request->role_id;
+        $user->permissions      = [];
+        $user->status           = $request->status;
+        $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
-    //     } catch (\Throwable $th) {
-    //         return $this->responseWithError(__('alert.something_went_wrong'), []);
-    //     }
+        return $this->responseWithSuccess(__('alert.successfully_added'), []);
+        //     } catch (\Throwable $th) {
+        //         return $this->responseWithError(__('alert.something_went_wrong'), []);
+        //     }
     }
 
-    public function update ($request){
+    public function update($request)
+    {
 
 
         // $user                       = $this->model::find($request->id);
         // try {
-            $user                   = $this->model::find($request->id);
-            $user->name             = $request->name;
-            $user->email            = $request->email;
-            $user->password         = Hash::make($request->password);
-            $user->phone            = $request->phone;
-            $user->nid_number       = $request->nid_number;
+        $user                   = $this->model::find($request->id);
+        $user->name             = $request->name;
+        $user->email            = $request->email;
+        $user->password         = Hash::make($request->password);
+        $user->phone            = $request->phone;
+        $user->nid_number       = $request->nid_number;
 
-            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
+        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
 
-            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
-            $user->address          = $request->address;
-            $user->role_id          = $request->role_id;
-            $user->permissions      = [];
-            $user->status           = $request->status;
-            $user->save();
+        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
+        $user->address          = $request->address;
+        $user->role_id          = $request->role_id;
+        $user->permissions      = [];
+        $user->status           = $request->status;
+        $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+        return $this->responseWithSuccess(__('alert.successfully_updated'), []);
         // } catch (\Throwable $th) {
         //     return $this->responseWithError(__('alert.something_went_wrong'), []);
         // }
@@ -147,8 +148,6 @@ class UserRepository implements UserInterface
         } catch (\Throwable $th) {
             return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
-
-        
     }
 
     public function permissionUpdate($id, $request)

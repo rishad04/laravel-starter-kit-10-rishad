@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->string('address')->nullable();
 
-            $table->unsignedInteger('nid_number')->nullable();
+            $table->unsignedBigInteger('nid_number')->nullable();
             $table->foreignId('nid')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
 
             $table->timestamp('email_verified_at')->nullable()->comment('if null then verified, not null then not verified');
