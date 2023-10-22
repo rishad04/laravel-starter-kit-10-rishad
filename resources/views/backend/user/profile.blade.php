@@ -12,7 +12,7 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text wel-flex">
                             <div class="wel-user-pic">
-                                <img src="{{@$user->image}}" class="profile-img" alt="">
+                                <img src="{{ getImage($user->image_id) }}" class="profile-img" alt="">
                             </div>
                             <div class="wel-user-bio">
                                 <h5 class="heading-5">{{@$user->name}}</h5>
@@ -53,9 +53,12 @@
                             <h6 class="heading-6">Email</h6>
                             <span>{{@$user->email}}
                                 @if(@$user->email_verified_at==null)
-                                <a href="#" title="Email not verified yet."> <i class="fa-solid fa-circle-exclamation" style="color: #ff0000;"></i></a>
+                                <i class="fa-solid fa-circle-exclamation" style="color: #ff0000;"></i>
                                 @endif
                             </span>
+
+
+
                         </li>
                         <li>
                             <h6 class="heading-6">Phone</h6>

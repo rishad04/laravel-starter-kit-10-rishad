@@ -18,6 +18,7 @@ return [
   'inactive'               => 'Inactive',
 
   'name'                   => 'Name',
+  'designation'            => 'Designation',
 
   'dob'                    => 'Birth Day',
   'gender'                 => 'Gender',
@@ -30,44 +31,44 @@ return [
   'address'                => 'Address',
   'status'                 => 'Status',
   'description'            => 'Description',
-  
+
   'driving_license'        => 'Driving license',
-  
+
   'nid'                    => 'NID',
   'nid_number'             => 'NID Number',
 
   'list'                   => 'List',
   'dashboard'              => 'Dashboard',
-  
+
   'permission'             => 'Permission',
- 
+
   'user'                   => 'User',
-  
+
   'mobile'                 => 'Mobile',
 
   'date'                   => 'Date',
-  
+
   'choose_file'            => 'Choose File',
   'roles'                  => 'Roles',
   'role'                   => 'Role',
   'logs'                   => 'Logs',
- 
+
   'created_by'             => 'Created By',
 
   'from'                   => 'From',
-  
-  
+
+
   'account'                => 'Account',
   'type'                   => 'Type',
-  
+
   'save_change'            => 'Save Change',
   'save_changes'            => 'Save Changes',
-  
+
   'logo'                   => 'Logo',
   'favicon'                => 'Favicon',
-  
+
   'search'                 =>  'Search',
- 
+
   'bangla'                 =>   'বাংলা',
   'english'                =>   'English',
   'created'                =>   'Created',
@@ -76,18 +77,18 @@ return [
   'old_password'           =>  'Old Password',
   'new_password'           =>   'New Password',
   'confirm_password'       =>  'Confirm Password',
- 
+
   'hindi'                  => 'हिन्दी',
   'arabic'                 => 'عربي',
   'save'                       => 'Save',
 
-  
+
   'category'                  => 'Category',
-  
-  
+
+
   'position'                  => 'Position',
 
-  
+
   'enter_position'          => 'Enter Position',
 
 
