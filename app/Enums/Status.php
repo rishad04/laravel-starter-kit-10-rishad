@@ -4,6 +4,6 @@ namespace App\Enums;
 
 interface Status
 {
-    const ACTIVE = 1;
-    const INACTIVE = 0;
+    const ACTIVE    = 1;
+    const INACTIVE  = 0;
 }

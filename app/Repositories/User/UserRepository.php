@@ -51,11 +51,17 @@ class UserRepository implements UserInterface
         $user->name             = $request->name;
         $user->email            = $request->email;
         $user->password         = Hash::make($request->password);
-        $user->phone           = $request->phone;
+        $user->phone            = $request->phone;
         $user->nid_number       = $request->nid_number;
         $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
         $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
         $user->address          = $request->address;
+
+        $user->gender           =  $request->gender;
+        $user->designations     =  $request->designations;
+        $user->dob              =  $request->dob;
+        $user->about            =  $request->about;
+
         $user->role_id          = $request->role_id;
         $user->permissions      = [];
         $user->status           = $request->status;
@@ -84,6 +90,12 @@ class UserRepository implements UserInterface
 
         $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
         $user->address          = $request->address;
+
+        $user->gender           =  $request->gender;
+        $user->designations     =  $request->designations;
+        $user->dob              =  $request->dob;
+        $user->about            =  $request->about;
+
         $user->role_id          = $request->role_id;
         $user->permissions      = [];
         $user->status           = $request->status;
@@ -110,6 +122,8 @@ class UserRepository implements UserInterface
             $user->role_id          = $request->role_id;
 
             $user->permissions      = [];
+
+
 
             $user->status           = $request->status;
             $user->save();

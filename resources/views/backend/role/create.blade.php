@@ -31,21 +31,32 @@
                     <form action="{{route('role.store')}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         <div class="form-row">
-                            <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
+                            <div class="col-xl-4 col-12">
+                                <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="name">{{ __('label.name') }}</label> <span class="text-danger">*</span>
                                     <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{old('name')}}" require>
                                     @error('name')
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
                                     <select name="status" class="form-control input-style-1 select2">
                                         <option value="{{ \App\Enums\Status::ACTIVE }}" selected>{{ __('label.active')}} </option>
                                         <option value="{{ \App\Enums\Status::INACTIVE }}">{{ __('label.inactive')}} </option>
                                     </select>
                                     @error('status') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+                                </div> --}}
+
+                                <div class="form-group col-md-6">
+                                    <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
+                                    <select name="status" id="status" class="form-control input-style-1 select2">
+                                 
+                                        @foreach(trans('status') as $key => $status)
+                                        <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
                             </div>
 

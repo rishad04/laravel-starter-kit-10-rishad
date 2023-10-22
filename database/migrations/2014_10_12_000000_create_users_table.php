@@ -24,6 +24,10 @@ return new class extends Migration
 
             $table->string('address')->nullable();
 
+            $table->string('designations')->nullable();
+            $table->longText('about')->nullable();
+
+
             $table->unsignedBigInteger('nid_number')->nullable();
             $table->foreignId('nid')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
 

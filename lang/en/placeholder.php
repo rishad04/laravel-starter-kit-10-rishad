@@ -11,6 +11,7 @@ return [
     'Enter_password'        =>    'Enter Password',
     'Enter_tracking_id'     =>    'Enter Tracking Id',
     'Enter_nid_number'      =>    'Enter NID Number',
+
     'Enter_return_charge'   =>    'Enter Return charge',
     'Hub_name'              =>    'Hub Name',
     'phone'                 =>    'Phone',
@@ -76,6 +77,12 @@ return [
     'app_secret'                        => 'Enter App secret',
     'client_id'                         => 'Enter client ID',
     'client_secret'                     => 'Enter client secret',
+
+
+    // For this project 
+    'enter_designation'      =>    'Enter Designation',
+    'enter_dob'      =>    'Enter Date Of Birth',
+    'enter_role'      =>    'Enter Role',
 
 
 ];
