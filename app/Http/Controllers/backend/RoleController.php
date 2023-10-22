@@ -39,9 +39,14 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $data['title']       = ___('common.create_role');
-        $data['permissions'] = $this->permission->all();
-        return view('backend.role.create', compact('permissions'));
+        $permissions    = $this->repo->permissions();
+        return view('backend.role.create',compact('permissions'));
+
+
+        // $permissions = $this->repo->permissions(null);
+        // return view('backend.role.create', compact('permissions'));
+
+
     }
 
     /**
@@ -49,6 +54,7 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
+
         $result = $this->repo->store($request);
         if ($result['status']) {
             return redirect()->route('role.index')->with('success', $result['message']);
@@ -70,15 +76,16 @@ class RoleController extends Controller
     public function edit($id)
     {
 
-        $role = $this->repo->get($id);
-        $permissions = $this->repo->permissions($role->slug);
-        return view('backend.role.edit', compact('role', 'permissions'));
+        $permissions     = $this->repo->permissions();
+        $role            = $this->repo->edit($id);
+        return view('backend.role.edit',compact('permissions','role'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRoleRequest $request, $id)
+    public function update(UpdateRoleRequest $request)
     {
         $result = $this->repo->store($request);
         if ($result['status']) {

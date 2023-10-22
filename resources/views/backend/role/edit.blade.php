@@ -52,9 +52,10 @@
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                     @enderror
                                 </div>
+
                             </div>
                             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <table class="table border  permission-table" style="width:100%">
+                                <table class="table border  permission-table">
                                     <thead>
                                         <tr>
                                             <th>{{ __('permissions.modules') }}</th>

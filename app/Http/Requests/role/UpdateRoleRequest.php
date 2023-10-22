@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\role;
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRoleRequest extends FormRequest
