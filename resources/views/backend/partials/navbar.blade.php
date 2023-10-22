@@ -1,10 +1,10 @@
 <!--**********************************            Nav header start        ***********************************-->
 <div class="nav-header">
     <a href="{{ url('/')}}" class="brand-logo">
-        <img src="{{ logo(globalSettings('logo_with_text')) }}" alt="Logo" />
+        <img src="{{ getImage(globalSettings('logo_with_text'),'image_one') }}" alt="Logo" />
     </a>
     <a class="logo-icon" href="{{ url('/')}}">
-        <img src="{{ logo(globalSettings('logo')) }}" alt="Logo" />
+        <img src="{{ getImage(globalSettings('logo'),'image_one') }}" alt="Logo" />
     </a>
 
     <div class="nav-control">

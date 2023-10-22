@@ -31,13 +31,19 @@ if (!function_exists('getImage')) {
     {
         $upload = Upload::find($upload_id);
 
-        if ($upload && $image = $upload->{$version}) {
-            if (File::exists(public_path($image))) {
-                return asset($image);
-            }
+        if (!$upload) {
+            return "https://placehold.co/200x200?text=No+Image";
         }
 
-        return "https://placehold.co/200x200?text=No+Image";
+        if ($upload->{$version} != null && File::exists(public_path($upload->{$version}))) {
+            return asset($upload->{$version});
+        }
+
+        if (File::exists(public_path($upload->original))) {
+            return asset($upload->original);
+        }
+
+        return asset('backend/assets/img/logo/favicon.png');
     }
 }
 
