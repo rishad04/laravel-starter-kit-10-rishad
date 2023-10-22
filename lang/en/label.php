@@ -121,7 +121,13 @@ return [
   // logs
 
   'log_name'                       => 'Log name',
+  'designations'                       => 'Designations',
+  'cover'                       => 'Cover',
+  'dob'                       => 'Date Of Birth',
+  'about'                       => 'About',
   'event'                          => 'Event',
   'subject_type'                   => 'Subject Type'
+
+  //user add
 
 ];

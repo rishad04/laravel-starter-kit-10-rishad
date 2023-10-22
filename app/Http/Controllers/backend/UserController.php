@@ -30,7 +30,10 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = $this->roleRepo->all(status: Status::ACTIVE);
+        // $roles = $this->roleRepo->all(status: Status::ACTIVE);
+        // return view('backend.user.create', compact('roles'));
+
+        $roles = $this->roleRepo->all();
         return view('backend.user.create', compact('roles'));
     }
 
@@ -68,7 +71,7 @@ class UserController extends Controller
 
     public function edit ($id){
         $user         = $this->repo->get($id);
-        $roles = $this->roleRepo->all(status: Status::ACTIVE);
+        $roles = $this->roleRepo->all();
         return view('backend.user.edit',compact('roles','user'));
     }
 
