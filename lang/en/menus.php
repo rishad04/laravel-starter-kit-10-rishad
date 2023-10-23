@@ -11,7 +11,7 @@ return [
   'settings'            => 'Settings',
   'setting'             => 'Setting',
   'general_settings'    => 'General Setting',
-  'mail_settings'       => 'Mail Setting',
+  'email_settings'       => 'Email Setting',
   'recaptcha'           => 'Recaptcha',
 
   'todo_list'           => 'Todo List',

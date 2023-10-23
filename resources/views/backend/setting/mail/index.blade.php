@@ -10,9 +10,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('menus.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('menus.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ __('menus.settings') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('settings.mail.index')}}" class="breadcrumb-link active">{{ __('menus.mail_setting') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('settings.mail')}}" class="breadcrumb-link active">{{ __('menus.mail_setting') }}</a></li>
                         </ol>
                     </nav>
                 </div>
