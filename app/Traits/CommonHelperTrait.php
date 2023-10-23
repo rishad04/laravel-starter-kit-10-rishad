@@ -46,11 +46,11 @@ trait CommonHelperTrait
     public function getTodoStatusAttribute()
     {
         if ($this->status == TodoStatus::PENDING) {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("to_do." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("TodoStatus." . $this->status) . '</span>';
         } elseif ($this->status == TodoStatus::PROCESSING) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . trans("to_do." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-info">' . trans("TodoStatus." . $this->status) . '</span>';
         } elseif ($this->status == TodoStatus::COMPLETED) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("to_do." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("TodoStatus." . $this->status) . '</span>';
         }
 
         return $status;

@@ -31,7 +31,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 2';
      
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = 2;
+        $todo->status        = TodoStatus::PROCESSING;
         $todo->save();
 
         $todo                = new Todo();
@@ -41,7 +41,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 3';
       
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = 2;
+        $todo->status        = TodoStatus::PROCESSING;
         $todo->save();
 
 
@@ -52,7 +52,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 4';
     
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = 3;
+        $todo->status        = TodoStatus::COMPLETED;
         $todo->save();
 
         $todo                = new Todo();
@@ -62,7 +62,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 5';
 
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = 3;
+        $todo->status        = TodoStatus::COMPLETED;
         $todo->save();
 
         $todo                = new Todo();
@@ -72,7 +72,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 6';
 
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = 3;
+        $todo->status        = TodoStatus::COMPLETED;
         $todo->save();
     }
 }
