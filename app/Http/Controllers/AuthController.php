@@ -55,17 +55,9 @@ class AuthController extends Controller
 
         $user = $this->create($request->all());
 
-        Auth::login($user); // Log the user in after registration
+        Auth::login($user);
 
         return redirect('/dashboard');
-
-        // $this->validator($request->all())->validate();
-        // event(new Registered($user = $this->create($request->all())));
-
-        // if (Auth::attempt($request->only('email', 'password'))) {
-        //     return redirect('/dashboard');
-        // }
-        //  return redirect ('/')->withErrors('error');
     }
 
 
@@ -77,9 +69,7 @@ class AuthController extends Controller
             'date_of_birth' => ['required'],
             'gender' => ['required'],
             'phone' => ['required', 'numeric'],
-            'password' => ['required', 'string', 'min:2'], // Ensure password confirmation
-        ], [
-            'password.confirmed' => __('The confirmation password does not match.'),
+            'password' => ['required', 'string', 'min:2','confirmed'], // Ensure password confirmation
         ]);
     }
 
