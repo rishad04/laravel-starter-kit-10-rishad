@@ -94,6 +94,7 @@ return [
 
   'login'         => 'Login',
   'signin'        => 'Signin',
+  'download'        => 'Download',
   'signup'        => 'Signup',
   'logout'        => 'Logout',
   'register'      => 'Register',
@@ -138,6 +139,8 @@ return [
   'assign'            => 'Assign',
   'sl'                => 'Sl',
   'to_do_list'        => 'To do list',
+  'to_do'             => 'To do',
+  'file'              => 'File',
 
 
   'mail_sendmail_path'          => 'Sendmail Path',

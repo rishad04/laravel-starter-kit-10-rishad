@@ -83,6 +83,7 @@ return [
     'enter_designation'      =>    'Enter Designation',
     'enter_dob'      =>    'Enter Date Of Birth',
     'enter_role'      =>    'Enter Role',
+    'enter_title'      =>    'Enter Title',
 
 
 ];

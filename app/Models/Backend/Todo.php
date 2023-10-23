@@ -3,8 +3,9 @@
 namespace App\Models\backend;
 
 use App\Models\User;
-use App\Enums\TodoStatus;
+use App\Models\Upload;
 
+use App\Enums\TodoStatus;
 use App\Traits\CommonHelperTrait;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -42,6 +43,12 @@ class Todo extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function upload(){
+        return $this->belongsTo(Upload::class,'todo_file','id');
+    }
+
+
 
 
 }

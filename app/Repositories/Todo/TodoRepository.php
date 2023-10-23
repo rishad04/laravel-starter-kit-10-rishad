@@ -1,14 +1,17 @@
 <?php
 namespace App\Repositories\Todo;
 
+use App\Models\Upload;
 use App\Enums\TodoStatus;
 use App\Models\Backend\Todo;
-use App\Models\Upload;
+use App\Traits\ReturnFormatTrait;
+use Illuminate\Support\Facades\File;
 use App\Repositories\Todo\TodoInterface;
 use App\Repositories\Upload\UploadInterface;
-use Illuminate\Support\Facades\File;
 
 class TodoRepository implements TodoInterface{
+
+    use ReturnFormatTrait;
 
         protected $upload;
 
@@ -27,14 +30,13 @@ class TodoRepository implements TodoInterface{
         }
 
         public function store($request){
-
             try {
                 $todo               = new $this->model;
                 $todo->title        = $request->title;
                 $todo->user_id      = $request->user;
                 $todo->date         = $request->date;
                 $todo->description  = $request->description;
-                $todo->status       = TodoStatus::PENDING;
+                $todo->status       = $request->status;
                 if($request->todoFile):
                     $todo->todo_file = $this->upload->upload('todo','',$request->todoFile);
                 endif;
@@ -46,23 +48,24 @@ class TodoRepository implements TodoInterface{
             }
         }
 
-        public function update($request,$id)
+        public function update($request)
         {
-            try {
-                $todo               = $this->model::find($id);
+            // try {
+                $todo               = $this->model::find($request->id);
                 $todo->title        = $request->title;
                 $todo->user_id      = $request->user;
                 $todo->date         = $request->date;
                 $todo->description  = $request->description;
+                $todo->status       = $request->status;
                 if($request->todoFile):
                     $todo->todo_file = $this->upload->upload('todo',$todo->todo_file,$request->todoFile);
                 endif;
                 $todo->save();
 
                 return $this->responseWithSuccess(__('alert.successfully_added'), []);
-            } catch (\Throwable $th) {
-                return $this->responseWithError(__('alert.something_went_wrong'), []);
-            }
+            // } catch (\Throwable $th) {
+            //     return $this->responseWithError(__('alert.something_went_wrong'), []);
+            // }
         }
 
 

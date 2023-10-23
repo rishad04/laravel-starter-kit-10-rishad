@@ -43,14 +43,14 @@
                     </div>
                     @endif --}}
 
-                    @if(hasPermission('todo_create')== true)
+                    {{-- @if(hasPermission('todo_create')== true)
                     <div class="j-to-do">
                         <a href="#" class="j-td-btn" id="todoModal1" data-target="#todoModal" data-toggle="modal" data-url="{{route('todo.modal')}}">
                             <img src="{{static_asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image" />
                             <span>{{ __('to_do.to_do')}}</span>
                         </a>
                     </div>
-                    @endif
+                    @endif --}}
 
 
 
@@ -165,6 +165,6 @@
 
 @push('scripts')
 
-<script src="{{ static_asset('backend/js/navber.js') }}"></script>
+<script src="{{ asset('backend/js/navber.js') }}"></script>
 
 @endpush
