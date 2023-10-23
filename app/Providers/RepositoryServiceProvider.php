@@ -15,10 +15,14 @@ use App\Repositories\Upload\UploadInterface;
 use App\Repositories\Upload\UploadRepository;
 use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\Permission\PermissionRepository;
-use App\Repositories\Settings\GeneralSettingsInterface;
-use App\Repositories\Settings\GeneralSettingsRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
+use App\Repositories\Settings\Backup\BackupInterface;
+use App\Repositories\Settings\Backup\BackupRepository;
+use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
+use App\Repositories\Settings\GeneralSetting\GeneralSettingsRepository;
+use App\Repositories\Settings\MailSetting\MailSettingInterface;
+use App\Repositories\Settings\MailSetting\MailSettingRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -29,19 +33,25 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(AuthInterface::class,          AuthRepository::class);
-        $this->app->bind(LoginActivityInterface::class, LoginActivityRepository::class);
-        $this->app->bind(LoginActivityInterface::class, LoginActivityRepository::class);
+        $this->app->bind(PermissionInterface::class,            PermissionRepository::class);
+
+        // settings 
+        $this->app->bind(GeneralSettingsInterface::class,       GeneralSettingsRepository::class);
+        $this->app->bind(BackupInterface::class,                BackupRepository::class);
+        $this->app->bind(MailSettingInterface::class,           MailSettingRepository::class);
+
+        $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);
+        $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);
+
+        $this->app->bind(AuthInterface::class,                  AuthRepository::class);
+
+        $this->app->bind(UploadInterface::class,                UploadRepository::class);
 
         $this->app->bind(UserInterface::class,                  UserRepository::class);
 
         $this->app->bind(RoleInterface::class,                  RoleRepository::class);
 
-        $this->app->bind(UploadInterface::class,                UploadRepository::class);
-
-        $this->app->bind(PermissionInterface::class,                PermissionRepository::class);
-        $this->app->bind(GeneralSettingsInterface::class,      GeneralSettingsRepository::class);
-        $this->app->bind(TodoInterface::class,      TodoRepository::class);
+        $this->app->bind(TodoInterface::class,                  TodoRepository::class);
     }
 
     /**

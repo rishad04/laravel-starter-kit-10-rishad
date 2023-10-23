@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Settings;
+namespace App\Repositories\Settings\GeneralSetting;
 
 use App\Enums\ImageSize;
 use App\Models\Backend\Setting;

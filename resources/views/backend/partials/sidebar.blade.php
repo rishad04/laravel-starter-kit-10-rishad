@@ -21,12 +21,12 @@
                 </ul>
             </li>
             @if(hasPermission('todo_read') == true)
-                <li>
-                    <a href="{{ route('todo.index') }}" aria-expanded="true">
-                        <i class="icon-notebook"></i>
-                        <span class="nav-text">{{__('menus.todo_list')}}</span>
-                    </a>
-                </li>
+            <li>
+                <a href="{{ route('todo.index') }}" aria-expanded="true">
+                    <i class="icon-notebook"></i>
+                    <span class="nav-text">{{__('menus.todo_list')}}</span>
+                </a>
+            </li>
             @endif
 
             <li>
@@ -44,12 +44,12 @@
                 </a>
             </li>
             @endif
-{{-- 
+            {{--
             <li>
                 <a href="{{route('database.backup.index')}}" aria-expanded="true">
-                    <i class="icon-docs"></i>
-                    <span class="nav-text">{{__('menus.backup')}}</span>
-                </a>
+            <i class="icon-docs"></i>
+            <span class="nav-text">{{__('menus.backup')}}</span>
+            </a>
             </li> --}}
 
             @if(hasPermission('language_settings_read') == true)
@@ -64,8 +64,8 @@
                     <li> <a href="{{route('settings.general.index')}}">{{ __('menus.general_settings') }}</a> </li>
                     @endif
 
-                    @if(hasPermission('email_settings_read') == true)
-                    <li> <a href="{{route('settings.mail.index')}}">{{ __('menus.mail_setting') }}</a> </li>
+                    @if(hasPermission('mail_settings_read') == true)
+                    <li> <a href="{{route('settings.mail')}}">{{ __('menus.mail_setting') }}</a> </li>
                     @endif
 
                     @if(hasPermission('recaptcha_settings_read') == true)

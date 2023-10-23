@@ -2,6 +2,7 @@
 @section('title')
 {{ __('menus.general_settings') }}
 @endsection
+
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
     <!-- pageheader -->

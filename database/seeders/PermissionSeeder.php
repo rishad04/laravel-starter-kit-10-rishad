@@ -53,16 +53,13 @@ class PermissionSeeder extends Seeder
             'general_settings'  => ['read' =>  'general_settings_read', 'update' => 'general_settings_update'],
             'storage_settings'  => ['read' =>  'storage_settings_read', 'update' => 'storage_settings_update'],
             'recaptcha_settings' => ['read' =>  'recaptcha_settings_read', 'update' => 'recaptcha_settings_update'],
-            'email_settings'    => ['read' =>  'email_settings_read', 'update' => 'email_settings_update'],
+            'mail_settings'     => ['read' =>  'mail_settings_read', 'update' => 'mail_settings_update'],
             'language_settings' => ['read' =>  'language_settings_read', 'update' => 'language_settings_update'],
             'todo'              => ['read' =>  'todo_read', 'create' => 'todo_create', 'update' => 'todo_update', 'delete' => 'todo_delete'],
             'activity_logs'     => ['read' => 'activity_logs_read', 'view' => 'activity_logs_view'],
             'database_backup'   => ['read' => 'database_backup_read'],
 
-            'route' => [
-                'read'     => 'route_read',
-                'search'   => 'route_search',
-            ],
+            'route'             => ['read' => 'route_read', 'search' => 'route_search',],
         ];
     }
 }

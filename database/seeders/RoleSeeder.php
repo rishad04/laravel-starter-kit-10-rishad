@@ -53,14 +53,19 @@ class RoleSeeder extends Seeder
             'language_update',
             'language_update_terms',
             'language_delete',
+
             'general_settings_read',
             'general_settings_update',
+
+            'mail_settings_read',
+            'mail_settings_update',
+
             'storage_settings_read',
             'storage_settings_update',
+
             'recaptcha_settings_read',
             'recaptcha_settings_update',
-            'email_settings_read',
-            'email_settings_update',
+
             'language_settings_read',
             'language_settings_update',
 
@@ -73,6 +78,7 @@ class RoleSeeder extends Seeder
             'activity_logs_view',
 
             'database_backup_read',
+
             'route_read',
             'route_search',
 

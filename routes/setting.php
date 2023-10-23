@@ -11,12 +11,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'admin/settings'], function () {
 
             // General settings
-            Route::get('general-settings/index',    [SettingsController::class, 'index'])->name('settings.general.index')->middleware('hasPermission:general_settings_read');
-            Route::put('general-settings/update',   [SettingsController::class, 'update'])->name('settings.general.update')->middleware('hasPermission:general_settings_update');
+            Route::get('general-settings/index',    [SettingsController::class, 'generalSettings'])->name('settings.general.index')->middleware('hasPermission:general_settings_read');
+            Route::put('general-settings/update',   [SettingsController::class, 'updateGeneralSettings'])->name('settings.general.update')->middleware('hasPermission:general_settings_update');
 
             // Mail Setting Routes
-            Route::get('mail/index',                [SettingsController::class, 'mailSettings'])->name('settings.mail.index')->middleware('hasPermission:mail_settings_read');
-            Route::put('mail/update',               [SettingsController::class, 'updateMailSettings'])->name('settings.mail.update')->middleware('hasPermission:mail_settings_update');
+            Route::get('mail',                      [SettingsController::class, 'mailSettings'])->name('settings.mail')->middleware('hasPermission:mail_settings_read');
+            Route::put('mail',                      [SettingsController::class, 'updateMailSettings'])->name('settings.mail.update')->middleware('hasPermission:mail_settings_update');
 
             // Mail Setting Routes
             Route::get('recaptcha/index',           [SettingsController::class, 'recaptchaSettings'])->name('settings.recaptcha.index')->middleware('hasPermission:recaptcha_settings_read');
@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             // database backup
             Route::get('database/backup',           [SettingsController::class, 'databaseBackupIndex'])->name('database.backup.index')->middleware('hasPermission:database_backup_read');
-            Route::get('database/backup/download',  [SettingsController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
+            Route::get('database/backup/download',  [SettingsController::class, 'BackupDownload'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
 
             // SMS 
             Route::get('sms/index',             [SmsSettingsController::class, 'index'])->name('settings.sms.index')->middleware('hasPermission:sms_settings_read');
