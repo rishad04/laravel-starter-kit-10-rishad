@@ -63,19 +63,6 @@
                             <div class="form-group col-md-6 ">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="label-style-1" for="logo_with_text">{{ __('label.logo_with_text') }}</label>
-                                        <input type="file" name="logo_with_text" placeholder="Enter Logo With Text" id="logo_with_text" class="form-control input-style-1 " value="{{ old('logo_with_text') }}">
-                                        @error('logo_with_text') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-6 text-right">
-                                        <img src="{{ logo(globalSettings('logo_with_text')) }}" alt="logo" class="rounded mt-3" height="50" style="object-fit: contain">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-6 ">
-                                <div class="row">
-                                    <div class="col-12">
                                         <label class="label-style-1" for="logo">{{ __('label.logo') }}</label>
                                         <input type="file" name="logo" placeholder="Enter logo" id="logo" class="form-control input-style-1 " value="{{ old('logo') }}">
                                         @error('logo') <small class="text-danger mt-2">{{ $message }}</small> @enderror

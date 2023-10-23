@@ -30,7 +30,6 @@ class SettingSeeder extends Seeder
             ['key' => 'brand_support_email',    'value' => 'support@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
-            ['key' => 'logo_with_text',         'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/logo_with_text.png'])],
             ['key' => 'logo',                   'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/logo.png'])],
             ['key' => 'favicon',                'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/favicon.png'])],
 

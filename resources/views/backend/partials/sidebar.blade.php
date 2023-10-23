@@ -6,51 +6,23 @@
             <li> <a href="{{route('dashboard')}}" aria-expanded="true"> <i class="icon icon-chart-bar-33"></i> <span class="nav-text">{{__('menus.dashboard') }}</span> </a> </li>
             @endif
 
-            <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="true">
-                    <i class="icon-people"></i>
-                    <span class="nav-text">{{__('menus.user_roles')}}</span>
-                </a>
+            <li class="{{ (request()->is('*user*','*role*')) ? 'mm-active' : '' }}">
+                <a class="has-arrow" href="javascript:void()" aria-expanded="true"> <i class="icon-people"></i> <span class="nav-text">{{__('menus.user_roles')}}</span> </a>
                 <ul aria-expanded="false">
-                    <li>
-                        <a href="{{ route('user.index') }}">{{__('menus.users')}}</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('role.index') }}">{{__('menus.roles')}}</a>
-                    </li>
+                    <li> <a href="{{ route('user.index') }}" class="{{ (request()->is('*user*')) ? 'mm-active' : '' }}">{{__('menus.users')}}</a> </li>
+                    <li> <a href="{{ route('role.index') }}" class="{{ (request()->is('*role*')) ? 'mm-active' : '' }}">{{__('menus.roles')}}</a> </li>
                 </ul>
             </li>
+
             @if(hasPermission('todo_read') == true)
-            <li>
-                <a href="{{ route('todo.index') }}" aria-expanded="true">
-                    <i class="icon-notebook"></i>
-                    <span class="nav-text">{{__('menus.todo_list')}}</span>
-                </a>
-            </li>
+            <li> <a href="{{ route('todo.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{__('menus.todo_list')}}</span> </a> </li>
             @endif
 
-            <li>
-                <a href="{{route('activity.logs.index')}}" aria-expanded="true">
-                    <i class="icon-list"></i>
-                    <span class="nav-text">{{__('menus.activity_logs')}}</span>
-                </a>
-            </li>
+            <li> <a href="{{route('activity.logs.index')}}" aria-expanded="true"> <i class="icon-list"></i> <span class="nav-text">{{__('menus.activity_logs')}}</span> </a> </li>
 
             @if(hasPermission('login_activity_read'))
-            <li>
-                <a href="#" aria-expanded="false">
-                    <i class="fa fa-history font-size20"></i>
-                    <span class="nav-text">{{ __('login_activity') }}</span>
-                </a>
-            </li>
+            <li> <a href="#" aria-expanded="false"> <i class="fa fa-history font-size20"></i> <span class="nav-text">{{ __('login_activity') }}</span> </a> </li>
             @endif
-            {{--
-            <li>
-                <a href="{{route('database.backup.index')}}" aria-expanded="true">
-            <i class="icon-docs"></i>
-            <span class="nav-text">{{__('menus.backup')}}</span>
-            </a>
-            </li> --}}
 
             @if(hasPermission('language_settings_read') == true)
             <li> <a href="javascript:void()" aria-expanded="true"> <i class="fa fa-language"></i> <span class="nav-text">{{__('menus.language')}}</span> </a> </li>
