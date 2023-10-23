@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('todo') }} {{ __('create') }}
+{{ __('todo') }} {{ __('edit') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -25,15 +25,16 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-input-header">
-                    <h4 class="title-site">{{ __('label.create') }} {{ __('label.to_do') }} </h4>
+                    <h4 class="title-site">{{ __('label.edit') }} {{ __('label.to_do') }} </h4>
                 </div>
-                <form action="{{ route('todo.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('todo.update',$todo->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="form-row">
                                 <div class="form-group col-md-6 ">
                                     <label  >{{ __('label.title') }} <span class="text-danger">*</span></label>
                                     <input type="text" placeholder="{{ __('placeholder.enter_title') }}"
-                                        class="form-control input-style-1" name="title" value="{{ old('title') }}" >
+                                        class="form-control input-style-1" name="title" value="{{ old('title',$todo->title) }}" >
                                     @error('title')
                                         <p class="pt-2 text-danger">{{ $message }}</p>
                                     @enderror
@@ -42,11 +43,11 @@
 
                       
                                 <div class="form-group col-md-6 ">
-                                    <label class=" label-style-1" for="name">{{ __('label.user') }}</label> <span class="text-danger">*</span>
+                                    <label class="label-style-1" >{{ __('label.user') }} <span class="text-danger">*</span></label>
                                     <select name="user" class="form-control input-style-1 select2">
                                         {{-- <option selected disabled>{{ __('select')}} {{ __('user') }} </option> --}}
                                         @foreach ($users as $user)
-                                            <option value="{{$user->id}}" @if(old('user') == $user->id) selected @endif>{{ $user->name }}</option>
+                                            <option value="{{$user->id}}" @if(old('user',$todo->user_id) == $user->id) selected @endif >{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('user')
@@ -60,7 +61,7 @@
                                 <div class="form-group col-md-6 ">
                                     <label  >{{ __('label.date') }}<span class="text-danger">*</span></label>
                                     <input type="date"
-                                        class="form-control input-style-1 flatpickr" name="date" readonly value="{{ old('date',Date('d/m/Y')) }}" >
+                                        class="form-control input-style-1 flatpickr" name="date" readonly value="{{ old('date',$todo->date) }}" >
                                     @error('date')
                                         <p class="pt-2 text-danger">{{ $message }}</p>
                                     @enderror
@@ -76,13 +77,15 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
-                                    <select name="status" id="status" class="form-control input-style-1 select2">
+                                    <label class=" label-style-1" for="status">{{ __('label.status') }}</label> <span class="text-danger">*</span>
+                                    <select name="status" class="form-control input-style-1">
                                         @foreach(trans('status') as $key => $status)
-                                        <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                                        <option value="{{ $key }}" {{ (old('status',$user->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
                                         @endforeach
                                     </select>
-                                    @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                    @error('status')
+                                    <small class="text-danger mt-2">{{ $message }}</small>
+                                    @enderror
                                 </div>
                     
 
@@ -90,7 +93,7 @@
                             
                                 <div class="form-group col-md-6 ">
                                     <label  >{{ __('label.description') }} </label>
-                                    <textarea name="description" class="form-control input-style-1" rows="3">{{ old('description') }}</textarea>
+                                    <textarea name="description" class="form-control input-style-1" rows="3">{{ old('description',$todo->description) }}</textarea>
 
                                 </div>
                 

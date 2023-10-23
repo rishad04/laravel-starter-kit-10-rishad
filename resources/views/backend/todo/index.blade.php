@@ -44,7 +44,7 @@
                                         <th>{{ __('label.date') }}</th>
                                         <th>{{ __('label.title') }}</th>
                                         <th>{{ __('label.description') }}</th>
-                                        {{-- <th>{{ __('label.assign') }}</th> --}}
+                                        <th>{{ __('label.file') }}</th>
                                         <th>{{ __('label.note') }}</th>
                                         <th>{{ __('label.status') }}</th>
                                         <th>{{ __('label.action') }}</th>
@@ -58,7 +58,7 @@
                                         <td> {{dateFormat($todo->date)}}</td>
                                         <td> {{$todo->title}}</td>
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
-                                        {{-- <td> {{$todo->todo->name}}</td> --}}
+                                        <td><a href="{{ asset(@$todo->upload->original) }}" download>{{ __('label.download') }}</a></td>
                                         <td> {{$todo->note}}</td>
                                         <td>{!! $todo->TodoStatus !!}</td>
 
@@ -74,7 +74,11 @@
                                                      
 
                                                         @if(hasPermission('todo_update')== true)
-                                                        <a href="" class="dropdown-item" id="todoeditModal1" data-target="#todoeditModal{{$todo->id}}" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
+                                                        <a href="{{ route('todo.edit',$todo->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
+
+                                           
+
+
                                                         @endif
                                                         @if(hasPermission('todo_delete')== true)
                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/todo/delete', {{$todo->id}})">

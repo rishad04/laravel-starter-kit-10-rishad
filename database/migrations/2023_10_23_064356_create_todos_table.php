@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longtext('description')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('date')->nullable();
+            $table->unsignedBigInteger('todo_file')->nullable();
             $table->unsignedTinyInteger('status')->default(TodoStatus::PENDING)->comment('pending= 1, procesing= 2,complete= 3');
             $table->longtext('note')->nullable();
             $table->timestamps();
