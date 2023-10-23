@@ -23,6 +23,8 @@ use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
 use App\Repositories\Settings\GeneralSetting\GeneralSettingsRepository;
 use App\Repositories\Settings\MailSetting\MailSettingInterface;
 use App\Repositories\Settings\MailSetting\MailSettingRepository;
+use App\Repositories\Settings\SettingsInterface;
+use App\Repositories\Settings\SettingsRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PermissionInterface::class,            PermissionRepository::class);
 
         // settings 
+        $this->app->bind(SettingsInterface::class,              SettingsRepository::class);
         $this->app->bind(GeneralSettingsInterface::class,       GeneralSettingsRepository::class);
         $this->app->bind(BackupInterface::class,                BackupRepository::class);
         $this->app->bind(MailSettingInterface::class,           MailSettingRepository::class);

@@ -31,7 +31,7 @@ class MailSettingsRequest extends FormRequest
             'mail_encryption'             => 'required|string',
             'mail_from_address'           => 'required|string',
             'mail_from_name'              => 'required|string',
-            'mail_signature'              => 'required|string',
+            'mail_signature'              => 'required',
         ];
     }
 }

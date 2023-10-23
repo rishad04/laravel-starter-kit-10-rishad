@@ -41,66 +41,66 @@
                                 </div>
                                 {{-- <div class="form-group col-md-6">
                                     <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
-                                    <select name="status" class="form-control input-style-1 select2">
-                                        <option value="{{ \App\Enums\Status::ACTIVE }}" selected>{{ __('label.active')}} </option>
-                                        <option value="{{ \App\Enums\Status::INACTIVE }}">{{ __('label.inactive')}} </option>
-                                    </select>
-                                    @error('status') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
-                                </div> --}}
+                                <select name="status" class="form-control input-style-1 select2">
+                                    <option value="{{ \App\Enums\Status::ACTIVE }}" selected>{{ __('label.active')}} </option>
+                                    <option value="{{ \App\Enums\Status::INACTIVE }}">{{ __('label.inactive')}} </option>
+                                </select>
+                                @error('status') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+                            </div> --}}
 
-                                <div class="form-group col-md-6">
-                                    <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
-                                    <select name="status" id="status" class="form-control input-style-1 select2">
-                                 
-                                        @foreach(trans('status') as $key => $status)
-                                        <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                            <div class="form-group col-md-6">
+                                <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
+                                <select name="status" id="status" class="form-control input-style-1 select2">
+
+                                    @foreach(trans('status') as $key => $status)
+                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                                @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="">
+                                <table class="table border permission-table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ __('label.modules') }}</th>
+                                            <th>{{ __('label.permissions') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($permissions as $permission )
+                                        <tr>
+                                            <td>{{__('label.'.$permission->attribute) }}</td>
+                                            <td>
+                                                @foreach ($permission->keywords as $key=>$keyword)
+                                                <div class="row align-items-center permission-check-box pb-2 pt-2">
+                                                    <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" />
+                                                    <label class=" label-style-1" for="{{ $keyword }}">{{ __('label.'.$key) }}</label>
+                                                </div>
+                                                @endforeach
+                                            </td>
+                                        </tr>
                                         @endforeach
-                                    </select>
-                                    @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="">
-                                    <table class="table border permission-table">
-                                        <thead>
-                                            <tr>
-                                                <th>{{ __('label.modules') }}</th>
-                                                <th>{{ __('label.permissions') }}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($permissions as $permission )
-                                            <tr>
-                                                <td>{{__('label.'.$permission->attribute) }}</td>
-                                                <td>
-                                                    @foreach ($permission->keywords as $key=>$keyword)
-                                                    <div class="row align-items-center permission-check-box pb-2 pt-2">
-                                                        <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" />
-                                                        <label class=" label-style-1" for="{{ $keyword }}">{{ __('label.'.$key) }}</label>
-                                                    </div>
-                                                    @endforeach
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
-                        <div class="j-create-btns">
-                            <div class="drp-btns">
-                                <button type="submit" class="j-td-btn">{{ __('label.save') }}</button>
-                                <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
-                            </div>
-                        </div>
-
-                    </form>
                 </div>
+
+                <div class="j-create-btns">
+                    <div class="drp-btns">
+                        <button type="submit" class="j-td-btn">{{ __('label.save') }}</button>
+                        <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
+                    </div>
+                </div>
+
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection()
 

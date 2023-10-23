@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="{{asset('backend')}}/assets/css/responsive.css" />
 
 
-    {{-- summernote --}}
-    <link rel="stylesheet" href="{{asset('backend')}}/vendor/summernote/summernote.css" />
     {{-- select 2 & flatfikr for date css  --}}
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/select2/css/select2.min.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/flatpickr/flatpickr.min.css">
