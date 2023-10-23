@@ -24,15 +24,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+
                     <div class="form-input-header">
                         <h4 class="title-site"> {{ __('user.edit_user') }}</h4>
                     </div>
-                    <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data" id="basicform">
+
+                    <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @if (isset($user))
                         @method('PUT')
-                        @endif
+
                         <input type="hidden" name="id" value="{{$user->id}}">
+
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
@@ -45,7 +47,7 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="email">{{ __('label.email') }}</label> <span class="text-danger">*</span>
-                                <input id="email" type="text" name="email" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_email') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('email',$user->email) }}" require>
+                                <input id="email" type="text" name="email" data-parsley-trigger="change" placeholder="{{ __('placeholder.enter_email') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('email',$user->email) }}" require>
                                 @error('email')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
@@ -53,7 +55,7 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="phone">{{ __('label.phone') }}</label> <span class="text-danger">*</span>
-                                <input id="phone" type="tel" name="phone" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_phone') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('phone',$user->phone) }}" require>
+                                <input id="phone" type="tel" name="phone" data-parsley-trigger="change" placeholder="{{ __('placeholder.enter_phone') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('phone',$user->phone) }}" require>
                                 @error('phone')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
@@ -77,16 +79,8 @@
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="password">{{ __('label.password') }}</label>
-                                <input id="password" type="password" name="password" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_password') }}" autocomplete="off" class="form-control input-style-1">
+                                <input id="password" type="password" name="password" data-parsley-trigger="change" placeholder="{{ __('placeholder.enter_password') }}" autocomplete="off" class="form-control input-style-1">
                                 @error('password')
-                                <small class="text-danger mt-2">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
-                                <input id="address" type="text" name="address" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_address') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('address',$user->address) }}" require>
-                                @error('address')
                                 <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -105,42 +99,37 @@
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ __('label.gender') }} <span class="text-danger">*</span></label>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label label-style-1">
-                                        <input type="radio" class="mr-2" name="gender" value="{{ App\Enums\Gender::MALE }}" @if(old('gender',$user->gender) == App\Enums\Gender::MALE) checked @endif>{{ __('male') }}
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label label-style-1">
-                                        <input type="radio" class="mr-2" name="gender" value="{{ App\Enums\Gender::FEMALE }}" @if(old('gender',$user->gender) == App\Enums\Gender::FEMALE) checked @endif>{{ __('female') }}
-                                    </label>
-                                </div>
-                                @error('gender')
-                                <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
+                                <select name="gender" id="gender" class="form-control input-style-1 select2">
+                                    <option></option>
+                                    @foreach(trans('gender') as $key => $gender)
+                                    <option value="{{ $key }}" @selected(old('gender',$user->gender)==$key)>{{ $gender }}</option>
+                                    @endforeach
+                                </select>
+                                @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="nid_number">{{ __('label.nid_number') }}</label>
-                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.Enter_nid_number') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('nid_number',$user->nid_number) }}">
+                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.enter_nid_number') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('nid_number',$user->nid_number) }}">
                                 @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="nid">{{ __('label.nid') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="nid" id="nid" class="form-control input-style-1 ">
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="status">{{ __('label.status') }}</label> <span class="text-danger">*</span>
-                                <select name="status" class="form-control input-style-1">
+                                <select name="status" class="form-control input-style-1 select2">
                                     @foreach(trans('status') as $key => $status)
                                     <option value="{{ $key }}" {{ (old('status',$user->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
                                     @endforeach
                                 </select>
-                                @error('status')
-                                <small class="text-danger mt-2">{{ $message }}</small>
-                                @enderror
+                                @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="image">{{ __('label.image') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
@@ -148,11 +137,15 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                                <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
+                                <textarea name="address" class="form-control input-style-1" rows="3" placeholder="{{ __('placeholder.enter_address') }}">{{ old('address',$user->address) }}</textarea>
+                                @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ __('label.about') }} </label>
-                                <textarea name="about" class="form-control input-style-1" rows="5">{{ old('about',$user->about) }}</textarea>
-                                @error('about')
-                                <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
+                                <textarea name="about" class="form-control input-style-1" rows="3" placeholder="{{ __('placeholder.about_me') }}">{{ old('about',$user->about) }}</textarea>
+                                @error('about') <span class="pt-2 text-danger">{{ $message }}</span> @enderror
                             </div>
 
 
