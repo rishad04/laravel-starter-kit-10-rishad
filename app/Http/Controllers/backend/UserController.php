@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Enums\Status;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
-use App\Http\Requests\Role\UpdateRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 
@@ -30,16 +28,12 @@ class UserController extends Controller
 
     public function create()
     {
-        // $roles = $this->roleRepo->all(status: Status::ACTIVE);
-        // return view('backend.user.create', compact('roles'));
-
         $roles = $this->roleRepo->all();
         return view('backend.user.create', compact('roles'));
     }
 
     public function store(StoreUserRequest $request)
     {
-        // dd($request);
         $result = $this->repo->store($request);
 
         if ($result['status']) {

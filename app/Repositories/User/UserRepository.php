@@ -3,6 +3,7 @@
 namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
+use App\Models\Role;
 use App\Models\User;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\Hash;
@@ -63,7 +64,7 @@ class UserRepository implements UserInterface
             $user->about            =  $request->about;
 
             $user->role_id          = $request->role_id;
-            $user->permissions      = [];
+            $user->permissions      = Role::find($user->role_id)->permissions;
             $user->status           = $request->status;
             $user->save();
 
@@ -81,20 +82,20 @@ class UserRepository implements UserInterface
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
-            $user->nid_number       = $request->nid_number;
 
-            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
-
-            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
-            $user->address          = $request->address;
-
+            $user->dob              =  $request->dob;
             $user->gender           =  $request->gender;
             $user->designations     =  $request->designations;
-            $user->dob              =  $request->dob;
+
+            $user->nid_number       = $request->nid_number;
+            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
+
+            $user->address          = $request->address;
             $user->about            =  $request->about;
 
             $user->role_id          = $request->role_id;
-            $user->permissions      = [];
+            $user->permissions      = Role::find($user->role_id)->permissions;
             $user->status           = $request->status;
             $user->save();
 
