@@ -2,6 +2,7 @@
 @section('title')
 {{ __('menus.profile') }}
 @endsection
+
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
 
