@@ -60,10 +60,8 @@
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
                                         {{-- <td> {{$todo->todo->name}}</td> --}}
                                         <td> {{$todo->note}}</td>
-                                        <td>
-                                            {!! @$todo->TodoStatus !!} <br>
+                                        <td>{!! $todo->TodoStatus !!}</td>
 
-                                        </td>
                                         <td>
                                             <div class="input-group">
                                                 <div class="input-group-prepend be-addon">
@@ -73,7 +71,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="dropdown-menu">
-                                                        {!! TodoStatus($todo) !!}
+                                                     
 
                                                         @if(hasPermission('todo_update')== true)
                                                         <a href="" class="dropdown-item" id="todoeditModal1" data-target="#todoeditModal{{$todo->id}}" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
@@ -89,8 +87,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @include('backend.todo.to_do_edit')
-                          
+                        
 
                                     @empty
                                     <x-nodata-found :colspan = "8" />
