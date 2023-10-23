@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\RoleController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\SettingsController;
-
+use App\Http\Controllers\Backend\UserController;
 
 Route::middleware(['XSS', 'auth'])->prefix('admin')->group(function () {
 
