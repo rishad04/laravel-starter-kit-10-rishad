@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Enums\Status;
+use App\Enums\TodoStatus;
 use Illuminate\Support\Facades\File;
 
 trait CommonHelperTrait
@@ -40,5 +41,18 @@ trait CommonHelperTrait
         // endif;
 
         return $data;
+    }
+
+    public function getTodoStatusAttribute()
+    {
+        if ($this->status == TodoStatus::PENDING) {
+            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("TodoStatus." . $this->status) . '</span>';
+        } elseif ($this->status == TodoStatus::PROCESSING) {
+            $status = '<span class="bullet-badge bullet-badge-info">' . trans("TodoStatus." . $this->status) . '</span>';
+        } elseif ($this->status == TodoStatus::COMPLETED) {
+            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("TodoStatus." . $this->status) . '</span>';
+        }
+
+        return $status;
     }
 }

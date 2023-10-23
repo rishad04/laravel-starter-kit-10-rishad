@@ -44,7 +44,7 @@
                                         <th>{{ __('label.date') }}</th>
                                         <th>{{ __('label.title') }}</th>
                                         <th>{{ __('label.description') }}</th>
-                                        <th>{{ __('label.assign') }}</th>
+                                        {{-- <th>{{ __('label.assign') }}</th> --}}
                                         <th>{{ __('label.note') }}</th>
                                         <th>{{ __('label.status') }}</th>
                                         <th>{{ __('label.action') }}</th>
@@ -58,16 +58,10 @@
                                         <td> {{dateFormat($todo->date)}}</td>
                                         <td> {{$todo->title}}</td>
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
-                                        <td> {{$todo->todo->name}}</td>
+                                        {{-- <td> {{$todo->todo->name}}</td> --}}
                                         <td> {{$todo->note}}</td>
-                                        <td>
-                                            {!! $todo->TodoStatus !!} <br>
+                                        <td>{!! $todo->TodoStatus !!}</td>
 
-                                            @if($todo->partial_delivered && $todo->status != \App\Enums\TodoStatus::PENDING)
-                                            <span class="bullet-badge bullet-badge-success">{{trans("label." . \App\Enums\todoStatus::PENDING)}}</span>
-                                            @endif
-
-                                        </td>
                                         <td>
                                             <div class="input-group">
                                                 <div class="input-group-prepend be-addon">
@@ -77,7 +71,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="dropdown-menu">
-                                                        {!! TodoStatus($todo) !!}
+                                                     
 
                                                         @if(hasPermission('todo_update')== true)
                                                         <a href="" class="dropdown-item" id="todoeditModal1" data-target="#todoeditModal{{$todo->id}}" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
@@ -93,8 +87,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @include('backend.todo.to_do_edit')
-                          
+                        
 
                                     @empty
                                     <x-nodata-found :colspan = "8" />

@@ -23,9 +23,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             DesignationSeeder::class,
             UserSeeder::class,
+            
         ]);
 
 
         $this->call(SettingSeeder::class);
+        $this->call(TodoSeeder::class);
     }
 }
