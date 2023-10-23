@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\TodoController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\backend\ActivityLogController;
+use App\Http\Controllers\Backend\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
 
     // profile 
-    Route::get('profile',                           [UserController::class, 'profile'])->name('profile')->middleware('hasPermission:profile_read');
-    Route::get('profile/edit',                      [UserController::class, 'profileEdit'])->name('profile.edit')->middleware('hasPermission:profile_update');
-    Route::put('profile/update',                    [UserController::class, 'profileUpdate'])->name('profile.update')->middleware('hasPermission:profile_update');
-    Route::get('profile/change-password',           [UserController::class, 'passwordChange'])->name('passwordChange')->middleware('hasPermission:password_update');
-    Route::put('profile/update-password',           [UserController::class, 'passwordUpdate'])->name('passwordUpdate')->middleware('hasPermission:password_update');
+    Route::get('profile',                           [ProfileController::class, 'profile'])->name('profile')->middleware('hasPermission:profile_read');
+    Route::get('profile/edit',                      [ProfileController::class, 'profileEdit'])->name('profile.edit')->middleware('hasPermission:profile_update');
+    Route::put('profile/update',                    [ProfileController::class, 'profileUpdate'])->name('profile.update')->middleware('hasPermission:profile_update');
+    Route::get('profile/change-password',           [ProfileController::class, 'passwordUpdateForm'])->name('passwordUpdateForm')->middleware('hasPermission:password_update');
+    Route::put('profile/update-password',           [ProfileController::class, 'passwordUpdate'])->name('passwordUpdate')->middleware('hasPermission:password_update');
 
     // To_do List route
     Route::get('todo/todo_list',                    [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');

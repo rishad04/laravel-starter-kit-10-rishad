@@ -42,6 +42,9 @@ class RoleSeeder extends Seeder
 
             'profile_read',
             'profile_update',
+            'email_update',
+            'phone_update',
+            'password_update',
 
             'role_read',
             'role_create',
@@ -98,6 +101,9 @@ class RoleSeeder extends Seeder
 
             'profile_read',
             'profile_update',
+            'email_update',
+            'phone_update',
+            'password_update',
 
             'role_read',
             'role_create',
@@ -133,6 +139,10 @@ class RoleSeeder extends Seeder
             'profile_read',
             'profile_update',
             'self_user_account_delete',
+
+            'email_update',
+            'phone_update',
+            'password_update',
         ];
     }
 }
