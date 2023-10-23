@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('todo/update',                       [TodoController::class,    'update'])->name('todo.update')->middleware('hasPermission:todo_update');
     Route::delete('todo/delete/{id}',               [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
 
-<<<<<<< HEAD
         //role
         Route::prefix('role')->group(function () {
             Route::get('/',                             [RoleController::class,    'index'])->name('role.index')->middleware('hasPermission:role_read');
@@ -79,11 +78,3 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
     });
     //end user 
-
-}); //auth
-=======
-    // activity-logs
-    Route::get('activity-logs',                     [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
-    Route::get('activity-logs/view/{id}',           [ActivityLogController::class, 'view'])->name('activity.logs.view');
-});
->>>>>>> cc63a89981e01c2b7ae536b151c664f21977f26f
