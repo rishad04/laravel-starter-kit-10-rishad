@@ -46,8 +46,7 @@ class UserRepository implements UserInterface
 
     public function store($request)
     {
-        // dd('here');
-        // try {
+        try {
         $user                   = new User();
         $user->name             = $request->name;
         $user->email            = $request->email;
@@ -69,9 +68,9 @@ class UserRepository implements UserInterface
         $user->save();
 
         return $this->responseWithSuccess(__('alert.successfully_added'), []);
-        //     } catch (\Throwable $th) {
-        //         return $this->responseWithError(__('alert.something_went_wrong'), []);
-        //     }
+            } catch (\Throwable $th) {
+                return $this->responseWithError(__('alert.something_went_wrong'), []);
+            }
     }
 
     public function update($request)

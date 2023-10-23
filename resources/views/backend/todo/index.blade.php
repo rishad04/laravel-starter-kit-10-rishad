@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('to_do.to_do_list') }} {{ __('levels.list') }}
+{{ __('label.to_do_list') }} {{ __('label.list') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -10,8 +10,8 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('to_do.to_do_list') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.to_do_list') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -23,25 +23,31 @@
 
             <div class="j-parcel-main j-parcel-res">
                 <div class="card">
-
                     <div class="card-header mb-3">
-                        <h4 class="title-site">{{ __('to_do.to_do_list') }}</h4>
-
+                        <h4 class="title-site">{{ __('label.to_do_list') }}
+                        </h4>
+                        @if (hasPermission('todo_create'))
+                        <a href="{{ route('todo.create') }}" class="j-td-btn">
+                            <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
+                            <span>{{ __('website_setup.add') }}</span>
+                        </a>
+                        @endif
                     </div>
+
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-responsive-sm" style="width:100%">
+                            <table class="table table-responsive-sm">
                                 <thead class="bg">
                                     <tr>
-                                        <th>{{ __('to_do.sl') }}</th>
-                                        <th>{{ __('to_do.date') }}</th>
-                                        <th>{{ __('to_do.title') }}</th>
-                                        <th>{{ __('to_do.description') }}</th>
-                                        <th>{{ __('to_do.assign') }}</th>
-                                        <th>{{ __('to_do.note') }}</th>
-                                        <th>{{ __('to_do.status') }}</th>
-                                        <th>{{ __('to_do.action') }}</th>
+                                        <th>{{ __('label.sl') }}</th>
+                                        <th>{{ __('label.date') }}</th>
+                                        <th>{{ __('label.title') }}</th>
+                                        <th>{{ __('label.description') }}</th>
+                                        <th>{{ __('label.assign') }}</th>
+                                        <th>{{ __('label.note') }}</th>
+                                        <th>{{ __('label.status') }}</th>
+                                        <th>{{ __('label.action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,13 +58,13 @@
                                         <td> {{dateFormat($todo->date)}}</td>
                                         <td> {{$todo->title}}</td>
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
-                                        <td> {{$todo->user->name}}</td>
+                                        <td> {{$todo->todo->name}}</td>
                                         <td> {{$todo->note}}</td>
                                         <td>
                                             {!! $todo->TodoStatus !!} <br>
 
                                             @if($todo->partial_delivered && $todo->status != \App\Enums\TodoStatus::PENDING)
-                                            <span class="bullet-badge bullet-badge-success">{{trans("to_do." . \App\Enums\todoStatus::PENDING)}}</span>
+                                            <span class="bullet-badge bullet-badge-success">{{trans("label." . \App\Enums\todoStatus::PENDING)}}</span>
                                             @endif
 
                                         </td>
@@ -74,11 +80,11 @@
                                                         {!! TodoStatus($todo) !!}
 
                                                         @if(hasPermission('todo_update')== true)
-                                                        <a href="" class="dropdown-item" id="todoeditModal1" data-target="#todoeditModal{{$todo->id}}" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('levels.edit') }}</a>
+                                                        <a href="" class="dropdown-item" id="todoeditModal1" data-target="#todoeditModal{{$todo->id}}" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
                                                         @endif
                                                         @if(hasPermission('todo_delete')== true)
                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/todo/delete', {{$todo->id}})">
-                                                            <i class="fa fa-trash" aria-hidden="true"></i> {{ __('levels.delete') }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                                         </a>
                                                         @endif
 
@@ -88,14 +94,18 @@
                                         </td>
                                     </tr>
                                     @include('backend.todo.to_do_edit')
+                          
+
                                     @empty
-                                    <x-nodata-found :colspan="9" />
+                                    <x-nodata-found :colspan = "8" />
                                     @endforelse
                                 </tbody>
                             </table>
                         </div>
 
-                        <!-- pagination component -->
+                  
+
+
                         @if(count($todos))
                         <x-paginate-show :items="$todos" />
                         @endif
@@ -106,8 +116,8 @@
 
         </div>
     </div>
-    @include('backend.todo.to_do_proccesing')
-    @include('backend.todo.to_do_completed')
+    {{-- @include('backend.todo.to_do_proccesing')
+    @include('backend.todo.to_do_completed') --}}
 </div>
 
 @endsection()

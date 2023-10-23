@@ -131,4 +131,12 @@ return [
 
   //user add
 
+
+  'dashboard'         => 'Dashboard',
+  'action'            => 'Action',
+  'note'              => 'Note',
+  'assign'            => 'Assign',
+  'sl'                => 'Sl',
+  'to_do_list'        => 'To do list',
+
 ];

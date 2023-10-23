@@ -10,9 +10,9 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('to_dos', function (Blueprint $table) {
+        Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->longtext('description')->nullable();
@@ -27,8 +27,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('to_dos');
+        Schema::dropIfExists('todos');
     }
 };

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\RoleController;
+
+use App\Http\Controllers\backend\TodoController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -68,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // To_do List route
         Route::get('todo/todo_list',                [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');
+        Route::post('todo/todo_create',             [TodoController::class, 'create'])->name('todo.create')->middleware('hasPermission:todo_create');
         Route::post('todo/todo_add',                [TodoController::class, 'store'])->name('todo.store')->middleware('hasPermission:todo_create');
         Route::post('todo/modal',                   [TodoController::class, 'todoModal'])->name('todo.modal');
         Route::post('todo/processing',              [TodoController::class, 'todoProcessing'])->name('todo.processing')->middleware('hasPermission:todo_update');
@@ -82,8 +85,8 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         // database backup
-        Route::get('database/backup',           [DatabaseBackupController::class, 'index'])->name('database.backup.index')->middleware('haspermission:database_backup_read');
-        Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
+        // Route::get('database/backup',           [DatabaseBackupController::class, 'index'])->name('database.backup.index')->middleware('haspermission:database_backup_read');
+        // Route::get('database/backup/download',  [DatabaseBackupController::class, 'databaseBackup'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
     });
     //end user 
 

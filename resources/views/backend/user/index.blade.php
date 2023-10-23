@@ -70,7 +70,7 @@
                     </h4>
                     @if (hasPermission('user_create'))
                     <a href="{{ route('user.create') }}" class="j-td-btn">
-                        <img src="{{static_asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
+                        <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
                         <span>{{ __('website_setup.add') }}</span>
                     </a>
                     @endif

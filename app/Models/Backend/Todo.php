@@ -2,11 +2,14 @@
 
 namespace App\Models\backend;
 
+use App\Models\User;
 use App\Enums\TodoStatus;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class To_do extends Model
+class Todo extends Model
 {
     use HasFactory, LogsActivity;
 

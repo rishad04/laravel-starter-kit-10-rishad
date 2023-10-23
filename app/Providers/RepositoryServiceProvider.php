@@ -6,17 +6,19 @@ use App\Interfaces\AuthInterface;
 use App\Repositories\AuthRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
+use App\Repositories\Todo\TodoInterface;
 use App\Repositories\User\UserInterface;
 use App\Repositories\Role\RoleRepository;
+use App\Repositories\Todo\TodoRepository;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Upload\UploadInterface;
 use App\Repositories\Upload\UploadRepository;
 use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\Permission\PermissionRepository;
-use App\Repositories\LoginActivity\LoginActivityInterface;
-use App\Repositories\LoginActivity\LoginActivityRepository;
 use App\Repositories\Settings\GeneralSettingsInterface;
 use App\Repositories\Settings\GeneralSettingsRepository;
+use App\Repositories\LoginActivity\LoginActivityInterface;
+use App\Repositories\LoginActivity\LoginActivityRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -39,6 +41,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(PermissionInterface::class,                PermissionRepository::class);
         $this->app->bind(GeneralSettingsInterface::class,      GeneralSettingsRepository::class);
+        $this->app->bind(TodoInterface::class,      TodoRepository::class);
     }
 
     /**
