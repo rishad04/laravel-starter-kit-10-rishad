@@ -33,12 +33,13 @@
 
 <script src="{{asset('backend')}}/js/dashboard/dashboard-1.js"></script>
 
-
+{{-- summernote --}}
+<script src="{{asset('backend')}}/vendor/summernote/js/summernote.min.js"></script>
+{{-- sweetalert2 --}}
 <script src="{{static_asset('backend')}}/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
-
 <!-- select 2 js -->
 <script src="{{asset('backend')}}/vendor/select2/js/select2.full.min.js"></script>
-
+{{-- flatpickr --}}
 <script src="{{asset('backend')}}/vendor/flatpickr/flatpickr.min.js"></script>
 
 

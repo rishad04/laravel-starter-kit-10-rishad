@@ -88,7 +88,8 @@
 
                     <div class="form-group col-12 col-md-6">
                         <label class="label-style-1" for="mail_signature">{{ __('label.mail_signature') }}</label> <span class="text-danger">*</span>
-                        <input type="text" name="mail_signature" id="mail_signature" class="form-control input-style-1 " value="{{ old('mail_signature', globalSettings('mail_signature')) }}" placeholder="Enter {{ __('label.mail_signature') }}" @disabled(!hasPermission('mail_settings_update')) />
+                        <textarea name="mail_signature" id="mail_signature" class="form-control input-style-1 summernote" placeholder="Enter {{ __('label.mail_signature') }}" @disabled(!hasPermission('mail_settings_update'))>{{ old('mail_signature', globalSettings('mail_signature')) }}</textarea>
+                        {{-- <input type="text" name="mail_signature" id="mail_signature" class="form-control input-style-1" value="{{ old('mail_signature', globalSettings('mail_signature')) }}" placeholder="Enter {{ __('label.mail_signature') }}" @disabled(!hasPermission('mail_settings_update')) /> --}}
                         @error('mail_signature') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                     </div>
 
@@ -97,7 +98,7 @@
 
                 <div class="j-create-btns">
                     <div class="drp-btns">
-                        <button type="submit" class="j-td-btn">{{ __('levels.save_change') }}</button>
+                        <button type="submit" class="j-td-btn">{{ __('label.save_change') }}</button>
                     </div>
                 </div>
 
@@ -107,3 +108,14 @@
     </div>
 </div>
 @endsection()
+
+
+@push('scripts')
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote();
+    });
+
+</script>
+@endpush
