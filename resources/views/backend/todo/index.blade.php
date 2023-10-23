@@ -44,7 +44,7 @@
                                         <th>{{ __('label.date') }}</th>
                                         <th>{{ __('label.title') }}</th>
                                         <th>{{ __('label.description') }}</th>
-                                        <th>{{ __('label.assign') }}</th>
+                                        {{-- <th>{{ __('label.assign') }}</th> --}}
                                         <th>{{ __('label.note') }}</th>
                                         <th>{{ __('label.status') }}</th>
                                         <th>{{ __('label.action') }}</th>
@@ -58,14 +58,10 @@
                                         <td> {{dateFormat($todo->date)}}</td>
                                         <td> {{$todo->title}}</td>
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
-                                        <td> {{$todo->todo->name}}</td>
+                                        {{-- <td> {{$todo->todo->name}}</td> --}}
                                         <td> {{$todo->note}}</td>
                                         <td>
-                                            {!! $todo->TodoStatus !!} <br>
-
-                                            @if($todo->partial_delivered && $todo->status != \App\Enums\TodoStatus::PENDING)
-                                            <span class="bullet-badge bullet-badge-success">{{trans("label." . \App\Enums\todoStatus::PENDING)}}</span>
-                                            @endif
+                                            {!! @$todo->TodoStatus !!} <br>
 
                                         </td>
                                         <td>
