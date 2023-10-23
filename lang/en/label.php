@@ -18,14 +18,15 @@ return [
   'inactive'               => 'Inactive',
 
   'name'                   => 'Name',
-  'designation'            => 'Designation',
-
   'dob'                    => 'Birth Day',
   'gender'                 => 'Gender',
-  'email'                  => 'Email',
   'username'               => 'Username',
+  'email'                  => 'Email',
   'phone'                  => 'Phone',
+  'mobile'                 => 'Mobile',
   'password'               => 'Password',
+  'confirm_password'      => 'Confirm Password',
+  'designation'            => 'Designation',
 
   'image'                  => 'Image',
   'address'                => 'Address',
@@ -43,9 +44,6 @@ return [
   'permission'             => 'Permission',
 
   'user'                   => 'User',
-
-  'mobile'                 => 'Mobile',
-
   'date'                   => 'Date',
 
   'choose_file'            => 'Choose File',
