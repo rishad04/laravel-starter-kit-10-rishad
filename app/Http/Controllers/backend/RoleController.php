@@ -98,6 +98,16 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->repo->delete($id)) :
+            $success[0] = "Deleted Successfully";
+            $success[1] = 'success';
+            $success[2] = "Deleted";
+            return response()->json($success);
+        else :
+            $success[0] = "Something went wrong, please try again.";
+            $success[1] = 'error';
+            $success[2] = "oops";
+            return response()->json($success);
+        endif;
     }
 }

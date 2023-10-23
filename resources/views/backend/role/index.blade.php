@@ -78,7 +78,7 @@
                                     <a href="{{route('role.edit',$role->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
                                     @endif
                                     @if( hasPermission('role_delete') == true )
-                                    <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/role/delete', {{$role->id}})">
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('role/delete', {{$role->id}})">
                                         <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                     </a>
                                     @endif
@@ -105,3 +105,8 @@
     </div>
 </div>
 @endsection()
+
+
+@push('scripts')
+@include('backend.partials.delete-ajax')
+@endpush
