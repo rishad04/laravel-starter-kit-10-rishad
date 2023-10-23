@@ -77,9 +77,7 @@ class AuthController extends Controller
             'date_of_birth' => ['required'],
             'gender' => ['required'],
             'phone' => ['required', 'numeric'],
-            'password' => ['required', 'string', 'min:2'], // Ensure password confirmation
-        ], [
-            'password.confirmed' => __('The confirmation password does not match.'),
+            'password' => ['required', 'string', 'min:2','confirmed'], // Ensure password confirmation
         ]);
     }
 
