@@ -83,21 +83,21 @@ class AuthController extends Controller
         ]);
     }
 
-protected function create(array $data)
-{
+    protected function create(array $data)
+    {
 
 
-    $role                = Role::find(2);
-    return User::create([
-        'name'           => $data['name'],
-        'email'          => $data['email'],
-        'phone'          => $data['phone'],
-        'gender'         => $data['gender'],
-        'role_id'        => $role ? $role->id : null,
-        'permissions'    => $role ? $role->permissions : [],
-        'date_of_birth'  => Carbon::parse($data['date_of_birth'])->format('d-m-Y'),
-        'password'       => Hash::make($data['password'])
-       
-    ]);
-}
+        $role                = Role::find(2);
+        return User::create([
+            'name'           => $data['name'],
+            'email'          => $data['email'],
+            'phone'          => $data['phone'],
+            'gender'         => $data['gender'],
+            'role_id'        => $role ? $role->id : null,
+            'permissions'    => $role ? $role->permissions : [],
+            'date_of_birth'  => Carbon::parse($data['date_of_birth'])->format('d-m-Y'),
+            'password'       => Hash::make($data['password'])
+
+        ]);
+    }
 }
