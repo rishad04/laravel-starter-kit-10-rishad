@@ -81,9 +81,11 @@
 
                                                         @endif
                                                         @if(hasPermission('todo_delete')== true)
-                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/todo/delete', {{$todo->id}})">
+                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('todo/delete', {{$todo->id}})">
                                                             <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                                         </a>
+
+                                                 
                                                         @endif
 
                                                     </div>

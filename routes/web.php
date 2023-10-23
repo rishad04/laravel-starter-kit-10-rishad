@@ -74,10 +74,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('todo/edit/{id}',                    [TodoController::class,    'edit'])->name('todo.edit')->middleware('hasPermission:todo_update');
         Route::post('todo/todo_add',                [TodoController::class, 'store'])->name('todo.store')->middleware('hasPermission:todo_create');
         Route::put('todo/update',                       [TodoController::class,    'update'])->name('todo.update')->middleware('hasPermission:todo_update');
-      
-       
-       
-       
         Route::delete('todo/delete/{id}',           [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
 
 

@@ -143,11 +143,8 @@ class RoleRepository implements RoleInterface
     //role delete
     public function delete($id)
     {
-        try {
-            return $this->model::destroy($id);
-        } catch (\Throwable $th) {
-            return false;
-        }
+        $item = $this->model::find($id);
+        $item->delete();
     }
 
     //     public function permissions($role)
