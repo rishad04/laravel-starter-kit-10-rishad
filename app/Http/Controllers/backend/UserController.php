@@ -49,11 +49,9 @@ class UserController extends Controller
     }
 
 
-
-
-    public function profile($id)
+    public function profile()
     {
-        $user = $this->repo->get($id);
+        $user = auth()->user();
         return view('backend.user.profile', compact('user'));
     }
 
@@ -65,6 +63,7 @@ class UserController extends Controller
 
     public function changePassword($id)
     {
+        $user = auth()->user();
         // $user = $this->repo->get($id);
         return view('backend.profile.change_password', compact('user'));
     }
