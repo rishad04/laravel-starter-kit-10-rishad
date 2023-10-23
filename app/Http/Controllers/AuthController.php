@@ -55,7 +55,7 @@ class AuthController extends Controller
 
         $user = $this->create($request->all());
 
-        Auth::login($user); // Log the user in after registration
+        // Auth::login($user); // Log the user in after registration
 
         return redirect('/dashboard');
 
@@ -69,33 +69,33 @@ class AuthController extends Controller
     }
 
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'date_of_birth' => ['required'],
-            'gender' => ['required'],
-            'phone' => ['required', 'numeric'],
-            'password' => ['required', 'string', 'min:2','confirmed'], // Ensure password confirmation
-        ]);
-    }
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'date_of_birth' => ['required'],
+    //         'gender' => ['required'],
+    //         'phone' => ['required', 'numeric'],
+    //         'password' => ['required', 'string', 'min:2','confirmed'], // Ensure password confirmation
+    //     ]);
+    // }
 
-    protected function create(array $data)
-    {
+    // protected function create(array $data)
+    // {
 
 
-        $role                = Role::find(2);
-        return User::create([
-            'name'           => $data['name'],
-            'email'          => $data['email'],
-            'phone'          => $data['phone'],
-            'gender'         => $data['gender'],
-            'role_id'        => $role ? $role->id : null,
-            'permissions'    => $role ? $role->permissions : [],
-            'date_of_birth'  => Carbon::parse($data['date_of_birth'])->format('d-m-Y'),
-            'password'       => Hash::make($data['password'])
+    //     $role                = Role::find(2);
+    //     return User::create([
+    //         'name'           => $data['name'],
+    //         'email'          => $data['email'],
+    //         'phone'          => $data['phone'],
+    //         'gender'         => $data['gender'],
+    //         'role_id'        => $role ? $role->id : null,
+    //         'permissions'    => $role ? $role->permissions : [],
+    //         'date_of_birth'  => Carbon::parse($data['date_of_birth'])->format('d-m-Y'),
+    //         'password'       => Hash::make($data['password'])
 
-        ]);
-    }
+    //     ]);
+    // }
 }
