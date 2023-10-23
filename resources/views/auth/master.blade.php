@@ -30,7 +30,6 @@
             <div class="row justify-content-center h-100 align-items-center">
                 <div class="col-md-4">
                     <div class="authincation-content">
-
                         @yield('main')
                     </div>
                 </div>

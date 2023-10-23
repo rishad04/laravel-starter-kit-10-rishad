@@ -49,8 +49,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-
-
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
@@ -69,7 +67,7 @@ class AuthController extends Controller
             'date_of_birth' => ['required'],
             'gender' => ['required'],
             'phone' => ['required', 'numeric'],
-            'password' => ['required', 'string', 'min:2','confirmed'], // Ensure password confirmation
+            'password' => ['required', 'string', 'min:2', 'confirmed'], // Ensure password confirmation
         ]);
     }
 
