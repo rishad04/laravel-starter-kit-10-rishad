@@ -47,84 +47,54 @@ class UserRepository implements UserInterface
     public function store($request)
     {
         try {
-        $user                   = new User();
-        $user->name             = $request->name;
-        $user->email            = $request->email;
-        $user->password         = Hash::make($request->password);
-        $user->phone            = $request->phone;
-        $user->nid_number       = $request->nid_number;
-        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240]);
-        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240]);
-        $user->address          = $request->address;
+            $user                   = new User();
+            $user->name             = $request->name;
+            $user->email            = $request->email;
+            $user->password         = Hash::make($request->password);
+            $user->phone            = $request->phone;
+            $user->nid_number       = $request->nid_number;
+            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240]);
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240]);
+            $user->address          = $request->address;
 
-        $user->gender           =  $request->gender;
-        $user->designations     =  $request->designations;
-        $user->dob              =  $request->dob;
-        $user->about            =  $request->about;
+            $user->gender           =  $request->gender;
+            $user->designations     =  $request->designations;
+            $user->dob              =  $request->dob;
+            $user->about            =  $request->about;
 
-        $user->role_id          = $request->role_id;
-        $user->permissions      = [];
-        $user->status           = $request->status;
-        $user->save();
+            $user->role_id          = $request->role_id;
+            $user->permissions      = [];
+            $user->status           = $request->status;
+            $user->save();
 
-        return $this->responseWithSuccess(__('alert.successfully_added'), []);
-            } catch (\Throwable $th) {
-                return $this->responseWithError(__('alert.something_went_wrong'), []);
-            }
+            return $this->responseWithSuccess(__('alert.successfully_added'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
     }
 
     public function update($request)
-    {
-
-
-        // $user                       = $this->model::find($request->id);
-        // try {
-        $user                   = $this->model::find($request->id);
-        $user->name             = $request->name;
-        $user->email            = $request->email;
-        $user->password         = Hash::make($request->password);
-        $user->phone            = $request->phone;
-        $user->nid_number       = $request->nid_number;
-
-        $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
-
-        $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
-        $user->address          = $request->address;
-
-        $user->gender           =  $request->gender;
-        $user->designations     =  $request->designations;
-        $user->dob              =  $request->dob;
-        $user->about            =  $request->about;
-
-        $user->role_id          = $request->role_id;
-        $user->permissions      = [];
-        $user->status           = $request->status;
-        $user->save();
-
-        return $this->responseWithSuccess(__('alert.successfully_updated'), []);
-        // } catch (\Throwable $th) {
-        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
-        // }
-    }
-
-    public function profileUpdate($request)
     {
         try {
             $user                   = $this->model::find($request->id);
             $user->name             = $request->name;
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
-            $user->mobile           = $request->mobile;
+            $user->phone            = $request->phone;
+            $user->nid_number       = $request->nid_number;
 
-            $user->upload_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], '');
+            $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);
 
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
             $user->address          = $request->address;
+
+            $user->gender           =  $request->gender;
+            $user->designations     =  $request->designations;
+            $user->dob              =  $request->dob;
+            $user->about            =  $request->about;
+
             $user->role_id          = $request->role_id;
-
             $user->permissions      = [];
-
-
-
             $user->status           = $request->status;
             $user->save();
 
@@ -134,20 +104,6 @@ class UserRepository implements UserInterface
         }
     }
 
-    public function passwordUpdate($request)
-    {
-        try {
-            $user = User::findOrFail($request->id);
-            if (Hash::check($request->old_password, $user->password)) {
-                $user->password = Hash::make($request->new_password);
-                $user->save();
-                return $this->responseWithSuccess(__('alert.password_updated'), []);
-            }
-            return $this->responseWithError(__('alert.old_password_not_match'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
-        }
-    }
 
     public function delete($id)
     {
@@ -177,6 +133,38 @@ class UserRepository implements UserInterface
             return true;
         } catch (\Throwable $th) {
             return false;
+        }
+    }
+
+    public function profileUpdate($request)
+    {
+        try {
+            $user                   = $this->model::find(auth()->user()->id);
+            $user->name             = $request->name;
+            $user->dob              = $request->dob;
+            $user->gender           = $request->gender;
+            $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
+            $user->address          = $request->address;
+            $user->about            = $request->about;
+            $user->save();
+            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
+    public function passwordUpdate($request)
+    {
+        try {
+            $user   = $this->model::find(auth()->user()->id);
+            if (Hash::check($request->old_password, $user->password)) {
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return $this->responseWithSuccess(__('alert.password_updated'), []);
+            }
+            return $this->responseWithError(__('alert.old_password_not_match'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }
 }

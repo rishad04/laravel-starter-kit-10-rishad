@@ -9,9 +9,11 @@ interface UserInterface
 
     public function get($id);
     public function store($request);
-    public function profileUpdate($request);
-
-    public function passwordUpdate($request);
     public function delete($id);
     public function permissionUpdate($id, $request);
+
+
+
+    public function profileUpdate($request);
+    public function passwordUpdate($request);
 }
