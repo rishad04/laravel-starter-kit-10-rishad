@@ -76,7 +76,7 @@ return [
   'number'                 =>   'Number',
   'old_password'           =>  'Old Password',
   'new_password'           =>   'New Password',
-  'confirm_password'       =>  'Confirm Password',
+  'c_password'             =>  'Confirm Password',
 
   'hindi'                  => 'हिन्दी',
   'arabic'                 => 'عربي',
