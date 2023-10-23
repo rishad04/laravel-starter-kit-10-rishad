@@ -51,12 +51,12 @@
 
                                 <div class="form-group col-md-6">
                                     <label class="label-style-1">{{ __('label.gender') }} <span class="text-danger">*</span></label>
-                                    <select name="status" id="status" class="form-control input-style-1 select2">
-                                        @foreach(trans('status') as $key => $status)
-                                        <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>
+                                    <select name="gender" id="gender" class="form-control input-style-1 select2">
+                                        @foreach(trans('gender') as $key => $gender)
+                                        <option value="{{ $key }}" @selected(old('gender'))>{{ $gender }}</option>
                                         @endforeach
                                     </select>
-                                    @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                    @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                 </div>
 
 
