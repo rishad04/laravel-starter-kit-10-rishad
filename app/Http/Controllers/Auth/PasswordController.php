@@ -70,7 +70,7 @@ class PasswordController extends Controller
 
             session()->forget(['password_reset', 'token']);
 
-            if (auth()->attempt(['email' => session()->pull('email'), 'password' => $request->password])) {
+            if (auth()->attempt(['email' => session()->pull('email'), 'password' => $request->new_password])) {
                 return redirect('/');
             }
             return redirect()->route('login');

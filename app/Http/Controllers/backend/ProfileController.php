@@ -20,13 +20,7 @@ class ProfileController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        return view('backend.profile.index', compact('user'));
-    }
-
-    public function profileEdit()
-    {
-        $user = auth()->user();
-        return view('backend.profile.edit', compact('user'));
+        return view('backend.user.profile', compact('user'));
     }
 
     public function profileUpdate(UpdateRequest $request)
@@ -36,12 +30,7 @@ class ProfileController extends Controller
         if ($result['status']) {
             return redirect()->route('profile')->with('success', $result['message']);
         }
-        return back()->with('danger', $result['message'])->withInput();
-    }
-
-    public function passwordUpdateForm()
-    {
-        return view('backend.profile.change_password');
+        return  redirect()->route('profile.edit')->with('danger', $result['message'])->withInput();
     }
 
     public function passwordUpdate(PasswordUpdateRequest $request)

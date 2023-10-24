@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Todo extends Model
 {
-    use HasFactory,CommonHelperTrait;
+    use HasFactory;
 
     protected $fillable = [
         'title',
@@ -44,11 +44,21 @@ class Todo extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function upload(){
-        return $this->belongsTo(Upload::class,'todo_file','id');
+    public function upload()
+    {
+        return $this->belongsTo(Upload::class, 'todo_file', 'id');
     }
 
+    public function getTodoStatusAttribute()
+    {
+        if ($this->status == TodoStatus::PROCESSING) {
+            $status = '<span class="bullet-badge bullet-badge-info">' . trans("TodoStatus." . $this->status) . '</span>';
+        } elseif ($this->status == TodoStatus::COMPLETED) {
+            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("TodoStatus." . $this->status) . '</span>';
+        } else {
+            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("TodoStatus." . $this->status) . '</span>';
+        }
 
-
-
+        return $status;
+    }
 }

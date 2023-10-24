@@ -20,15 +20,15 @@
                     <input type="hidden" name="token" value="{{session('token')}}">
 
                     <div class="form-group mb-3">
-                        <label for="password" class="label-style-1">New Password<sup>*</sup></label>
-                        <input type="password" name="password" id="password" class="form-control input-style-1" value="{{ old('password') }}" placeholder="Enter Verification Code" required autocomplete="off" autofocus>
-                        @error('password') <span class="text-danger small"> {{ $message }} </span> @enderror
+                        <label for="new_password" class="label-style-1">New Password<sup>*</sup></label>
+                        <input type="password" name="new_password" id="new_password" class="form-control input-style-1" value="{{ old('new_password') }}" placeholder="Enter new password" required autocomplete="off" autofocus>
+                        @error('new_password') <span class="text-danger small"> {{ $message }} </span> @enderror
                         @if(session()->has('danger')) <span class="text-danger small">{{ session('danger') }}</span> @endif
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="confirm_password" class="label-style-1">Confirm Password<sup>*</sup></label>
-                        <input type="password" name="confirm_password" id="confirm_password" class="form-control input-style-1" value="{{ old('confirm_password') }}" placeholder="Enter Verification Code" required autocomplete="off" autofocus>
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-control input-style-1" value="{{ old('confirm_password') }}" placeholder="confirm new password" required autocomplete="off" autofocus>
                         @error('confirm_password') <span class="text-danger small"> {{ $message }} </span> @enderror
                         @if(session()->has('danger')) <span class="text-danger small">{{ session('danger') }}</span> @endif
                     </div>

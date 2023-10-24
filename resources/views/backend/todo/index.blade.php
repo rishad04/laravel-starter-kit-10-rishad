@@ -52,7 +52,7 @@
                                 </thead>
                                 <tbody>
 
-                                    @forelse($todos as $key => $todo)
+                                    @forelse($all_todo as $key => $todo)
                                     <tr id="row_{{ $todo->id }}">
                                         <td>{{++$key}}</td>
                                         <td> {{dateFormat($todo->date)}}</td>
@@ -61,7 +61,6 @@
                                         <td><a href="{{ asset(@$todo->upload->original) }}" download>{{ __('label.download') }}</a></td>
                                         <td> {{$todo->note}}</td>
                                         <td>{!! $todo->TodoStatus !!}</td>
-
                                         <td>
                                             <div class="input-group">
                                                 <div class="input-group-prepend be-addon">
@@ -71,42 +70,27 @@
                                                         </a>
                                                     </div>
                                                     <div class="dropdown-menu">
-                                                     
-
                                                         @if(hasPermission('todo_update')== true)
                                                         <a href="{{ route('todo.edit',$todo->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
-
-                                           
-
-
                                                         @endif
                                                         @if(hasPermission('todo_delete')== true)
                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('todo/delete', {{$todo->id}})">
                                                             <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
                                                         </a>
-
-                                                 
                                                         @endif
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                        
-
                                     @empty
-                                    <x-nodata-found :colspan = "8" />
+                                    <x-nodata-found :colspan="8" />
                                     @endforelse
                                 </tbody>
                             </table>
                         </div>
-
-                  
-
-
-                        @if(count($todos))
-                        <x-paginate-show :items="$todos" />
+                        @if(count($all_todo))
+                        <x-paginate-show :items="$all_todo" />
                         @endif
                         <!-- pagination component -->
                     </div>

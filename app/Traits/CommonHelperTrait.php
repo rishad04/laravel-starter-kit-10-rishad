@@ -36,23 +36,7 @@ trait CommonHelperTrait
         if ($images  && $images->original['image_three'] && File::exists(public_path($images->original['image_three']))) :
             $data['image_three'] = static_asset($images->original['image_three']);
         endif;
-        // if ($images  && $images->original['image_four'] && File::exists(public_path($images->original['image_four']))) :
-        //     $data['image_four'] = static_asset($images->original['image_four']);
-        // endif;
 
         return $data;
-    }
-
-    public function getTodoStatusAttribute()
-    {
-        if ($this->status == TodoStatus::PENDING) {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("TodoStatus." . $this->status) . '</span>';
-        } elseif ($this->status == TodoStatus::PROCESSING) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . trans("TodoStatus." . $this->status) . '</span>';
-        } elseif ($this->status == TodoStatus::COMPLETED) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("TodoStatus." . $this->status) . '</span>';
-        }
-
-        return $status;
     }
 }

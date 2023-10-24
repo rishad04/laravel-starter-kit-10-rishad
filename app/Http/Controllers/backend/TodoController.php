@@ -24,16 +24,14 @@ class TodoController extends Controller
 
     public function index()
     {
+        $all_todo = $this->repo->all();
 
-        $todos = $this->repo->all();
-
-        return view('backend.todo.index', compact('todos'));
+        return view('backend.todo.index', compact('all_todo'));
     }
 
 
     public function create()
     {
-
         $users      = $this->userRepo->all(status: Status::ACTIVE);
         return view('backend.todo.create', compact('users'));
     }
@@ -43,7 +41,7 @@ class TodoController extends Controller
         $result = $this->repo->store($request);
 
         if ($result['status']) {
-            return redirect()->route('user.index')->with('success', $result['message']);
+            return redirect()->route('todo.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message'])->withInput();
     }
@@ -59,7 +57,6 @@ class TodoController extends Controller
 
     public function update(UpdateTodoRequest $request)
     {
-
         $result = $this->repo->update($request);
         if ($result['status']) {
             return redirect()->route('todo.index')->with('success', $result['message']);
@@ -69,8 +66,6 @@ class TodoController extends Controller
 
     public function destroy($id)
     {
-
-
         if ($this->repo->delete($id)) :
             $success[0] = "Deleted Successfully";
             $success[1] = 'success';
