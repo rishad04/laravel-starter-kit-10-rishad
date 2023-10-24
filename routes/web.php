@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\TodoController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\backend\ActivityLogController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     // activity-logs
     Route::get('activity-logs',                     [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
     Route::get('activity-logs/view/{id}',           [ActivityLogController::class, 'view'])->name('activity.logs.view');
+
+
+    // route search functionality 
+    Route::get('search',                [SearchController::class, 'search'])->name('search')->middleware('hasPermission:route_search');
+    Route::post('search/routes',        [SearchController::class, 'searchRoute'])->name('search.route')->middleware('hasPermission:route_search');
 });
