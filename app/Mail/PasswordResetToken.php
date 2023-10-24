@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Signup extends Mailable
+class PasswordResetToken extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,8 +30,8 @@ class Signup extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: globalSettings('mail_from_address'),
-            subject: 'Registration Successful',
+            // from: globalSettings('mail_from_address'),
+            subject: 'Password Reset Token',
         );
     }
 
@@ -41,7 +41,7 @@ class Signup extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.signup',
+            view: 'emails.password_reset_token',
             with: [
                 'user' => $this->user,
             ],
@@ -57,7 +57,6 @@ class Signup extends Mailable
     {
         return [];
     }
-
 
     private function setMailer()
     {

@@ -4,6 +4,7 @@ namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
 use App\Enums\Status;
+use App\Mail\PasswordResetToken;
 use App\Mail\Signup;
 use App\Mail\TokenResend;
 use App\Models\Role;
@@ -175,6 +176,23 @@ class UserRepository implements UserInterface
         }
     }
 
+    public function passwordReset($request)
+    {
+        try {
+            $user   = $this->model::find($request->user_id);
+
+            if ($user != null && session()->has('token') && session('token') == $request->token) {
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return $this->responseWithSuccess(__('alert.password_updated'), []);
+            }
+
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
     public function signup($request)
     {
         try {
@@ -235,6 +253,23 @@ class UserRepository implements UserInterface
             $user->save();
 
             Mail::to($user->email)->send(new TokenResend($user));
+
+            return $this->responseWithSuccess(__('alert.otp_mail_send'), []);
+        } catch (\Exception $e) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
+    public function passwordResetToken($request)
+    {
+        try {
+            $user           = $this->model::where('email', $request->email)->first();
+            $user->token    = random_int(10000, 99999);
+            $user->save();
+
+            session(['user_id' => $user->id, 'email' => $user->email]);
+
+            Mail::to($user->email)->send(new PasswordResetToken($user));
 
             return $this->responseWithSuccess(__('alert.otp_mail_send'), []);
         } catch (\Exception $e) {

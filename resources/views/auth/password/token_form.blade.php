@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ __('Email Verification') }} @endsection
+@section('title') {{ __('Token Verification') }} @endsection
 
 @section('main')
 
@@ -10,14 +10,13 @@
 
                 <div class="mb-3">
                     <h5 class="heading-5 mb-3 text-center"> Confirm Verification Code</h5>
-                    <span class="small">We have sent you a verification Code to {{session('email')}}. Please confirm that code to verify your email address for registration. </span>
+                    <span class="small">We have sent you a verification Code to {{session('email')}}. Please confirm that code to verify your password reset request. </span>
                 </div>
 
-                <form method="POST" action="{{ route('verify.email') }}">
+                <form method="POST" action="{{ route('password.verifyToken') }}">
                     @csrf
 
                     <input type="hidden" name="user_id" value="{{session('user_id')}}">
-                    <input type="hidden" name="email" value="{{session('email')}}">
 
                     <div class="form-group mb-3">
                         <label for="token" class="label-style-1">Verification Code <sup>*</sup></label>

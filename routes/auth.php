@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +16,25 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('guest')->group(function () {
-    Route::get('login',             [AuthController::class, 'loginForm'])->name('loginForm');
-    Route::post('login',            [AuthController::class, 'login'])->name('login');
-    Route::get('register',          [AuthController::class, 'registerForm'])->name('registerForm');
-    Route::post('register',         [AuthController::class, 'register'])->name('register');
-});
+Route::middleware('XSS', 'guest')->group(function () {
+    Route::get('login',                         [AuthController::class, 'loginForm'])->name('loginForm');
+    Route::post('login',                        [AuthController::class, 'login'])->name('login');
+    // token resend 
+    Route::post('token/resend',                 [AuthController::class, 'resendToken'])->name('token.resend')->withoutMiddleware('guest');
 
+    // registration 
+    Route::get('register',                      [RegisterController::class, 'registerForm'])->name('registerForm');
+    Route::post('register',                     [RegisterController::class, 'register'])->name('register');
+    Route::get('register/token/verify',         [RegisterController::class, 'tokenForm'])->name('register.tokenForm');
+    Route::post('register/token/verify',        [RegisterController::class, 'verifyToken'])->name('register.verifyToken');
 
-Route::middleware('XSS')->group(function () {
-    // verification 
-    Route::get('verify/email',          [AuthController::class, 'emailVerificationForm'])->name('verify.email.form');
-    Route::post('verify/email',         [AuthController::class, 'emailVerification'])->name('verify.email');
-    Route::post('verify/resend-token',  [AuthController::class, 'resendToken'])->name('token.resend');
+    // password reset 
+    Route::get('password/verify/email',         [PasswordController::class, 'passwordForgotForm'])->name('password.forgotForm');
+    Route::post('password/verify/email',        [PasswordController::class, 'verifyEmail'])->name('password.verify.email');
+
+    Route::get('password/verify/token',         [PasswordController::class, 'tokenForm'])->name('password.tokenForm');
+    Route::post('password/verify/token',        [PasswordController::class, 'verifyToken'])->name('password.verifyToken');
+
+    Route::get('password/reset',                [PasswordController::class, 'passwordResetForm'])->name('password.resetForm');
+    Route::post('password/reset',               [PasswordController::class, 'passwordReset'])->name('password.reset');
 });
