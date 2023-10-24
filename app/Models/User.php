@@ -7,10 +7,12 @@ use App\Traits\CommonHelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, CommonHelperTrait;
+    use HasApiTokens, HasFactory, LogsActivity, CommonHelperTrait;
 
     protected $fillable = ['name', 'email', 'password',];
 
@@ -48,4 +50,14 @@ class User extends Authenticatable
     //     return static_asset('backend/images/avatar/user-profile.png');
     // }
 
+    /**
+     * Activity Log
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('User')
+            ->logOnly(['name', 'email'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
+    }
 }

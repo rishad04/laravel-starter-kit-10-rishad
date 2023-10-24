@@ -51,12 +51,12 @@
                                     <td>{{$log->subject_type}}</td>
                                     <td>{{__('label.'.$log->description)}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary btn-sm modalBtn" data-toggle="modal" data-target="#dynamic-modal" data-modalsize="modal-lg" data-title="{{ __('label.log_details') }}" data-url="{{ route('log-activity-view',$log->id) }}"> <i class="fa fa-eye"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm modalBtn" data-toggle="modal" data-target="#dynamic-modal" data-modalsize="modal-lg" data-title="{{ __('label.log_details') }}" data-url="{{ route('activity.logs.view',$log->id) }}"> <i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                                 @empty
-                                 <x-nodate-fount : colspan = "5" />
-                                 @endforelse
+                                <x-nodata-found : colspan="5" />
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

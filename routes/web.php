@@ -23,8 +23,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/',             [DashboardController::class, 'index'])->name('home'); //need to modify as requirement
 
-    Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
     Route::get('logout',        [AuthController::class, 'logout'])->name('Logout');
+
+    Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
 
     // profile 
     Route::get('profile',                           [ProfileController::class, 'profile'])->name('profile')->middleware('hasPermission:profile_read');
@@ -41,9 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('todo/update',                       [TodoController::class, 'update'])->name('todo.update')->middleware('hasPermission:todo_update');
     Route::delete('todo/delete/{id}',               [TodoController::class, 'destroy'])->name('todo.delete')->middleware('hasPermission:todo_delete');
 
-    // activity-logs
-    Route::get('activity-logs',                     [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
-    Route::get('activity-logs/view/{id}',           [ActivityLogController::class, 'view'])->name('activity.logs.view');
+    Route::prefix('admin')->group(function () {
+        // activity-logs
+        Route::get('activity-logs',                     [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
+        Route::get('activity-logs/view/{id}',           [ActivityLogController::class, 'view'])->name('activity.logs.view');
+    });
 
 
     // route search functionality 
