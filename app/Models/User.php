@@ -47,4 +47,5 @@ class User extends Authenticatable
     //     }
     //     return static_asset('backend/images/avatar/user-profile.png');
     // }
+
 }

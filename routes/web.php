@@ -18,15 +18,6 @@ use App\Http\Controllers\Backend\ProfileController;
 |
 */
 
-
-Route::middleware('guest')->group(function () {
-    Route::get('login',             [AuthController::class, 'loginForm'])->name('loginForm');
-    Route::post('login',            [AuthController::class, 'login'])->name('login');
-    Route::get('register',          [AuthController::class, 'registerForm'])->name('registerForm');
-    Route::post('register',         [AuthController::class, 'register'])->name('register');
-});
-
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/',             [DashboardController::class, 'index'])->name('home'); //need to modify as requirement

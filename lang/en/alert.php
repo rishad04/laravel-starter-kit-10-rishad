@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "registration_successful"       => "Registration Successful",
     "successfully_added"            => "Successfully added",
     "successfully_updated"          => "Successfully updated",
     "successfully_status_updated"   => "Successfully status updated",

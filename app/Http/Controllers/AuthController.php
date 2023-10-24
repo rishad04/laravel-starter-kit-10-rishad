@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Role;
-use App\Models\User;
+use App\Enums\VerificationType;
+use App\Http\Requests\SignupRequest;
+use App\Http\Requests\TokenVerificationRequest;
+use App\Interfaces\AuthInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Validator;
-use App\Repositories\LoginActivity\LoginActivityInterface;
+use App\Repositories\User\UserInterface;
 
 class AuthController extends Controller
 {
-    protected $LoginActivity;
 
-    public function __construct(LoginActivityInterface $LoginActivity)
+    private  $userRepo;
+
+    public function __construct(UserInterface $userRepo)
     {
-        $this->middleware('guest')->except('logout');
+        $this->userRepo = $userRepo;
     }
 
 
@@ -47,45 +46,58 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(SignupRequest $request)
     {
-        $this->validator($request->all())->validate();
-
-        $user = $this->create($request->all());
-
-        Auth::login($user);
-
-        return redirect('/dashboard');
+        $result = $this->userRepo->signup($request);
+        if ($result['status']) {
+            return redirect()->route('verify.email.form')->with('success', $result['message']);;
+        }
+        return back()->with('danger', $result['message'])->withInput();
     }
 
-
-    protected function validator(array $data)
+    public function emailVerificationForm()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'date_of_birth' => ['required'],
-            'gender' => ['required'],
-            'phone' => ['required', 'numeric'],
-            'password' => ['required', 'string', 'min:2', 'confirmed'], // Ensure password confirmation
-        ]);
+        $user = $this->userRepo->get(session('user_id'));
+        if ($user->email_verified_at == null) {
+            return view('backend.verification.email');
+        }
+        return redirect('/');
     }
 
-    protected function create(array $data)
+    public function emailVerification(TokenVerificationRequest $request)
     {
+        $result =  $this->userRepo->verifyToken($request);
 
+        if ($result['status']) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => $result['message']], 200);
+            }
 
-        $role                = Role::find(2);
-        return User::create([
-            'name'           => $data['name'],
-            'email'          => $data['email'],
-            'phone'          => $data['phone'],
-            'gender'         => $data['gender'],
-            'role_id'        => $role ? $role->id : null,
-            'permissions'    => $role ? $role->permissions : [],
-            'date_of_birth'  => Carbon::parse($data['date_of_birth'])->format('d-m-Y'),
-            'password'       => Hash::make($data['password'])
+            if (auth()->attempt(['email' => $request->email, 'password' => session('password')])) {
+                return redirect()->route('login')->with('success', $result['message']);
+            }
+        }
 
-        ]);
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $result['message']], 422);
+        }
+        return redirect()->back()->with('danger', $result['message']);
+    }
+
+    public function resendToken(Request $request)
+    {
+        $result =  $this->userRepo->resendToken($request);
+
+        if ($result['status']) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => $result['message']], 200);
+            }
+            return redirect()->back()->with('success', $result['message']);
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $result['message']], 422);
+        }
+        return redirect()->back()->with('danger', $result['message']);
     }
 }

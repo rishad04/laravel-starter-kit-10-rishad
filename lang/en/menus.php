@@ -19,6 +19,7 @@ return [
   'backup'              => 'Backup',
   'language'            => 'Language',
   'login'               => 'Login',
+  'registration'        => 'Registration',
 
   'profile'             => 'Profile',
   'change_password'     => 'Change Password',

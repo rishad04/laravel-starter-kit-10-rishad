@@ -12,5 +12,4 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthRepository implements AuthInterface
 {
-    
 }

@@ -3,12 +3,18 @@
 namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
+use App\Enums\Status;
+use App\Mail\Signup;
+use App\Mail\TokenResend;
 use App\Models\Role;
 use App\Models\User;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\User\UserInterface;
 use App\Repositories\Upload\UploadInterface;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class UserRepository implements UserInterface
 {
@@ -60,7 +66,7 @@ class UserRepository implements UserInterface
 
             $user->gender           =  $request->gender;
             $user->designations     =  $request->designations;
-            $user->dob              =  $request->dob;
+            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
             $user->about            =  $request->about;
 
             $user->role_id          = $request->role_id;
@@ -83,7 +89,7 @@ class UserRepository implements UserInterface
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
 
-            $user->dob              =  $request->dob;
+            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
             $user->gender           =  $request->gender;
             $user->designations     =  $request->designations;
 
@@ -142,7 +148,7 @@ class UserRepository implements UserInterface
         try {
             $user                   = $this->model::find(auth()->user()->id);
             $user->name             = $request->name;
-            $user->dob              = $request->dob;
+            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
             $user->gender           = $request->gender;
             $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
             $user->address          = $request->address;
@@ -165,6 +171,73 @@ class UserRepository implements UserInterface
             }
             return $this->responseWithError(__('alert.old_password_not_match'), []);
         } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
+    public function signup($request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $user                   = $this->model;
+            $user->name             = $request->name;
+            $user->email            = $request->email;
+            $user->password         = Hash::make($request->password);
+            $user->phone            = $request->phone;
+            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->gender           =  $request->gender;
+
+            $user->role_id          = 2;
+            $user->permissions      = Role::find($user->role_id)->permissions;
+
+            $user->status           = Status::INACTIVE;
+            $user->token            = rand(100000, 999999);;
+
+            $user->save();
+
+            session(['user_id' => $user->id, 'email' => $user->email, 'password' => $request->password,]);
+
+            Mail::to($user->email)->send(new Signup($user));
+
+            DB::commit();
+            return $this->responseWithSuccess(__('alert.registration_successful'), []);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
+    public function verifyToken($request)
+    {
+        try {
+            $user     = User::where('id', $request->user_id)->where('token', $request->token)->first();
+            if ($user == null) {
+                return $this->responseWithError(__('alert.something_went_wrong'), []);
+            }
+
+            $user->email_verified_at    = now();
+            $user->token                = null;
+            $user->status               = Status::ACTIVE;
+            $user->save();
+
+            return $this->responseWithSuccess(__('alert.verified'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
+        }
+    }
+
+    public function resendToken($request)
+    {
+        try {
+            $user           = $this->get($request->user_id);
+            $user->token    = random_int(10000, 99999);
+            $user->save();
+
+            Mail::to($user->email)->send(new TokenResend($user));
+
+            return $this->responseWithSuccess(__('alert.otp_mail_send'), []);
+        } catch (\Exception $e) {
             return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }

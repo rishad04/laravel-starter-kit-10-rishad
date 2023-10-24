@@ -16,4 +16,10 @@ interface UserInterface
 
     public function profileUpdate($request);
     public function passwordUpdate($request);
+
+    public function signup($request);
+
+    public function verifyToken($request);
+
+    public function resendToken($request);
 }
