@@ -27,12 +27,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard',    [DashboardController::class, 'index'])->name('dashboard')->middleware('hasPermission:dashboard_read');
 
-    // profile 
+    // profile
     Route::get('profile',                           [ProfileController::class, 'profile'])->name('profile')->middleware('hasPermission:profile_read');
-    Route::get('profile/edit',                      [ProfileController::class, 'profile'])->name('profile.edit')->middleware('hasPermission:profile_update');
+    Route::get('profile/update',                     [ProfileController::class, 'profileEdit'])->name('profile.update')->middleware('hasPermission:profile_update');
     Route::put('profile/update',                    [ProfileController::class, 'profileUpdate'])->name('profile.update')->middleware('hasPermission:profile_update');
-    Route::get('profile/change-password',           [ProfileController::class, 'profile'])->name('passwordUpdateForm')->middleware('hasPermission:password_update');
-    Route::put('profile/update-password',           [ProfileController::class, 'passwordUpdate'])->name('passwordUpdate')->middleware('hasPermission:password_update');
+    Route::get('password/update',                   [ProfileController::class, 'passwordEdit'])->name('password.update')->middleware('hasPermission:password_update');
+    Route::put('password/update',                   [ProfileController::class, 'passwordUpdate'])->name('password.update')->middleware('hasPermission:password_update');
 
     // To_do List route
     Route::get('todo/todo_list',                    [TodoController::class, 'index'])->name('todo.index')->middleware('hasPermission:todo_read');
@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-    // route search functionality 
+    // route search functionality
     Route::get('search',                [SearchController::class, 'search'])->name('search')->middleware('hasPermission:route_search');
     Route::post('search/routes',        [SearchController::class, 'searchRoute'])->name('search.route')->middleware('hasPermission:route_search');
 });

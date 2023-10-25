@@ -1976,7 +1976,7 @@ body.rtl-mode .price-wpr {
 16. Profile css
 ---------------------------------------------------------*/
 .custom-tab-1 .nav {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: repeat(2, 1fr);
     border-radius: 8px 8px 0px 0px;
     border-bottom: 1px solid #dee5f0;
