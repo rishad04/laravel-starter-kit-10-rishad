@@ -20,7 +20,19 @@ class ProfileController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        return view('backend.user.profile', compact('user'));
+        return view('backend.profile.profile', compact('user'));
+    }
+
+    public function profileEdit()
+    {
+        $user = auth()->user();
+        return view('backend.profile.profile-update', compact('user'));
+    }
+
+    public function passwordEdit()
+    {
+        $user = auth()->user();
+        return view('backend.profile.password-update', compact('user'));
     }
 
     public function profileUpdate(UpdateRequest $request)
