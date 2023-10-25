@@ -36,6 +36,10 @@
                     <p id="tokenResendResponse" class="text-center pt-2 text-success"></p>
                 </div>
 
+                <div class="text-center mt-3">
+                    <p>Know your password ? <a class="text-primary" href="{{ route('login') }}">Sign in here</a></p>
+                </div>
+
             </div>
 
         </div>

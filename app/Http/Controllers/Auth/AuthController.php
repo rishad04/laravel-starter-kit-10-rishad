@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\User\UserInterface;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -23,9 +24,24 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+
+    // Auth login 
     public function login(Request $request)
     {
+        $request->validate([
+            'email'     => 'required|email',
+            'password'  => 'required|string',
+        ]);
+
         if (auth()->attempt(request()->only(['email', 'password']))) {
+            // Active Remember me 24 houre
+            if ($request->remember != null) {
+                Cookie::queue('email', $request->email, 1440);
+                Cookie::queue('password', $request->password, 1440);
+            } else {
+                Cookie::queue(Cookie::forget('email'));
+                Cookie::queue(Cookie::forget('password'));
+            }
             return redirect('/dashboard');
         }
         return redirect('/');
