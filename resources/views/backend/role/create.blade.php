@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('role.title') }} {{ __('label.add') }}
+{{ ___('role.title') }} {{ ___('label.add') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -10,10 +10,10 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ __('role.title') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.create') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.create') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ __('role.create_role') }}</h4>
+                        <h4 class="title-site"> {{ ___('role.create_role') }}</h4>
                     </div>
 
                     <form action="{{route('role.store')}}" method="POST" enctype="multipart/form-data" id="basicform">
@@ -34,8 +34,8 @@
                             <div class="col-xl-4 col-12">
                                 <div class="row">
                                     <div class="form-group col-md-12">
-                                        <label class=" label-style-1" for="name">{{ __('label.name') }}</label> <span class="text-danger">*</span>
-                                        <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{old('name')}}" require>
+                                        <label class=" label-style-1" for="name">{{ ___('label.name') }}</label> <span class="text-danger">*</span>
+                                        <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ ___('placeholder.Enter_name') }}" autocomplete="off" class="form-control input-style-1" value="{{old('name')}}" require>
                                         @error('name')
                                         <small class="text-danger mt-2">{{ $message }}</small>
                                         @enderror
@@ -43,7 +43,7 @@
 
 
                                     <div class="form-group col-md-12">
-                                        <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
+                                        <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                         <select name="status" id="status" class="form-control input-style-1 select2">
 
                                             @foreach(trans('status') as $key => $status)
@@ -60,8 +60,8 @@
                                 <table class="table border permission-table">
                                     <thead>
                                         <tr>
-                                            <th>{{ __('label.modules') }}</th>
-                                            <th>{{ __('label.permissions') }}</th>
+                                            <th>{{ ___('label.modules') }}</th>
+                                            <th>{{ ___('label.permissions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,7 +72,7 @@
                                                 @foreach ($permission->keywords as $key=>$keyword)
                                                 <div class="row align-items-center permission-check-box pb-2 pt-2">
                                                     <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" />
-                                                    <label class="label-style-2" for="{{ $keyword }}">{{ __('label.'.$key) }}</label>
+                                                    <label class="label-style-2" for="{{ $keyword }}">{{ ___('label.'.$key) }}</label>
                                                 </div>
                                                 @endforeach
                                             </td>
@@ -86,8 +86,8 @@
 
                 <div class="j-create-btns">
                     <div class="drp-btns">
-                        <button type="submit" class="j-td-btn">{{ __('label.save') }}</button>
-                        <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
+                        <button type="submit" class="j-td-btn">{{ ___('label.save') }}</button>
+                        <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
                     </div>
                 </div>
 

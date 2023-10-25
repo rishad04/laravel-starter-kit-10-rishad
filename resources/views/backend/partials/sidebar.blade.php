@@ -21,7 +21,7 @@
             <li> <a href="{{route('activity.logs.index')}}" aria-expanded="true"> <i class="icon-list"></i> <span class="nav-text">{{__('menus.activity_logs')}}</span> </a> </li>
 
             @if(hasPermission('login_activity_read'))
-            <li> <a href="#" aria-expanded="false"> <i class="fa fa-history font-size20"></i> <span class="nav-text">{{ __('login_activity') }}</span> </a> </li>
+            <li> <a href="#" aria-expanded="false"> <i class="fa fa-history font-size20"></i> <span class="nav-text">{{ ___('login_activity') }}</span> </a> </li>
             @endif
 
             @if(hasPermission('language_settings_read') == true)
@@ -29,35 +29,35 @@
             @endif
 
             <li>
-                <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ __('menus.settings') }}</span></a>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false"><i class="icon-wrench"></i><span class="nav-text">{{ ___('menus.settings') }}</span></a>
                 <ul aria-expanded="false">
 
                     @if(hasPermission('general_settings_read') == true)
-                    <li> <a href="{{route('settings.general.index')}}">{{ __('menus.general_settings') }}</a> </li>
+                    <li> <a href="{{route('settings.general.index')}}">{{ ___('menus.general_settings') }}</a> </li>
                     @endif
 
                     @if(hasPermission('mail_settings_read') == true)
-                    <li> <a href="{{route('settings.mail')}}">{{ __('menus.mail_setting') }}</a> </li>
+                    <li> <a href="{{route('settings.mail')}}">{{ ___('menus.mail_setting') }}</a> </li>
                     @endif
 
                     @if(hasPermission('recaptcha_settings_read') == true)
-                    <li> <a href="{{route('settings.recaptcha.index')}}">{{ __('menus.recaptcha') }}</a> </li>
+                    <li> <a href="{{route('settings.recaptcha.index')}}">{{ ___('menus.recaptcha') }}</a> </li>
                     @endif
 
                     @if(hasPermission('sms_settings_read') == true)
-                    <li> <a href="{{route('sms-settings.index')}}">{{ __('menus.sms_settings') }}</a> </li>
+                    <li> <a href="{{route('sms-settings.index')}}">{{ ___('menus.sms_settings') }}</a> </li>
                     @endif
 
                     @if(hasPermission('social_login_settings_update')== true)
-                    <li> <a href="{{route('social.login.settings.index')}}">{{ __('menus.social_login_settings') }}</a> </li>
+                    <li> <a href="{{route('social.login.settings.index')}}">{{ ___('menus.social_login_settings') }}</a> </li>
                     @endif
 
                     @if(hasPermission('payout_setup_settings_read')== true)
-                    <li> <a href="{{route('payout.setup.settings.index')}}">{{ __('menus.payout_setup') }}</a> </li>
+                    <li> <a href="{{route('payout.setup.settings.index')}}">{{ ___('menus.payout_setup') }}</a> </li>
                     @endif
 
                     @if(hasPermission('database_backup_read') == true)
-                    <li> <a href="{{route('database.backup.index')}}">{{ __('menus.database_backup') }}</a> </li>
+                    <li> <a href="{{route('database.backup.index')}}">{{ ___('menus.database_backup') }}</a> </li>
                     @endif
 
                 </ul>

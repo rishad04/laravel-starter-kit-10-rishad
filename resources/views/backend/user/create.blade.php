@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('user.title') }} {{ __('label.add') }}
+{{ ___('user.title') }} {{ ___('label.add') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -10,10 +10,10 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ __('user.title') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.create') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.create') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="card-body">
 
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ __('user.create_user') }}</h4>
+                        <h4 class="title-site"> {{ ___('user.create_user') }}</h4>
                     </div>
 
                     <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
@@ -34,37 +34,37 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="name">{{ __('label.name') }}</label> <span class="text-danger">*</span>
-                                <input id="name" type="text" name="name" placeholder="{{ __('placeholder.enter_name') }}" class="form-control input-style-1" value="{{ old('name') }}">
+                                <label class=" label-style-1" for="name">{{ ___('label.name') }}</label> <span class="text-danger">*</span>
+                                <input id="name" type="text" name="name" placeholder="{{ ___('placeholder.enter_name') }}" class="form-control input-style-1" value="{{ old('name') }}">
                                 @error('name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="email">{{ __('label.email') }}</label> <span class="text-danger">*</span>
-                                <input id="email" type="email" name="email" placeholder="{{ __('placeholder.enter_email') }}" class="form-control input-style-1 " value="{{ old('email') }}">
+                                <label class=" label-style-1" for="email">{{ ___('label.email') }}</label> <span class="text-danger">*</span>
+                                <input id="email" type="email" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1 " value="{{ old('email') }}">
                                 @error('email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="phone">{{ __('label.phone') }}</label> <span class="text-danger">*</span>
-                                <input id="phone" type="tel" name="phone" placeholder="{{ __('placeholder.enter_mobile') }}" class="form-control input-style-1 " value="{{ old('phone') }}">
+                                <label class=" label-style-1" for="phone">{{ ___('label.phone') }}</label> <span class="text-danger">*</span>
+                                <input id="phone" type="tel" name="phone" placeholder="{{ ___('placeholder.enter_mobile') }}" class="form-control input-style-1 " value="{{ old('phone') }}">
                                 @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1">{{ __('label.designations') }} </label>
-                                <input type="text" placeholder="{{ __('placeholder.enter_designation') }} " class="form-control input-style-1" name="designations" value="{{ old('designations') }}">
+                                <label class="label-style-1">{{ ___('label.designations') }} </label>
+                                <input type="text" placeholder="{{ ___('placeholder.enter_designation') }} " class="form-control input-style-1" name="designations" value="{{ old('designations') }}">
                                 @error('designations') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1">{{ __('label.dob') }} <span class="text-danger">*</span></label>
-                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob') }}" placeholder="{{ __('placeholder.enter_dob') }}">
+                                <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
+                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob') }}" placeholder="{{ ___('placeholder.enter_dob') }}">
                                 @error('dob') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1">{{ __('label.role') }}</label> <span class="text-danger">*</span>
-                                <select class="form-control input-style-1 select2" name="role_id" placeholder="{{ __('placeholder.enter_role') }}">
+                                <label class=" label-style-1">{{ ___('label.role') }}</label> <span class="text-danger">*</span>
+                                <select class="form-control input-style-1 select2" name="role_id" placeholder="{{ ___('placeholder.enter_role') }}">
                                     <option></option>
                                     @foreach($roles as $role)
                                     <option value="{{$role->id}}" {{ (old('role_id') == $role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1">{{ __('label.gender') }} <span class="text-danger">*</span></label>
+                                <label class="label-style-1">{{ ___('label.gender') }} <span class="text-danger">*</span></label>
                                 <select name="gender" id="gender" class="form-control input-style-1 select2">
                                     <option></option>
                                     @foreach(trans('gender') as $key => $gender)
@@ -85,24 +85,24 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="password">{{ __('label.password') }}</label> <span class="text-danger">*</span>
-                                <input id="password" type="password" name="password" placeholder="{{ __('placeholder.enter_password') }}" class="form-control input-style-1 " value="{{ old('password') }}">
+                                <label class=" label-style-1" for="password">{{ ___('label.password') }}</label> <span class="text-danger">*</span>
+                                <input id="password" type="password" name="password" placeholder="{{ ___('placeholder.enter_password') }}" class="form-control input-style-1 " value="{{ old('password') }}">
                                 @error('password') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="nid_number">{{ __('label.nid_number') }}</label>
-                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ __('placeholder.enter_nid_number') }}" class="form-control input-style-1" value="{{ old('nid_number') }}">
+                                <label class=" label-style-1" for="nid_number">{{ ___('label.nid_number') }}</label>
+                                <input id="nid_number" type="number" name="nid_number" placeholder="{{ ___('placeholder.enter_nid_number') }}" class="form-control input-style-1" value="{{ old('nid_number') }}">
                                 @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="nid">{{ __('label.nid') }}</label>
+                                <label class=" label-style-1" for="nid">{{ ___('label.nid') }}</label>
                                 <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="nid" id="nid" class="form-control input-style-1 ">
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="status">{{ __('label.status') }}</label>
+                                <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(trans('status') as $key => $status)
                                     <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ $status }}</option>

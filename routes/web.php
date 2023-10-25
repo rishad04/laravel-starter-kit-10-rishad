@@ -20,6 +20,8 @@ use App\Http\Controllers\SearchController;
 |
 */
 
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/',             [DashboardController::class, 'index'])->name('home'); //need to modify as requirement

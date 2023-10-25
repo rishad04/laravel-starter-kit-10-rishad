@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('menus.general_settings') }}
+{{ ___('menus.general_settings') }}
 @endsection
 
 @section('maincontent')
@@ -12,8 +12,8 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('dashboard.title') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ __('menus.settings') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('dashboard.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('menus.settings') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{route('settings.general.index')}}" class="breadcrumb-link active">{{__('menus.general_settings')}}</a></li>
                         </ol>
                     </nav>
@@ -29,7 +29,7 @@
                 <div class="card-body">
 
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ __('menus.general_settings') }}</h4>
+                        <h4 class="title-site"> {{ ___('menus.general_settings') }}</h4>
                     </div>
 
                     <form action="{{route('settings.general.update')}}" method="POST" enctype="multipart/form-data" id="basicform">
@@ -39,31 +39,31 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" for="name">{{ __('label.brand_name') }}</label>
-                                <input id="name" type="text" name="brand_name" placeholder="{{ __('placeholder.Enter_name') }}" class="form-control input-style-1" value="{{ old('brand_name',globalSettings('brand_name')) }}" require>
+                                <label class="label-style-1" for="name">{{ ___('label.brand_name') }}</label>
+                                <input id="name" type="text" name="brand_name" placeholder="{{ ___('placeholder.Enter_name') }}" class="form-control input-style-1" value="{{ old('brand_name',globalSettings('brand_name')) }}" require>
                                 @error('brand_name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" for="phone">{{ __('label.phone') }}</label>
-                                <input id="phone" type="text" name="brand_phone" placeholder="{{ __('placeholder.Enter_phone') }}" class="form-control input-style-1" value="{{  old('brand_phone',globalSettings('brand_phone'))   }}" require>
+                                <label class="label-style-1" for="phone">{{ ___('label.phone') }}</label>
+                                <input id="phone" type="text" name="brand_phone" placeholder="{{ ___('placeholder.Enter_phone') }}" class="form-control input-style-1" value="{{  old('brand_phone',globalSettings('brand_phone'))   }}" require>
                                 @error('brand_phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" for="email">{{ __('label.email') }}</label>
-                                <input id="email" type="text" name="brand_info_email" placeholder="{{ __('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('brand_info_email', globalSettings('brand_info_email')) }}" require>
+                                <label class="label-style-1" for="email">{{ ___('label.email') }}</label>
+                                <input id="email" type="text" name="brand_info_email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('brand_info_email', globalSettings('brand_info_email')) }}" require>
                                 @error('brand_info_email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" for="copyright">{{ __('label.copyright') }}</label>
-                                <input id="copyright" type="text" name="copyright" placeholder="{{ __('placeholder.Enter_copyright') }}" class="form-control input-style-1" value="{{ old('copyright', globalSettings('copyright')) }}" require>
+                                <label class="label-style-1" for="copyright">{{ ___('label.copyright') }}</label>
+                                <input id="copyright" type="text" name="copyright" placeholder="{{ ___('placeholder.Enter_copyright') }}" class="form-control input-style-1" value="{{ old('copyright', globalSettings('copyright')) }}" require>
                                 @error('copyright') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6 ">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="label-style-1" for="logo">{{ __('label.logo') }}</label>
+                                        <label class="label-style-1" for="logo">{{ ___('label.logo') }}</label>
                                         <input type="file" name="logo" placeholder="Enter logo" id="logo" class="form-control input-style-1 " value="{{ old('logo') }}">
                                         @error('logo') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                     </div>
@@ -76,7 +76,7 @@
                             <div class="form-group col-md-6 ">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label class="label-style-1" for="favicon">{{ __('label.favicon') }}</label>
+                                        <label class="label-style-1" for="favicon">{{ ___('label.favicon') }}</label>
                                         <input id="favicon" type="file" name="favicon" placeholder="Enter favicon" class="form-control input-style-1 " value="{{ old('favicon') }}">
                                         @error('favicon') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                                     </div>
@@ -90,7 +90,7 @@
 
                         <div class="j-create-btns">
                             <div class="drp-btns">
-                                <button type="submit" class="j-td-btn">{{ __('label.save_change') }}</button>
+                                <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
                             </div>
                         </div>
 

@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('label.to_do_list') }} {{ __('label.list') }}
+{{ ___('label.to_do_list') }} {{ ___('label.list') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -10,8 +10,8 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.to_do_list') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.to_do_list') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -24,12 +24,12 @@
             <div class="j-parcel-main j-parcel-res">
                 <div class="card">
                     <div class="card-header mb-3">
-                        <h4 class="title-site">{{ __('label.to_do_list') }}
+                        <h4 class="title-site">{{ ___('label.to_do_list') }}
                         </h4>
                         @if (hasPermission('todo_create'))
                         <a href="{{ route('todo.create') }}" class="j-td-btn">
                             <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
-                            <span>{{ __('website_setup.add') }}</span>
+                            <span>{{ ___('website_setup.add') }}</span>
                         </a>
                         @endif
                     </div>
@@ -40,14 +40,14 @@
                             <table class="table table-responsive-sm">
                                 <thead class="bg">
                                     <tr>
-                                        <th>{{ __('label.sl') }}</th>
-                                        <th>{{ __('label.date') }}</th>
-                                        <th>{{ __('label.title') }}</th>
-                                        <th>{{ __('label.description') }}</th>
-                                        <th>{{ __('label.file') }}</th>
-                                        <th>{{ __('label.note') }}</th>
-                                        <th>{{ __('label.status') }}</th>
-                                        <th>{{ __('label.action') }}</th>
+                                        <th>{{ ___('label.sl') }}</th>
+                                        <th>{{ ___('label.date') }}</th>
+                                        <th>{{ ___('label.title') }}</th>
+                                        <th>{{ ___('label.description') }}</th>
+                                        <th>{{ ___('label.file') }}</th>
+                                        <th>{{ ___('label.note') }}</th>
+                                        <th>{{ ___('label.status') }}</th>
+                                        <th>{{ ___('label.action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +58,7 @@
                                         <td> {{dateFormat($todo->date)}}</td>
                                         <td> {{$todo->title}}</td>
                                         <td> {{\Str::limit($todo->description,100,' ...')}}</td>
-                                        <td><a href="{{ asset(@$todo->upload->original) }}" download>{{ __('label.download') }}</a></td>
+                                        <td><a href="{{ asset(@$todo->upload->original) }}" download>{{ ___('label.download') }}</a></td>
                                         <td> {{$todo->note}}</td>
                                         <td>{!! $todo->TodoStatus !!}</td>
                                         <td>
@@ -71,11 +71,11 @@
                                                     </div>
                                                     <div class="dropdown-menu">
                                                         @if(hasPermission('todo_update')== true)
-                                                        <a href="{{ route('todo.edit',$todo->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
+                                                        <a href="{{ route('todo.edit',$todo->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                                         @endif
                                                         @if(hasPermission('todo_delete')== true)
                                                         <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('todo/delete', {{$todo->id}})">
-                                                            <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
                                                         </a>
                                                         @endif
                                                     </div>

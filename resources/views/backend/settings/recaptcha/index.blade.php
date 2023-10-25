@@ -11,9 +11,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('menus.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ __('menus.settings') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('settings.recaptcha.index')}}" class="breadcrumb-link active">{{ __('menus.recaptcha') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('menus.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('menus.settings') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('settings.recaptcha.index')}}" class="breadcrumb-link active">{{ ___('menus.recaptcha') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="card-body">
 
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ __('recaptcha.recaptcha_setting') }} </h4>
+                        <h4 class="title-site"> {{ ___('recaptcha.recaptcha_setting') }} </h4>
                     </div>
 
                     <form action="{{ route('settings.recaptcha.update') }}" method="post">
@@ -63,8 +63,8 @@
                             @if(hasPermission('recaptcha_settings_update'))
                             <div class="j-create-btns">
                                 <div class="drp-btns">
-                                    <button type="submit" class="j-td-btn">{{ __('label.save') }}</button>
-                                    <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
+                                    <button type="submit" class="j-td-btn">{{ ___('label.save') }}</button>
+                                    <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
                                 </div>
                             </div>
                             @endif

@@ -1,5 +1,5 @@
 @extends('backend.partials.master')
-@section('title') {{ __('menus.dashboard') }} @endsection
+@section('title') {{ ___('menus.dashboard') }} @endsection
 
 @section('maincontent')
 

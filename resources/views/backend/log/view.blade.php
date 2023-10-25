@@ -2,13 +2,13 @@
 <table class="table ">
     <thead>
         <tr class="bg-primary  ">
-            <th scope="col" class="text-white">{{ __('logs.title') }}</th>
-            <th scope="col" colspan="2" class="text-white ">{{ __('logs.properties') }}</th>
+            <th scope="col" class="text-white">{{ ___('logs.title') }}</th>
+            <th scope="col" colspan="2" class="text-white ">{{ ___('logs.properties') }}</th>
         </tr>
         <tr>
             <th scope="col" class="bg-primary"></th>
-            <th scope="col" class="bg-primary text-white">{{ __('logs.new') }}</th>
-            <th scope="col"  class="bg-primary text-white">{{ __('logs.old') }}</th>
+            <th scope="col" class="bg-primary text-white">{{ ___('logs.new') }}</th>
+            <th scope="col"  class="bg-primary text-white">{{ ___('logs.old') }}</th>
         </tr>
     </thead>
     <tbody>
