@@ -25,6 +25,10 @@
                         <button type="submit" class="j-td-btn btn-sm w-100 d-block">Verify Email</button>
                     </div>
 
+                    <div class="text-center mt-3">
+                        <p>Know your password ? <a class="text-primary" href="{{ route('login') }}">Sign in here</a></p>
+                    </div>
+
                 </form>
 
 
