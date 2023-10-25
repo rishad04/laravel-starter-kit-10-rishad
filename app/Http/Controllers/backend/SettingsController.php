@@ -12,12 +12,9 @@ use App\Http\Requests\Settings\MailSettingsRequest;
 use App\Repositories\Settings\Backup\BackupInterface;
 use App\Http\Requests\Settings\RecaptchaSettingsRequest;
 use App\Http\Requests\Settings\GeneralSettingsUpdateRequest;
-use App\Repositories\Settings\MailSetting\MailSettingInterface;
-use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
 
 class SettingsController extends Controller
 {
-
     protected $repo;
 
     public function __construct(SettingsInterface $repo)
@@ -30,9 +27,9 @@ class SettingsController extends Controller
         return view('backend.settings.general_settings.index');
     }
 
-    public function updateGeneralSettings(GeneralSettingsUpdateRequest $request, GeneralSettingsInterface $generalSettingsRepo)
+    public function updateGeneralSettings(GeneralSettingsUpdateRequest $request)
     {
-        $result = $generalSettingsRepo->update($request);
+        $result = $this->repo->UpdateGeneralSettings($request);
 
         if ($result['status']) {
             return redirect()->route('settings.general.index')->with('success', $result['message']);
@@ -45,15 +42,15 @@ class SettingsController extends Controller
         return view('backend.settings.mail.index');
     }
 
-    public function updateMailSettings(MailSettingsRequest $request, MailSettingInterface $mailSettingsRepo)
+    public function updateMailSettings(MailSettingsRequest $request)
     {
-        $result = $mailSettingsRepo->update($request->validated());
+        $result = $this->repo->updateMailSettings($request->validated());
+
         if ($result['status']) {
             return redirect()->back()->with('success', $result['message']);
         }
         return back()->with('danger', $result['message'])->withInput();
     }
-
 
     public function recaptcha()
     {

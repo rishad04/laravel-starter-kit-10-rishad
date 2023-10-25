@@ -1,5 +1,5 @@
 @extends('backend.partials.master')
-@section('title',__('language.title') )
+@section('title',___('language.title') )
 
 @section('maincontent')
 
@@ -12,9 +12,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ __('label.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('language.title')}}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ __('label.list') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('language.index')}}" class="breadcrumb-link">{{___('language.title')}}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.list') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -26,12 +26,12 @@
 
             <div class="card">
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ __('language.language_list') }}
+                    <h4 class="title-site">{{ ___('language.language_list') }}
                     </h4>
                     @if (hasPermission('language_create'))
                     <a href="{{ route('language.create') }}" class="j-td-btn">
                         <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
-                        <span>{{ __('label.add') }}</span>
+                        <span>{{ ___('label.add') }}</span>
                     </a>
                     @endif
                 </div>
@@ -41,16 +41,16 @@
                         <table class="table table-responsive-sm ">
                             <thead class="bg">
                                 <tr>
-                                    <th>{{ __('label.id') }}</th>
-                                    <th scope="col">{{ __('icon') }}</th>
-                                    <th scope="col">{{ __('language.language_name') }}</th>
-                                    <th scope="col">{{ __('code') }}</th>
-                                    <th scope="col">{{ __('label.status') }}</th>
+                                    <th>{{ ___('label.id') }}</th>
+                                    <th scope="col">{{ ___('icon') }}</th>
+                                    <th scope="col">{{ ___('language.language_name') }}</th>
+                                    <th scope="col">{{ ___('code') }}</th>
+                                    <th scope="col">{{ ___('label.status') }}</th>
                                     @if (
                                     hasPermission('language_update') ||
                                     hasPermission('language_phrase') ||
                                     hasPermission('language_delete'))
-                                    <th scope="col">{{ __('label.actions') }}</th>
+                                    <th scope="col">{{ ___('label.actions') }}</th>
                                     @endif
 
                                 </tr>
@@ -80,22 +80,18 @@
 
                                         <div class="dropdown-menu">
 
-                                            @if( hasPermission('language_update') == true )
-                                            @if($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar')
-                                            <a href="{{ route('language.edit',$language->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('label.edit') }}</a>
-                                            @endif
+                                            @if( hasPermission('language_update') && ($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar'))
+                                            <a href="{{ route('language.edit',$language->id) }}" class="dropdown-item"><i class="fa fa-edit color-muted" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                             @endif
 
-                                            @if( hasPermission('language_phrase') == true )
-                                            <a href="{{ route('language.edit.phrase',$language->id) }}" class="dropdown-item"> <i class="fa fa-language color-muted"></i> {{ __('label.edit') }}</a>
+                                            @if( hasPermission('language_phrase'))
+                                            <a href="{{ route('language.edit.phrase',$language->id) }}" class="dropdown-item"> <i class="fa fa-language color-muted"></i> {{ ___('label.edit_phrase') }}</a>
                                             @endif
 
-                                            @if( hasPermission('language_delete') == true )
-                                            @if($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar')
+                                            @if( hasPermission('language_delete') && ($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar'))
                                             <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/language/delete', {{$language->id}})">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> {{ __('label.delete') }}
+                                                <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
                                             </a>
-                                            @endif
                                             @endif
                                         </div>
                                     </td>
@@ -125,6 +121,7 @@
 @endsection
 
 
+
 @push('scripts')
-<script src="{{ static_asset('backend') }}/js/user/user.js"></script>
+@include('backend.partials.delete-ajax')
 @endpush

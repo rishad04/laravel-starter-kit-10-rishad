@@ -24,10 +24,14 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'            =>   ['required'],
+            'name'            =>   ['required', 'max:100'],
             'code'            =>   ['required', 'min:1', 'max:4', 'unique:languages'],
             'icon_class'      =>   ['required'],
-            'text_direction'  =>   ['required']
+            'text_direction'  =>   ['required', 'in:ltr,rtl'],
+            'native'            => ['nullable', 'string', 'max:100'],
+            'regional'            => ['nullable', 'string', 'max:100'],
+            'script'            => ['nullable', 'json'],
+            'status'            => ['required', 'boolean'],
         ];
     }
 }

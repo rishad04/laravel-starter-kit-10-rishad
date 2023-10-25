@@ -69,8 +69,6 @@ class RoleSeeder extends Seeder
             'recaptcha_settings_read',
             'recaptcha_settings_update',
 
-            'language_settings_read',
-            'language_settings_update',
 
             'todo_read',
             'todo_create',
@@ -112,7 +110,7 @@ class RoleSeeder extends Seeder
 
             'language_read',
             'language_create',
-            'language_update_terms',
+
             'general_settings_read',
             'general_settings_update',
             'storage_settings_read',

@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Status;
+use App\Models\Backend\Language;
 use App\Models\Upload;
 use App\Models\Backend\Setting;
 use Illuminate\Support\Facades\Auth;
@@ -105,8 +107,7 @@ function ___($key = null, $replace = [], $locale = null)
         $term        = $input[1];
         $app_local   = Session::get('locale');
 
-        if($app_local == "")
-        {
+        if ($app_local == "") {
             $app_local = 'en';
         }
 
@@ -122,12 +123,20 @@ function ___($key = null, $replace = [], $locale = null)
         }
 
         return $term;
-
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         return $key;
-
     }
+}
 
 
+//fetch language 
+if (!function_exists('language')) {
+    function language($code = null, $status = Status::ACTIVE)
+    {
+        if ($code == null) {
+            return Language::where('status', $status)->get();
+        }
 
+        return Language::where('code', $code)->where('status', $status)->first();
+    }
 }

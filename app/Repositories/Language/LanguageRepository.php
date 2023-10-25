@@ -49,7 +49,7 @@ class LanguageRepository implements LanguageInterface
             $language->code             = $request->code;
             $language->icon_class       = $request->icon_class;
             $language->text_direction   = $request->text_direction;
-            $language->status           = $request->status == 'on' ? Status::ACTIVE : Status::INACTIVE;
+            $language->status           = $request->status;
             $language->save();
 
             $langConfig                 = new LanguageConfig();
@@ -73,19 +73,22 @@ class LanguageRepository implements LanguageInterface
 
             DB::commit();
 
-            return true;
+            return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return false;
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
+
     public function edit($id)
     {
         return $this->model::find($id);
     }
+
     public function update($request)
     {
         try {
+            DB::beginTransaction();
 
             $language                    = $this->model::find($request->id);
             if ($language->code  != $request->code) : //if not match old code and new code
@@ -111,7 +114,7 @@ class LanguageRepository implements LanguageInterface
             $language->code             = $request->code;
             $language->icon_class       = $request->icon_class;
             $language->text_direction   = $request->text_direction;
-            $language->status           = $request->status == 'on' ? Status::ACTIVE : Status::INACTIVE;
+            $language->status           = $request->status;
             $language->save();
 
             $langConfig                 = LanguageConfig::where('language_id', $request->id)->first();
@@ -122,10 +125,11 @@ class LanguageRepository implements LanguageInterface
             $langConfig->regional       = $request->regional;
             $langConfig->save();
 
-
-            return true;
+            DB::commit();
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return false;
+            DB::rollBack();
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -150,11 +154,12 @@ class LanguageRepository implements LanguageInterface
                 File::put(base_path('/lang/' . $lang->code . '.json'), stripslashes($newJsonData));
                 $getJsonData   = file_get_contents(base_path('/lang/' . $lang->code . '.json'));
             endif;
+
             $langData          = json_decode($getJsonData, true);
-            return $langData;
+            return $this->responseWithSuccess(data: $langData);
         } catch (\Throwable $th) {
 
-            return [];
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -173,24 +178,32 @@ class LanguageRepository implements LanguageInterface
             $newJsonData = json_encode($data);
             File::put(base_path('/lang/' . $code . '.json'), $newJsonData);
 
-            return true;
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return false;
+
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
     //language delete
     public function delete($id)
     {
-        $lang         = $this->model::find($id);
-        $path         = base_path('/lang/' . $lang->code);
-        if (File::exists($path)) :
-            File::deleteDirectory($path);
-        endif;
-        $jsonPath     = base_path('/lang/' . $lang->code . '.json');
-        if (File::exists($jsonPath)) :
-            unlink($jsonPath);
-        endif;
-        return $lang->delete();
+        try {
+            $lang         = $this->model::find($id);
+            $path         = base_path('/lang/' . $lang->code);
+            if (File::exists($path)) :
+                File::deleteDirectory($path);
+            endif;
+            $jsonPath     = base_path('/lang/' . $lang->code . '.json');
+            if (File::exists($jsonPath)) :
+                unlink($jsonPath);
+            endif;
+            return $lang->delete();
+
+            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
+        } catch (\Throwable $th) {
+
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
+        }
     }
 }

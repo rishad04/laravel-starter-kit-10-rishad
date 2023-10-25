@@ -16,6 +16,7 @@ class LanguageController extends Controller
     {
         $this->repo = $repo;
     }
+
     public function index()
     {
         $languages      = $this->repo->get();
@@ -32,21 +33,20 @@ class LanguageController extends Controller
     //language store
     public function store(StoreRequest $request)
     {
-
+        // dd($request);
         if (env('DEMO')) {
-            toast(__('store_system_error'), 'error');
-            // toast(__('Store system is disable for the demo mode.'),'error');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('danger', __('store_system_error'));
         }
 
-        if ($this->repo->store($request)) :
-            toast(__('language_added'), 'success');
-            return redirect()->route('language.index');
-        else :
-            toast(__('error'), 'error');
-            return redirect()->back()->withInput();
-        endif;
+        $result = $this->repo->store($request);
+
+        if ($result['status']) {
+            return redirect()->route('language.index')->with('success', $result['message']);
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
     }
+
+
     public function edit($id)
     {
         $lang       = $this->repo->edit($id);
@@ -59,60 +59,57 @@ class LanguageController extends Controller
     {
 
         if (env('DEMO')) {
-            toast(__('update_system_error.'), 'error');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('danger', __('update_system_error'),);
         }
-        if ($this->repo->update($request)) :
-            toast(__('language_updated'), 'success');
-            return redirect()->route('language.index');
-        else :
-            toast(__('error'), 'error');
-            return redirect()->back();
-        endif;
+
+        $result = $this->repo->update($request);
+
+        if ($result['status']) {
+            return redirect()->route('language.index')->with('success', $result['message']);
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
     }
 
     //edit phrase
     public function editPhrase($id)
     {
-
-        if ($this->repo->editPhrase($id)) :
-            $langData    = $this->repo->editPhrase($id);
+        $result = $this->repo->editPhrase($id);
+        if ($result['status']) {
+            $langData    = $result['data'];
             $lang        = $this->repo->edit($id);
             return view('backend.language.edit_phrase', compact('langData', 'lang'));
-        else :
-            toast(__('error'), 'error');
-            return redirect()->back();
-        endif;
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
     }
 
     //update phrase
     public function updatePhrase(Request $request, $code)
     {
         if (env('DEMO')) {
-            toast(__('update_system_error'), 'error');
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('danger', __('store_system_error'),);
         }
-        if ($this->repo->updatePhrase($request, $code)) :
-            toast(__('phrase_updated'), 'success');
-            return redirect()->route('language.index');
-        else :
-            toast(__('error'), 'error');
-            return redirect()->back()->withInput();
-        endif;
+
+        $result = $this->repo->updatePhrase($request, $code);
+
+        if ($result['status']) {
+            return redirect()->route('language.index')->with('success', $result['message']);
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
     }
+
     //delete language
     public function delete($id)
     {
-        if (env('DEMO')) {
-            toast(__('delete_system_error.'), 'error');
-            return redirect()->back();
-        }
         if ($this->repo->delete($id)) :
-            toast(__('language_deleted'), 'success');
-            return redirect()->route('language.index');
+            $success[0] = "Deleted Successfully";
+            $success[1] = 'success';
+            $success[2] = "Deleted";
+            return response()->json($success);
         else :
-            toast(__('error'), 'error');
-            return redirect()->back();
+            $success[0] = "Something went wrong, please try again.";
+            $success[1] = 'error';
+            $success[2] = "oops";
+            return response()->json($success);
         endif;
     }
 }

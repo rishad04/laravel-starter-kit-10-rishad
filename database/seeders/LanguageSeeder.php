@@ -13,6 +13,7 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
+
         $lang                 = new Language();
         $lang->name           = 'English';
         $lang->code           = 'en';

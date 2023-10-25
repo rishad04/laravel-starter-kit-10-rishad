@@ -21,10 +21,8 @@ class Language extends Model
             ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
     }
 
-
-
-    // public function langConfig()
-    // {
-    //     return $this->belongsTo(LanguageConfig::class, 'id', 'language_id');
-    // }
+    public function langConfig()
+    {
+        return $this->belongsTo(LanguageConfig::class, 'id', 'language_id');
+    }
 }

@@ -21,10 +21,6 @@ use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
 use App\Repositories\Settings\Backup\BackupInterface;
 use App\Repositories\Settings\Backup\BackupRepository;
-use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
-use App\Repositories\Settings\GeneralSetting\GeneralSettingsRepository;
-use App\Repositories\Settings\MailSetting\MailSettingInterface;
-use App\Repositories\Settings\MailSetting\MailSettingRepository;
 use App\Repositories\Settings\SettingsInterface;
 use App\Repositories\Settings\SettingsRepository;
 
@@ -42,9 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // settings 
         $this->app->bind(SettingsInterface::class,              SettingsRepository::class);
-        $this->app->bind(GeneralSettingsInterface::class,       GeneralSettingsRepository::class);
         $this->app->bind(BackupInterface::class,                BackupRepository::class);
-        $this->app->bind(MailSettingInterface::class,           MailSettingRepository::class);
 
         $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);
         $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);

@@ -39,34 +39,22 @@
                             <div class="dropdown custom-dropdown">
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
                                     <span>
-                                        @if(app()->getLocale() == "en")
-                                        <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> En
-                                        @elseif(app()->getLocale() == 'bn')
-                                        <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> Bn
-                                        @elseif(app()->getLocale() == 'in')
-                                        <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> In
-                                        @elseif(app()->getLocale() == 'ar')
-                                        <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> Ar
-                                        @endif
-                                        <i class="fa fa-angle-down"></i>
+                                        <i class="{{ language(Session('locale'))->icon_class }}"></i> {{ Str::upper(Session('locale')) }} <i class="fa fa-angle-down"></i>
+                                        {{-- <i class="{{ language(app()->getLocale())->icon_class }}"></i> {{ Str::upper(app()->getLocale()) }} <i class="fa fa-angle-down"></i> --}}
                                     </span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ route('setLocalization','en') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ ___('label.english') }} </span>
+                                    @foreach (language() as $lang)
+                                    <a class="dropdown-item" href="{{ route('setLocalization',$lang->code) }}">
+                                        <span class="flg-lfex"> <i class="{{ @$lang->icon_class }}"></i> {{ @$lang->name }} </span>
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('setLocalization','ar') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ ___('label.arabic') }} </span>
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('setLocalization','bn') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ ___('label.bangla') }} </span>
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('setLocalization','in') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ ___('label.hindi') }} </span>
-                                    </a>
+
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="day-night">
                             <a class="j-nav-lk" href="#">

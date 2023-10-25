@@ -71,7 +71,7 @@
                     @if (hasPermission('user_create'))
                     <a href="{{ route('user.create') }}" class="j-td-btn">
                         <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
-                        <span>{{ ___('website_setup.add') }}</span>
+                        <span>{{ ___('label.add') }}</span>
                     </a>
                     @endif
                 </div>
