@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RouteListSeeder::class,
+            LanguageSeeder::class,
             PermissionSeeder::class,
             UploadSeeder::class,
             RoleSeeder::class,
