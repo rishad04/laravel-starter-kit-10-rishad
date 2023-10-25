@@ -293,3 +293,16 @@
 }
 
 /* end select 2 */
+
+ /* role permission */
+
+ .label-style-2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-body);
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+
+ /* role permission */
