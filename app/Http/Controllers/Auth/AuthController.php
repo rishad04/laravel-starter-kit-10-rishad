@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\User\UserInterface;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -32,6 +34,20 @@ class AuthController extends Controller
             'email'     => 'required|email',
             'password'  => 'required|string',
         ]);
+
+        $user       = User::query()->firstWhere('email', $request->email);
+
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'The provided email do not match our records.'
+            ]);
+        }
+
+        if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors([
+                'password' => 'The provided password does not match our records.'
+            ]);
+        }
 
         if (auth()->attempt(request()->only(['email', 'password']))) {
             // Active Remember me 24 houre
