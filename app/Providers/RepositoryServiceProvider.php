@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Interfaces\AuthInterface;
 use App\Repositories\AuthRepository;
+use App\Repositories\Language\LanguageInterface;
+use App\Repositories\Language\LanguageRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Todo\TodoInterface;
@@ -35,6 +37,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(LanguageInterface::class,            LanguageRepository::class);
         $this->app->bind(PermissionInterface::class,            PermissionRepository::class);
 
         // settings 

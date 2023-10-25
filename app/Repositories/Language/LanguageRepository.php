@@ -7,24 +7,37 @@ use App\Models\Backend\FlagIcon;
 use App\Models\Backend\Language;
 use App\Models\Backend\LanguageConfig;
 use App\Repositories\Language\LanguageInterface;
+use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class LanguageRepository implements LanguageInterface
 {
+    use ReturnFormatTrait;
+
+    protected $model;
+
+    public function __construct(Language $model)
+    {
+        $this->model = $model;
+    }
+
 
     public function flags()
     {
         return FlagIcon::all();
     }
+
     public function activelang()
     {
-        return Language::where('status', Status::ACTIVE)->get();
+        return $this->model::where('status', Status::ACTIVE)->get();
     }
+
     public function get()
     {
-        return Language::orderByDesc('id')->paginate(10);
+        return $this->model::orderByDesc('id')->paginate(10);
     }
+
     public function store($request)
     {
         try {
@@ -68,13 +81,13 @@ class LanguageRepository implements LanguageInterface
     }
     public function edit($id)
     {
-        return Language::find($id);
+        return $this->model::find($id);
     }
     public function update($request)
     {
         try {
 
-            $language                    = Language::find($request->id);
+            $language                    = $this->model::find($request->id);
             if ($language->code  != $request->code) : //if not match old code and new code
                 $oldFilePath             =  base_path('/lang/' . $language->code . '.json');
                 $newFilePath             =  base_path('/lang/' . $request->code . '.json');
@@ -120,7 +133,7 @@ class LanguageRepository implements LanguageInterface
     public function editPhrase($id)
     {
         try {
-            $lang           = Language::find($id);
+            $lang           = $this->model::find($id);
             $langConfig     = LanguageConfig::where('language_id', $id)->first();
 
             $path           = base_path('/lang/' . $lang->code);
@@ -169,7 +182,7 @@ class LanguageRepository implements LanguageInterface
     //language delete
     public function delete($id)
     {
-        $lang         = Language::find($id);
+        $lang         = $this->model::find($id);
         $path         = base_path('/lang/' . $lang->code);
         if (File::exists($path)) :
             File::deleteDirectory($path);

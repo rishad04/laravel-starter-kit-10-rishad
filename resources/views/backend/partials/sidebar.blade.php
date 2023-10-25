@@ -25,7 +25,7 @@
             @endif
 
             @if(hasPermission('language_settings_read') == true)
-            <li> <a href="javascript:void()" aria-expanded="true"> <i class="fa fa-language"></i> <span class="nav-text">{{__('menus.language')}}</span> </a> </li>
+            <li> <a href="{{route('language.index')}}" aria-expanded="true"> <i class="fa fa-language"></i> <span class="nav-text">{{__('menus.language')}}</span> </a> </li>
             @endif
 
             <li>

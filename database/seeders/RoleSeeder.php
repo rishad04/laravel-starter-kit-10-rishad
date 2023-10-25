@@ -54,7 +54,7 @@ class RoleSeeder extends Seeder
             'language_read',
             'language_create',
             'language_update',
-            'language_update_terms',
+            'language_phrase',
             'language_delete',
 
             'general_settings_read',
