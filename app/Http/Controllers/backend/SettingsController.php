@@ -87,8 +87,6 @@ class SettingsController extends Controller
     {
         App::setLocale($language);
         Session::put('locale', $language);
-
-        dd(session('locale'));
         return redirect()->back();
     }
 }
