@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-    {{ __('role.title') }} {{ __('levels.edit') }}
+    {{ ___('role.title') }} {{ ___('levels.edit') }}
 @endsection
 @section('maincontent')
     <div class="container-fluid  dashboard-content">
@@ -11,13 +11,13 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
-                                        class="breadcrumb-link">{{ __('levels.dashboard') }}</a></li>
+                                        class="breadcrumb-link">{{ ___('levels.dashboard') }}</a></li>
                                 <li class="breadcrumb-item"><a href="#"
-                                        class="breadcrumb-link">{{ __('menus.user_role') }}</a></li>
+                                        class="breadcrumb-link">{{ ___('menus.user_role') }}</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('role.index') }}"
-                                        class="breadcrumb-link">{{ __('role.title') }}</a></li>
+                                        class="breadcrumb-link">{{ ___('role.title') }}</a></li>
                                 <li class="breadcrumb-item"><a href=""
-                                        class="breadcrumb-link active">{{ __('levels.edit') }}</a></li>
+                                        class="breadcrumb-link active">{{ ___('levels.edit') }}</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-input-header">
-                            <h4 class="title-site"> {{ __('role.edit_role') }}</h4>
+                            <h4 class="title-site"> {{ ___('role.edit_role') }}</h4>
                         </div>
                         <form action="{{ route('role.update', ['id' => $role->id]) }}" method="POST"
                             enctype="multipart/form-data" id="basicform">
@@ -42,11 +42,11 @@
                                 <div class="col-4">
                                     <div class="form-row">
                                         <div class="form-group col-12">
-                                            <label class=" label-style-1" for="name">{{ __('levels.name') }}</label>
+                                            <label class=" label-style-1" for="name">{{ ___('levels.name') }}</label>
                                             <span class="text-danger">*</span>
                                             <input id="name" type="text" name="name"
                                                 data-parsley-trigger="change"
-                                                placeholder="{{ __('placeholder.Enter_name') }}" autocomplete="off"
+                                                placeholder="{{ ___('placeholder.Enter_name') }}" autocomplete="off"
                                                 class="form-control input-style-1" value="{{ old('name', $role->name) }}"
                                                 require>
                                             @error('name')
@@ -54,7 +54,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group col-12">
-                                            <label class=" label-style-1" for="status">{{ __('levels.status') }}</label>
+                                            <label class=" label-style-1" for="status">{{ ___('levels.status') }}</label>
                                             <span class="text-danger">*</span>
                                             <select name="status" class="form-control input-style-1 select2">
                                                 @foreach (trans('status') as $key => $status)
@@ -74,14 +74,14 @@
                                     <table class="table border  permission-table">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('permissions.modules') }}</th>
-                                                <th>{{ __('permissions.permissions') }}</th>
+                                                <th>{{ ___('permissions.modules') }}</th>
+                                                <th>{{ ___('permissions.permissions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($permissions as $permission)
                                                 <tr>
-                                                    <td>{{ __('permissions.' . $permission->attribute) }}</td>
+                                                    <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                                     <td>
                                                         @foreach ($permission->keywords as $key => $keyword)
                                                             <div
@@ -91,7 +91,7 @@
                                                                     value="{{ $keyword }}" name="permissions[]"
                                                                     @if ($role->permissions !== null && in_array($keyword, $role->permissions)) checked @endif />
                                                                 <label class=" label-style-2"
-                                                                    for="{{ $keyword }}">{{ __('permissions.' . $key) }}</label>
+                                                                    for="{{ $keyword }}">{{ ___('permissions.' . $key) }}</label>
                                                             </div>
                                                         @endforeach
                                                     </td>
@@ -106,9 +106,9 @@
 
                             <div class="j-create-btns">
                                 <div class="drp-btns">
-                                    <button type="submit" class="j-td-btn">{{ __('label.save_change') }}</button>
+                                    <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
                                     <a href="{{ route('role.index') }}" class="j-td-btn btn-red">
-                                        <span>{{ __('label.cancel') }}</span> </a>
+                                        <span>{{ ___('label.cancel') }}</span> </a>
                                 </div>
                             </div>
                         </form>

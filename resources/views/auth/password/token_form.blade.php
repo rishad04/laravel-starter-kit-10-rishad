@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ __('Token Verification') }} @endsection
+@section('title') {{ ___('Token Verification') }} @endsection
 
 @section('main')
 

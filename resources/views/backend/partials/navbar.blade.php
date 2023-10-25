@@ -34,6 +34,7 @@
 
                         </div>
 
+
                         <div class="nav-lang">
                             <div class="dropdown custom-dropdown">
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
@@ -52,16 +53,16 @@
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('setLocalization','en') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ __('label.english') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-english.png" alt="no image" /> {{ ___('label.english') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','ar') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ __('label.arabic') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-arabic.png" alt="no image" /> {{ ___('label.arabic') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','bn') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ __('label.bangla') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-bangla.png" alt="no image" /> {{ ___('label.bangla') }} </span>
                                     </a>
                                     <a class="dropdown-item" href="{{ route('setLocalization','in') }}">
-                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ __('label.hindi') }} </span>
+                                        <span class="flg-lfex"> <img src="{{asset('backend')}}/assets/img/flag/flg-india.png" alt="no image" /> {{ ___('label.hindi') }} </span>
                                     </a>
                                 </div>
                             </div>
@@ -104,7 +105,7 @@
                                     </li>
 
                                 </ul>
-                                <a class="all-notification" href="#"> {{ __('See all notifications') }} <i class="ti-arrow-right"></i> </a>
+                                <a class="all-notification" href="#"> {{ ___('See all notifications') }} <i class="ti-arrow-right"></i> </a>
                             </div>
                         </div>
 
@@ -116,10 +117,10 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="{{route('profile')}}" class="dropdown-item">
-                                    <i class="icon-user"></i> <span class="ml-2">{{ __('menus.profile') }} </span>
+                                    <i class="icon-user"></i> <span class="ml-2">{{ ___('menus.profile') }} </span>
                                 </a>
                                 <a href="{{route('password.update')}}" class="dropdown-item">
-                                    <i class=" icon-key"></i> <span class="ml-2">{{ __('menus.change_password') }} </span>
+                                    <i class=" icon-key"></i> <span class="ml-2">{{ ___('menus.change_password') }} </span>
                                 </a>
                                 <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     <i class="icon-logout"></i> <span class="ml-2">Logout </span>

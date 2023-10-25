@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ __('menus.profile') }}
+{{ ___('menus.profile') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -22,8 +22,8 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         @if($user->id == auth()->user()->id)
-                        <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ __('label.edit') }}</a>
-                        {{-- <a href="javascript:void(0);" onclick="showUpdateForm()" id="edit" class="j-btn-sm">{{ __('label.edit') }}</a> --}}
+                        <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a>
+                        {{-- <a href="javascript:void(0);" onclick="showUpdateForm()" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a> --}}
                         @endif
                     </div>
                 </div>
@@ -35,12 +35,12 @@
                             <span>{{@$user->name}}</span>
                         </li>
                         <li>
-                            <h6 class="heading-6">{{ __('label.dob') }}</h6>
+                            <h6 class="heading-6">{{ ___('label.dob') }}</h6>
                             <span>{{ dateFormat(@$user->date_of_birth) }}</span>
                         </li>
                         <li>
-                            <h6 class="heading-6">{{ __('label.gender') }}</h6>
-                            <span>{{ __('gender.' . @$user->gender)  }}</span>
+                            <h6 class="heading-6">{{ ___('label.gender') }}</h6>
+                            <span>{{ ___('gender.' . @$user->gender)  }}</span>
                         </li>
 
                     </ul>

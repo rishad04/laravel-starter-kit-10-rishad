@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ __('Email Verification') }} @endsection
+@section('title') {{ ___('Email Verification') }} @endsection
 
 @section('main')
 

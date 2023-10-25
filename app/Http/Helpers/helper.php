@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Backend\Setting;
 use App\Models\Upload;
+use App\Models\Backend\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -94,18 +95,39 @@ if (!function_exists('dateFormat')) {
     }
 }
 
-// function ___($key = null, $replace = [], $locale = null)
-// {
-//     $input       = explode('.', $key);
-//     $file        = $input[0];
-//     $term         = $input[1];
-//     $app_local   = app()->getLocale();
+function ___($key = null, $replace = [], $locale = null)
+{
 
-//     $jsonString  = file_get_contents(base_path('lang/' . $app_local . '/' . $file . '.json'));
-//     $data        = json_decode($jsonString, true);
-//     if (@$data[$term]) {
-//         return $data[$term];
-//     }
+    try {
 
-//     return $term;
-// }
+        $input       = explode('.', $key);
+        $file        = $input[0];
+        $term        = $input[1];
+        $app_local   = Session::get('locale');
+
+        if($app_local == "")
+        {
+            $app_local = 'en';
+        }
+
+        $jsonString  = file_get_contents(base_path('lang/' . $app_local . '/' . $file . '.json'));
+
+
+
+        $data        = json_decode($jsonString, true);
+
+
+        if (@$data[$term]) {
+            return $data[$term];
+        }
+
+        return $term;
+
+    } catch(\Exception $e) {
+        return $key;
+
+    }
+
+
+
+}

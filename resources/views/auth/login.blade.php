@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ __('menus.login') }} @endsection
+@section('title') {{ ___('menus.login') }} @endsection
 
 @section('main')
 <div class="row no-gutters">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="j-create-btns">
                     <div class="text-center">
-                        <button type="submit" class="j-td-btn">{{ __('signin') }}</button>
+                        <button type="submit" class="j-td-btn">{{ ___('signin') }}</button>
                     </div>
                 </div>
             </form>

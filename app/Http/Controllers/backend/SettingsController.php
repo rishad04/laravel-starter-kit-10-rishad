@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-
-use App\Http\Requests\Settings\GeneralSettingsUpdateRequest;
-use App\Http\Requests\Settings\MailSettingsRequest;
-use App\Http\Requests\Settings\RecaptchaSettingsRequest;
-use App\Repositories\Settings\Backup\BackupInterface;
-use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
-use App\Repositories\Settings\MailSetting\MailSettingInterface;
-use App\Repositories\Settings\SettingsInterface;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use App\Repositories\Settings\SettingsInterface;
+use App\Http\Requests\Settings\MailSettingsRequest;
+use App\Repositories\Settings\Backup\BackupInterface;
+use App\Http\Requests\Settings\RecaptchaSettingsRequest;
+use App\Http\Requests\Settings\GeneralSettingsUpdateRequest;
+use App\Repositories\Settings\MailSetting\MailSettingInterface;
+use App\Repositories\Settings\GeneralSetting\GeneralSettingsInterface;
 
 class SettingsController extends Controller
 {
@@ -68,7 +69,7 @@ class SettingsController extends Controller
         return back()->with('danger', $result['message'])->withInput();
     }
 
-    // Database Backup 
+    // Database Backup
     public function databaseBackupIndex()
     {
         return view('backend.settings.backup.index');
@@ -85,7 +86,7 @@ class SettingsController extends Controller
     public function setLocalization($language)
     {
         App::setLocale($language);
-        session()->put('locale', $language);
+        Session::put('locale', $language);
         return redirect()->back();
     }
 }

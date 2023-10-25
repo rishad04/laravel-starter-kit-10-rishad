@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ __('Reset Password') }} @endsection
+@section('title') {{ ___('Reset Password') }} @endsection
 
 @section('main')
 

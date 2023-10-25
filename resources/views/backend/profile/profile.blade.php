@@ -1,6 +1,6 @@
 @extends('backend.profile.master')
 @section('title')
-{{ __('menus.profile') }}
+{{ ___('menus.profile') }}
 @endsection
 @section('content')
 <div id="update_profile">
@@ -26,15 +26,15 @@
                 <span>{{@$user->address}}</span>
             </li>
             <li>
-                <h6 class="heading-6">{{ __('label.role') }}</h6>
+                <h6 class="heading-6">{{ ___('label.role') }}</h6>
                 <span>{{@$user->role->name}}</span>
             </li>
             <li>
-                <h6 class="heading-6">{{ __('label.designation') }}</h6>
+                <h6 class="heading-6">{{ ___('label.designation') }}</h6>
                 <span>{{@$user->designation->title}}</span>
             </li>
             <li>
-                <h6 class="heading-6">{{ __('label.status') }}</h6>
+                <h6 class="heading-6">{{ ___('label.status') }}</h6>
                 <span>{!! @$user->my_status !!}</span>
             </li>
         </ul>
