@@ -105,7 +105,9 @@ function ___($key = null, $replace = [], $locale = null)
         $input       = explode('.', $key);
         $file        = $input[0];
         $term        = $input[1];
-        $app_local   = Session::get('locale');
+
+
+        $app_local   = defaultLanguage()->code;
 
         if ($app_local == "") {
             $app_local = 'en';
@@ -126,14 +128,20 @@ function ___($key = null, $replace = [], $locale = null)
 }
 
 
-//fetch language 
-if (!function_exists('language')) {
-    function language($code = null, $status = Status::ACTIVE)
+if (!function_exists('defaultLanguage')) {
+    function defaultLanguage()
     {
-        if ($code == null) {
-            return Language::where('status', $status)->get();
+        $app_local   = Session::get('locale');
+
+        if ($app_local == "") {
+
+            $app_local = globalSettings('language');
+
+            if($app_local == '') {
+                $app_local = 'en';
+            }
         }
 
-        return Language::where('code', $code)->where('status', $status)->first();
+        return Language::where('code', $app_local)->first();
     }
 }

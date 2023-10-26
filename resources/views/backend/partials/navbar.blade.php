@@ -15,6 +15,8 @@
     </div>
 </div>
 
+
+
 <!--**********************************            Nav header end        ***********************************-->
 
 <!--**********************************            Header start        ***********************************-->
@@ -40,11 +42,11 @@
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
                                     <span>
                                         {{-- <i class="{{ language(Session::get('locale'))->icon_class }}"></i> {{ Str::upper(Session::get('locale')) }} <i class="fa fa-angle-down"></i> --}}
-                                        <i class="{{ language(app()->getLocale())->icon_class }}"></i> {{ Str::upper(app()->getLocale()) }} <i class="fa fa-angle-down"></i>
+                                        <i class="{{ defaultLanguage()->icon_class }}"></i> {{ Str::upper(defaultLanguage()->code) }} <i class="fa fa-angle-down"></i>
                                     </span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    @foreach (language() as $lang)
+                                    @foreach ($languages as $lang)
                                     <a class="dropdown-item" href="{{ route('setLocalization',$lang->code) }}">
                                         <span class="flg-lfex"> <i class="{{ @$lang->icon_class }}"></i> {{ @$lang->name }} </span>
                                     </a>
