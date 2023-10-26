@@ -59,18 +59,6 @@
                                 @error('icon_class') <small class="pt-2 text-danger">{{ $message }}</small> @enderror
                             </div>
 
-                            <div class="form-group col-md-6 ">
-                                <label class="label-style-1" for="native">{{ ___('language.native') }} </label>
-                                <input type="text" name="native" id="native" class="form-control input-style-1" value="{{ old('native',@$lang->langConfig->native) }}" placeholder="{{ ___('language.enter_native') }}">
-                                @error('native') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
-
-                            <div class="form-group col-md-6 ">
-                                <label class="label-style-1" for="regional">{{ ___('language.regional') }} </label>
-                                <input type="text" placeholder="{{ ___('language.enter_regional') }}" class="form-control input-style-1" name="regional" value="{{ old('regional',@$lang->langConfig->regional) }}">
-                                @error('regional') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
-
                             <div class="col-12 col-md-6 form-group">
                                 <label class="label-style-1" for="text_direction">{{ ___('language.text_direction') }}</label>
                                 <select class="form-control input-style-1  select2" id="text_direction" name="text_direction">
@@ -78,12 +66,6 @@
                                     <option value="rtl" @selected(old('text_direction',$lang->text_direction)=='rtl' )>{{ ___('language.rtl') }}</option>
                                 </select>
                                 @error('text_direction') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
-
-                            <div class="form-group col-md-6 ">
-                                <label class="label-style-1" for="script">{{ ___('language.script') }} </label>
-                                <textarea name="script" id="script" class="form-control input-style-1" placeholder="{{ ___('language.enter_script') }}">{{ old('script',@$lang->langConfig->script) }}</textarea>
-                                @error('script') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="col-12 col-md-6 form-group">

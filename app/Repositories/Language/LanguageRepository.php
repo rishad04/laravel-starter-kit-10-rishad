@@ -52,13 +52,6 @@ class LanguageRepository implements LanguageInterface
             $language->status           = $request->status;
             $language->save();
 
-            $langConfig                 = new LanguageConfig();
-            $langConfig->language_id    = $language->id;
-            $langConfig->name           = $request->name;
-            $langConfig->script         = $request->script;
-            $langConfig->native         = $request->native;
-            $langConfig->regional       = $request->regional;
-            $langConfig->save();
 
             $path     = base_path('/lang/' . $request->code);
 
@@ -117,13 +110,7 @@ class LanguageRepository implements LanguageInterface
             $language->status           = $request->status;
             $language->save();
 
-            $langConfig                 = LanguageConfig::where('language_id', $request->id)->first();
-            $langConfig->language_id    = $language->id;
-            $langConfig->name           = $request->name;
-            $langConfig->script         = $request->script;
-            $langConfig->native         = $request->native;
-            $langConfig->regional       = $request->regional;
-            $langConfig->save();
+
 
             DB::commit();
             return $this->responseWithSuccess(___('alert.successfully_updated'), []);
