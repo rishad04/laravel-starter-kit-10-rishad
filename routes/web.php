@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/edit/phrase/{id}',             [LanguageController::class, 'editPhrase'])->name('edit.phrase')->middleware('hasPermission:language_phrase');
             Route::post('/update/phrase/{code}',        [LanguageController::class, 'updatePhrase'])->name('update.phrase')->middleware('hasPermission:language_phrase');
             Route::delete('/delete/{id}',               [LanguageController::class, 'delete'])->name('delete')->middleware('hasPermission:language_delete');
+            Route::get('/change-module',                [LanguageController::class, 'changeModule'])->name('change.module');
         });
         //end multiple language manage
     });

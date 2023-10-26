@@ -31,8 +31,29 @@
                     <form action="{{ route('language.update.phrase',[$lang->code]) }}" method="post">
                         @csrf
 
+                        <input type="hidden" name="code" id="code" value="{{ @$lang->code }}">
+
+                        <div class="row">
+
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer04" class="form-label">{{ ___('language.module') }}</label>
+                            <select class="form-control input-style-1 select2 @error('lang_module') is-invalid @enderror change-module"
+                                name="lang_module" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                <option value="alert" selected>{{ ___('language.alert') }}</option>
+                                <option value="label">{{ ___('language.label') }}</option>
+                                <option value="language">{{ ___('language.language') }}</option>
+                                <option value="menus">{{ ___('language.menus') }}</option>
+                            </select>
+                            @error('lang_module')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        </div>
+
                         <div class="table-responsive table--responsive">
-                            <table class="table table-responsive-sm">
+                            <table class="table table-responsive-sm" id="language-terms">
                                 <thead class="bg">
                                     <tr class="border-bottom">
                                         <th>#</th>
@@ -45,6 +66,7 @@
                                     @php
                                     $i=0;
                                     @endphp
+
 
                                     @foreach ($langData as $key => $value)
                                     <tr>
