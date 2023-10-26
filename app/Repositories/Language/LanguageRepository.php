@@ -136,7 +136,7 @@ class LanguageRepository implements LanguageInterface
     //edit phrase data
     public function editPhrase($id)
     {
-        try {
+        // try {
             $lang           = $this->model::find($id);
             $langConfig     = LanguageConfig::where('language_id', $id)->first();
 
@@ -157,10 +157,10 @@ class LanguageRepository implements LanguageInterface
 
             $langData          = json_decode($getJsonData, true);
             return $this->responseWithSuccess(data: $langData);
-        } catch (\Throwable $th) {
+        // } catch (\Throwable $th) {
 
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
+        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
+        // }
     }
 
 
