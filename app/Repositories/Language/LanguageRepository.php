@@ -52,16 +52,12 @@ class LanguageRepository implements LanguageInterface
             $language->status           = $request->status;
             $language->save();
 
+            $path     = base_path('lang/' . $request->code);
 
-            $path     = base_path('/lang/' . $request->code);
-
-            if (!File::exists($path)) :
+            if (!File::isDirectory($path)) :
                 File::makeDirectory($path, 0777, true, true);
-                File::copyDirectory(base_path('/lang/en'), base_path('/lang/' . $request->code));
+                File::copyDirectory(base_path('lang/en'), base_path('lang/' . $data['language']->code));
 
-                //write existing data from phrase content
-                $newJsonString     = file_get_contents(base_path('/lang/phrase.json'));
-                File::put(base_path('/lang/' . $request->code . '.json'), stripslashes($newJsonString));
             endif;
 
             DB::commit();
@@ -85,21 +81,19 @@ class LanguageRepository implements LanguageInterface
 
             $language                    = $this->model::find($request->id);
             if ($language->code  != $request->code) : //if not match old code and new code
-                $oldFilePath             =  base_path('/lang/' . $language->code . '.json');
-                $newFilePath             =  base_path('/lang/' . $request->code . '.json');
-                $oldFolderPath           =  base_path('/lang/' . $language->code);
-                $newFolderPath           =  base_path('/lang/' . $request->code);
 
-                //rename file name
-                if (!empty($oldFilePath)) :
-                    File::move($oldFilePath, $newFilePath);
+
+                $old_directory = base_path('lang/'.$language->code);
+
+                if (!File::isDirectory($old_directory)) :
+                    File::deleteDirectory($old_directory);
                 endif;
-                //rename or make directory name
-                if (File::exists($oldFolderPath)) :
-                    File::move($oldFolderPath, $newFolderPath);
-                else :
-                    File::makeDirectory($newFolderPath, 0777, true, true);
-                    File::copyDirectory(base_path('/lang/en'), $newFolderPath);
+
+                $path     = base_path('lang/' . $request->code);
+
+                if (!File::isDirectory($path)) :
+                    File::makeDirectory($path, 0777, true, true);
+                    File::copyDirectory(base_path('lang/en'), base_path('lang/' . $request->code));
                 endif;
             endif;
 
@@ -123,53 +117,44 @@ class LanguageRepository implements LanguageInterface
     //edit phrase data
     public function editPhrase($id)
     {
-        try {
+        // try {
             $lang           = $this->model::find($id);
-            $langConfig     = LanguageConfig::where('language_id', $id)->first();
 
-            $path           = base_path('/lang/' . $lang->code);
-            if (!File::isDirectory($path)) : //copied directory if does not exist directory
-                File::makeDirectory($path, 0777, true, true);
-                File::copyDirectory(base_path('/lang/en'), base_path('/lang/' . $lang->code));
-            endif;
 
-            //read file
-            if (File::exists(base_path('/lang/' . $lang->code . '.json'))) :
-                $getJsonData   = file_get_contents(base_path('/lang/' . $lang->code . '.json'));
-            else :
-                $newJsonData   = file_get_contents(base_path('/lang/phrase.json'));
-                File::put(base_path('/lang/' . $lang->code . '.json'), stripslashes($newJsonData));
-                $getJsonData   = file_get_contents(base_path('/lang/' . $lang->code . '.json'));
-            endif;
 
-            $langData          = json_decode($getJsonData, true);
-            return $this->responseWithSuccess(data: $langData);
-        } catch (\Throwable $th) {
+            $jsonString          = file_get_contents(base_path("lang/".$lang->code."/alert.json"));
 
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
+            $data['terms']       = json_decode($jsonString, true);
+            return $this->responseWithSuccess('', $data);
+        // } catch (\Throwable $th) {
+
+        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
+        // }
     }
 
 
     //update phrase data
     public function updatePhrase($request, $code)
     {
-        try {
-            $req_data   = $request->all();
-            $req_data   = [];
-            foreach ($request->all() as $key => $value) {
-                $req_data[$key] = $value == null ? "" : $value;
-            }
-            $data       = array_change_key_case(array_slice($req_data, 1));
-            //write data in file
-            $newJsonData = json_encode($data);
-            File::put(base_path('/lang/' . $code . '.json'), $newJsonData);
+        // try {
+
+            $jsonString     = file_get_contents(base_path("lang/$code/$request->lang_module.json"));
+            $data           = json_decode($jsonString, true);
+
+            foreach ($data as $key => $value) :
+                $data[$key]        = $request->$key;
+            endforeach;
+
+            $newJsonString = json_encode($data,JSON_UNESCAPED_UNICODE);
+            file_put_contents(base_path("lang/$code/$request->lang_module.json"), stripslashes($newJsonString));
+
+
 
             return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        } catch (\Throwable $th) {
+        // } catch (\Throwable $th) {
 
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
+        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
+        // }
     }
 
     //language delete

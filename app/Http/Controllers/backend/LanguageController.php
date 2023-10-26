@@ -75,19 +75,27 @@ class LanguageController extends Controller
     {
         $result = $this->repo->editPhrase($id);
         if ($result['status']) {
-            $langData    = $result['data'];
+            $langData    = $result['data']['terms'];
+
             $lang        = $this->repo->edit($id);
             return view('backend.language.edit_phrase', compact('langData', 'lang'));
         }
         return redirect()->back()->withInput()->with('danger', $result['message']);
     }
 
+
+    public function changeModule(Request $request)
+    {
+        $path           = base_path('lang/' . $request->code);
+        $jsonString     = file_get_contents(base_path("lang/$request->code/$request->module.json"));
+        $data['terms']  = json_decode($jsonString, true);
+
+        return view('backend.language.ajax_terms', compact('data'))->render();
+    }
+
     //update phrase
     public function updatePhrase(Request $request, $code)
     {
-        if (env('DEMO')) {
-            return redirect()->back()->withInput()->with('danger', __('store_system_error'),);
-        }
 
         $result = $this->repo->updatePhrase($request, $code);
 

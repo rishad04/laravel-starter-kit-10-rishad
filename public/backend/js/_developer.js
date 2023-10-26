@@ -41,3 +41,37 @@ if (fileInp4) {
     document.getElementById("placeholder4").placeholder = fileName;
   }
 }
+
+"use strict";
+
+$(document).ready(function () {
+
+$('.change-module').on('change', function (e) {
+    e.preventDefault();
+    var code = $('#code').val();
+    var module = $(this).val();
+
+
+    var formData = {
+        code: code,
+        module: module,
+    }
+    $.ajax({
+        type: "GET",
+        dataType: 'html',
+        data: formData,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/admin/language/change-module',
+        success: function (data) {
+            console.log(data);
+            $('#language-terms tbody').html(data);
+        },
+        error: function (data) {
+        }
+    });
+});
+
+});
+
