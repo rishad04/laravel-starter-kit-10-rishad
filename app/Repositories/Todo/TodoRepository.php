@@ -47,9 +47,9 @@ class TodoRepository implements TodoInterface
             endif;
             $todo->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -67,40 +67,29 @@ class TodoRepository implements TodoInterface
             endif;
             $todo->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
 
     public function delete($id)
     {
+        try {
+            $todo  = $this->model::find($id);
 
+            if ($todo && $todo->upload && File::exists(public_path($todo->upload->original))) :
+                unlink(public_path($todo->upload->original));
+                Upload::deleteImage($todo->upload, 'delete');
+            endif;
 
-        // $todo               = $this->model::find($id);
-        // if($todo && $todo->upload && File::exists(public_path($todo->upload->original))):
-        //     unlink(public_path($todo->upload->original));
-        //     Upload::destroy($todo->upload->id);
-        // endif;
-        // return $this->model::destroy($id);
+            $todo->delete();
 
-
-        // try {
-        $item  = $this->model::find($id);
-
-        if ($todo && $todo->upload && File::exists(public_path($todo->upload->original))) :
-            unlink(public_path($todo->upload->original));
-            Upload::deleteImage($item->upload, 'delete');
-        endif;
-
-        $item->delete();
-
-        return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
-        // } catch (\Throwable $th) {
-        //     return $this->responseWithError(__('alert.something_went_wrong'), []);
-        // }
-
+            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
+        }
     }
 
     public function statusUpdate($id)
@@ -114,9 +103,9 @@ class TodoRepository implements TodoInterface
             endif;
             $todo->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 }

@@ -23,20 +23,20 @@ class Todo extends Model
         'date',
     ];
 
-    // public function getActivitylogOptions(): LogOptions
-    // {
+    public function getActivitylogOptions(): LogOptions
+    {
 
-    //     $logAttributes = [
-    //         'title',
-    //         'description',
-    //         'user.name',
-    //         'date',
-    //     ];
-    //     return LogOptions::defaults()
-    //         ->useLogName('ToDo')
-    //         ->logOnly($logAttributes)
-    //         ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
-    // }
+        $logAttributes = [
+            'title',
+            'description',
+            'user.name',
+            'date',
+        ];
+        return LogOptions::defaults()
+            ->useLogName('ToDo')
+            ->logOnly($logAttributes)
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
+    }
 
     // Get single row in User table.
     public function user()
@@ -52,11 +52,11 @@ class Todo extends Model
     public function getTodoStatusAttribute()
     {
         if ($this->status == TodoStatus::PROCESSING) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . trans("TodoStatus." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-info">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
         } elseif ($this->status == TodoStatus::COMPLETED) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . trans("TodoStatus." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
         } else {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . trans("TodoStatus." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
         }
 
         return $status;

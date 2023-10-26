@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/chartist/css/chartist.min.css" />
+    <link rel="stylesheet" href="{{ static_asset('backend') }}/css/flag-icons/flag-icons.min.css">
     <link rel="stylesheet" href="{{asset('backend')}}/css/style.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/assets/style.css" />
     <link rel="stylesheet" href="{{asset('backend')}}/css/custom.css" />

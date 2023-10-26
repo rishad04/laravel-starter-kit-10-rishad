@@ -111,36 +111,49 @@
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="image">{{ ___('label.image') }}</label>
-                                <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
-                                @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
 
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="address">{{ ___('label.address') }}</label> <span class="text-danger">*</span>
-                                <textarea name="address" class="form-control input-style-1" rows="3" placeholder="{{ ___('placeholder.enter_address') }}">{{ old('address') }}</textarea>
-                                @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
 
-                            <div class="form-group col-md-6">
-                                <label class="label-style-1">{{ ___('label.about') }} </label>
-                                <textarea name="about" class="form-control input-style-1" rows="3" placeholder="{{ ___('placeholder.about_me') }}">{{ old('about') }}</textarea>
-                                @error('about') <span class="pt-2 text-danger">{{ $message }}</span> @enderror
+                            {{-- <div class="col-md-6">
+                                <label class="label-style-1">{{ __('label.image') }}<span class="fillable"></span></label>
+                            <div class="ot_fileUploader left-side mb-3">
+                                <input class="form-control input-style-1" type="text" placeholder="Image" readonly="" id="placeholder" fdprocessedid="xgps7j">
+                                <button class="primary-btn-small-input" type="button" fdprocessedid="64bjqb">
+                                    <label class="j-td-btn" for="fileBrouse">Browse</label>
+                                    <input type="file" class="d-none form-control" name="image" id="fileBrouse" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                </button>
                             </div>
+                        </div> --}}
 
+                        <div class="form-group col-md-6">
+                            <label class=" label-style-1" for="image">{{ __('label.image') }}</label>
+                            <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
+                            @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                         </div>
 
-                        <div class="j-create-btns">
-                            <div class="drp-btns">
-                                <button type="submit" class="j-td-btn">{{ ___('label.save') }}</button>
-                                <a href="{{ route('user.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label class=" label-style-1" for="address">{{ __('label.address') }}</label> <span class="text-danger">*</span>
+                            <textarea name="address" class="form-control input-style-1" rows="3" placeholder="{{ __('placeholder.enter_address') }}">{{ old('address') }}</textarea>
+                            @error('address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                         </div>
-                    </form>
+
+                        <div class="form-group col-md-6">
+                            <label class="label-style-1">{{ __('label.about') }} </label>
+                            <textarea name="about" class="form-control input-style-1" rows="3" placeholder="{{ __('placeholder.about_me') }}">{{ old('about') }}</textarea>
+                            @error('about') <span class="pt-2 text-danger">{{ $message }}</span> @enderror
+                        </div>
+
                 </div>
+
+                <div class="j-create-btns">
+                    <div class="drp-btns">
+                        <button type="submit" class="j-td-btn">{{ __('label.save') }}</button>
+                        <a href="{{ route('user.index') }}" class="j-td-btn btn-red"> <span>{{ __('label.cancel') }}</span> </a>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection()

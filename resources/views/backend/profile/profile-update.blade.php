@@ -27,8 +27,8 @@
                 <div class="form-group col-md-6">
                     <label class="label-style-1">{{ ___('label.gender') }} <span class="text-danger">*</span></label>
                     <select name="gender" id="gender" class="form-control input-style-1 select2">
-                        @foreach(trans('gender') as $key => $gender)
-                        <option value="{{ $key }}" @selected(old('gender',$user->gender) == $key)>{{ $gender }}</option>
+                        @foreach(config('site.gender') as $key => $gender)
+                        <option value="{{ $key }}" @selected(old('gender',$user->gender) == $key)>{{ ___('user.'.$gender) }}</option>
                         @endforeach
                     </select>
                     @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror
@@ -64,6 +64,3 @@
     </div>
 </div>
 @endsection()
-
-
-

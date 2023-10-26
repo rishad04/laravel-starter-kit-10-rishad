@@ -21,12 +21,6 @@ class RoleRepository implements RoleInterface
         $this->repo_permission = $repo_permission;
     }
 
-
-    // public function permissions($role)
-    // {
-    //     return  $this->repo_permission::all();
-    // }
-
     public function permissions()
     {
         return Permission::all();
@@ -66,61 +60,17 @@ class RoleRepository implements RoleInterface
             $role->status     = $request->status;
             $role->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
+            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
     public function edit($id)
     {
-        return Role::find($id);
+        return $this->model::find($id);
     }
 
-
-
-
-    // public function all(int $paginate = null, bool $status = null)
-    // {
-    //     $query = $this->model::query();
-
-    //     if ($status !== null) {
-    //         $query->where('status', $status);
-    //     }
-
-    //     $query->latest('updated_at');
-
-    //     if ($paginate !== null) {
-    //         return  $query->paginate($paginate);
-    //     }
-
-    //     return $query->get();
-    // }
-
-    // public function get()
-    // {
-    //     return $this->model::orderByDesc('id')->paginate(10);
-    // }
-    // public function getRole()
-    // {
-    //     return $this->model::where('status', Status::ACTIVE)->get();
-    // }
-
-    //role store
-    // public function store($request)
-    // {
-    //     try {
-    //         $role             = new Role();
-    //         $role->name       = $request->name;
-    //         $role->permissions = $request->permissions ? $request->permissions : [];
-    //         $role->slug       = str_replace(' ', '-',  strtolower($request->name));
-    //         $role->status     = $request->status == '1' ? Status::ACTIVE : Status::INACTIVE;
-    //         $role->save();
-    //         return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
-    //     } catch (\Throwable $th) {
-    //         return $this->responseWithError(__('alert.something_went_wrong'), []);
-    //     }
-    // }
 
     //role update
     public function update($request)
@@ -134,9 +84,9 @@ class RoleRepository implements RoleInterface
             $role->slug         = str_replace(' ', '-',  strtolower($request->name));
             $role->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -146,15 +96,4 @@ class RoleRepository implements RoleInterface
         $item = $this->model::find($id);
         $item->delete();
     }
-
-    //     public function permissions($role)
-    // {
-    //     if ($role == 'admin' || $role == 'super-admin') {
-    //         $ownerBlockedPermission[]['attribute'] = 'hub_payments_request';
-    //         $ownerBlockedPermission[]['attribute'] = 'cash_received_from_delivery_man';
-    //         return Permission::whereNotIn('attribute', $ownerBlockedPermission)->orderBy('id', 'asc')->get();
-    //     } else {
-    //         return Permission::orderBy('id', 'asc')->get();
-    //     }
-    // }
 }

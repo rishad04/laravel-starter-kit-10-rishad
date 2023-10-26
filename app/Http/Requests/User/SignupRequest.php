@@ -33,4 +33,14 @@ class SignupRequest extends FormRequest
             'confirm_password'  => 'required|same:password',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            // 'dob'                       => trans('validation.attributes.dob'),
+            // 'dob'                   => 'Date of Birth',
+            'email'                   => 'E-mail address',
+            'phone'                   => 'Phone number',
+        ];
+    }
 }

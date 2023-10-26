@@ -22,8 +22,7 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         @if($user->id == auth()->user()->id)
-                        <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a>
-                        {{-- <a href="javascript:void(0);" onclick="showUpdateForm()" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a> --}}
+                        {{-- <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a> --}}
                         @endif
                     </div>
                 </div>
@@ -53,12 +52,9 @@
                         <div class="profile-tab">
                             <div class="custom-tab-1">
                                 <ul class="nav nav-tabs">
-                                    <li class="nav-item"><a href="{{route('profile')}}" class="nav-link {{ Route::currentRouteName() == 'profile'?'active':''}}">Contact Info</a>
-                                    </li>
-                                    <li class="nav-item"><a href="{{route('profile.update')}}"  class="nav-link {{ Route::currentRouteName() == 'profile.update'?'active':''}}">Update Profile</a>
-                                    </li>
-                                    <li class="nav-item"><a href="{{route('password.update')}}" class="nav-link {{ Route::currentRouteName() == 'password.update'?'active':''}}">Update Password</a>
-                                    </li>
+                                    <li class="nav-item"><a href="{{route('profile')}}" class="nav-link {{ Route::currentRouteName() == 'profile'?'active':''}}">Contact Info</a> </li>
+                                    <li class="nav-item"><a href="{{route('profile.update')}}" class="nav-link {{ Route::currentRouteName() == 'profile.update'?'active':''}}">Update Profile</a> </li>
+                                    <li class="nav-item"><a href="{{route('password.update')}}" class="nav-link {{ Route::currentRouteName() == 'password.update'?'active':''}}">Update Password</a> </li>
                                 </ul>
                                 <div class="tab-content">
 
@@ -76,5 +72,3 @@
 </div>
 <!-- end wrapper  -->
 @endsection()
-
-

@@ -12,9 +12,9 @@ trait CommonHelperTrait
     public function getMyStatusAttribute()
     {
         if ($this->status == Status::ACTIVE) {
-            $status = '<span class="bullet-badge bullet-badge-success">' . trans("status." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-success">' . ___("status." . config('site.status.default.' . $this->status)) . '</span>';
         } else {
-            $status = '<span class="bullet-badge bullet-badge-danger">' . trans("status." . $this->status) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-danger">' . ___("status." . config('site.status.default.' . $this->status)) . '</span>';
         }
         return $status;
     }

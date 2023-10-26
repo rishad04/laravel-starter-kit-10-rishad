@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\backend\TodoController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\backend\ActivityLogController;
+use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\SearchController;
 
@@ -48,6 +49,21 @@ Route::group(['middleware' => 'auth'], function () {
         // activity-logs
         Route::get('activity-logs',                     [ActivityLogController::class, 'index'])->name('activity.logs.index')->middleware('hasPermission:activity_logs_read');
         Route::get('activity-logs/view/{id}',           [ActivityLogController::class, 'view'])->name('activity.logs.view');
+
+
+
+        //multiple language mange
+        Route::prefix('language')->name('language.')->group(function () {
+            Route::get('/',                             [LanguageController::class, 'index'])->name('index')->middleware('hasPermission:language_read');
+            Route::get('/create',                       [LanguageController::class, 'create'])->name('create')->middleware('hasPermission:language_create');
+            Route::post('/store',                       [LanguageController::class, 'store'])->name('store')->middleware('hasPermission:language_create');
+            Route::get('/edit/{id}',                    [LanguageController::class, 'edit'])->name('edit')->middleware('hasPermission:language_update');
+            Route::put('/update',                       [LanguageController::class, 'update'])->name('update')->middleware('hasPermission:language_update');
+            Route::get('/edit/phrase/{id}',             [LanguageController::class, 'editPhrase'])->name('edit.phrase')->middleware('hasPermission:language_phrase');
+            Route::post('/update/phrase/{code}',        [LanguageController::class, 'updatePhrase'])->name('update.phrase')->middleware('hasPermission:language_phrase');
+            Route::delete('/delete/{id}',               [LanguageController::class, 'delete'])->name('delete')->middleware('hasPermission:language_delete');
+        });
+        //end multiple language manage
     });
 
 
