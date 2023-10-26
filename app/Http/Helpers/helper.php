@@ -112,10 +112,7 @@ function ___($key = null, $replace = [], $locale = null)
 
         $jsonString  = file_get_contents(base_path('lang/' . $app_local . '/' . $file . '.json'));
 
-
-
         $data        = json_decode($jsonString, true);
-
 
         if (@$data[$term]) {
             return $data[$term];
