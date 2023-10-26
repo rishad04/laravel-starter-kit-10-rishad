@@ -46,7 +46,7 @@
                                     $i=0;
                                     @endphp
 
-                                    @foreach ($langData as $key=>$value)
+                                    @foreach ($langData as $key => $value)
                                     <tr>
                                         <td data-title="#">{{ ++$i }}</td>
                                         <td data-title="phrase">{{ $key }}</td>

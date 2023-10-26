@@ -75,9 +75,9 @@ class UserRepository implements UserInterface
             $user->status           = $request->status;
             $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -106,9 +106,9 @@ class UserRepository implements UserInterface
             $user->status           = $request->status;
             $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -122,9 +122,9 @@ class UserRepository implements UserInterface
 
             $item->delete();
 
-            return $this->responseWithSuccess(__('alert.successfully_deleted'), []);
+            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -155,9 +155,9 @@ class UserRepository implements UserInterface
             $user->address          = $request->address;
             $user->about            = $request->about;
             $user->save();
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -168,11 +168,11 @@ class UserRepository implements UserInterface
             if (Hash::check($request->old_password, $user->password)) {
                 $user->password = Hash::make($request->new_password);
                 $user->save();
-                return $this->responseWithSuccess(__('alert.password_updated'), []);
+                return $this->responseWithSuccess(___('alert.password_updated'), []);
             }
-            return $this->responseWithError(__('alert.old_password_not_match'), []);
+            return $this->responseWithError(___('alert.old_password_not_match'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -184,12 +184,12 @@ class UserRepository implements UserInterface
             if ($user != null && session()->has('token') && session('token') == $request->token) {
                 $user->password = Hash::make($request->new_password);
                 $user->save();
-                return $this->responseWithSuccess(__('alert.password_updated'), []);
+                return $this->responseWithSuccess(___('alert.password_updated'), []);
             }
 
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -219,10 +219,10 @@ class UserRepository implements UserInterface
             Mail::to($user->email)->send(new Signup($user));
 
             DB::commit();
-            return $this->responseWithSuccess(__('alert.registration_successful'), []);
+            return $this->responseWithSuccess(___('alert.registration_successful'), []);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -231,7 +231,7 @@ class UserRepository implements UserInterface
         try {
             $user     = User::where('id', $request->user_id)->where('token', $request->token)->first();
             if ($user == null) {
-                return $this->responseWithError(__('alert.something_went_wrong'), []);
+                return $this->responseWithError(___('alert.something_went_wrong'), []);
             }
 
             $user->email_verified_at    = now();
@@ -239,9 +239,9 @@ class UserRepository implements UserInterface
             $user->status               = Status::ACTIVE;
             $user->save();
 
-            return $this->responseWithSuccess(__('alert.verified'), []);
+            return $this->responseWithSuccess(___('alert.verified'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -254,9 +254,9 @@ class UserRepository implements UserInterface
 
             Mail::to($user->email)->send(new TokenResend($user));
 
-            return $this->responseWithSuccess(__('alert.otp_mail_send'), []);
+            return $this->responseWithSuccess(___('alert.otp_mail_send'), []);
         } catch (\Exception $e) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -271,9 +271,9 @@ class UserRepository implements UserInterface
 
             Mail::to($user->email)->send(new PasswordResetToken($user));
 
-            return $this->responseWithSuccess(__('alert.otp_mail_send'), []);
+            return $this->responseWithSuccess(___('alert.otp_mail_send'), []);
         } catch (\Exception $e) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 }

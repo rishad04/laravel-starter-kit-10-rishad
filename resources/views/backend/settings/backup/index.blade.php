@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('Database Backup') }}
+{{ ___('menus.database_backup') }}
 @endsection
 @section('maincontent')
 <!-- wrapper  -->
@@ -13,7 +13,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('Database Backup') }}</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link active">{{ ___('menus.database_backup') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -24,7 +24,7 @@
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('Database Backup') }}</h4>
+                    <h4 class="title-site">{{ ___('menus.database_backup') }}</h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('database.backup.download') }}" class="j-td-btn" data-toggle="tooltip" data-placement="top" title="download">{{ ___('Database Backup') }}</a>
+                            <a href="{{ route('database.backup.download') }}" class="j-td-btn" data-toggle="tooltip" data-placement="top" title="download">{{ ___('menus.database_backup') }}</a>
                         </div>
                     </div>
 

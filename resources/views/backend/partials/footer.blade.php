@@ -47,7 +47,7 @@
     $(document).ready(function() {
         $(".select2").select2({
             tags: "true"
-            , placeholder: "Select an option"
+            , placeholder: "{{___('placeholder.select_an_option')}}"
             , allowClear: true
         });
 

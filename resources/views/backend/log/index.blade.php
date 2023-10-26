@@ -47,9 +47,9 @@
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>{{$log->log_name}}</td>
-                                    <td>{{__('label.'.$log->event)}}</td>
+                                    <td>{{___('label.'.$log->event)}}</td>
                                     <td>{{$log->subject_type}}</td>
-                                    <td>{{__('label.'.$log->description)}}</td>
+                                    <td>{{___('label.'.$log->description)}}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm modalBtn" data-toggle="modal" data-target="#dynamic-modal" data-modalsize="modal-lg" data-title="{{ ___('label.log_details') }}" data-url="{{ route('activity.logs.view',$log->id) }}"> <i class="fa fa-eye"></i></a>
                                     </td>

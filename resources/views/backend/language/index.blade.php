@@ -42,15 +42,15 @@
                             <thead class="bg">
                                 <tr>
                                     <th>{{ ___('label.id') }}</th>
-                                    <th scope="col">{{ ___('icon') }}</th>
+                                    <th scope="col">{{ ___('label.icon') }}</th>
                                     <th scope="col">{{ ___('language.language_name') }}</th>
-                                    <th scope="col">{{ ___('code') }}</th>
+                                    <th scope="col">{{ ___('label.code') }}</th>
                                     <th scope="col">{{ ___('label.status') }}</th>
                                     @if (
                                     hasPermission('language_update') ||
                                     hasPermission('language_phrase') ||
                                     hasPermission('language_delete'))
-                                    <th scope="col">{{ ___('label.actions') }}</th>
+                                    <th scope="col">{{ ___('label.action') }}</th>
                                     @endif
 
                                 </tr>

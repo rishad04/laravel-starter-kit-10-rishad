@@ -23,9 +23,5 @@
     "social_login_settings": "Social Login Settings",
     "payout_setup": "Payout Setup",
     "database_backup": "Database Backup",
-    "storage_settings": "Storage Settings",
-    "recaptcha_settings": "Recaptcha Settings",
-    "mail_setting": "Email Setting",
-    "mail_settings": "Email Settings",
-    "language_settings": "Language Settings"
+    "mail_setting": "Mail Settings"
 }

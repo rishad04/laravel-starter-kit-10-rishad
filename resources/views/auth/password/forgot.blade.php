@@ -17,7 +17,7 @@
                     @csrf
                     <div class="form-group mb-3">
                         <label for="email" class="label-style-1">Email <sup>*</sup></label>
-                        <input type="email" name="email" id="email" class="form-control input-style-1" value="{{ old('email') }}" placeholder="Enter your Email" required autocomplete="off" autofocus>
+                        <input type="email" name="email" id="email" class="form-control input-style-1" value="{{ old('email') }}" placeholder="{{ ___('placeholder.enter_email') }}" required autocomplete="off" autofocus>
                         @error('email') <span class="text-danger small"> {{ $message }} </span> @enderror
                     </div>
 

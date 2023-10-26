@@ -25,9 +25,9 @@ class SettingsRepository implements SettingsInterface
         try {
             $data = collect($request);
             $data->each(fn ($value, $key) => $this->model::updateOrCreate(['key' => $key], ['value' => $value]));
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -68,10 +68,10 @@ class SettingsRepository implements SettingsInterface
 
             DB::commit();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -81,9 +81,9 @@ class SettingsRepository implements SettingsInterface
         try {
             $data = collect($request);
             $data->each(fn ($value, $key) => $this->model::updateOrCreate(['key' => $key], ['value' => $value]));
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 }

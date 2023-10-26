@@ -66,8 +66,5 @@
     "enter_mail_from_name": "Enter mail from name",
     "enter_mail_signature": "Enter mail signature",
 
-    "enter_brand_name": "Enter brand name",
-    "select_an_option": "Select an option",
-    "select_date": "Select date",
-    "enter_role_name": "Enter role name"
+    "enter_brand_name": "Enter brand name"
 }

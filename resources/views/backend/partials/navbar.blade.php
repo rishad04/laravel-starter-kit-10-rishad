@@ -39,8 +39,8 @@
                             <div class="dropdown custom-dropdown">
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
                                     <span>
-                                        <i class="{{ language(Session('locale'))->icon_class }}"></i> {{ Str::upper(Session('locale')) }} <i class="fa fa-angle-down"></i>
-                                        {{-- <i class="{{ language(app()->getLocale())->icon_class }}"></i> {{ Str::upper(app()->getLocale()) }} <i class="fa fa-angle-down"></i> --}}
+                                        {{-- <i class="{{ language(Session::get('locale'))->icon_class }}"></i> {{ Str::upper(Session::get('locale')) }} <i class="fa fa-angle-down"></i> --}}
+                                        <i class="{{ language(app()->getLocale())->icon_class }}"></i> {{ Str::upper(app()->getLocale()) }} <i class="fa fa-angle-down"></i>
                                     </span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">

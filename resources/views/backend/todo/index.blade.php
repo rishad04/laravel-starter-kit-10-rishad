@@ -40,7 +40,7 @@
                             <table class="table table-responsive-sm">
                                 <thead class="bg">
                                     <tr>
-                                        <th>{{ ___('label.sl') }}</th>
+                                        <th>{{ ___('label.id') }}</th>
                                         <th>{{ ___('label.date') }}</th>
                                         <th>{{ ___('label.title') }}</th>
                                         <th>{{ ___('label.description') }}</th>

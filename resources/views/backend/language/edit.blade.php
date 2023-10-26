@@ -89,8 +89,9 @@
                             <div class="col-12 col-md-6 form-group">
                                 <label class="label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select class="form-control input-style-1 select2" id="status" name="status">
-                                    <option value="1" @selected(old('status',$lang->status)==1 )>{{ ___('label.active') }}</option>
-                                    <option value="0" @selected(old('status',$lang->status)==0 )>{{ ___('label.inactive') }}</option>
+                                    @foreach(config('site.status.default') as $key => $status)
+                                    <option value="{{ $key }}" @selected(old('status', @$lang->status)==$key)>{{ ___('status.'.$status) }}</option>
+                                    @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>

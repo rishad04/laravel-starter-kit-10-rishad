@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 
-@section('title',__('recaptcha.recaptcha_setting') )
+@section('title',___('recaptcha.recaptcha_setting') )
 
 @section('maincontent')
 
@@ -37,24 +37,25 @@
                         <div class="form-row">
 
                             <div class="col-md-12 form-group ">
-                                <label class="label-style-1">{{ __('recaptcha.site_key') }}</label>
-                                <input type="text" placeholder="{{ __('recaptcha.site_key') }}" class="form-control input-style-1" name="recaptcha_site_key" value="{{ old('recaptcha_site_key',globalSettings('recaptcha_site_key')) }}" @if(!hasPermission('recaptcha_settings_update')) disabled @endif>
+                                <label class="label-style-1">{{ ___('recaptcha.site_key') }}</label>
+                                <input type="text" placeholder="{{ ___('recaptcha.enter_site_key') }}" class="form-control input-style-1" name="recaptcha_site_key" value="{{ old('recaptcha_site_key',globalSettings('recaptcha_site_key')) }}" @if(!hasPermission('recaptcha_settings_update')) disabled @endif>
                                 @error('recaptcha_site_key') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="col-md-12 form-group ">
-                                <label class="label-style-1">{{ __('recaptcha.secret_key') }}</label>
-                                <input type="text" placeholder="{{ __('recaptcha.secret_key') }}" class="form-control input-style-1" name="recaptcha_secret_key" value="{{ old('recaptcha_secret_key',globalSettings('recaptcha_secret_key')) }}" @if(!hasPermission('recaptcha_settings_update')) disabled @endif>
+                                <label class="label-style-1">{{ ___('recaptcha.secret_key') }}</label>
+                                <input type="text" placeholder="{{ ___('recaptcha.enter_secret_key') }}" class="form-control input-style-1" name="recaptcha_secret_key" value="{{ old('recaptcha_secret_key',globalSettings('recaptcha_secret_key')) }}" @if(!hasPermission('recaptcha_settings_update')) disabled @endif>
                                 @error('recaptcha_secret_key') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label class="label-style-1" class=" label-style-1" for="recaptcha_status">{{ __('label.status') }}</label>
+                                <label class="label-style-1" class=" label-style-1" for="recaptcha_status">{{ ___('label.status') }}</label>
                                 <select name="recaptcha_status" id="recaptcha_status" class="form-control input-style-1 input-style-1 select2" @disabled(!hasPermission('recaptcha_settings_update'))>
 
-                                    @foreach(trans('status') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('recaptcha_status',@globalSettings('recaptcha_status'))==$key)>{{ $status }}</option>
+                                    @foreach(config('site.status.default') as $key => $status)
+                                    <option value="{{ $key }}" @selected(old('recaptcha_status',@globalSettings('recaptcha_status'))==$key)>{{ ___('status.'.$status) }}</option>
                                     @endforeach
+
                                 </select>
                                 @error('recaptcha_status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
