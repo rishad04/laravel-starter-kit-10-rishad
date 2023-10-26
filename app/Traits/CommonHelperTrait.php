@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Enums\Status;
+use App\Enums\StatusEnum;
 use App\Enums\TodoStatus;
 use Illuminate\Support\Facades\File;
 
@@ -11,10 +11,10 @@ trait CommonHelperTrait
 
     public function getMyStatusAttribute()
     {
-        if ($this->status == Status::ACTIVE) {
-            $status = '<span class="bullet-badge bullet-badge-success">' . ___("status." . config('site.status.default.' . $this->status)) . '</span>';
+        if ($this->status == StatusEnum::ACTIVE) {
+            $status = '<span class="bullet-badge bullet-badge-success">' . ___("status." . config('site.status.default.' . StatusEnum::ACTIVE->value)) . '</span>';
         } else {
-            $status = '<span class="bullet-badge bullet-badge-danger">' . ___("status." . config('site.status.default.' . $this->status)) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-danger">' . ___("status." . config('site.status.default.' . StatusEnum::INACTIVE->value)) . '</span>';
         }
         return $status;
     }
