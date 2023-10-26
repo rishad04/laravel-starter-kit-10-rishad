@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
 use App\Http\Requests\Settings\MailSettingsRequest;
 use App\Repositories\Settings\Backup\BackupInterface;
@@ -16,23 +17,26 @@ use App\Http\Requests\Settings\GeneralSettingsUpdateRequest;
 class SettingsController extends Controller
 {
     protected $repo;
+    protected $repoLang;
 
-    public function __construct(SettingsInterface $repo)
+    public function __construct(SettingsInterface $repo, LanguageInterface $repoLang)
     {
-        $this->repo     = $repo;
+        $this->repo         = $repo;
+        $this->repoLang     = $repoLang;
     }
 
     public function generalSettings()
     {
-        return view('backend.settings.general_settings.index');
+        $languages = $this->repoLang->activelang();
+        return view('backend.settings.general_settings.index', compact('languages'));
     }
 
-    public function updateGeneralSettings(GeneralSettingsUpdateRequest $request)
+    public function updateSettings(Request $request)
     {
-        $result = $this->repo->UpdateGeneralSettings($request);
+        $result = $this->repo->UpdateSettings($request);
 
         if ($result['status']) {
-            return redirect()->route('settings.general.index')->with('success', $result['message']);
+            return back()->with('success', $result['message']);
         }
         return back()->with('danger', $result['message'])->withInput();
     }
@@ -42,28 +46,11 @@ class SettingsController extends Controller
         return view('backend.settings.mail.index');
     }
 
-    public function updateMailSettings(MailSettingsRequest $request)
-    {
-        $result = $this->repo->updateMailSettings($request->validated());
 
-        if ($result['status']) {
-            return redirect()->back()->with('success', $result['message']);
-        }
-        return back()->with('danger', $result['message'])->withInput();
-    }
 
     public function recaptcha()
     {
         return view('backend.settings.recaptcha.index');
-    }
-
-    public function updateRecaptcha(RecaptchaSettingsRequest $request)
-    {
-        $result = $this->repo->update($request->validated());
-        if ($result['status']) {
-            return redirect()->back()->with('success', $result['message']);
-        }
-        return back()->with('danger', $result['message'])->withInput();
     }
 
     // Database Backup

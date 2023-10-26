@@ -28,7 +28,7 @@
                 <h4 class="title-site"> {{ ___('menus.mail_setting') }} </h4>
             </div>
 
-            <form action="{{route('settings.mail.update')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('settings.update')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')

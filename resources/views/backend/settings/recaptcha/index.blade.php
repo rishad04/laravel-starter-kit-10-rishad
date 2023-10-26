@@ -30,7 +30,7 @@
                         <h4 class="title-site"> {{ ___('recaptcha.recaptcha_setting') }} </h4>
                     </div>
 
-                    <form action="{{ route('settings.recaptcha.update') }}" method="post">
+                    <form action="{{ route('settings.update') }}" method="post">
                         @csrf
                         @method('put')
 

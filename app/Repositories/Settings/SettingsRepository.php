@@ -20,70 +20,54 @@ class SettingsRepository implements SettingsInterface
         $this->upload = $upload;
     }
 
-    public function update($request)
-    {
-        try {
-            $data = collect($request);
-            $data->each(fn ($value, $key) => $this->model::updateOrCreate(['key' => $key], ['value' => $value]));
-            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
-    }
 
-    // UpdateGeneralSettings 
-    public function UpdateGeneralSettings($request)
+    // UpdateGeneralSettings
+    public function UpdateSettings($request)
     {
-        try {
+        // try {
             DB::beginTransaction();
 
-            $logo = null;
-            $favicon = null;
 
-            if ($request->hasFile('logo')) {
-                $old_id = globalSettings('logo') ?? null;
-                $logo = $this->upload->uploadImage($request->file('logo'), 'settings/', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_100x100], $old_id);
-            }
+            $ignore    = [];
+            $ignore [] = '_token';
+            $ignore [] = '_method';
 
-            if ($request->hasFile('favicon')) {
-                $old_id = globalSettings('favicon') ?? null;
-                $favicon = $this->upload->uploadImage($request->file('favicon'), 'settings/', [ImageSize::IMAGE_16x16, ImageSize::IMAGE_32x32], $old_id);
-            }
+            foreach ($request->except($ignore) as $key => $value) {
+                $settings        = Setting::where('key',$key)->first();
 
-            $data = collect($request->validated());
+                if($settings){
+                    if($key == 'logo'){
+                        $logo              = Setting::where('key',$key)->first();
+                        $settings->value  = $this->upload->uploadImage($request->logo, 'settings', [], $logo->logo);
+                    }elseif($key == 'favicon'){
+                        $favicon           = Setting::where('key',$key)->first();
+                        $settings->value  = $this->upload->uploadImage($request->favicon, 'settings', [], $favicon->favicon);
+                    }else{
+                        $settings->value   = $value;
+                    }
+                    $settings->save();
+                }else{
+                    $settings          = new Setting();
+                    $settings->key   = $key;
+                    if($key == 'logo'){
+                        $settings->value  = $this->upload->uploadImage($request->logo, 'settings', []);
+                    }elseif($key == 'favicon'){
+                        $settings->value  = $this->upload->uploadImage($request->favicon, 'settings', []);
+                    }else{
+                        $settings->value   = $value;
+                    }
 
-            if ($logo !== null) {
-                $data->put('logo', $logo);
-            }
-            if ($favicon !== null) {
-                $data->put('favicon', $favicon);
-            }
-
-            $data->each(function ($value, $key) {
-                if ($value === null) {
-                    return; // Skip if the value is null
+                    $settings->save();
                 }
-                $this->model::updateOrCreate(['key' => $key], ['value' => $value]);
-            });
+            }
 
             DB::commit();
 
             return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
+        // } catch (\Throwable $th) {
+        //     DB::rollBack();
+        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
+        // }
     }
 
-    // updateMailSettings
-    public function updateMailSettings($request)
-    {
-        try {
-            $data = collect($request);
-            $data->each(fn ($value, $key) => $this->model::updateOrCreate(['key' => $key], ['value' => $value]));
-            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
-        }
-    }
 }

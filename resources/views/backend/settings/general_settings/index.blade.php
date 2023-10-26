@@ -32,7 +32,7 @@
                         <h4 class="title-site"> {{ ___('menus.general_settings') }}</h4>
                     </div>
 
-                    <form action="{{route('settings.general.update')}}" method="POST" enctype="multipart/form-data" id="basicform">
+                    <form action="{{route('settings.update')}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         @method('PUT')
 
@@ -40,17 +40,17 @@
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1" for="name">{{ ___('label.brand_name') }}</label>
-                                <input id="name" type="text" name="brand_name" placeholder="{{ ___('placeholder.enter_brand_name') }}" class="form-control input-style-1" value="{{ old('brand_name',globalSettings('brand_name')) }}" require>
+                                <input id="name" type="text" name="name" placeholder="{{ ___('placeholder.enter_brand_name') }}" class="form-control input-style-1" value="{{ old('brand_name',globalSettings('brand_name')) }}" require>
                                 @error('brand_name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="label-style-1" for="phone">{{ ___('label.phone') }}</label>
-                                <input id="phone" type="text" name="brand_phone" placeholder="{{ ___('placeholder.enter_phone') }}" class="form-control input-style-1" value="{{  old('brand_phone',globalSettings('brand_phone'))   }}" require>
+                                <input id="phone" type="text" name="phone" placeholder="{{ ___('placeholder.enter_phone') }}" class="form-control input-style-1" value="{{  old('brand_phone',globalSettings('brand_phone'))   }}" require>
                                 @error('brand_phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="label-style-1" for="email">{{ ___('label.email') }}</label>
-                                <input id="email" type="text" name="brand_info_email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('brand_info_email', globalSettings('brand_info_email')) }}" require>
+                                <input id="email" type="text" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('brand_info_email', globalSettings('brand_info_email')) }}" require>
                                 @error('brand_info_email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
@@ -58,6 +58,18 @@
                                 <label class="label-style-1" for="copyright">{{ ___('label.copyright') }}</label>
                                 <input id="copyright" type="text" name="copyright" placeholder="{{ ___('placeholder.enter_copyright') }}" class="form-control input-style-1" value="{{ old('copyright', globalSettings('copyright')) }}" require>
                                 @error('copyright') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="label-style-1" class=" label-style-1" for="language">{{ ___('label.default language') }}</label>
+                                <select name="language" id="language" class="form-control input-style-1 input-style-1 select2">
+
+                                    @foreach($languages as $row)
+                                    <option value="{{ $row->code }}" @selected(old('language',@globalSettings('language'))==$row->code)>{{$row->name }}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('language') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6 ">

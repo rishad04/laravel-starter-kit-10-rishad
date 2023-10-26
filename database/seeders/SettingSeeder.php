@@ -24,10 +24,9 @@ class SettingSeeder extends Seeder
     {
         return [
 
-            ['key' => 'brand_name',             'value' => 'Parcel Fly'],
-            ['key' => 'brand_phone',            'value' => '+8802999888'],
-            ['key' => 'brand_info_email',       'value' => 'info@parcelfly.com'],
-            ['key' => 'brand_support_email',    'value' => 'support@parcelfly.com'],
+            ['key' => 'name',             'value' => 'Parcel Fly'],
+            ['key' => 'phone',            'value' => '+8802999888'],
+            ['key' => 'email',            'value' => 'info@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
             ['key' => 'logo',                   'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/logo.png'])],
