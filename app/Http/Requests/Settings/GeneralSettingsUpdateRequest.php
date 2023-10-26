@@ -22,13 +22,12 @@ class GeneralSettingsUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'brand_name'        => 'required|string',
-            'brand_phone'       => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/',
-            'brand_info_email'  => 'required|email',
-            'copyright'         => 'required|string',
-
-            'logo'              => 'nullable|image|mimes:png,jpg,jpeg,svg,webp|max:5098',
-            'favicon'           => 'nullable|image|mimes:png,jpg,jpeg,svg,webp,ico|max:5000',
+            'name'          => 'required|string',
+            'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/',
+            'email'         => 'required|email',
+            'copyright'     => 'required|string',
+            'logo'          => 'nullable|image|mimes:png,jpg,jpeg,svg,webp|max:5098',
+            'favicon'       => 'nullable|image|mimes:png,jpg,jpeg,svg,webp,ico|max:5000',
         ];
     }
 }

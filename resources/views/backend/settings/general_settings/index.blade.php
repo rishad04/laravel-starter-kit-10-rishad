@@ -39,19 +39,19 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                <label class="label-style-1" for="name">{{ ___('label.brand_name') }}</label>
-                                <input id="name" type="text" name="name" placeholder="{{ ___('placeholder.enter_brand_name') }}" class="form-control input-style-1" value="{{ old('brand_name',globalSettings('brand_name')) }}" require>
-                                @error('brand_name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                <label class="label-style-1" for="name">{{ ___('label.name') }}</label>
+                                <input id="name" type="text" name="name" placeholder="{{ ___('placeholder.enter_name') }}" class="form-control input-style-1" value="{{ old('name',globalSettings('name')) }}" require>
+                                @error('name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="label-style-1" for="phone">{{ ___('label.phone') }}</label>
-                                <input id="phone" type="text" name="phone" placeholder="{{ ___('placeholder.enter_phone') }}" class="form-control input-style-1" value="{{  old('brand_phone',globalSettings('brand_phone'))   }}" require>
-                                @error('brand_phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                <input id="phone" type="text" name="phone" placeholder="{{ ___('placeholder.enter_phone') }}" class="form-control input-style-1" value="{{  old('phone',globalSettings('phone'))   }}" require>
+                                @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="label-style-1" for="email">{{ ___('label.email') }}</label>
-                                <input id="email" type="text" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('brand_info_email', globalSettings('brand_info_email')) }}" require>
-                                @error('brand_info_email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                                <input id="email" type="text" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('email', globalSettings('email')) }}" require>
+                                @error('email') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
@@ -70,6 +70,17 @@
 
                                 </select>
                                 @error('language') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="label-style-1">{{ __('levels.trade_license') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <input class="form-control input-style-1" type="text" placeholder="Image" readonly="" id="placeholder" fdprocessedid="xgps7j">
+                                    <button class="primary-btn-small-input" type="button" fdprocessedid="64bjqb">
+                                        <label class="j-td-btn" for="fileBrouse3">Browse</label>
+                                        <input type="file" class="d-none form-control" name="trade_license" id="fileBrouse3" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="form-group col-md-6 ">

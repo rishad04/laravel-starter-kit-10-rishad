@@ -40,6 +40,8 @@
 {{-- flatpickr --}}
 <script src="{{asset('backend')}}/vendor/flatpickr/flatpickr.min.js"></script>
 
+<script src="{{static_asset('backend')}}/js/_developer.js"></script>
+
 
 @include('backend.partials.alert-message')
 
