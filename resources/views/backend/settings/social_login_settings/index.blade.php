@@ -51,7 +51,7 @@
                                 <div class="form-group d-flex">
                                     <label class="label-style-1" for="switch-id">{{ ___('levels.status') }}</label>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input switch-id ml-3" name="facebook_status" id="switch-id" type="checkbox" role="switch" @checked(old('facebook_status', globalSettings('facebook_status'))==\App\Enums\Status::ACTIVE)>
+                                        <input class="form-check-input switch-id ml-3" name="facebook_status" id="switch-id" type="checkbox" role="switch" @checked(old('facebook_status', globalSettings('facebook_status'))==\App\Enums\StatusEnum::ACTIVE->value)>
                                     </div>
                                 </div>
 
@@ -96,7 +96,7 @@
                                 <div class="form-group d-flex">
                                     <label class="label-style-1" for="g-switch-id">{{ ___('levels.status') }}</label>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input switch-id ml-3" name="google_status" id="g-switch-id" type="checkbox" role="switch" @checked(old('google_status', globalSettings('google_status'))==\App\Enums\Status::ACTIVE)>
+                                        <input class="form-check-input switch-id ml-3" name="google_status" id="g-switch-id" type="checkbox" role="switch" @checked(old('google_status', globalSettings('google_status'))==\App\Enums\StatusEnum::ACTIVE->value)>
                                     </div>
                                 </div>
                             </div>

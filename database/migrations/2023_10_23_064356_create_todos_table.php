@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\StatusEnum;
-use App\Enums\TodoStatus;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('date')->nullable();
             $table->unsignedBigInteger('todo_file')->nullable();
-            $table->tinyInteger('status')->default(StatusEnum::PENDING)->comment('pending= 1, procesing= 2,complete= 3');
+            $table->tinyInteger('status')->default(StatusEnum::PENDING->value)->comment('pending= 1, procesing= 2,complete= 3');
             $table->longtext('note')->nullable();
             $table->timestamps();
         });
