@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\StatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->string('status')->default(App\Enums\Status::ACTIVE);
+            $table->boolean('status')->default(StatusEnum::ACTIVE)->comment(StatusEnum::ACTIVE . ' = Active' .  ', ' . StatusEnum::INACTIVE . ' = Inactive');
             $table->longText('permissions')->nullable();
             $table->timestamps();
         });

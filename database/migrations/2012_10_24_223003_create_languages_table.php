@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->string('icon_class')->nullable();
             $table->string('text_direction')->nullable();
-            $table->boolean('status')->default(Status::ACTIVE)->comment(Status::ACTIVE . ' = Active' .  ', ' . Status::INACTIVE . ' = Inactive');
+            $table->boolean('status')->default(StatusEnum::ACTIVE)->comment(StatusEnum::ACTIVE . ' = Active' .  ', ' . StatusEnum::INACTIVE . ' = Inactive');
             $table->timestamps();
         });
     }

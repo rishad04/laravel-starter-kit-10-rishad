@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\Status;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title')->nullable()->comment('Module Title');
             $table->string('name')->nullable()->comment('Route Name');
             $table->string('uri')->comment('Route URL');
-            $table->boolean('status')->default(Status::ACTIVE)->comment(Status::ACTIVE . " = Active & " . Status::INACTIVE . " = Inactive");
+            // $table->boolean('status')->default(StatusEnum::ACTIVE->value)->comment(StatusEnum::ACTIVE->value . " = Active & " . StatusEnum::INACTIVE . " = Inactive");
             $table->timestamps();
         });
     }
