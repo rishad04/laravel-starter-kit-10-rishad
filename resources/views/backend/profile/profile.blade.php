@@ -14,8 +14,6 @@
                     @endif
                 </span>
 
-
-
             </li>
             <li>
                 <h6 class="heading-6">Phone</h6>
@@ -29,10 +27,7 @@
                 <h6 class="heading-6">{{ ___('label.role') }}</h6>
                 <span>{{@$user->role->name}}</span>
             </li>
-            <li>
-                <h6 class="heading-6">{{ ___('label.designation') }}</h6>
-                <span>{{@$user->designation->title}}</span>
-            </li>
+
             <li>
                 <h6 class="heading-6">{{ ___('label.status') }}</h6>
                 <span>{!! @$user->my_status !!}</span>
