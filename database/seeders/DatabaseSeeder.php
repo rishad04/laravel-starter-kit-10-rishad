@@ -8,7 +8,6 @@ use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\UploadSeeder;
 use Database\Seeders\PermissionSeeder;
-use Database\Seeders\DesignationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
