@@ -48,7 +48,7 @@ class SettingsController extends Controller
         $result = $this->repo->mailSendTest($request);
 
         if ($result['status']) {
-            return  redirect()->back()->with('success', $result['message']);
+            return  redirect()->route('settings.mail')->with('success', $result['message']);
         }
         return  redirect()->back()->with('danger', $result['message'])->withInput();
     }

@@ -165,7 +165,7 @@ class SettingsRepository implements SettingsInterface
 
             Mail::to($request->email)->send(new SendTestMail);
 
-            return $this->responseWithError(___('alert.mail_successfully_sended'), []);
+            return $this->responseWithSuccess(___('alert.mail_successfully_sended'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.mail_not_send'), []);
         }
