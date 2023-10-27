@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\StatusEnum;
+use App\Enums\TodoStatus;
+use App\Enums\TodoStatusEnum;
 
 return [
 
@@ -19,9 +21,9 @@ return [
         ],
 
         'Todo' => [
-            '1'  => 'pending',
-            '2'  => 'processing',
-            '3'  => 'complete',
+            TodoStatusEnum::PENDING->value      => 'pending',
+            TodoStatusEnum::PROCESSING->value   => 'processing',
+            TodoStatusEnum::COMPLETED->value    => 'complete',
         ],
     ],
 

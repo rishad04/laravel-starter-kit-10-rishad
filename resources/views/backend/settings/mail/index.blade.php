@@ -122,16 +122,17 @@
             @if(hasPermission('mail_settings_read'))
             <form action="{{ route('settings.testSendMail') }}" method="post">
                 @csrf
-                <div class="row">
-                    <div class="col-sm-10">
-                        <div class="form-group ">
-                            <label class="label-style-1">{{ ___('label.email') }} <span class="text-danger">*</span></label>
-                            <input type="email" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('email') }}">
-                            @error('email') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 col-sm-10">
+                        <label class="label-style-1">{{ ___('label.email') }} <span class="text-danger">*</span></label>
+                        <input type="email" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('email') }}">
+                        @error('email') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                     </div>
-                    <div class="col-sm-2 text-right margintop30">
-                        <button type="submit" class="btn btn-primary save">{{ ___('label.test') }}</button>
+
+                </div>
+                <div class="j-create-btns">
+                    <div class="drp-btns">
+                        <button type="submit" class="j-td-btn">{{ ___('label.test') }}</button>
                     </div>
                 </div>
             </form>
