@@ -24,4 +24,5 @@ Route::middleware(['XSS', 'auth'])->prefix('admin/settings')->group(function () 
 
     // database backup
     Route::get('database/backup',               [SettingsController::class, 'databaseBackupIndex'])->name('database.backup.index')->middleware('hasPermission:database_backup_read');
+    Route::get('database/backup/download',      [SettingsController::class, 'databaseBackupDownload'])->name('database.backup.download')->middleware('hasPermission:database_backup_read');
 });
