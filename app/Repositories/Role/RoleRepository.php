@@ -26,7 +26,7 @@ class RoleRepository implements RoleInterface
         return Permission::all();
     }
 
-    public function all(int $paginate = null, bool $status = null)
+    public function all(int $paginate = null, int $status = null)
     {
         $query = $this->model::query();
 

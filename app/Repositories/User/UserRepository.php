@@ -236,7 +236,7 @@ class UserRepository implements UserInterface
 
             $user->email_verified_at    = now();
             $user->token                = null;
-            $user->status               = Status::ACTIVE;
+            $user->status               = StatusEnum::ACTIVE;
             $user->save();
 
             return $this->responseWithSuccess(___('alert.verified'), []);

@@ -63,7 +63,7 @@ if (!function_exists('SmsSendSettingHelper')) {
 
     function SmsSendSettingHelper($status)
     {
-        $data = SmsSendSetting::where(['sms_send_status' => $status, 'status' => Status::ACTIVE])->first();
+        $data = SmsSendSetting::where(['sms_send_status' => $status, 'status' => StatusEnum::ACTIVE])->first();
         if (!blank($data)) :
             return true;
         else :
@@ -374,7 +374,7 @@ if (!function_exists('withoutUser')) {
     function withoutUser($ids)
     {
 
-        $user = User::WhereNotIn('id', $ids)->WhereNotIn('user_type', [UserType::DELIVERYMAN, UserType::MERCHANT])->where('status', Status::ACTIVE)->get();
+        $user = User::WhereNotIn('id', $ids)->WhereNotIn('user_type', [UserType::DELIVERYMAN, UserType::MERCHANT])->where('status', StatusEnum::ACTIVE)->get();
         if (!blank($user)) :
             return $user;
         else :
@@ -386,7 +386,7 @@ if (!function_exists('withoutUser')) {
 if (!function_exists('unpaidUser')) {
     function unpaidUser($ids)
     {
-        $users = User::WhereIn('id', $ids)->WhereNotIn('user_type', [UserType::DELIVERYMAN, UserType::MERCHANT])->where('status', Status::ACTIVE)->get();
+        $users = User::WhereIn('id', $ids)->WhereNotIn('user_type', [UserType::DELIVERYMAN, UserType::MERCHANT])->where('status', StatusEnum::ACTIVE)->get();
         if (!blank($users)) :
             return $users;
         else :

@@ -47,7 +47,8 @@
                                         <span class="text-danger">*</span>
                                         <select name="status" class="form-control input-style-1 select2">
                                             @foreach(config('site.status.default') as $key => $status)
-                                            <option value="{{ $key }}" @selected(old('status', @$role->status)==$key)>{{ ___('status.'.$status) }}</option>
+
+                                            <option value="{{ $key }}" @selected(old('status', @$role->status->value)==$key)>{{ ___('status.'.$status) }}</option>
                                             @endforeach
                                         </select>
                                         @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror

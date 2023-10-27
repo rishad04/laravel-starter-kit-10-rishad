@@ -32,7 +32,7 @@ class TodoController extends Controller
 
     public function create()
     {
-        $users      = $this->userRepo->all(status: Status::ACTIVE);
+        $users      = $this->userRepo->all(status: StatusEnum::ACTIVE);
         return view('backend.todo.create', compact('users'));
     }
 
@@ -49,7 +49,7 @@ class TodoController extends Controller
     public function edit($id)
     {
         $todo          = $this->repo->get($id);
-        $users         = $this->userRepo->all(status: Status::ACTIVE);
+        $users         = $this->userRepo->all(status: StatusEnum::ACTIVE);
         return view('backend.todo.edit', compact('todo', 'users'));
     }
 
