@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\StatusEnum;
+
 return [
 
 
@@ -12,8 +14,8 @@ return [
     'status' => [
 
         'default' => [
-            '0'  => 'inactive',
-            '1'  => 'active',
+            StatusEnum::INACTIVE->value  => 'inactive',
+            StatusEnum::ACTIVE->value  => 'active',
         ],
 
         'Todo' => [
