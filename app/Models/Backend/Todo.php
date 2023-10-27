@@ -55,12 +55,12 @@ class Todo extends Model
 
     public function getTodoStatusAttribute()
     {
-        if ($this->status == StatusEnum::PROCESSING->value) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
-        } elseif ($this->status == StatusEnum::COMPLETED->value) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
+        if ($this->status == StatusEnum::PROCESSING) {
+            $status = '<span class="bullet-badge bullet-badge-info">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
+        } elseif ($this->status == StatusEnum::COMPLETED) {
+            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
         } else {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
         }
 
         return $status;

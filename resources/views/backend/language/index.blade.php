@@ -80,7 +80,7 @@
 
                                         <div class="dropdown-menu">
 
-                                            @if( hasPermission('language_update') && ($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar'))
+                                            @if( hasPermission('language_update') && ($language->code !== 'en'))
                                             <a href="{{ route('language.edit',$language->id) }}" class="dropdown-item"><i class="fa fa-edit color-muted" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                             @endif
 
@@ -88,7 +88,7 @@
                                             <a href="{{ route('language.edit.phrase',$language->id) }}" class="dropdown-item"> <i class="fa fa-language color-muted"></i> {{ ___('label.edit_phrase') }}</a>
                                             @endif
 
-                                            @if( hasPermission('language_delete') && ($language->code !== 'en' && $language->code !== 'bn' && $language->code !== 'ar'))
+                                            @if( hasPermission('language_delete') && ($language->code !== 'en'))
                                             <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/language/delete', {{$language->id}})">
                                                 <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
                                             </a>

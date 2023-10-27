@@ -72,7 +72,7 @@
                                 <label class="label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select class="form-control input-style-1 select2" id="status" name="status">
                                     @foreach(config('site.status.default') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status', @$lang->status)==$key)>{{ ___('status.'.$status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('status', @$lang->status->value)==$key)>{{ ___('status.'.$status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
