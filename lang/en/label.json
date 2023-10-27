@@ -135,10 +135,11 @@
     "mail_username": "Mail Username",
     "mail_password": "Mail Password",
     "mail_encryption": "Mail Encryption",
-    "mail_from_address": "Mail From Address",
-    "mail_from_name": "Mail From Name",
-    "mail_signature": "Mail Signature",
+    "mail_address": "Mail Address",
+    "mail_name": "Mail Name",
+    "signature": "Signature",
 
     "icon": "Icon",
-    "code": "Code"
+    "code": "Code",
+    "test": "Test"
 }

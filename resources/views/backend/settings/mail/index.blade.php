@@ -98,14 +98,14 @@
                     </div>
 
                     <div class="form-group col-12 col-md-6 smtp">
-                        <label class="label-style-1" for="mail_signature">{{ ___('label.mail_signature') }}</label> <span class="text-danger">*</span>
-                        <textarea name="mail_signature" id="mail_signature" class="form-control input-style-1 summernote" placeholder="{{ ___('placeholder.enter_mail_signature') }}" @disabled(!hasPermission('mail_settings_update'))>{{ old('mail_signature', globalSettings('mail_signature')) }}</textarea>
-                        @error('mail_signature') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                        <label class="label-style-1" for="signature">{{ ___('label.signature') }}</label> <span class="text-danger">*</span>
+                        <textarea name="signature" id="signature" class="form-control input-style-1 summernote" placeholder="{{ ___('placeholder.enter_signature') }}" @disabled(!hasPermission('mail_settings_update'))>{{ old('signature', globalSettings('signature')) }}</textarea>
+                        @error('signature') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                     </div>
 
                     <div class="form-group col-12 col-md-6 smtp">
-                        <label>{{ __('signature') }} </label>
-                        <textarea name="signature" class="form-control" rows="10">{{ old('signature',globalSettings('signature')) }}</textarea>
+                        <label class="label-style-1" for="mail_signature">{{ __('signature') }} </label>
+                        <textarea name="signature" id="signature" class="form-control input-style-1 summernote" rows="10">{{ old('signature',globalSettings('signature')) }}</textarea>
                     </div>
 
                 </div>
@@ -125,20 +125,18 @@
     <div class="card">
         <div class="card-body">
             @if(hasPermission('mail_settings_read'))
-            <form action="{{ route('settings.mail.settings.testsendmail') }}" method="post">
+            <form action="{{ route('settings.testSendMail') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group ">
-                            <label>{{ __('email') }} <span class="text-danger">*</span></label>
-                            <input type="email" placeholder="{{ __('enter_email_address') }}" class="form-control" name="email" value="{{ old('email') }}">
-                            @error('email')
-                            <p class="pt-2 text-danger">{{ $message }}</p>
-                            @enderror
+                            <label class="label-style-1">{{ __('label.email') }} <span class="text-danger">*</span></label>
+                            <input type="email" name="email" placeholder="{{ __('placeholder.enter_email_address') }}" class="form-control input-style-1" value="{{ old('email') }}">
+                            @error('email') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                         </div>
                     </div>
                     <div class="col-sm-2 text-right margintop30">
-                        <button type="submit" class="btn btn-primary save">{{ __('test') }}</button>
+                        <button type="submit" class="btn btn-primary save">{{ __('label.test') }}</button>
                     </div>
                 </div>
             </form>

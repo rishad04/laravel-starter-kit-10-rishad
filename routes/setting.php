@@ -10,11 +10,11 @@ Route::middleware(['XSS', 'auth'])->prefix('admin/settings')->group(function () 
 
     // General settings
     Route::get('general-settings',              [SettingsController::class, 'generalSettings'])->name('settings.general.index')->middleware('hasPermission:general_settings_read');
-    Route::put('update-settings',              [SettingsController::class, 'updateSettings'])->name('settings.update')->middleware('hasPermission:general_settings_update');
+    Route::put('update-settings',               [SettingsController::class, 'updateSettings'])->name('settings.update')->middleware('hasPermission:general_settings_update');
 
     // Mail Setting Routes
     Route::get('mail',                          [SettingsController::class, 'mailSettings'])->name('settings.mail')->middleware('hasPermission:mail_settings_read');
-    Route::post('mail/test-send-mail',          [MailSettingsController::class, 'testSendMail'])->name('testsendmail')->middleware('hasPermission:mail_settings_update');
+    Route::post('mail/test-send-mail',          [SettingsController::class, 'testSendMail'])->name('settings.testSendMail')->middleware('hasPermission:mail_settings_update');
 
     // Mail Setting Routes
     Route::get('recaptcha',                     [SettingsController::class, 'recaptcha'])->name('settings.recaptcha.index')->middleware('hasPermission:recaptcha_settings_read');

@@ -9,10 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
-use App\Http\Requests\Settings\MailSettingsRequest;
 use App\Repositories\Settings\Backup\BackupInterface;
-use App\Http\Requests\Settings\RecaptchaSettingsRequest;
-use App\Http\Requests\Settings\GeneralSettingsUpdateRequest;
 
 class SettingsController extends Controller
 {
