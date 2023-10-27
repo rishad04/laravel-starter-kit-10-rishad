@@ -72,6 +72,8 @@
                                 @error('language') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
+                            {{-- test --}}
+
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ __('levels.trade_license') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
@@ -82,6 +84,8 @@
                                     </button>
                                 </div>
                             </div>
+
+                            {{-- test  --}}
 
                             <div class="form-group col-md-6 ">
                                 <div class="row">

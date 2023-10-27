@@ -64,13 +64,13 @@
 
                     <div class="form-group col-12 col-md-6 smtp">
                         <label class="label-style-1" for="mail_address">{{ ___('label.mail_address') }}</label> <span class="text-danger">*</span>
-                        <input type="email" name="mail_address" id="mail_address" class="form-control input-style-1 " value="{{ old('mail_address', globalSettings('mail_address')) }}" placeholder="{{ ___('placeholder.enter_mail_address') }}" @disabled(!hasPermission('mail_settings_update')) />
+                        <input type="email" name="mail_address" id="mail_address" class="form-control input-style-1 " value="{{ old('mail_address', globalSettings('mail_address')) }}" placeholder="{{ ___('placeholder.enter_email') }}" @disabled(!hasPermission('mail_settings_update')) />
                         @error('mail_address') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                     </div>
 
                     <div class="form-group col-12 col-md-6 smtp">
-                        <label class="label-style-1" for="mail_name">{{ __('label.mail_name') }}</label>
-                        <input type="text" name="mail_name" id="mail_name" placeholder="{{ __('placeholder.enter_mail_name') }}" class="form-control input-style-1 " value="{{ old('mail_name',globalSettings('mail_name')) }}" @if(!hasPermission('mail_settings_update')) disabled @endif>
+                        <label class="label-style-1" for="mail_name">{{ ___('label.mail_name') }}</label>
+                        <input type="text" name="mail_name" id="mail_name" placeholder="{{ ___('placeholder.enter_mail_name') }}" class="form-control input-style-1 " value="{{ old('mail_name',globalSettings('mail_name')) }}" @if(!hasPermission('mail_settings_update')) disabled @endif>
                         @error('mail_name') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                     </div>
 
@@ -103,11 +103,6 @@
                         @error('signature') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                     </div>
 
-                    <div class="form-group col-12 col-md-6 smtp">
-                        <label class="label-style-1" for="mail_signature">{{ __('signature') }} </label>
-                        <textarea name="signature" id="signature" class="form-control input-style-1 summernote" rows="10">{{ old('signature',globalSettings('signature')) }}</textarea>
-                    </div>
-
                 </div>
                 @if(hasPermission('mail_settings_update'))
 
@@ -130,13 +125,13 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group ">
-                            <label class="label-style-1">{{ __('label.email') }} <span class="text-danger">*</span></label>
-                            <input type="email" name="email" placeholder="{{ __('placeholder.enter_email_address') }}" class="form-control input-style-1" value="{{ old('email') }}">
+                            <label class="label-style-1">{{ ___('label.email') }} <span class="text-danger">*</span></label>
+                            <input type="email" name="email" placeholder="{{ ___('placeholder.enter_email') }}" class="form-control input-style-1" value="{{ old('email') }}">
                             @error('email') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                         </div>
                     </div>
                     <div class="col-sm-2 text-right margintop30">
-                        <button type="submit" class="btn btn-primary save">{{ __('label.test') }}</button>
+                        <button type="submit" class="btn btn-primary save">{{ ___('label.test') }}</button>
                     </div>
                 </div>
             </form>

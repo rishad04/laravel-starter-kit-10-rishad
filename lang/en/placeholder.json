@@ -4,7 +4,7 @@
 
     "enter_phone": "Enter Phone",
     "enter_mobile": "Enter Mobile",
-    "enter_email": "Enter Email",
+    "enter_email": "Enter Email Address",
     "enter_name": "Enter Name",
     "enter_contact_no": "Enter Contact No",
     "enter_password": "Enter Password",
@@ -69,5 +69,6 @@
     "enter_brand_name": "Enter brand name",
     "select_an_option": "Select an option",
     "select_date": "Select date",
-    "enter_role_name": "Enter role name"
+    "enter_role_name": "Enter role name",
+    "enter_mail_name": "Enter mail name"
 }
