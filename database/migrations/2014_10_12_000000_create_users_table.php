@@ -24,9 +24,6 @@ return new class extends Migration
 
             $table->string('address')->nullable();
 
-            // $table->string('designations')->nullable();
-            $table->foreignId('designation')->nullable()->comment('designations id')->constrained('designations')->nullOnDelete();
-
             $table->longText('about')->nullable();
 
 

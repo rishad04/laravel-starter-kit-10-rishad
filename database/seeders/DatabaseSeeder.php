@@ -21,11 +21,9 @@ class DatabaseSeeder extends Seeder
             RouteListSeeder::class,
             FlagIconSeeder::class,
             LanguageSeeder::class,
-            LanguageConfigSeeder::class,
             PermissionSeeder::class,
             UploadSeeder::class,
             RoleSeeder::class,
-            DesignationSeeder::class,
             UserSeeder::class,
 
         ]);
