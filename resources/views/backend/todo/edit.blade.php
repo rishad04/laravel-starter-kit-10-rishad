@@ -70,8 +70,6 @@
                             </div>
 
 
-
-
                             <div class="form-group col-md-6 ">
                                 <label>{{ ___('label.file') }} </label>
                                 <input type="file" class="form-control input-style-1" name="todoFile">
@@ -81,7 +79,7 @@
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label> <span class="text-danger">*</span>
                                 <select name="status" class="form-control input-style-1 select2">
                                     @foreach(config('site.status.Todo') as $key => $status)
-                                    <option value="{{ $key }}" {{ (old('status',$user->status) == $key) ? 'selected' : '' }}>{{ ___('status.' .  $status) }}</option>
+                                    <option value="{{ $key }}" {{ (old('status', $user->status) == $key) ? 'selected' : '' }}>{{ ___('status.' .  $status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status')
@@ -90,15 +88,11 @@
                             </div>
 
 
-
-
                             <div class="form-group col-md-6 ">
                                 <label>{{ ___('label.description') }} </label>
                                 <textarea name="description" class="form-control input-style-1" rows="3" placeholder="{{ ___('placeholder.enter_description') }}">{{ old('description',$todo->description) }}</textarea>
 
                             </div>
-
-
 
                         </div>
                         <div class="form-row">

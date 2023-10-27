@@ -70,7 +70,7 @@
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(config('site.status.Todo') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE)==$key)>{{ ___('status.' .  $status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\StatusEnum::ACTIVE->value)==$key)>{{ ___('status.' .  $status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
