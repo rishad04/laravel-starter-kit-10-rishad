@@ -33,12 +33,11 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(LanguageInterface::class,            LanguageRepository::class);
+        $this->app->bind(LanguageInterface::class,              LanguageRepository::class);
         $this->app->bind(PermissionInterface::class,            PermissionRepository::class);
 
         // settings 
         $this->app->bind(SettingsInterface::class,              SettingsRepository::class);
-        $this->app->bind(BackupInterface::class,                BackupRepository::class);
 
         $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);
         $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);

@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
-use App\Repositories\Settings\Backup\BackupInterface;
 
 class SettingsController extends Controller
 {
@@ -56,9 +55,9 @@ class SettingsController extends Controller
         return view('backend.settings.backup.index');
     }
 
-    public function BackupDownload(BackupInterface $backupRepo)
+    public function databaseBackupDownload()
     {
-        if ($backupRepo->backupDownload()) {
+        if ($this->repo->dbBackupDownload()) {
             return redirect()->route('backup.index');
         }
         return redirect()->back();

@@ -6,4 +6,5 @@ interface SettingsInterface
 {
 
     public function UpdateSettings($request);
+    public function dbBackupDownload(); //database backup
 }
