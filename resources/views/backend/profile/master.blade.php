@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         @if($user->id == auth()->user()->id)
-                        {{-- <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a> --}}
+                        <a href="{{ route('profile.update') }}" id="edit" class="j-btn-sm">{{ ___('label.edit') }}</a>
                         @endif
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         </li>
                         <li>
                             <h6 class="heading-6">{{ ___('label.gender') }}</h6>
-                            {{-- <span>{{ ___('gender.' . @$user->gender)  }}</span> --}}
+                            <span>{{ ___('gender.' . @$user->gender)  }}</span>
                         </li>
 
                     </ul>
