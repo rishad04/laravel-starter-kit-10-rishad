@@ -14,6 +14,7 @@ Route::middleware(['XSS', 'auth'])->prefix('admin/settings')->group(function () 
 
     // Mail Setting Routes
     Route::get('mail',                          [SettingsController::class, 'mailSettings'])->name('settings.mail')->middleware('hasPermission:mail_settings_read');
+    Route::post('mail/test-send-mail',          [MailSettingsController::class, 'testSendMail'])->name('testsendmail')->middleware('hasPermission:mail_settings_update');
 
     // Mail Setting Routes
     Route::get('recaptcha',                     [SettingsController::class, 'recaptcha'])->name('settings.recaptcha.index')->middleware('hasPermission:recaptcha_settings_read');
@@ -23,5 +24,4 @@ Route::middleware(['XSS', 'auth'])->prefix('admin/settings')->group(function () 
 
     // database backup
     Route::get('database/backup',               [SettingsController::class, 'databaseBackupIndex'])->name('database.backup.index')->middleware('hasPermission:database_backup_read');
-
 });
