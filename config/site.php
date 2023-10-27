@@ -26,6 +26,20 @@ return [
         ],
     ],
 
+    'translations' => [
+        'alert'         => 'Alert',
+        'label'         => 'Label',
+        'language'      => 'Language',
+        'menus'         => 'Menus',
+        'permissions'   => 'Permissions',
+        'placeholder'   => 'Placeholder',
+        'recaptcha'     => 'Recaptcha',
+        'role'          => 'Role',
+        'status'        => 'Status',
+        'user'          => 'User',
+        'website_setup' => 'Website Setup',
+    ],
+
 
 
 
