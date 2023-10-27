@@ -3,7 +3,6 @@
 namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
-use App\Enums\Status;
 use App\Enums\StatusEnum;
 use App\Mail\PasswordResetToken;
 use App\Mail\Signup;

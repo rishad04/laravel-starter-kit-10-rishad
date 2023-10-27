@@ -160,6 +160,7 @@ class SettingsRepository implements SettingsInterface
                 'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
                 'mail.mailers.smtp.username'   => globalSettings('mail_username'),
                 'mail.mailers.smtp.password'   => globalSettings('mail_password'),
+                'mail.from.address'            => globalSettings('mail_address'),
                 'mail.from.name'               => globalSettings('mail_name')
             ]);
 

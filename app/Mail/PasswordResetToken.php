@@ -21,7 +21,6 @@ class PasswordResetToken extends Mailable
     public function __construct($user)
     {
         $this->user = $user;
-        $this->setMailer();
     }
 
     /**
@@ -56,24 +55,5 @@ class PasswordResetToken extends Mailable
     public function attachments(): array
     {
         return [];
-    }
-
-    private function setMailer()
-    {
-        if (globalSettings('mail_driver') == 'sendmail') {
-            config([
-                'mail.mailers.sendmail.path' => globalSettings('mail_sendmail_path'),
-            ]);
-        }
-
-        config([
-            'mail.default'                 => globalSettings('mail_driver'),
-            'mail.mailers.smtp.host'       => globalSettings('mail_host'),
-            'mail.mailers.smtp.port'       => globalSettings('mail_port'),
-            'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
-            'mail.mailers.smtp.username'   => globalSettings('mail_username'),
-            'mail.mailers.smtp.password'   => globalSettings('mail_password'),
-            'mail.from.name'               => globalSettings('mail_from_name')
-        ]);
     }
 }
