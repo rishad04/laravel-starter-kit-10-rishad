@@ -318,3 +318,40 @@
 [dir="rtl"] .auth-form .form-check-label {
     padding-right: 20px;
 }
+
+ /* login pages */
+
+ /* input file */
+
+.ot_fileUploader {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--clr-border);
+  }
+
+  .ot_fileUploader .input-style-1 {
+    border: 0 !important;
+  }
+
+  .ot_fileUploader button {
+    background: transparent;
+    border: 0;
+    margin-left: 2px;
+  }
+
+  .ot_fileUploader button label{
+    margin: 0;
+    padding: 2px 16px 0px 16px !important;
+    cursor: pointer;
+    border: 1px solid #fff !important;
+  }
+
+  .ot_fileUploader .ot-btn-primary {
+    padding: 10px 20px;
+  }
+
+  .left-side {
+    flex-direction: row-reverse;
+  }
+
+  /* input file */

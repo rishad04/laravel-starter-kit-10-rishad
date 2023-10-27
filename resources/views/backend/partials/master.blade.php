@@ -36,20 +36,6 @@
     @include('backend.partials.footer')
 
 
-
-
-    <script>
-        const language = "{{ app()->getLocale() }}";
-        const body = document.body;
-        // Toggle the dir attribute between "ltr" and "rtl"
-        if (language === "ar") {
-            body.setAttribute("dir", "rtl");
-        } else {
-            body.setAttribute("dir", "ltr");
-        }
-
-    </script>
-
     @stack('scripts')
 </body>
 
