@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Enums\Status;
+use App\Enums\StatusEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Todo\TodoInterface;
@@ -32,7 +33,7 @@ class TodoController extends Controller
 
     public function create()
     {
-        $users      = $this->userRepo->all(status: StatusEnum::ACTIVE);
+        $users      = $this->userRepo->all(status: StatusEnum::ACTIVE->value);
         return view('backend.todo.create', compact('users'));
     }
 
@@ -49,7 +50,7 @@ class TodoController extends Controller
     public function edit($id)
     {
         $todo          = $this->repo->get($id);
-        $users         = $this->userRepo->all(status: StatusEnum::ACTIVE);
+        $users         = $this->userRepo->all(status: StatusEnum::ACTIVE->value);
         return view('backend.todo.edit', compact('todo', 'users'));
     }
 

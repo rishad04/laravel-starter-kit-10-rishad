@@ -61,47 +61,58 @@
                                 @error('date') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
-                            <div class="form-group col-md-6 ">
+                            {{-- <div class="form-group col-md-6 ">
                                 <label>{{ ___('label.file') }} </label>
-                                <input type="file" class="form-control input-style-1" name="todoFile">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
-                                <select name="status" id="status" class="form-control input-style-1 select2">
-                                    @foreach(config('site.status.Todo') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\StatusEnum::ACTIVE->value)==$key)>{{ ___('status.' .  $status) }}</option>
-                                    @endforeach
-                                </select>
-                                @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                            </div>
-
-
-
-
-                            <div class="form-group col-md-6 ">
-                                <label>{{ ___('label.description') }} </label>
-                                <textarea name="description" class="form-control input-style-1" rows="3" placeholder="{{ ___('placeholder.enter_description') }}">{{ old('description') }}</textarea>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="form-row">
-                            <div class="j-create-btns">
-                                <div class="drp-btns">
-                                    <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
-                                    <a href="{{ route('todo.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
-                                </div>
+                            <input type="file" class="form-control input-style-1" name="todoFile">
+                        </div> --}}
+                        <div class="col-md-6">
+                            <label class="label-style-1">{{ ___('label.image') }}<span class="fillable"></span></label>
+                            <div class="ot_fileUploader left-side mb-3">
+                                <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                <button class="primary-btn-small-input" type="button">
+                                    <label class="j-td-btn" for="todoFile">Browse</label>
+                                    <input type="file" class="d-none form-control" name="todoFile" id="todoFile" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                </button>
                             </div>
                         </div>
-                    </form>
+
+
+                        <div class="form-group col-md-6">
+                            <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
+                            <select name="status" id="status" class="form-control input-style-1 select2">
+                                @foreach(config('site.status.Todo') as $key => $status)
+                                <option value="{{ $key }}" @selected(old('status',\App\Enums\StatusEnum::ACTIVE->value)==$key)>{{ ___('status.' .  $status) }}</option>
+                                @endforeach
+                            </select>
+                            @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                        </div>
+
+
+
+
+                        <div class="form-group col-md-6 ">
+                            <label>{{ ___('label.description') }} </label>
+                            <textarea name="description" class="form-control input-style-1" rows="3" placeholder="{{ ___('placeholder.enter_description') }}">{{ old('description') }}</textarea>
+
+                        </div>
+
+
 
                 </div>
+                <div class="form-row">
+                    <div class="j-create-btns">
+                        <div class="drp-btns">
+                            <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
+                            <a href="{{ route('todo.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
