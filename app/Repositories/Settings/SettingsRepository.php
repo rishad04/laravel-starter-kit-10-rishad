@@ -3,10 +3,12 @@
 namespace App\Repositories\Settings;
 
 use App\Enums\ImageSize;
+use App\Mail\SendTestMail;
 use App\Models\Backend\Setting;
 use App\Repositories\Upload\UploadInterface;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class SettingsRepository implements SettingsInterface
 {
@@ -138,6 +140,34 @@ class SettingsRepository implements SettingsInterface
             return true;
         } catch (\Exception $th) {
             return redirect()->back();
+        }
+    }
+
+    public function mailSendTest($request)
+    {
+        try {
+
+            if (globalSettings('mail_driver') == 'sendmail') :
+                \config([
+                    'mail.mailers.sendmail.path' => globalSettings('sendmail_path'),
+                ]);
+            endif;
+
+            \config([
+                'mail.default'                 => globalSettings('mail_driver'),
+                'mail.mailers.smtp.host'       => globalSettings('mail_host'),
+                'mail.mailers.smtp.port'       => globalSettings('mail_port'),
+                'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
+                'mail.mailers.smtp.username'   => globalSettings('mail_username'),
+                'mail.mailers.smtp.password'   => globalSettings('mail_password'),
+                'mail.from.name'               => globalSettings('mail_name')
+            ]);
+
+            Mail::to($request->email)->send(new SendTestMail);
+
+            return $this->responseWithError(___('alert.mail_successfully_sended'), []);
+        } catch (\Throwable $th) {
+            return $this->responseWithError(___('alert.mail_not_send'), []);
         }
     }
 }
