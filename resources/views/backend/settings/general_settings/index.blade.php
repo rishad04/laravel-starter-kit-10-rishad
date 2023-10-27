@@ -75,41 +75,32 @@
                             {{-- test --}}
 
                             <div class="col-md-6">
-                                <label class="label-style-1">{{ __('levels.trade_license') }}<span class="fillable"></span></label>
+                                <label class="label-style-1">{{ ___('label.logo') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
                                     <input class="form-control input-style-1" type="text" placeholder="Image" readonly="" id="placeholder" fdprocessedid="xgps7j">
                                     <button class="primary-btn-small-input" type="button" fdprocessedid="64bjqb">
-                                        <label class="j-td-btn" for="fileBrouse3">Browse</label>
-                                        <input type="file" class="d-none form-control" name="trade_license" id="fileBrouse3" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                        <label class="j-td-btn" for="fileBrouse">Browse</label>
+                                        <input type="file" class="d-none form-control" name="logo" id="fileBrouse" accept="image/jpg, image/jpeg, image/png" style="display: none;">
                                     </button>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <img src="{{ logo(globalSettings('logo')) }}" alt="logo" class="rounded mt-3" height="50" style="object-fit: contain">
                                 </div>
                             </div>
 
                             {{-- test  --}}
 
-                            <div class="form-group col-md-6 ">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="label-style-1" for="logo">{{ ___('label.logo') }}</label>
-                                        <input type="file" name="logo" id="logo" class="form-control input-style-1 " value="{{ old('logo') }}">
-                                        @error('logo') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-6 text-right">
-                                        <img src="{{ logo(globalSettings('logo')) }}" alt="logo" class="rounded mt-3" height="50" style="object-fit: contain">
-                                    </div>
+                            <div class="col-md-6">
+                                <label class="label-style-1">{{ ___('label.favicon') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <input class="form-control input-style-1" type="text" placeholder="Image" readonly="" id="placeholder2" fdprocessedid="xgps7j">
+                                    <button class="primary-btn-small-input" type="button" fdprocessedid="64bjqb">
+                                        <label class="j-td-btn" for="fileBrouse2">Browse</label>
+                                        <input type="file" class="d-none form-control" name="favicon" id="fileBrouse2" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                    </button>
                                 </div>
-                            </div>
-
-                            <div class="form-group col-md-6 ">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label class="label-style-1" for="favicon">{{ ___('label.favicon') }}</label>
-                                        <input id="favicon" type="file" name="favicon" class="form-control input-style-1 " value="{{ old('favicon') }}">
-                                        @error('favicon') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-6 text-right ">
-                                        <img src="{{ favicon(globalSettings('favicon')) }}" alt="fabicon" class="rounded mt-3" width="50" style="object-fit: contain">
-                                    </div>
+                                <div class="col-6 text-right ">
+                                    <img src="{{ favicon(globalSettings('favicon')) }}" alt="favicon" class="rounded mt-3" width="50" style="object-fit: contain">
                                 </div>
                             </div>
 

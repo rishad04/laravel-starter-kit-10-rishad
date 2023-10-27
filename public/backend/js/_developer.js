@@ -42,7 +42,6 @@ if (fileInp4) {
   }
 }
 
-"use strict";
 
 $(document).ready(function () {
 
