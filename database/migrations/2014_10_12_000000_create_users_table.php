@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\GenderEnum;
-use App\Enums\Status;
 use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
