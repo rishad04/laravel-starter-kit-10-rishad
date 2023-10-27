@@ -39,7 +39,7 @@
                         </li>
                         <li>
                             <h6 class="heading-6">{{ ___('label.gender') }}</h6>
-                            <span>{{ ___('gender.' . @$user->gender)  }}</span>
+                            {{-- <span>{{ ___('gender.' . @$user->gender)  }}</span> --}}
                         </li>
 
                     </ul>
