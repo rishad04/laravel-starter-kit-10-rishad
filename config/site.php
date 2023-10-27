@@ -1,29 +1,28 @@
 <?php
 
+use App\Enums\GenderEnum;
 use App\Enums\StatusEnum;
-use App\Enums\TodoStatus;
-use App\Enums\TodoStatusEnum;
 
 return [
 
 
     'gender' => [
-        '0'  => 'others',
-        '1'  => 'male',
-        '2'  => 'female',
+        GenderEnum::OTHERS->value   => 'others',
+        GenderEnum::MALE->value     => 'male',
+        GenderEnum::FEMALE->value   => 'female',
     ],
 
     'status' => [
 
         'default' => [
             StatusEnum::INACTIVE->value  => 'inactive',
-            StatusEnum::ACTIVE->value  => 'active',
+            StatusEnum::ACTIVE->value    => 'active',
         ],
 
         'Todo' => [
-            TodoStatusEnum::PENDING->value      => 'pending',
-            TodoStatusEnum::PROCESSING->value   => 'processing',
-            TodoStatusEnum::COMPLETED->value    => 'complete',
+            StatusEnum::PENDING->value      => 'pending',
+            StatusEnum::PROCESSING->value   => 'processing',
+            StatusEnum::COMPLETED->value    => 'complete',
         ],
     ],
 

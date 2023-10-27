@@ -37,13 +37,13 @@
                             <div class="col-4">
                                 <div class="form-row">
                                     <div class="form-group col-12">
-                                        <label class=" label-style-1" for="name">{{ ___('levels.name') }}</label>
+                                        <label class=" label-style-1" for="name">{{ ___('label.name') }}</label>
                                         <span class="text-danger">*</span>
                                         <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ ___('placeholder.enter_role_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name', $role->name) }}" require>
                                         @error('name') <span class="text-danger mt-2">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="form-group col-12">
-                                        <label class=" label-style-1" for="status">{{ ___('levels.status') }}</label>
+                                        <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                         <span class="text-danger">*</span>
                                         <select name="status" class="form-control input-style-1 select2">
                                             @foreach(config('site.status.default') as $key => $status)

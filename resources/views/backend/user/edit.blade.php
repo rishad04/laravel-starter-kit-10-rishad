@@ -101,8 +101,8 @@
                                 <label class="label-style-1">{{ ___('label.gender') }} <span class="text-danger">*</span></label>
                                 <select name="gender" id="gender" class="form-control input-style-1 select2">
                                     <option></option>
-                                    @foreach(trans('gender') as $key => $gender)
-                                    <option value="{{ $key }}" @selected(old('gender',$user->gender)==$key)>{{ $gender }}</option>
+                                    @foreach(config('site.gender') as $key => $gender)
+                                    <option value="{{ $key }}" @selected(old('gender', $user->gender)==$key)>{{ ___('user.'.$gender) }}</option>
                                     @endforeach
                                 </select>
                                 @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror
@@ -114,25 +114,37 @@
                                 @error('nid_number') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="nid">{{ ___('label.nid') }}</label>
-                                <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="nid" id="nid" class="form-control input-style-1 ">
+                            <div class="col-md-6">
+                                <label class="label-style-1" for="nid">{{ ___('label.nid') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.nid') }}" readonly="" id="placeholder">
+                                    <button class="primary-btn-small-input" type="button">
+                                        <label class="j-td-btn" for="nid">Browse</label>
+                                        <input type="file" class="d-none form-control" name="nid" id="nid" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                    </button>
+                                </div>
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label> <span class="text-danger">*</span>
                                 <select name="status" class="form-control input-style-1 select2">
-                                    @foreach(trans('status') as $key => $status)
-                                    <option value="{{ $key }}" {{ (old('status',$user->status) == $key) ? 'selected' : '' }}>{{ $status }}</option>
+                                    @foreach(config('site.status.default') as $key => $status)
+                                    <option value="{{ $key }}" @selected(old('status', $user->status)==$key)>{{ ___('status.'.$status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class=" label-style-1" for="image">{{ ___('label.image') }}</label>
-                                <input type="file" accept="image/jpeg,image/png,image/jpg,image/webp" name="image" id="image" placeholder="Enter image" class="form-control input-style-1 ">
+                            <div class="col-md-6">
+                                <label class="label-style-1" for="image">{{ ___('label.image') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                    <button class="primary-btn-small-input" type="button">
+                                        <label class="j-td-btn" for="image">Browse</label>
+                                        <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                    </button>
+                                </div>
                                 @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 

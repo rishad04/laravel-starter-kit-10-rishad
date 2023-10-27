@@ -3,6 +3,7 @@
 namespace App\Repositories\Language;
 
 use App\Enums\Status;
+use App\Enums\StatusEnum;
 use App\Models\Backend\FlagIcon;
 use App\Models\Backend\Language;
 use App\Models\Backend\LanguageConfig;
@@ -30,7 +31,7 @@ class LanguageRepository implements LanguageInterface
 
     public function activelang()
     {
-        return $this->model::where('status', Status::ACTIVE)->get();
+        return $this->model::where('status', StatusEnum::ACTIVE->value)->get();
     }
 
     public function get()
@@ -83,7 +84,7 @@ class LanguageRepository implements LanguageInterface
             if ($language->code  != $request->code) : //if not match old code and new code
 
 
-                $old_directory = base_path('lang/'.$language->code);
+                $old_directory = base_path('lang/' . $language->code);
 
                 if (!File::isDirectory($old_directory)) :
                     File::deleteDirectory($old_directory);
@@ -118,14 +119,14 @@ class LanguageRepository implements LanguageInterface
     public function editPhrase($id)
     {
         // try {
-            $lang           = $this->model::find($id);
+        $lang           = $this->model::find($id);
 
 
 
-            $jsonString          = file_get_contents(base_path("lang/".$lang->code."/alert.json"));
+        $jsonString          = file_get_contents(base_path("lang/" . $lang->code . "/alert.json"));
 
-            $data['terms']       = json_decode($jsonString, true);
-            return $this->responseWithSuccess('', $data);
+        $data['terms']       = json_decode($jsonString, true);
+        return $this->responseWithSuccess('', $data);
         // } catch (\Throwable $th) {
 
         //     return $this->responseWithError(___('alert.something_went_wrong'), []);
@@ -138,19 +139,19 @@ class LanguageRepository implements LanguageInterface
     {
         // try {
 
-            $jsonString     = file_get_contents(base_path("lang/$code/$request->lang_module.json"));
-            $data           = json_decode($jsonString, true);
+        $jsonString     = file_get_contents(base_path("lang/$code/$request->lang_module.json"));
+        $data           = json_decode($jsonString, true);
 
-            foreach ($data as $key => $value) :
-                $data[$key]        = $request->$key;
-            endforeach;
+        foreach ($data as $key => $value) :
+            $data[$key]        = $request->$key;
+        endforeach;
 
-            $newJsonString = json_encode($data,JSON_UNESCAPED_UNICODE);
-            file_put_contents(base_path("lang/$code/$request->lang_module.json"), stripslashes($newJsonString));
+        $newJsonString = json_encode($data, JSON_UNESCAPED_UNICODE);
+        file_put_contents(base_path("lang/$code/$request->lang_module.json"), stripslashes($newJsonString));
 
 
 
-            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
+        return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         // } catch (\Throwable $th) {
 
         //     return $this->responseWithError(___('alert.something_went_wrong'), []);

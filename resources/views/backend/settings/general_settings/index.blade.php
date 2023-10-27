@@ -72,7 +72,6 @@
                                 @error('language') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
-                            {{-- test --}}
 
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ ___('label.logo') }}<span class="fillable"></span></label>
@@ -88,7 +87,6 @@
                                 </div>
                             </div>
 
-                            {{-- test  --}}
 
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ ___('label.favicon') }}<span class="fillable"></span></label>

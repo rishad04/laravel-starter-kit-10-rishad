@@ -2,6 +2,7 @@
 
 namespace App\Models\backend;
 
+use App\Enums\StatusEnum;
 use App\Models\User;
 use App\Models\Upload;
 
@@ -51,9 +52,9 @@ class Todo extends Model
 
     public function getTodoStatusAttribute()
     {
-        if ($this->status == TodoStatus::PROCESSING) {
+        if ($this->status == StatusEnum::PROCESSING->value) {
             $status = '<span class="bullet-badge bullet-badge-info">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
-        } elseif ($this->status == TodoStatus::COMPLETED) {
+        } elseif ($this->status == StatusEnum::COMPLETED->value) {
             $status = '<span class="bullet-badge bullet-badge-complete">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
         } else {
             $status = '<span class="bullet-badge bullet-badge-pending">' . ___("status." . config('site.status.Todo.' . $this->status)) . '</span>';
