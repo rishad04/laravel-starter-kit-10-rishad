@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\GenderEnum;
-use App\Enums\Status;
 use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -25,7 +24,9 @@ return new class extends Migration
 
             $table->string('address')->nullable();
 
-            $table->string('designations')->nullable();
+            // $table->string('designations')->nullable();
+            $table->foreignId('designation')->nullable()->comment('designations id')->constrained('designations')->nullOnDelete();
+
             $table->longText('about')->nullable();
 
 

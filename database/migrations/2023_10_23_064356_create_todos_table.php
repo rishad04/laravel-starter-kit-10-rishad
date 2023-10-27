@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->longtext('description')->nullable();
+            $table->longText('description')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('date')->nullable();
             $table->unsignedBigInteger('todo_file')->nullable();
