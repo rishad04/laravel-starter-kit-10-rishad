@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\TodoStatus;
+use App\Enums\StatusEnum;
 use App\Models\backend\Todo;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,9 +29,9 @@ class TodoSeeder extends Seeder
     $todo->date          = '2022-07-22';
         $todo->user_id       = 1;
         $todo->description   = 'Todo list 2';
-     
+
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = TodoStatus::PROCESSING;
+        $todo->status        = StatusEnum::PROCESSING;
         $todo->save();
 
         $todo                = new Todo();
@@ -39,9 +39,9 @@ class TodoSeeder extends Seeder
         $todo->date          = '2022-07-22';
         $todo->user_id       = 2;
         $todo->description   = 'Todo list 3';
-      
+
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = TodoStatus::PROCESSING;
+        $todo->status        = StatusEnum::PROCESSING;
         $todo->save();
 
 
@@ -50,9 +50,9 @@ class TodoSeeder extends Seeder
         $todo->date          = '2022-07-22';
         $todo->user_id       = 1;
         $todo->description   = 'Todo list 4';
-    
+
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = TodoStatus::COMPLETED;
+        $todo->status        = StatusEnum::COMPLETED;
         $todo->save();
 
         $todo                = new Todo();
@@ -62,7 +62,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 5';
 
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = TodoStatus::COMPLETED;
+        $todo->status        = StatusEnum::COMPLETED;
         $todo->save();
 
         $todo                = new Todo();
@@ -72,7 +72,7 @@ class TodoSeeder extends Seeder
         $todo->description   = 'Todo list 6';
 
         $todo->note          = 'Lorem ipsum note';
-        $todo->status        = TodoStatus::COMPLETED;
+        $todo->status        = StatusEnum::COMPLETED;
         $todo->save();
     }
 }

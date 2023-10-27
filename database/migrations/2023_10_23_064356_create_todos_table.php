@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('date')->nullable();
             $table->unsignedBigInteger('todo_file')->nullable();
-            $table->unsignedTinyInteger('status')->default(StatusEnum::PENDING->value)->comment('Pending= 2, Processing = 3, Complete= 4');
-            $table->longText('note')->nullable();
+            $table->tinyInteger('status')->default(StatusEnum::PENDING)->comment('pending= 1, procesing= 2,complete= 3');
+            $table->longtext('note')->nullable();
             $table->timestamps();
         });
     }

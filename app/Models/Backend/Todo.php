@@ -6,7 +6,6 @@ use App\Enums\StatusEnum;
 use App\Models\User;
 use App\Models\Upload;
 
-use App\Enums\TodoStatus;
 use App\Traits\CommonHelperTrait;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +21,10 @@ class Todo extends Model
         'description',
         'user_id',
         'date',
+    ];
+
+    protected $casts = [
+        'status' => StatusEnum::class,
     ];
 
     public function getActivitylogOptions(): LogOptions

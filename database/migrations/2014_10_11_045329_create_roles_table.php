@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->boolean('status')->default(StatusEnum::ACTIVE)->comment(StatusEnum::ACTIVE . ' = Active' .  ', ' . StatusEnum::INACTIVE . ' = Inactive');
+            $table->tinyInteger('status')->default(StatusEnum::ACTIVE->value);
             $table->longText('permissions')->nullable();
             $table->timestamps();
         });

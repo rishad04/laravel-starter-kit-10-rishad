@@ -8,7 +8,6 @@ enum StatusEnum: int
     case INACTIVE   = 0;
     case ACTIVE     = 1;
 
-        // to do status 
     case   PENDING     = 2;
     case   PROCESSING  = 3;
     case   COMPLETED   = 4;

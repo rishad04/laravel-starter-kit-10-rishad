@@ -19,7 +19,7 @@ class RouteListSeeder extends Seeder
         DB::table('route_lists')->truncate();
 
         $prefixes = ['dashboard', 'home', 'admin', 'user', 'profile', 'todo', 'activity-logs', 'search'];
-        // $prefixes = ['admin'];
+
 
         $routes = Route::getRoutes()->getRoutesByMethod()['GET'];
 
@@ -37,7 +37,6 @@ class RouteListSeeder extends Seeder
                     'title'     => $title,
                     'name'      => $routeName,
                     'uri'       => $uri,
-                    'status'    => Status::ACTIVE,
 
                 ];
 

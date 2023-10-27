@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\Status;
+use App\Enums\StatusEnum;
 use App\Models\Backend\Setting;
 use App\Models\Upload;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -46,11 +46,11 @@ class SettingSeeder extends Seeder
 
             ['key' => 'facebook_client_id',     'value' => '456479846546456456'],
             ['key' => 'facebook_client_secret', 'value' => '45d4fsd454dgd465g4'],
-            ['key' => 'facebook_status',        'value' => Status::ACTIVE],
+            ['key' => 'facebook_status',        'value' => StatusEnum::ACTIVE],
 
             ['key' => 'google_client_id',       'value' => '73uou5.dg54df.google-user-content.com'],
             ['key' => 'google_client_secret',   'value' => 'gdg4d5g4fg5d4g6d4g546'],
-            ['key' => 'google_status',          'value' => Status::ACTIVE],
+            ['key' => 'google_status',          'value' => StatusEnum::ACTIVE],
 
 
 

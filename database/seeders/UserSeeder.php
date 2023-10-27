@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\GENDER;
+use App\Enums\GenderEnum;
 use App\Models\Role;
 use App\Models\User;
 use Database\Factories\UserFactory;
@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 $user->email                 = "superadmin@bugbuild.com";
                 $user->password              = Hash::make('123456');
                 $user->designations          = 'Super Admin';
-                $user->gender                = GENDER::MALE;
+                $user->gender                = GenderEnum::MALE;
                 $user->remember_token        = Str::random(10);
                 $user->phone                 = "01912938002";
                 $user->nid_number            = "33422";
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 $user->name                  = "Admin";
                 $user->email                 = "admin@bugbuilg.com";
                 $user->designations          = 'Admin';
-                $user->gender                = Gender::MALE;
+                $user->gender                = GenderEnum::MALE;
                 $user->password              = Hash::make('123456');
                 $user->phone                 = "01478523690";
                 $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
