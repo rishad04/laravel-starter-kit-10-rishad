@@ -66,7 +66,6 @@ class UserRepository implements UserInterface
             $user->address          = $request->address;
 
             $user->gender           =  $request->gender;
-            $user->designations     =  $request->designations;
             $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
             $user->about            =  $request->about;
 
@@ -92,7 +91,6 @@ class UserRepository implements UserInterface
 
             $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
             $user->gender           =  $request->gender;
-            $user->designations     =  $request->designations;
 
             $user->nid_number       = $request->nid_number;
             $user->nid              = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->nid);

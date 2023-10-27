@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 $user->name                  = "Super Admin";
                 $user->email                 = "superadmin@bugbuild.com";
                 $user->password              = Hash::make('123456');
-                $user->designations          = 'Super Admin';
+
                 $user->gender                = GenderEnum::MALE;
                 $user->remember_token        = Str::random(10);
                 $user->phone                 = "01912938002";
@@ -35,7 +35,6 @@ class UserSeeder extends Seeder
                 $user                        = new User();
                 $user->name                  = "Admin";
                 $user->email                 = "admin@bugbuilg.com";
-                $user->designations          = 'Admin';
                 $user->gender                = GenderEnum::MALE;
                 $user->password              = Hash::make('123456');
                 $user->phone                 = "01478523690";

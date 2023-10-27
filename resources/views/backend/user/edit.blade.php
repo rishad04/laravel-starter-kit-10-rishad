@@ -61,13 +61,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class="label-style-1">{{ ___('label.designations') }} </label>
-                                <input type="text" placeholder="{{ ___('placeholder.enter_designation') }} " class="form-control input-style-1" name="designations" value="{{ old('designations',$user->designations) }}">
-                                @error('designations')
-                                <p class="pt-2 text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
