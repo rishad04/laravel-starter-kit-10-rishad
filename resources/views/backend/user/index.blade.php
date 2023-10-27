@@ -158,13 +158,10 @@
 
                         </table>
                     </div>
+                    @if(count($users))
+                    <x-paginate-show :items="$users" />
+                    @endif
                 </div>
-
-                @if(count($users))
-                <x-paginate-show :items="$users" />
-                @endif
-
-
             </div>
         </div>
     </div>
