@@ -3,7 +3,7 @@
 
 @include('backend.partials.header')
 
-<body>
+<body dir="{{defaultLanguage()->text_direction == "LTR" ? 'ltr': 'rtl'}}">
     <!--*******************  Preloader start ******************** -->
     {{-- <div id="preloader">
         <div class="sk-three-bounce">
