@@ -1,7 +1,8 @@
 <?php
 
-use App\Enums\Gender;
+use App\Enums\GenderEnum;
 use App\Enums\Status;
+use App\Enums\StatusEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('password');
             $table->date('dob')->nullable()->comment('Birth date');
-            $table->tinyInteger('gender')->default(Gender::MALE);
+            $table->tinyInteger('gender')->default(GenderEnum::MALE->value);
 
             $table->string('address')->nullable();
 
@@ -38,7 +39,7 @@ return new class extends Migration
             $table->foreignId('image_id')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
             $table->foreignId('role_id')->nullable()->constrained('roles')->nullOnDelete();
 
-            $table->tinyInteger('status')->default(Status::ACTIVE);
+            $table->tinyInteger('status')->default(StatusEnum::ACTIVE->value);
 
             $table->rememberToken();
             $table->timestamp('last_login')->nullable();

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\GENDER;
+use App\Enums\GenderEnum;
+use App\Enums\StatusEnum;
 use App\Traits\CommonHelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +20,12 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token', 'two_factor_recovery_codes', 'two_factor_secret',];
 
-    protected $casts = ['email_verified_at' => 'datetime', 'permissions' => 'array',];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'permissions' => 'array',
+        'status' => StatusEnum::class,
+        'gender' => GenderEnum::class
+    ];
 
     protected $appends = ['profile_photo_url',];
 

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\GENDER;
+use App\Enums\GenderEnum;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -36,7 +37,7 @@ class UserFactory extends Factory
             'address'       => $this->faker->address,
 
             'password'      => Hash::make('123456'),
-            'gender'        => GENDER::MALE,
+            'gender'        => GenderEnum::MALE,
 
             'role_id'       => $role->id,
             'permissions'   => $role->permissions ?? [],
