@@ -8,6 +8,7 @@ use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -73,5 +74,22 @@ class UserController extends Controller
             $success[2] = "oops";
             return response()->json($success);
         endif;
+    }
+
+    //user permissions
+    public function permission($id)
+    {
+        $user        = $this->repo->get($id);
+        $permissions = $this->roleRepo->permissions($user->role->slug);
+        return view('backend.user.permissions', compact('user', 'permissions'));
+    }
+
+    public function permissionUpdate(Request $request)
+    {
+        $result = $this->repo->permissionUpdate($request->id, $request);
+        if ($result['status']) {
+            return redirect()->route('user.index')->with('success', $result['message']);
+        }
+        return redirect()->back()->with('danger', $result['message']);
     }
 }

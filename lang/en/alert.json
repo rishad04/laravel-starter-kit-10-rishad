@@ -19,5 +19,6 @@
     "invalid_otp": "Invalid OTP",
     "verified": "Verification successful.",
     "mail_not_send": "Email not send",
-    "mail_successfully_sended": "Email successfully sended"
+    "mail_successfully_sended": "Email successfully sended",
+    "database_backup_description": "Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database."
 }

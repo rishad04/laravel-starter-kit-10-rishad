@@ -136,9 +136,10 @@ class UserRepository implements UserInterface
                 $user->permissions = [];
             }
             $user->save();
-            return true;
+
+            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return false;
+            return $this->responseWithError(__('alert.something_went_wrong'), []);
         }
     }
 

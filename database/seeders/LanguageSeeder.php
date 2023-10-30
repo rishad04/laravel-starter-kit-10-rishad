@@ -30,11 +30,11 @@ class LanguageSeeder extends Seeder
         $lang->save();
 
 
-        $lang                 = new Language();
-        $lang->name           = 'Arabic';
-        $lang->code           = 'ar';
-        $lang->icon_class     = 'flag-icon flag-icon-ae';
-        $lang->text_direction = 'RTL';
-        $lang->save();
+        // $lang                 = new Language();
+        // $lang->name           = 'Arabic';
+        // $lang->code           = 'ar';
+        // $lang->icon_class     = 'flag-icon flag-icon-ae';
+        // $lang->text_direction = 'RTL';
+        // $lang->save();
     }
 }

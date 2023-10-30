@@ -11,9 +11,9 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('levels.dashboard') }}</a></li>
-                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{__('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('permissions.permissions') }}</a></li>
                         </ol>
                     </nav>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('users.permissions.update',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
+                    <form action="{{route('user.permission.update',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -48,11 +48,11 @@
 
                                             @foreach ($permissions as $permission )
                                             <tr>
-                                                <td>{{__('permissions.'.$permission->attribute) }}</td>
+                                                <td>{{ ___('permissions.'.$permission->attribute) }}</td>
                                                 <td>
                                                     @foreach ($permission->keywords as $key=>$keyword)
-                                                    <div class="row align-items-center permission-check-box pb-2 pt-2">
-                                                        <input id="{{ $keyword }}" class="read common-key form-check-input pb-4" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if(in_array($keyword,$user->permissions)) checked @endif />
+                                                    <div class="row align-items-start permission-check-box py-2">
+                                                        <input id="{{ $keyword }}" class="read common-key mr-2" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if(in_array($keyword,$user->permissions)) checked @endif />
                                                         <label for="{{ $keyword }}">{{ ___('permissions.'.$key) }}</label>
                                                     </div>
                                                     @endforeach
@@ -69,8 +69,8 @@
                         </div>
                         <div class="j-create-btns">
                             <div class="drp-btns">
-                                <button type="submit" class="j-td-btn">{{ ___('levels.save_change') }}</button>
-                                <a href="{{ route('user.index') }}" class="j-td-btn btn-red"> <span>{{ ___('levels.cancel') }}</span> </a>
+                                <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
+                                <a href="{{ route('user.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
                             </div>
                         </div>
                     </form>

@@ -50,7 +50,7 @@
                                 @error('phone') <small class="text-danger mt-2">{{ $message }}</small> @enderror
                             </div>
 
-                 
+
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
                                 <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob') }}" placeholder="{{ ___('placeholder.enter_dob') }}">

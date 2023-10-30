@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-10 mb-5">
-                                <p>{{ ___('Backup Description') }}</p>
+                                <p>{{ ___('alert.database_backup_description') }}</p>
                             </div>
                         </div>
                         <div class="col-md-2">

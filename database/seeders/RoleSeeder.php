@@ -39,6 +39,7 @@ class RoleSeeder extends Seeder
             'user_create',
             'user_update',
             'user_delete',
+            'permission_update',
 
             'profile_read',
             'profile_update',

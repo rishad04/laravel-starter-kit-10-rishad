@@ -14,11 +14,10 @@ Route::middleware(['XSS', 'auth'])->prefix('admin')->group(function () {
         Route::get('/edit/{id}',                [UserController::class, 'edit'])->name('user.edit')->middleware('hasPermission:user_update');
         Route::put('/update',                   [UserController::class, 'update'])->name('user.update')->middleware('hasPermission:user_update');
         Route::delete('/delete/{id}',           [UserController::class, 'delete'])->name('user.delete')->middleware('hasPermission:user_delete');
+        // permissions
+        Route::get('permissions/{id}',          [UserController::class, 'permission'])->name('user.permission')->middleware('hasPermission:permission_update');
+        Route::put('permissions/update',        [UserController::class, 'permissionUpdate'])->name('user.permission.update')->middleware('hasPermission:permission_update');
     });
-
-    // permissions
-    Route::get('permissions/{id}',              [PermissionController::class, 'permissions'])->name('permissions')->middleware('hasPermission:permissions_update');
-    Route::put('permissions/update',            [PermissionController::class, 'permissionsUpdate'])->name('permissions.update')->middleware('hasPermission:permissions_update');
 
     //role
     Route::prefix('role')->group(function () {
