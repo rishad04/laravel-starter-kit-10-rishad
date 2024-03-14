@@ -31,9 +31,9 @@ class SettingSeeder extends Seeder
     {
         return [
 
-            ['key' => 'name',             'value' => 'Parcel Fly'],
-            ['key' => 'phone',            'value' => '+8802999888'],
-            ['key' => 'email',            'value' => 'info@parcelfly.com'],
+            ['key' => 'name',                   'value' => 'Parcel Fly'],
+            ['key' => 'phone',                  'value' => '+8802999888'],
+            ['key' => 'email',                  'value' => 'info@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
             ['key' => 'logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],
@@ -41,16 +41,16 @@ class SettingSeeder extends Seeder
             ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_favicon.png")],
 
 
-            ['key' => 'mail_sendmail_path',     'value' => '/usr/sbin/sendmail -bs -i'],
+            ['key' => 'sendmail_path',          'value' => '/usr/sbin/sendmail -bs -i'],
             ['key' => 'mail_driver',            'value' => 'smtp'],
-            ['key' => 'mail_host',              'value' => 'smtp.mailtrap.io'],
+            ['key' => 'mail_host',              'value' => 'sandbox.smtp.mailtrap.io'],
             ['key' => 'mail_port',              'value' => '2525'],
             ['key' => 'mail_username',          'value' => 'd9f98a444876e4'],
             ['key' => 'mail_password',          'value' => 'ad457b5e0ad2cd'],
             ['key' => 'mail_encryption',        'value' => 'tls'],
-            ['key' => 'mail_from_address',      'value' => 'admin@example.com'],
-            ['key' => 'mail_from_name',         'value' => 'Example Name'],
-            ['key' => 'mail_signature',         'value' => 'Example Signature'],
+            ['key' => 'mail_address',           'value' => 'admin@example.com'],
+            ['key' => 'mail_name',              'value' => 'Example Name'],
+            ['key' => 'signature',              'value' => 'Example Signature'],
 
 
             ['key' => 'facebook_client_id',     'value' => '456479846546456456'],

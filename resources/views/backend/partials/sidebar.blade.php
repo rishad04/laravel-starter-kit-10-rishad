@@ -48,9 +48,9 @@
                     <li> <a href="{{route('sms-settings.index')}}">{{ ___('menus.sms_settings') }}</a> </li>
                     @endif
 
-                    @if(hasPermission('social_login_settings_update')== true)
+                    {{-- @if(hasPermission('social_login_settings_update')== true)
                     <li> <a href="{{route('social.login.settings.index')}}">{{ ___('menus.social_login_settings') }}</a> </li>
-                    @endif
+                    @endif --}}
 
                     @if(hasPermission('payout_setup_settings_read')== true)
                     <li> <a href="{{route('payout.setup.settings.index')}}">{{ ___('menus.payout_setup') }}</a> </li>

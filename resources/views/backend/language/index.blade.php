@@ -30,7 +30,7 @@
                     </h4>
                     @if (hasPermission('language_create'))
                     <a href="{{ route('language.create') }}" class="j-td-btn">
-                        <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
+                        <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
                         <span>{{ ___('label.add') }}</span>
                     </a>
                     @endif

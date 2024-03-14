@@ -61,10 +61,17 @@
                                 @error('date') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
-                            <div class="form-group col-md-6 ">
-                                <label>{{ ___('label.file') }} </label>
-                                <input type="file" class="form-control input-style-1" name="todoFile">
+                            <div class="col-md-6">
+                                <label class="label-style-1">{{ ___('label.image') }}<span class="fillable"></span></label>
+                                <div class="ot_fileUploader left-side mb-3">
+                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                    <button class="primary-btn-small-input" type="button">
+                                        <label class="j-td-btn" for="todoFile">Browse</label>
+                                        <input type="file" class="d-none form-control" name="todoFile" id="todoFile" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                    </button>
+                                </div>
                             </div>
+
 
                             <div class="form-group col-md-6">
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>

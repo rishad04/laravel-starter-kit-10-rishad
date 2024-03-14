@@ -61,7 +61,7 @@
                         <div class="day-night">
                             <a class="j-nav-lk" href="#">
                                 <i class="nav-bell">
-                                    <img src="{{asset('backend')}}/assets/img/icon/d.png" alt="no image" />
+                                    <img src="{{ asset('backend') }}/icons/icon//d.png" alt="no image" />
                                 </i>
                             </a>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="dropdown notification_dropdown">
                             <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown">
                                 <i class="nav-bell">
-                                    <img src="{{asset('backend')}}/assets/img/icon/bell.png" alt="no image" />
+                                    <img src="{{ asset('backend') }}/icons/icon//bell.png" alt="no image" />
                                 </i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">

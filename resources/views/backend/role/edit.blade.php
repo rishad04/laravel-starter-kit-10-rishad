@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('role.title') }} {{ ___('levels.edit') }}
+{{ ___('role.title') }} {{ ___('label.edit') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -10,10 +10,10 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('levels.dashboard') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ ___('menus.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('levels.edit') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.edit') }}</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-8">
                                 <table class="table border  permission-table">
-                                    <thead>
+                                    <thead class="bg">
                                         <tr>
                                             <th>{{ ___('permissions.modules') }}</th>
                                             <th>{{ ___('permissions.permissions') }}</th>

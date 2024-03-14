@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MailTestRequest;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
@@ -42,6 +43,15 @@ class SettingsController extends Controller
         return view('backend.settings.mail.index');
     }
 
+    public function testSendMail(MailTestRequest $request)
+    {
+        $result = $this->repo->mailSendTest($request);
+
+        if ($result['status']) {
+            return  redirect()->route('settings.mail')->with('success', $result['message']);
+        }
+        return  redirect()->back()->with('danger', $result['message'])->withInput();
+    }
 
 
     public function recaptcha()
