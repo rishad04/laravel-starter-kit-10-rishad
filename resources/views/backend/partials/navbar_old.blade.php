@@ -31,14 +31,14 @@
 	                                <input class="j-form-control" type="search" placeholder="Search">
 	                                <button type="submit" class="j-form-btn">
 	                                    <i>
-	                                        <img src="{{asset('backend')}}/assets/img/icon/search.png" alt="no image">
+	                                        <img src="{{ asset('backend') }}/icons/icon//search.png" alt="no image">
 	                                    </i>
 	                                </button>
 	                            </form>
 	                        </div>
 	                        <div class="j-to-do">
 	                            <a href="#" class="j-td-btn">
-	                                <img src="{{asset('backend')}}/assets/img/icon/to-do.png" class="jj" alt="no image">
+	                                <img src="{{ asset('backend') }}/icons/icon//to-do.png" class="jj" alt="no image">
 	                                <span>To Do</span>
 	                            </a>
 	                        </div>
@@ -81,14 +81,14 @@
 	                        <div class="day-night">
 	                            <a class="j-nav-lk" href="#">
 	                                <i class="nav-bell">
-	                                    <img src="{{asset('backend')}}/assets/img/icon/d.png" alt="no image">
+	                                    <img src="{{ asset('backend') }}/icons/icon//d.png" alt="no image">
 	                                </i>
 	                            </a>
 	                        </div>
 	                        <div class="dropdown notification_dropdown">
 	                            <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown">
 	                                <i class="nav-bell">
-	                                    <img src="{{asset('backend')}}/assets/img/icon/bell.png" alt="no image">
+	                                    <img src="{{ asset('backend') }}/icons/icon//bell.png" alt="no image">
 	                                </i>
 	                            </a>
 	                            <div class="dropdown-menu dropdown-menu-right">

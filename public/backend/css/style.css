@@ -1,11 +1,4 @@
 /*
-    Table of Contents
-
-    Name                 : Exium
-    Author               : ImSaifun
-    Author Portfolio     : https://themeforest.net/user/ImSaifun/portfolio
-
-
 
     Table of Sass Contents
 
@@ -53,6 +46,7 @@
         _page-user-lock
 
 */
+
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("./../icons/font-awesome-old/css/font-awesome.min.css");
@@ -1849,19 +1843,23 @@ pre code {
     margin-bottom: 1rem;
     color: #666;
 }
+.table th {
+    padding: 12px 12px;
+    min-height: 18px;
+}
+.table td {
+    padding: 5px 12px;
+}
+
 .table th,
 .table td {
-    padding: 0.75rem;
     vertical-align: top;
-    border-top: 1px solid #eeeeee;
+    border: 1px solid var(--clr-border);
 }
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #eeeeee;
 }
-.table tbody + tbody {
-    border-top: 2px solid #eeeeee;
-}
+
 
 .table-sm th,
 .table-sm td {
@@ -2320,8 +2318,10 @@ textarea.form-control {
 
 .form-check {
     position: relative;
-    display: block;
-    padding-left: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 1.25rem; */
 }
 
 .form-check-input {
@@ -4991,7 +4991,7 @@ input[type="button"].btn-block {
     margin-bottom: 1rem;
     list-style: none;
     background: var(--clr-white);
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -5970,6 +5970,8 @@ a.close.disabled {
     border-top-right-radius: 0.3rem;
 }
 .modal-header .close {
+    font-size: 30px;
+    font-weight: 400;
     padding: 1rem 1rem;
     margin: -1rem -1rem -1rem auto;
 }
@@ -5988,7 +5990,7 @@ a.close.disabled {
 .modal-footer {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     padding: 1rem;
     border-top: 1px solid #eeeeee;
     border-bottom-right-radius: 0.3rem;
@@ -10782,6 +10784,7 @@ a.active {
     display: flex;
     height: 100%;
     width: 100%;
+    min-width: 210px;
     justify-content: flex-start;
     align-items: center;
     font-size: 1.125rem;
@@ -13764,10 +13767,10 @@ html[dir="rtl"]
         box-shadow: 0px 0px 10px rgba(120, 130, 140, 0.13);
     }
 }
-.quixnav .quixnav-scroll {
+/* .quixnav .quixnav-scroll {
     position: relative;
     height: 100%;
-}
+} */
 @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .quixnav {
         width: 14.375rem;
@@ -13778,6 +13781,7 @@ html[dir="rtl"]
     margin: 0;
     list-style: none;
 }
+
 .quixnav .metismenu {
     display: flex;
     flex-direction: column;
@@ -13788,6 +13792,7 @@ html[dir="rtl"]
     width: 100%;
     left: 0;
 }
+
 .quixnav .metismenu > li {
     display: flex;
     flex-direction: column;
@@ -13797,7 +13802,7 @@ html[dir="rtl"]
     display: inline-block;
     vertical-align: middle;
     padding: 0 0.4375rem;
-    font-weight: 700;
+    font-weight: 500;
     position: relative;
     top: -2px;
 }
@@ -22884,10 +22889,7 @@ button:focus {
     color: #454545;
 }
 
-.table th,
-.table td {
-    border-color: #eaeaea;
-}
+
 [data-theme-version="dark"] .table th,
 [data-theme-version="dark"] .table td {
     border-color: #424d63;
@@ -22911,10 +22913,6 @@ button:focus {
 }
 [data-theme-version="dark"] .table tbody tr td {
     border-color: #424d63;
-}
-
-.table:not(.table-bordered) thead th {
-    border-top: none;
 }
 
 .table .thead-primary th {
@@ -26517,3 +26515,20 @@ html[dir="rtl"]
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.input-group-text i.fa-plus {
+    font-size: 18px;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__clear {
+    font-weight: 400 !important;
+    font-size: 27px;
+}
+.select2-container--default
+    .select2-selection--multiple
+    .select2-selection__clear {
+    font-weight: 400 !important;
+    font-size: 27px;
+}

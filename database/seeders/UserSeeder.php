@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 $user->remember_token        = Str::random(10);
                 $user->phone                 = "01912938002";
                 $user->nid_number            = "33422";
-                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
+                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user.png']);
                 $user->dob                   = "2022-01-01";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 1;
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 $user->gender                = GenderEnum::MALE;
                 $user->password              = Hash::make('123456');
                 $user->phone                 = "01478523690";
-                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
+                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user.png']);
                 $user->dob                   = "2022-04-20";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 2;
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
                 $user->password              = Hash::make('123456');
                 $user->phone                 = "01478523691";
                 $user->nid_number            = "33422";
-                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']);
+                $user->image_id              = DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user.png']);
                 $user->dob                   = "2022-05-08";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 2;
