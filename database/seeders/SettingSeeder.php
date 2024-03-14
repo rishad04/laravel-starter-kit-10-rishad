@@ -2,15 +2,22 @@
 
 namespace Database\Seeders;
 
+use App\Models\Upload;
 use App\Enums\StatusEnum;
 use App\Models\Backend\Setting;
-use App\Models\Upload;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\Upload\UploadInterface;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SettingSeeder extends Seeder
 {
+    private $uploadRepo;
+
+    public function __construct(UploadInterface $uploadRepo)
+    {
+        $this->uploadRepo = $uploadRepo;
+    }
     /**
      * Run the database seeds.
      */
@@ -29,8 +36,10 @@ class SettingSeeder extends Seeder
             ['key' => 'email',            'value' => 'info@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
-            ['key' => 'logo',                   'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/logo.png'])],
-            ['key' => 'favicon',                'value' => DB::table('uploads')->insertGetId(['original' => 'backend/images/favicon.png'])],
+            ['key' => 'logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],
+            ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo_dark.png")],
+            ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_favicon.png")],
+
 
             ['key' => 'mail_sendmail_path',     'value' => '/usr/sbin/sendmail -bs -i'],
             ['key' => 'mail_driver',            'value' => 'smtp'],

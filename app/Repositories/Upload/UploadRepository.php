@@ -187,4 +187,34 @@ class UploadRepository implements UploadInterface
 
         return true;
     }
+
+    function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy')
+    {
+        $uploadDirectory = "uploads/{$uploadDirectory}/";
+
+        if (!file_exists(public_path($uploadDirectory))) {
+            mkdir(public_path($uploadDirectory), 0755, true);
+        }
+
+        $basename           = pathinfo(public_path($sourcePath), PATHINFO_BASENAME);
+        $name               = uniqid("{$namePrefix}_") . '_' . $basename;
+        $destinationPath    = $uploadDirectory . $name;
+
+        if (!copy(public_path($sourcePath), public_path($destinationPath))) {
+            return null;
+        }
+
+        $upload              = new Upload();
+        $upload->original    = $destinationPath;
+        $upload->image_one   = $destinationPath;
+        $upload->image_two   = $destinationPath;
+        $upload->image_three = $destinationPath;
+
+        $fileType            = pathinfo($destinationPath, PATHINFO_EXTENSION);
+        $upload->type        = in_array($fileType, ['jpg', 'jpeg', 'png', 'gif']) ? 'image' : null;
+
+        $upload->save();
+
+        return $upload->id;
+    }
 }

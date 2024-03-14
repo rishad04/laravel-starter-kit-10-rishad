@@ -12,4 +12,6 @@ interface UploadInterface
     public function uploadImage($image, $path, $image_sizes, int $old_upload_id = null);
 
     public function deleteImage($old_upload_id, $slug);
+
+    function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy');
 }
