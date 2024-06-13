@@ -2,13 +2,11 @@
 
 namespace App\Repositories\Language;
 
-use App\Enums\Status;
-use App\Enums\StatusEnum;
 use App\Models\Backend\FlagIcon;
 use App\Models\Backend\Language;
-use App\Models\Backend\LanguageConfig;
 use App\Repositories\Language\LanguageInterface;
 use App\Traits\ReturnFormatTrait;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -23,20 +21,27 @@ class LanguageRepository implements LanguageInterface
         $this->model = $model;
     }
 
-
     public function flags()
     {
         return FlagIcon::all();
     }
 
-    public function activelang()
+    public function all($status = null, int $paginate = null, string $orderBy = 'id', string $sortBy = 'desc')
     {
-        return $this->model::where('status', StatusEnum::ACTIVE->value)->get();
+        $query = $this->model::query();
+
+        if ($status != null) {
+            $query->where('status', $status);
+        }
+
+        $query->orderBy($orderBy, $sortBy);
+
+        return $paginate != null ? $query->paginate($paginate) : $query->get();
     }
 
-    public function get()
+    public function find($id)
     {
-        return $this->model::orderByDesc('id')->paginate(10);
+        return $this->model::findOrFail($id);
     }
 
     public function store($request)
@@ -55,24 +60,20 @@ class LanguageRepository implements LanguageInterface
 
             $path     = base_path('lang/' . $request->code);
 
-            if (!File::isDirectory($path)) :
+            if (!File::isDirectory($path)) {
                 File::makeDirectory($path, 0777, true, true);
-                File::copyDirectory(base_path('lang/en'), base_path('lang/' . $data['language']->code));
-
-            endif;
+                File::copyDirectory(base_path('lang/en'), $path);
+            }
 
             DB::commit();
 
-            return $this->responseWithSuccess(___('alert.successfully_added'), []);
+            Cache::forget("defaultLanguage-{$language->code}");
+
+            return $this->responseWithSuccess(___('alert.successfully_added'));
         } catch (\Throwable $th) {
             DB::rollBack();
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
-    }
-
-    public function edit($id)
-    {
-        return $this->model::find($id);
     }
 
     public function update($request)
@@ -84,18 +85,26 @@ class LanguageRepository implements LanguageInterface
             if ($language->code  != $request->code) : //if not match old code and new code
 
 
-                $old_directory = base_path('lang/' . $language->code);
+                $old_directory    = base_path('lang/' . $language->code);
 
-                if (!File::isDirectory($old_directory)) :
+                if (File::isDirectory($old_directory)) :
                     File::deleteDirectory($old_directory);
                 endif;
 
-                $path     = base_path('lang/' . $request->code);
+                $path             = base_path('lang/' . $request->code);
 
                 if (!File::isDirectory($path)) :
                     File::makeDirectory($path, 0777, true, true);
                     File::copyDirectory(base_path('lang/en'), base_path('lang/' . $request->code));
                 endif;
+            elseif ($language->code  == $request->code) :
+                $path             = base_path('lang/' . $request->code);
+
+                if (!File::isDirectory($path)) :
+                    File::makeDirectory($path, 0777, true, true);
+                    File::copyDirectory(base_path('lang/en'), base_path('lang/' . $request->code));
+                endif;
+
             endif;
 
             $language->name             = $request->name;
@@ -105,15 +114,48 @@ class LanguageRepository implements LanguageInterface
             $language->status           = $request->status;
             $language->save();
 
-
-
             DB::commit();
-            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
+
+            Cache::forget("defaultLanguage-{$language->code}");
+
+            return $this->responseWithSuccess(___('alert.successfully_updated'));
         } catch (\Throwable $th) {
             DB::rollBack();
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
+
+    //language delete
+    public function delete($id)
+    {
+        try {
+            $lang         = $this->model::find($id);
+
+            if ($lang->code == 'en') {
+                return $this->responseWithError(___('alert.delete_not_allowed'));
+            }
+
+            $path         = base_path('/lang/' . $lang->code);
+            if (File::exists($path)) :
+                File::deleteDirectory($path);
+            endif;
+
+            $jsonPath     = base_path('/lang/' . $lang->code . '.json');
+            if (File::exists($jsonPath)) :
+                unlink($jsonPath);
+            endif;
+
+            Cache::forget("defaultLanguage-{$lang->code}");
+
+            $lang->delete();
+
+            return $this->responseWithSuccess(___('alert.successfully_deleted'));
+        } catch (\Throwable $th) {
+
+            return $this->responseWithError(___('alert.something_went_wrong'));
+        }
+    }
+
 
     //edit phrase data
     public function editPhrase($id)
@@ -129,54 +171,29 @@ class LanguageRepository implements LanguageInterface
         return $this->responseWithSuccess('', $data);
         // } catch (\Throwable $th) {
 
-        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
+        //     return $this->responseWithError(___('alert.something_went_wrong'));
         // }
     }
-
 
     //update phrase data
-    public function updatePhrase($request, $code)
-    {
-        // try {
-
-        $jsonString     = file_get_contents(base_path("lang/$code/$request->lang_module.json"));
-        $data           = json_decode($jsonString, true);
-
-        foreach ($data as $key => $value) :
-            $data[$key]        = $request->$key;
-        endforeach;
-
-        $newJsonString = json_encode($data, JSON_UNESCAPED_UNICODE);
-        file_put_contents(base_path("lang/$code/$request->lang_module.json"), stripslashes($newJsonString));
-
-
-
-        return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        // } catch (\Throwable $th) {
-
-        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
-        // }
-    }
-
-    //language delete
-    public function delete($id)
+    public function updatePhrase($request)
     {
         try {
-            $lang         = $this->model::find($id);
-            $path         = base_path('/lang/' . $lang->code);
-            if (File::exists($path)) :
-                File::deleteDirectory($path);
-            endif;
-            $jsonPath     = base_path('/lang/' . $lang->code . '.json');
-            if (File::exists($jsonPath)) :
-                unlink($jsonPath);
-            endif;
-            return $lang->delete();
+            $filename   = base_path("lang/$request->code/$request->module.json");
 
-            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
+            $jsonString     = file_get_contents($filename);
+            $data           = json_decode($jsonString, true);
+
+            foreach ($data as $key => $value) {
+                $data[$key] = $request->phrases[$key] ?? $value;
+            }
+
+            $newJsonString = json_encode($data, JSON_UNESCAPED_UNICODE);
+            file_put_contents($filename, stripslashes($newJsonString));
+
+            return $this->responseWithSuccess(___('alert.successfully_updated'), status_code: 201);
         } catch (\Throwable $th) {
-
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
 }

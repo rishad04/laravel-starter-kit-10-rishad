@@ -2,47 +2,31 @@
 
 namespace App\Models\backend;
 
-use App\Enums\StatusEnum;
 use App\Models\User;
 use App\Models\Upload;
 
-use App\Traits\CommonHelperTrait;
+use App\Enums\TodoStatus;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Todo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'user_id',
-        'date',
-    ];
+    protected $fillable = ['title', 'description', 'user_id', 'date',];
 
     protected $casts = [
-        'status' => StatusEnum::class,
+        'status' => TodoStatus::class,
     ];
 
     public function getActivitylogOptions(): LogOptions
     {
+        $logAttributes = ['title', 'description', 'user.name', 'date',];
 
-        $logAttributes = [
-            'title',
-            'description',
-            'user.name',
-            'date',
-        ];
-        return LogOptions::defaults()
-            ->useLogName('ToDo')
-            ->logOnly($logAttributes)
-            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
+        return LogOptions::defaults()->useLogName('ToDo')->logOnly($logAttributes)->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
     }
 
-    // Get single row in User table.
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -50,17 +34,17 @@ class Todo extends Model
 
     public function upload()
     {
-        return $this->belongsTo(Upload::class, 'todo_file', 'id');
+        return $this->belongsTo(Upload::class, 'file_id', 'id');
     }
 
     public function getTodoStatusAttribute()
     {
-        if ($this->status == StatusEnum::PROCESSING) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
-        } elseif ($this->status == StatusEnum::COMPLETED) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
+        if ($this->status == TodoStatus::PROCESSING) {
+            $status = '<span class="bullet-badge bullet-badge-info">' . ___("label." . $this->status->value) . '</span>';
+        } elseif ($this->status == TodoStatus::COMPLETED) {
+            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("label." . $this->status->value) . '</span>';
         } else {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("status." . config('site.status.Todo.' . $this->status->value)) . '</span>';
+            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("label." . $this->status->value) . '</span>';
         }
 
         return $status;

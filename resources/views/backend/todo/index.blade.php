@@ -24,13 +24,9 @@
             <div class="j-parcel-main j-parcel-res">
                 <div class="card">
                     <div class="card-header mb-3">
-                        <h4 class="title-site">{{ ___('label.to_do_list') }}
-                        </h4>
+                        <h4 class="title-site">{{ ___('label.to_do_list') }} </h4>
                         @if (hasPermission('todo_create'))
-                        <a href="{{ route('todo.create') }}" class="j-td-btn">
-                            <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
-                            <span>{{ ___('website_setup.add') }}</span>
-                        </a>
+                        <a href="{{ route('todo.create') }}" class="j-td-btn"> <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image"> <span>{{ ___('menus.add') }}</span> </a>
                         @endif
                     </div>
 

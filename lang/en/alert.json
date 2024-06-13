@@ -20,5 +20,11 @@
     "verified": "Verification successful.",
     "mail_not_send": "Email not send",
     "mail_successfully_sended": "Email successfully sended",
-    "database_backup_description": "Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database."
+    "database_backup_description": "Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.",
+    "this_action_cannot_be_reversed": "This Action Cannot Be Reversed",
+    "no_data_available": "No Data Available",
+    "add_new_entity_regarding_this_table": "Add New Entity Regarding This Table",
+    "cache_successfully_cleared": "Cache Successfully Cleared",
+    "loading": "Loading",
+    "Title": "Title"
 }

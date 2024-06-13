@@ -32,11 +32,13 @@
     <!--************** Main wrapper end ***************-->
 
 
+    @include('backend.partials.dynamic_modal')
+
     <!--******* Scripts ********-->
     @include('backend.partials.footer')
 
-
     @stack('scripts')
+
 </body>
 
 </html>

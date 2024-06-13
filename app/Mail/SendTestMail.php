@@ -39,9 +39,9 @@ class SendTestMail extends Mailable
         return new Content(
             view: 'emails.send_test_mail',
             with: [
-                'logo'      => getImage(globalSettings('logo')),
-                'site_name' => globalSettings('name'),
-                'copyright' => globalSettings('copyright'),
+                'logo'      => logo(settings('logo')),
+                'site_name' => settings('name'),
+                'copyright' => settings('copyright'),
 
             ],
         );

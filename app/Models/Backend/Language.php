@@ -2,7 +2,7 @@
 
 namespace App\Models\Backend;
 
-use App\Enums\StatusEnum;
+use App\Enums\Status;
 use App\Traits\CommonHelperTrait;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ class Language extends Model
     use HasFactory, LogsActivity, CommonHelperTrait;
 
     protected $casts = [
-        'status' => StatusEnum::class,
+        'status' => Status::class,
     ];
 
     public function getActivitylogOptions(): LogOptions

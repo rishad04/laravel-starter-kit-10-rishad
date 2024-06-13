@@ -463,3 +463,13 @@
 </div>
 
 @endsection
+
+
+
+@push('scripts')
+    
+<!-- Chart Morris plugin files -->
+<script src="{{asset('backend')}}/vendor/raphael/raphael.min.js"></script>
+<script src="{{asset('backend')}}/vendor/morris/morris.min.js"></script>
+<script src="{{asset('backend')}}/js/plugins-init/morris-init.js"></script>
+@endpush

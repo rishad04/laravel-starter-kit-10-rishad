@@ -12,7 +12,7 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text wel-flex">
                             <div class="wel-user-pic">
-                                <img src="{{ getImage($user->image_id) }}" class="profile-img" alt="">
+                                <img src="{{ getImage($user->image,'original') }}" class="profile-img" alt="">
                             </div>
                             <div class="wel-user-bio">
                                 <h5 class="heading-5">{{@$user->name}}</h5>

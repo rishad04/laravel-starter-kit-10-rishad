@@ -10,7 +10,6 @@
     "enter_tracking_id": "ট্র্যাকিং আইডি লিখুন",
     "enter_nid_number": "জাতীয় পরিচয় পত্র নম্বর লিখুন",
     "enter_return_charge": "ফেরত চার্জ লিখুন",
-
     "enter_delivery_charge": "ডেলিভারি চার্জ লিখুন",
     "enter_pickup_charge": "পিকআপ চার্জ লিখুন",
     "enter_mobile_number": "মোবাইল নম্বর লিখুন",
@@ -61,7 +60,6 @@
     "enter_designation": "পদবী লিখুন",
     "enter_dob": "জন্ম তারিখ লিখুন",
     "enter_role": "ভূমিকা লিখুন",
-
     "enter_sendmail_path": "সেন্ডমেইল পাথ লিখুন",
     "enter_mail_driver": "মেইল ড্রাইভার লিখুন",
     "enter_mail_host": "মেইল হোস্ট লিখুন",
@@ -72,9 +70,9 @@
     "enter_mail_from_address": "মেইল থেকে ঠিকানা লিখুন",
     "enter_mail_from_name": "মেইল থেকে নাম লিখুন",
     "enter_mail_signature": "মেইল স্বাক্ষর লিখুন",
-
     "enter_brand_name": "ব্র্যান্ড নাম লিখুন",
     "select_an_option": "একটি বিকল্প নির্বাচন করুন ",
     "select_date": "তারিখ নির্বাচন করুন",
-    "enter_role_name": "ভূমিকার নাম লিখুন"
+    "enter_role_name": "ভূমিকার নাম লিখুন",
+    "paginate_value": "Paginate Value"
 }

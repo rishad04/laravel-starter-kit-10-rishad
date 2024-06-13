@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\StatusEnum;
+use App\Enums\TodoStatus;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,13 +14,14 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->date('date')->nullable();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
+            $table->longText('note')->nullable();
+            $table->foreignId('file_id')->nullable()->constrained('uploads')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->date('date')->nullable();
-            $table->unsignedBigInteger('todo_file')->nullable();
-            $table->tinyInteger('status')->default(StatusEnum::PENDING->value)->comment('pending= 1, procesing= 2,complete= 3');
-            $table->longtext('note')->nullable();
+            $table->enum('status', array_column(TodoStatus::cases(), 'value'));
+
             $table->timestamps();
         });
     }
