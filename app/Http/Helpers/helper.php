@@ -119,15 +119,15 @@ function ___($key = null, $replace = [], $locale = null)
 
         $data        = json_decode($jsonString, true);
 
-        if (@$data[$term]) {
+        if ($data[$term]) {
             return $data[$term];
         }
 
-        if (config('app.env') == 'local') {
-            $data[$term] =  ucwords(str_replace(['_', '-'], ' ', $term));
-            $updatedJsonString = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            file_put_contents(base_path('lang/' . $app_local . '/' . $file . '.json'), $updatedJsonString);
-        }
+        // if (config('app.env') == 'local') {
+        //     $data[$term] =  ucwords(str_replace(['_', '-'], ' ', $term));
+        //     $updatedJsonString = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        //     file_put_contents(base_path('lang/' . $app_local . '/' . $file . '.json'), $updatedJsonString);
+        // }
 
         return $data[$term] ?? $term;
     } catch (\Exception $e) {
