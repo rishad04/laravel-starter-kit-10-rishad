@@ -55,8 +55,8 @@ class RoleSeeder extends Seeder
             'language_read',
             'language_create',
             'language_update',
-            'language_phrase',
             'language_delete',
+            'language_phrase_update',
 
             'general_settings_read',
             'general_settings_update',
@@ -78,11 +78,13 @@ class RoleSeeder extends Seeder
 
             'activity_logs_read',
             'activity_logs_view',
+            'login_activity_read',
 
             'database_backup_read',
 
             'route_read',
             'route_search',
+
 
         ];
     }
@@ -92,42 +94,6 @@ class RoleSeeder extends Seeder
         return [
 
             'dashboard_read',
-
-            'user_read',
-            'user_create',
-            'user_update',
-            'user_delete',
-
-            'profile_read',
-            'profile_update',
-            'email_update',
-            'phone_update',
-            'password_update',
-
-            'role_read',
-            'role_create',
-            'role_update',
-            'role_delete',
-
-            'language_read',
-            'language_create',
-
-            'general_settings_read',
-            'general_settings_update',
-            'storage_settings_read',
-            'recaptcha_settings_read',
-            'recaptcha_settings_update',
-            'email_settings_read',
-
-            'todo_read',
-            'todo_create',
-            'todo_update',
-            'todo_delete',
-
-            'activity_logs_read',
-            'activity_logs_view',
-
-            'database_backup_read'
         ];
     }
 

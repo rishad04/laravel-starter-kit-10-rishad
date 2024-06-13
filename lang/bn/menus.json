@@ -10,7 +10,6 @@
     "general_settings": "সাধারণ সেটিং",
     "email_settings": "ইমেইল সেটিং",
     "recaptcha": "রিক্যাপচা",
-
     "todo": "টুডু",
     "todo_list": "টুডু লিস্ট",
     "activity_logs": "কার্যকলাপ লগ",
@@ -18,7 +17,6 @@
     "language": "ভাষা",
     "login": "লগ ইন",
     "registration": "নিবন্ধন",
-
     "profile": "প্রোফাইল",
     "change_password": "পাসওয়ার্ড পরিবর্তন",
     "social_login_settings": "সামাজিক লগইন সেটিংস",
@@ -28,5 +26,8 @@
     "recaptcha_settings": "রিক্যাপচা সেটিংস",
     "mail_setting": "ইমেইল সেটিং",
     "mail_settings": "ইমেইল সেটিংস",
-    "language_settings": "ভাষা সেটিংস"
+    "language_settings": "ভাষা সেটিংস",
+    "faq_list": "Faq List",
+    "stay_tuned": "Stay Tuned",
+    "login_activity": "Login Activity"
 }

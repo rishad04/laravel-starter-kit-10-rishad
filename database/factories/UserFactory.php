@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Enums\GENDER;
-use App\Enums\GenderEnum;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Enums\Gender;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -36,13 +35,13 @@ class UserFactory extends Factory
             'nid_number'    => $this->faker->unique()->numberBetween(1000000000, 9999999999),
             'address'       => $this->faker->address,
 
-            'password'      => Hash::make('123456'),
-            'gender'        => GenderEnum::MALE,
+            'password'      => Hash::make('12345678'),
+            'gender'        => Gender::MALE,
 
             'role_id'       => $role->id,
             'permissions'   => $role->permissions ?? [],
 
-            'image_id'      => DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']),
+            // 'image_id'      => DB::table('uploads')->insertGetId(['original' => 'backend/images/avatar/user-profile.png']),
 
         ];
     }

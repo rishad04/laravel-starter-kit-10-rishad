@@ -2,13 +2,14 @@
 
 namespace App\Repositories\Settings;
 
-use App\Enums\ImageSize;
+use App\Models\Currency;
 use App\Mail\SendTestMail;
 use App\Models\Backend\Setting;
-use App\Repositories\Upload\UploadInterface;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+use App\Repositories\Upload\UploadInterface;
 
 class SettingsRepository implements SettingsInterface
 {
@@ -26,50 +27,50 @@ class SettingsRepository implements SettingsInterface
     // UpdateGeneralSettings
     public function UpdateSettings($request)
     {
-        // try {
-        DB::beginTransaction();
+        try {
+
+            if ($request->has('currency_code')) {
+                $currency   = Currency::where('code', $request->currency_code)->first();
+                $request->merge(['currency_symbol' => $currency->symbol]);
+            }
+
+            DB::beginTransaction();
 
 
-        $ignore    = [];
-        $ignore[] = '_token';
-        $ignore[] = '_method';
+            $ignore    = [];
+            $ignore[] = '_token';
+            $ignore[] = '_method';
 
-        foreach ($request->except($ignore) as $key => $value) {
-            $settings        = Setting::where('key', $key)->first();
+            $images_keys = ['favicon', 'dark_logo', 'light_logo', 'og_image'];
 
-            if ($settings) {
-                if ($key == 'logo') {
-                    $logo              = Setting::where('key', $key)->first();
-                    $settings->value  = $this->upload->uploadImage($request->logo, 'settings', [], $logo->logo);
-                } elseif ($key == 'favicon') {
-                    $favicon           = Setting::where('key', $key)->first();
-                    $settings->value  = $this->upload->uploadImage($request->favicon, 'settings', [], $favicon->favicon);
-                } else {
-                    $settings->value   = $value;
+            foreach ($request->except($ignore) as $key => $value) {
+                $settings       = Setting::where('key', $key)->first();
+
+                if (!$settings) {
+                    $settings       = new Setting();
+                    $settings->key  = $key;
                 }
-                $settings->save();
-            } else {
-                $settings          = new Setting();
-                $settings->key   = $key;
-                if ($key == 'logo') {
-                    $settings->value  = $this->upload->uploadImage($request->logo, 'settings', []);
-                } elseif ($key == 'favicon') {
-                    $settings->value  = $this->upload->uploadImage($request->favicon, 'settings', []);
+
+                if (in_array($key, $images_keys)) {
+                    $settings->value    = $this->upload->uploadImage($value, 'settings/', [], $settings->value);
+                } elseif ($key == 'mail_password') {
+                    $settings->value   = encrypt($value);
                 } else {
                     $settings->value   = $value;
                 }
 
                 $settings->save();
             }
+
+            DB::commit();
+
+            Cache::forget('settings');
+
+            return $this->responseWithSuccess(___('alert.successfully_updated'));
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
-
-        DB::commit();
-
-        return $this->responseWithSuccess(___('alert.successfully_updated'), []);
-        // } catch (\Throwable $th) {
-        //     DB::rollBack();
-        //     return $this->responseWithError(___('alert.something_went_wrong'), []);
-        // }
     }
 
     //database backup
@@ -147,21 +148,21 @@ class SettingsRepository implements SettingsInterface
     {
         try {
 
-            if (globalSettings('mail_driver') == 'sendmail') :
+            if (settings('mail_driver') == 'sendmail') :
                 \config([
-                    'mail.mailers.sendmail.path' => globalSettings('sendmail_path'),
+                    'mail.mailers.sendmail.path' => settings('sendmail_path'),
                 ]);
             endif;
 
             \config([
-                'mail.default'                 => globalSettings('mail_driver'),
-                'mail.mailers.smtp.host'       => globalSettings('mail_host'),
-                'mail.mailers.smtp.port'       => globalSettings('mail_port'),
-                'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
-                'mail.mailers.smtp.username'   => globalSettings('mail_username'),
-                'mail.mailers.smtp.password'   => globalSettings('mail_password'),
-                'mail.from.address'            => globalSettings('mail_address'),
-                'mail.from.name'               => globalSettings('mail_name')
+                'mail.default'                 => settings('mail_driver'),
+                'mail.mailers.smtp.host'       => settings('mail_host'),
+                'mail.mailers.smtp.port'       => settings('mail_port'),
+                'mail.mailers.smtp.encryption' => settings('mail_encryption'),
+                'mail.mailers.smtp.username'   => settings('mail_username'),
+                'mail.mailers.smtp.password'   => settings('mail_password'),
+                'mail.from.address'            => settings('mail_address'),
+                'mail.from.name'               => settings('mail_name')
             ]);
 
             Mail::to($request->email)->send(new SendTestMail);

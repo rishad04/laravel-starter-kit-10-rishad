@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use App\Enums\GENDER;
-use App\Enums\GenderEnum;
-use App\Enums\StatusEnum;
+use App\Enums\Gender;
+use App\Enums\Status;
 use App\Traits\CommonHelperTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -22,12 +21,20 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'permissions' => 'array',
-        'status' => StatusEnum::class,
-        'gender' => GenderEnum::class
+        'permissions'       => 'array',
+        'status'            => Status::class,
+        'gender'            => Gender::class
     ];
 
     protected $appends = ['profile_photo_url',];
+
+    /**
+     * Activity Log
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->useLogName('User')->logOnly(['name', 'email'])->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
+    }
 
     public function role()
     {
@@ -42,24 +49,5 @@ class User extends Authenticatable
     public function nid()
     {
         return $this->belongsTo(Upload::class, 'nid', 'id');
-    }
-
-    // public function getImageAttribute()
-    // {
-    //     if (!empty($this->upload->original['original']) && file_exists(public_path($this->upload->original['original']))) {
-    //         return static_asset($this->upload->original['original']);
-    //     }
-    //     return static_asset('backend/images/avatar/user-profile.png');
-    // }
-
-    /**
-     * Activity Log
-     */
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->useLogName('User')
-            ->logOnly(['name', 'email'])
-            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName}");
     }
 }

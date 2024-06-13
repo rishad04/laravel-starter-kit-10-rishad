@@ -82,5 +82,5 @@
 @endsection()
 
 @push('scripts')
-<script src="{{ static_asset('backend/js/roles/roles.js') }}"></script>
+<script src="{{ asset('backend/js/roles/roles.js') }}"></script>
 @endpush

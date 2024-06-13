@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Enums\StatusEnum;
+use App\Enums\Status;
 use App\Http\Controllers\Controller;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\User\UserInterface;
@@ -47,7 +47,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user         = $this->repo->get($id);
-        $roles = $this->roleRepo->all(status: StatusEnum::ACTIVE->value);
+        $roles = $this->roleRepo->all(status: Status::ACTIVE->value);
         return view('backend.user.edit', compact('roles', 'user'));
     }
 

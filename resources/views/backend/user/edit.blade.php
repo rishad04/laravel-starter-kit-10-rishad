@@ -110,10 +110,10 @@
                             <div class="col-md-6">
                                 <label class="label-style-1" for="nid">{{ ___('label.nid') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.nid') }}" readonly="" id="placeholder">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.nid') }}" readonly>
                                     <button class="primary-btn-small-input" type="button">
-                                        <label class="j-td-btn" for="nid">Browse</label>
-                                        <input type="file" class="d-none form-control" name="nid" id="nid" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                        <label class="j-td-btn" for="nid">{{ ___('label.Browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="nid" id="nid" accept="image/jpg, image/jpeg, image/png, application/pdf">
                                     </button>
                                 </div>
                                 @error('nid') <small class="text-danger mt-2">{{ $message }}</small> @enderror
@@ -132,10 +132,10 @@
                             <div class="col-md-6">
                                 <label class="label-style-1" for="image">{{ ___('label.image') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.image') }}" readonly>
                                     <button class="primary-btn-small-input" type="button">
-                                        <label class="j-td-btn" for="image">Browse</label>
-                                        <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                        <label class="j-td-btn" for="image">{{ ___('label.Browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png, application/pdf">
                                     </button>
                                 </div>
                                 @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror

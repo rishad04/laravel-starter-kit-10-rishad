@@ -2,11 +2,9 @@
 
 namespace App\Repositories\Todo;
 
-use App\Models\Upload;
 use App\Enums\TodoStatus;
 use App\Models\Backend\Todo;
 use App\Traits\ReturnFormatTrait;
-use Illuminate\Support\Facades\File;
 use App\Repositories\Todo\TodoInterface;
 use App\Repositories\Upload\UploadInterface;
 
@@ -42,34 +40,31 @@ class TodoRepository implements TodoInterface
             $todo->date         = $request->date;
             $todo->description  = $request->description;
             $todo->status       = $request->status;
-            if ($request->todoFile) :
-                $todo->todo_file = $this->upload->upload('todo', '', $request->todoFile);
-            endif;
+            $todo->todo_file    = $this->upload->uploadImage($request->todoFile, 'todo');
             $todo->save();
 
-            return $this->responseWithSuccess(___('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'));
         } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
 
     public function update($request)
     {
         try {
+
             $todo               = $this->model::findOrFail($request->id);
             $todo->title        = $request->title;
             $todo->user_id      = $request->user;
             $todo->date         = $request->date;
             $todo->description  = $request->description;
             $todo->status       = $request->status;
-            if ($request->todoFile) :
-                $todo->todo_file = $this->upload->upload('todo', $todo->todo_file, $request->todoFile);
-            endif;
+            $todo->todo_file    = $this->upload->uploadImage($request->todoFile, 'todo', [], $todo->todo_file);
             $todo->save();
 
-            return $this->responseWithSuccess(___('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'));
         } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
 
@@ -78,17 +73,12 @@ class TodoRepository implements TodoInterface
     {
         try {
             $todo  = $this->model::find($id);
-
-            if ($todo && $todo->upload && File::exists(public_path($todo->upload->original))) :
-                unlink(public_path($todo->upload->original));
-                Upload::deleteImage($todo->upload, 'delete');
-            endif;
-
+            $this->upload->deleteImage($todo->todo_file, 'delete');
             $todo->delete();
 
-            return $this->responseWithSuccess(___('alert.successfully_deleted'), []);
+            return $this->responseWithSuccess(___('alert.successfully_deleted'));
         } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
 
@@ -103,9 +93,9 @@ class TodoRepository implements TodoInterface
             endif;
             $todo->save();
 
-            return $this->responseWithSuccess(___('alert.successfully_added'), []);
+            return $this->responseWithSuccess(___('alert.successfully_added'));
         } catch (\Throwable $th) {
-            return $this->responseWithError(___('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'));
         }
     }
 }

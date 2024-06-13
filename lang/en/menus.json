@@ -10,14 +10,12 @@
     "general_settings": "General Setting",
     "email_settings": "Email Setting",
     "recaptcha": "Recaptcha",
-
     "todo_list": "Todo List",
     "activity_logs": "Activity Logs",
     "backup": "Backup",
     "language": "Language",
     "login": "Login",
     "registration": "Registration",
-
     "profile": "Profile",
     "change_password": "Change Password",
     "social_login_settings": "Social Login Settings",
@@ -27,5 +25,13 @@
     "recaptcha_settings": "Recaptcha Settings",
     "mail_setting": "Email Setting",
     "mail_settings": "Email Settings",
-    "language_settings": "Language Settings"
+    "language_settings": "Language Settings",
+    "faq_list": "Faq List",
+    "todo": "Todo",
+    "faq": "Faq",
+    "stay_tuned": "Stay Tuned",
+    "add": "Add",
+    "login_activity": "Login Activity",
+    "": "",
+    "edit": "Edit"
 }

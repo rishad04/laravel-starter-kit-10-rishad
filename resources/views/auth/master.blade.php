@@ -11,9 +11,9 @@
     <link href="{{asset('backend')}}/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('backend')}}/vendor/chartist/css/chartist.min.css">
     <link href="{{asset('backend')}}/css/style.css" rel="stylesheet">
-    <link href="{{asset('backend')}}/assets/style.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/css/style2.css" rel="stylesheet">
     <link href="{{asset('backend')}}/css/custom.css" rel="stylesheet">
-    <link href="{{asset('backend')}}/assets/css/responsive.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/css/responsive.css" rel="stylesheet">
 
 
     {{-- select 2 & flatfikr for date css  --}}

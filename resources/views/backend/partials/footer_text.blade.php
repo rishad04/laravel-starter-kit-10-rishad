@@ -2,7 +2,7 @@
 
 <div class="footer txt-body-p">
     <div class="copyright">
-        <p>Copyright © {{globalSettings('copyright')}}</p>
+        <p>Copyright © {{settings('copyright')}}</p>
     </div>
     <div class="card d-none">
         <div class="card-body p-0">

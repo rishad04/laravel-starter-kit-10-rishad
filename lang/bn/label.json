@@ -100,7 +100,6 @@
     "to_do_list": "টুডু লিস্ট",
     "to_do": "করা লাগবে",
     "file": "ফাইল",
-
     "sendmail_path": "সেন্ডমেইল পাথ",
     "mail_driver": "মেইল ড্রাইভার",
     "mail_host": "মেইল হোস্ট",
@@ -111,7 +110,28 @@
     "mail_from_address": "মেইল প্রেরকের ঠিকানা",
     "mail_from_name": "মেইল প্রেরকের নাম",
     "mail_signature": "মেইল স্বাক্ষর",
-
     "icon": "আইকন",
-    "code": "কোড"
+    "code": "কোড",
+    "default language": "Default Language",
+    "Browse": "Browse",
+    "Logout": "Logout",
+    "paginate_value": "Paginate Value",
+    "date_format": "Date Format",
+    "Jun 13, 2024": "Jun 13, 2024",
+    "June 13, 2024": "June 13, 2024",
+    "13 Jun 2024": "13 Jun 2024",
+    "06": "06",
+    "13-06-2024": "13 06 2024",
+    "13\/06\/2024": "13\/06\/2024",
+    "Thu Jun 13 2024": "Thu Jun 13 2024",
+    "13th June, 2024 (Thursday)": "13th June, 2024 (Thursday)",
+    "Thursday, 13th June 2024": "Thursday, 13th June 2024",
+    "time_format": "Time Format",
+    "12:31 pm": "12:31 Pm",
+    "12:31:41 PM": "12:31:41 PM",
+    "12:31:41": "12:31:41",
+    "currency": "Currency",
+    "light_logo": "Light Logo",
+    "browse": "Browse",
+    "dark_logo": "Dark Logo"
 }

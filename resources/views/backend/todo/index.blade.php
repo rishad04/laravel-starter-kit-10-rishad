@@ -28,8 +28,8 @@
                         </h4>
                         @if (hasPermission('todo_create'))
                         <a href="{{ route('todo.create') }}" class="j-td-btn">
-                            <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
-                            <span>{{ ___('website_setup.add') }}</span>
+                            <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
+                            <span>{{ ___('menus.add') }}</span>
                         </a>
                         @endif
                     </div>

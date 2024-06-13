@@ -1,10 +1,9 @@
 <?php
 
 use App\Enums\Status;
-use App\Enums\StatusEnum;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -19,7 +18,7 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->string('icon_class')->nullable();
             $table->string('text_direction')->nullable();
-            $table->tinyInteger('status')->default(StatusEnum::ACTIVE->value)->comment();
+            $table->tinyInteger('status')->default(Status::ACTIVE->value)->comment();
             $table->timestamps();
         });
     }

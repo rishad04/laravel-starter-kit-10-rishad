@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     transform: none;
-    margin-inline-start: 65px;
+    margin-inline-start: 85px;
     transition: 0.3s;
 }
 .hamburger {
@@ -80,6 +80,7 @@
     left: inherit;
     inset-inline-start: 11.8125rem;
 }
+
 [dir="rtl"] .quixnav .metismenu .has-arrow:after {
     right: inherit;
     transform: rotate(-45deg);
@@ -87,7 +88,9 @@
 [dir="rtl"] .quixnav .metismenu > li a > i {
     transform: translate(3px, 0px);
 }
-
+.j-to-do img {
+    padding-bottom: 5px;
+}
 @media screen and (max-width: 991px) {
     .nav-header .logo-icon {
         padding-inline-start: 10px;
@@ -218,7 +221,7 @@
 
 .select2-container {
     width: inherit !important;
-    height: 44px;
+    /* height: 44px; */
     border: 1px solid var(--clr-border);
     border-radius: 4px;
     color: var(--clr-body-2);
@@ -259,6 +262,7 @@
     .select2-selection--multiple {
     /* border: 1px solid var(--clr-border) !important; */
     border-radius: 4px !important;
+    overflow-y: scroll;
 }
 
 .select2-container--default .select2-selection--multiple {
@@ -267,10 +271,12 @@
     border-radius: 4px;
     cursor: text;
     height: 42px !important;
+    overflow-y: scroll;
 }
 
 .select2-container .selection {
     height: 42px !important;
+    overflow-y: scroll;
 }
 
 .select2-container--default
@@ -286,72 +292,136 @@
     .select2-selection--multiple
     .select2-selection__choice__remove {
     color: var(--clr-white) !important;
+    font-size: xx-large;
+    font-weight: 400 !important;
 }
 
 .select2-container--default .select2-search--inline .select2-search__field {
     padding: 0.2rem 0.75rem !important;
 }
 
+.select2-container .select2-selection--single {
+    /* height: 100% !important; */
+    height: inherit !important;
+}
+
 /* end select 2 */
 
- /* role permission */
-
- .label-style-2 {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1;
-    color: var(--clr-body);
-    margin-bottom: 0px;
-    margin-top: 8px;
-}
-
- /* role permission */
-
-
- /* login pages */
-
-
-[dir="rtl"] .auth-body {
-    direction: rtl;
-}
-
-[dir="rtl"] .auth-form .form-check-label {
-    padding-right: 20px;
-}
-
- /* login pages */
-
- /* input file */
+/* input file */
 
 .ot_fileUploader {
     display: flex;
     align-items: center;
     border: 1px solid var(--clr-border);
-  }
+    border-radius: 4px !important;
+}
 
-  .ot_fileUploader .input-style-1 {
+.ot_fileUploader .input-style-1 {
     border: 0 !important;
-  }
+}
 
-  .ot_fileUploader button {
+.ot_fileUploader button {
     background: transparent;
     border: 0;
-    margin-left: 2px;
-  }
+}
 
-  .ot_fileUploader button label{
+.ot_fileUploader button label {
     margin: 0;
-    padding: 2px 16px 0px 16px !important;
     cursor: pointer;
-    border: 1px solid #fff !important;
-  }
+    border: 3px solid #fff !important;
+}
 
-  .ot_fileUploader .ot-btn-primary {
+.ot_fileUploader .ot-btn-primary {
     padding: 10px 20px;
-  }
+}
+.ot_fileUploader img {
+    max-height: 45px;
+}
 
-  .left-side {
+.left-side {
     flex-direction: row-reverse;
-  }
+}
+.status-text {
+    position: fixed;
+    margin-left: 270px;
+}
 
-  /* input file */
+/* input file */
+
+/* scroll bar color  */
+ul#menu.metismenu {
+    scrollbar-color: var(--scroll-color-one) var(--scroll-color-two);
+    scrollbar-width: thin;
+    scrollbar-width: 5px;
+}
+
+img.object-fit-cover {
+    object-fit: cover;
+}
+
+img.h-50px {
+    height: 50px;
+}
+
+img.w-50px {
+    width: 50px;
+}
+
+.whitespace-nowrap {
+    white-space: nowrap;
+}
+.gap-3 {
+    gap: 0.3rem;
+}
+
+.bg-light-blue {
+    background-color: lightblue;
+}
+
+.h-15 {
+    height: 15px;
+}
+
+.lh-1-5 {
+    line-height: 1.5;
+}
+
+.italic-font {
+    font-style: italic;
+}
+.bold-font {
+    font-weight: bold;
+}
+.text-align-center {
+    text-align: center;
+}
+.text-align-left {
+    text-align: left;
+}
+.text-align-right {
+    text-align: right;
+}
+.w-100p {
+    width: 100%;
+}
+
+/* summernote */
+.note-toolbar {
+    background-color: inherit !important;
+}
+
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
+    background-color: inherit !important;
+}
+
+.note-editor.note-airframe,
+.note-editor.note-frame {
+    border: 1px solid #e5eaef !important;
+}
+
+.note-editor .note-toolbar,
+.note-popover .popover-content {
+    /* padding: 1px !important; */
+}
+/* summernote */

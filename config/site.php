@@ -1,28 +1,29 @@
 <?php
 
-use App\Enums\GenderEnum;
-use App\Enums\StatusEnum;
+use App\Enums\Status;
+use App\Enums\Gender;
+use App\Enums\TodoStatus;
 
 return [
 
 
     'gender' => [
-        GenderEnum::OTHERS->value   => 'others',
-        GenderEnum::MALE->value     => 'male',
-        GenderEnum::FEMALE->value   => 'female',
+        Gender::OTHERS->value   => 'others',
+        Gender::MALE->value     => 'male',
+        Gender::FEMALE->value   => 'female',
     ],
 
     'status' => [
 
         'default' => [
-            StatusEnum::INACTIVE->value  => 'inactive',
-            StatusEnum::ACTIVE->value    => 'active',
+            Status::INACTIVE->value  => 'inactive',
+            Status::ACTIVE->value    => 'active',
         ],
 
         'Todo' => [
-            StatusEnum::PENDING->value      => 'pending',
-            StatusEnum::PROCESSING->value   => 'processing',
-            StatusEnum::COMPLETED->value    => 'complete',
+            TodoStatus::PENDING->value      => 'pending',
+            TodoStatus::PROCESSING->value   => 'processing',
+            TodoStatus::COMPLETED->value    => 'complete',
         ],
     ],
 
@@ -33,14 +34,24 @@ return [
         'menus'         => 'Menus',
         'permissions'   => 'Permissions',
         'placeholder'   => 'Placeholder',
-        'recaptcha'     => 'Recaptcha',
-        'role'          => 'Role',
-        'status'        => 'Status',
-        'user'          => 'User',
-        'website_setup' => 'Website Setup',
     ],
 
+    'date_format' => [
+        'M j, Y',
+        'F d, Y',
+        'j F Y',
+        'm.d.y',
+        'd-m-Y',
+        'd/m/Y',
+        'D M j Y',
+        'jS F, Y (l)',
+        'l, jS F Y',
+    ],
 
-
+    'time_format' => [
+        'g:i a',
+        'h:i:s A',
+        'H:i:s',
+    ],
 
 ];

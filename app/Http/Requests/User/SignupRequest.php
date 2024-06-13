@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User;
 
 use App\Enums\GENDER;
-use App\Enums\GenderEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SignupRequest extends FormRequest
@@ -28,7 +27,7 @@ class SignupRequest extends FormRequest
             'name'              => 'required|string|min:3|max:50',
             'email'             => 'required|email|unique:users,email',
             'phone'             => 'required|regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/|unique:users,phone',
-            'gender'            => 'required|in:' . GenderEnum::MALE->value . ',' . GenderEnum::FEMALE->value . ',' . GenderEnum::OTHERS->value,
+            'gender'            => 'required|in:' . Gender::MALE->value . ',' . Gender::FEMALE->value . ',' . Gender::OTHERS->value,
             'dob'               => 'required|date|before:10 years ago|after:100 years ago',
             'password'          => 'required|string|min:6|max:32',
             'confirm_password'  => 'required|same:password',
@@ -38,8 +37,7 @@ class SignupRequest extends FormRequest
     public function attributes()
     {
         return [
-            // 'dob'                       => trans('validation.attributes.dob'),
-            // 'dob'                   => 'Date of Birth',
+            'dob'                   => 'Date of Birth',
             'email'                   => 'E-mail address',
             'phone'                   => 'Phone number',
         ];

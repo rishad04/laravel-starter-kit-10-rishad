@@ -30,7 +30,7 @@
                     </h4>
                     @if (hasPermission('language_create'))
                     <a href="{{ route('language.create') }}" class="j-td-btn">
-                        <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
+                        <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
                         <span>{{ ___('label.add') }}</span>
                     </a>
                     @endif
@@ -46,10 +46,8 @@
                                     <th scope="col">{{ ___('language.language_name') }}</th>
                                     <th scope="col">{{ ___('label.code') }}</th>
                                     <th scope="col">{{ ___('label.status') }}</th>
-                                    @if (
-                                    hasPermission('language_update') ||
-                                    hasPermission('language_phrase') ||
-                                    hasPermission('language_delete'))
+
+                                    @if ( hasPermission('language_update') || hasPermission('language_phrase_update') || hasPermission('language_delete'))
                                     <th scope="col">{{ ___('label.action') }}</th>
                                     @endif
 
@@ -66,32 +64,22 @@
                                     <td>{{ @$language->name }}</td>
                                     <td>{{ @$language->code }}</td>
                                     <td>{!! @$language->my_status !!}</td>
-                                    @if (
-                                    hasPermission('language_update') ||
-                                    hasPermission('language_phrase') ||
-                                    hasPermission('language_delete'))
-                                    <td>
 
-                                        <div class="d-flex" data-toggle="dropdown">
-                                            <a class="p-2" href="javascript:void()">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                            </a>
-                                        </div>
+                                    @if ( hasPermission('language_update') || hasPermission('language_phrase_update') || hasPermission('language_delete'))
+                                    <td>
+                                        <a class="p-2" href="javascript:void()" data-toggle="dropdown"> <i class="fa fa-ellipsis-v"></i> </a>
 
                                         <div class="dropdown-menu">
-
                                             @if( hasPermission('language_update') && ($language->code !== 'en'))
                                             <a href="{{ route('language.edit',$language->id) }}" class="dropdown-item"><i class="fa fa-edit color-muted" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                             @endif
 
-                                            @if( hasPermission('language_phrase'))
+                                            @if( hasPermission('language_phrase_update'))
                                             <a href="{{ route('language.edit.phrase',$language->id) }}" class="dropdown-item"> <i class="fa fa-language color-muted"></i> {{ ___('label.edit_phrase') }}</a>
                                             @endif
 
                                             @if( hasPermission('language_delete') && ($language->code !== 'en'))
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('admin/language/delete', {{$language->id}})">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
-                                            </a>
+                                            <a class="dropdown-item" href="{{ route('language.delete', $language->id) }}" onclick="tryDelete(event)" data-remove-id="row_{{ $language->id }}" data-title="{{___('label.delete')}}" data-text="{{___('alert.this_action_cannot_be_reversed')}}" data-confirm-button-text="{{___('label.delete')}}" data-cancel-button-text="{{___('label.cancel')}}"> <i class="fa fa-trash"></i> {{ ___('label.delete') }} </a>
                                             @endif
                                         </div>
                                     </td>
@@ -121,7 +109,8 @@
 @endsection
 
 
+@pushOnce('scripts')
 
-@push('scripts')
-@include('backend.partials.delete-ajax')
-@endpush
+<script src="{{ asset('backend/js/custom/delete_ajax.js') }}"></script>
+
+@endPushOnce

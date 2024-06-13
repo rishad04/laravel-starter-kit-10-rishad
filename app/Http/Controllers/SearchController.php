@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\StatusEnum;
+use App\Enums\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +14,7 @@ class SearchController extends Controller
             return;
         }
 
-        $routes = DB::table('route_lists')->where('status', StatusEnum::ACTIVE->value)
+        $routes = DB::table('route_lists')->where('status', Status::ACTIVE->value)
             ->where('title', 'LIKE', '%' . $request->input('search') . '%')
             ->latest('updated_at')
             ->orderBy('name')
@@ -31,7 +31,7 @@ class SearchController extends Controller
             return redirect()->back();
         }
 
-        $baseQuery = DB::table('route_lists')->where('status', StatusEnum::ACTIVE->value);
+        $baseQuery = DB::table('route_lists')->where('status', Status::ACTIVE->value);
 
         $columns = ['title', 'name', 'uri'];
 

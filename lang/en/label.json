@@ -14,7 +14,6 @@
     "actions": "Actions",
     "active": "Active",
     "inactive": "Inactive",
-
     "name": "Name",
     "gender": "Gender",
     "username": "Username",
@@ -24,44 +23,30 @@
     "password": "Password",
     "confirm_password": "Confirm Password",
     "designation": "Designation",
-
     "image": "Image",
     "address": "Address",
     "status": "Status",
     "description": "Description",
-
     "driving_license": "Driving license",
-
     "nid": "NID",
     "nid_number": "NID Number",
-
     "list": "List",
-
     "permission": "Permission",
-
     "user": "User",
     "date": "Date",
-
     "choose_file": "Choose File",
     "roles": "Roles",
     "role": "Role",
     "logs": "Logs",
-
     "created_by": "Created By",
-
     "from": "From",
-
     "account": "Account",
     "type": "Type",
-
     "save_change": "Save Change",
     "save_changes": "Save Changes",
-
     "logo": "Logo",
     "favicon": "Favicon",
-
     "search": "Search",
-
     "bangla": "বাংলা",
     "english": "English",
     "created": "Created",
@@ -70,18 +55,13 @@
     "old_password": "Old Password",
     "new_password": "New Password",
     "c_password": "Confirm Password",
-
     "hindi": "हिन्दी",
     "arabic": "عربي",
     "save": "Save",
-
     "category": "Category",
-
     "position": "Position",
-
     "enter_position": "Enter Position",
     "edit_phrase": "Edit Phrase",
-
     "login": "Login",
     "signin": "Signin",
     "download": "Download",
@@ -90,13 +70,11 @@
     "register": "Register",
     "slug": "Slug",
     "registration": "Registration",
-
     "filter": "Filter",
     "language_settings": "Language Settings",
     "email_settings": "Emaill Settings",
     "storage_settings": "Storage Settings",
     "recaptcha_settings": "Recaptcha Settings",
-
     "general_settings": "General Settings",
     "read": "read",
     "language": "Language",
@@ -106,7 +84,6 @@
     "update terms": "Update Terms",
     "clear": "Clear",
     "details": "Details",
-
     "log_name": "Log name",
     "designations": "Designations",
     "cover": "Cover",
@@ -114,11 +91,9 @@
     "about": "About",
     "event": "Event",
     "subject_type": "Subject Type",
-
     "brand_name": "Brand Name",
     "logo_with_text": "Logo With Text",
     "copyright": "Copyright",
-
     "dashboard": "Dashboard",
     "action": "Action",
     "note": "Note",
@@ -127,7 +102,6 @@
     "to_do_list": "To do list",
     "to_do": "To do",
     "file": "File",
-
     "sendmail_path": "Sendmail Path",
     "mail_driver": "Mail Driver",
     "mail_host": "Mail Host",
@@ -138,8 +112,50 @@
     "mail_address": "Mail Address",
     "mail_name": "Mail Name",
     "signature": "Signature",
-
     "icon": "Icon",
     "code": "Code",
-    "test": "Test"
+    "test": "Test",
+    "Logout": "Logout",
+    "faq_list": "Faq List",
+    "faq": "Faq",
+    "index": "Index",
+    "question": "Question",
+    "answer": "Answer",
+    "order": "Order",
+    "program": "Program",
+    "exam": "Exam",
+    "PROGRAM": "PROGRAM",
+    "EXAM": "EXAM",
+    "REGISTER": "REGISTER",
+    "stay_tuned_list": "Stay Tuned List",
+    "Browse": "Browse",
+    "completed": "Completed",
+    "processing": "Processing",
+    "pending": "Pending",
+    "log_details": "Log Details",
+    "deleted": "Deleted",
+    "new": "New",
+    "old": "Old",
+    "icon_class": "Icon Class",
+    "text_direction": "Text Direction",
+    "login_activity": "Login Activity",
+    "activity": "Activity",
+    "ip": "Ip",
+    "browser": "Browser",
+    "os": "Os",
+    "device": "Device",
+    "country": "Country",
+    "default language": "Default Language",
+    "paginate_value": "Paginate Value",
+    "date_format": "Date Format",
+    "time_format": "Time Format",
+    "currency": "Currency",
+    "light_logo": "Light Logo",
+    "browse": "Browse",
+    "dark_logo": "Dark Logo",
+    "path": "Path",
+    "sendmail": "Sendmail",
+    "smtp": "Smtp",
+    "tls": "Tls",
+    "ssl": "Ssl"
 }

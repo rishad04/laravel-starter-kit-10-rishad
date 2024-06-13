@@ -19,7 +19,7 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $languages      = $this->repo->get();
+        $languages      = $this->repo->all(paginate: settings('paginate_value'));
         return view('backend.language.index', compact('languages'));
     }
 
@@ -33,11 +33,6 @@ class LanguageController extends Controller
     //language store
     public function store(StoreRequest $request)
     {
-        // dd($request);
-        if (env('DEMO')) {
-            return redirect()->back()->withInput()->with('danger', __('store_system_error'));
-        }
-
         $result = $this->repo->store($request);
 
         if ($result['status']) {
@@ -49,55 +44,15 @@ class LanguageController extends Controller
 
     public function edit($id)
     {
-        $lang       = $this->repo->edit($id);
-        $flags       = $this->repo->flags();
+        $lang   = $this->repo->find($id);
+        $flags  = $this->repo->flags();
         return view('backend.language.edit', compact('lang', 'flags'));
     }
 
     //language update
     public function update(UpdateRequest $request)
     {
-
-        if (env('DEMO')) {
-            return redirect()->back()->withInput()->with('danger', __('update_system_error'),);
-        }
-
         $result = $this->repo->update($request);
-
-        if ($result['status']) {
-            return redirect()->route('language.index')->with('success', $result['message']);
-        }
-        return redirect()->back()->withInput()->with('danger', $result['message']);
-    }
-
-    //edit phrase
-    public function editPhrase($id)
-    {
-        $result = $this->repo->editPhrase($id);
-        if ($result['status']) {
-            $langData    = $result['data']['terms'];
-
-            $lang        = $this->repo->edit($id);
-            return view('backend.language.edit_phrase', compact('langData', 'lang'));
-        }
-        return redirect()->back()->withInput()->with('danger', $result['message']);
-    }
-
-
-    public function changeModule(Request $request)
-    {
-        $path           = base_path('lang/' . $request->code);
-        $jsonString     = file_get_contents(base_path("lang/$request->code/$request->module.json"));
-        $data['terms']  = json_decode($jsonString, true);
-
-        return view('backend.language.ajax_terms', compact('data'))->render();
-    }
-
-    //update phrase
-    public function updatePhrase(Request $request, $code)
-    {
-
-        $result = $this->repo->updatePhrase($request, $code);
 
         if ($result['status']) {
             return redirect()->route('language.index')->with('success', $result['message']);
@@ -108,16 +63,48 @@ class LanguageController extends Controller
     //delete language
     public function delete($id)
     {
-        if ($this->repo->delete($id)) :
-            $success[0] = "Deleted Successfully";
-            $success[1] = 'success';
-            $success[2] = "Deleted";
-            return response()->json($success);
-        else :
-            $success[0] = "Something went wrong, please try again.";
-            $success[1] = 'error';
-            $success[2] = "oops";
-            return response()->json($success);
-        endif;
+        $result = $this->repo->delete($id);
+
+        return response()->json($result, $result['status_code']);
+    }
+
+    //edit phrase
+    public function editPhrase($id)
+    {
+        $lang   = $this->repo->find($id);
+        return view('backend.language.edit_phrase', compact('lang'));
+    }
+
+    //update phrase
+    public function updatePhrase(Request $request)
+    {
+        $result = $this->repo->updatePhrase($request);
+
+        if ($request->expectsJson()) {
+            return response()->json($result, $result['status_code']);
+        }
+
+        if ($result['status']) {
+            return redirect()->route('language.index')->with('success', $result['message']);
+        }
+        return redirect()->back()->withInput()->with('danger', $result['message']);
+    }
+
+    public function modulePhrase(Request $request)
+    {
+        try {
+            $path       = base_path("lang/{$request->code}/{$request->module}.json");
+
+            $jsonString = file_get_contents($path);
+
+            $phrases    = json_decode($jsonString, true);
+            ksort($phrases);
+            $data       = ['code' => $request->code, 'module' => $request->module, 'phrases' => $phrases];
+
+            return response()->json($data);
+        } catch (\Throwable $th) {
+            $data       = ['message' => ___('alert.something_went_wrong')];
+            return response()->json($data, 500);
+        }
     }
 }

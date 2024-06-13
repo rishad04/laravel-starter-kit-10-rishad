@@ -70,7 +70,7 @@
                     </h4>
                     @if (hasPermission('user_create'))
                     <a href="{{ route('user.create') }}" class="j-td-btn">
-                        <img src="{{asset('backend')}}/assets/img/icon/plus-white.png" class="jj" alt="no image">
+                        <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
                         <span>{{ ___('label.add') }}</span>
                     </a>
                     @endif
@@ -103,7 +103,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="pr-3">
-                                                <img src="{{ getImage($user->image_id,'original') }}" alt="user" class="rounded" width="40" height="40">
+                                                <img src="{{ getImage($user->image,'original') }}" alt="user" class="rounded" width="40" height="40">
                                             </div>
                                             <div>
                                                 <strong>{{$user->name}}</strong>
