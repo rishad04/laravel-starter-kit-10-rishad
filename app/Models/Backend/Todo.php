@@ -39,14 +39,14 @@ class Todo extends Model
 
     public function getTodoStatusAttribute()
     {
-        if ($this->status == TodoStatus::PROCESSING) {
-            $status = '<span class="bullet-badge bullet-badge-info">' . ___("label." . $this->status->value) . '</span>';
-        } elseif ($this->status == TodoStatus::COMPLETED) {
-            $status = '<span class="bullet-badge bullet-badge-complete">' . ___("label." . $this->status->value) . '</span>';
-        } else {
-            $status = '<span class="bullet-badge bullet-badge-pending">' . ___("label." . $this->status->value) . '</span>';
-        }
+        $classes = [
+            TodoStatus::PENDING->value      => 'warning',
+            TodoStatus::PROCESSING->value   => 'info',
+            TodoStatus::COMPLETED->value    => 'success',
+        ];
 
-        return $status;
+        $class = $classes[$this->status?->value] ?? 'warning';
+
+        return "<span class='bullet-badge  bullet-badge-{$class}'>" . ___("label.{$this->status?->name}") . "</span>";
     }
 }
