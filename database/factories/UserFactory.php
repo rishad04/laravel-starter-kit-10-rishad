@@ -29,7 +29,7 @@ class UserFactory extends Factory
         return [
 
             'name'          => $this->faker->unique()->name,
-            'dob'           => $this->faker->date(),
+            'date_of_birth'           => $this->faker->date(),
             'email'         => $this->faker->unique()->safeEmail,
             'phone'         => $this->faker->unique()->phoneNumber,
             'nid_number'    => $this->faker->unique()->numberBetween(1000000000, 9999999999),

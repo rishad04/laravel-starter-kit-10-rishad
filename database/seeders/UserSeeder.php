@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 $user->phone                 = "01912938002";
                 $user->nid_number            = "33422";
                 $user->image_id              = $this->uploadRepo->uploadSeederByPath("backend/images/avatar/user.png");
-                $user->dob                   = "2022-01-01";
+                $user->date_of_birth                   = "2022-01-01";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 1;
                 $user->permissions           = Role::find($user->role_id)->permissions;
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
                 $user->password              = Hash::make('12345678');
                 $user->phone                 = "01478523690";
                 $user->image_id              = $this->uploadRepo->uploadSeederByPath("backend/images/avatar/user.png");
-                $user->dob                   = "2022-04-20";
+                $user->date_of_birth                   = "2022-04-20";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 2;
                 $user->permissions           = Role::find($user->role_id)->permissions;
@@ -62,7 +62,7 @@ class UserSeeder extends Seeder
                 $user->phone                 = "01478523691";
                 $user->nid_number            = "33422";
                 $user->image_id              = $this->uploadRepo->uploadSeederByPath("backend/images/avatar/user.png");
-                $user->dob                   = "2022-05-08";
+                $user->date_of_birth                   = "2022-05-08";
                 $user->address               = "Mirpur-10, Dhaka-1216";
                 $user->role_id               = 2;
                 $user->permissions           = Role::find($user->role_id)->permissions;

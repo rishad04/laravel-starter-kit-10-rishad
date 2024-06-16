@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'          => ['required', 'min:4'],
             'email'         => 'required|string|unique:users,email,' . Request::input('id'),
-            'dob'           => ['required'],
+            'date_of_birth'           => ['required'],
             'gender'        => 'required|' . Rule::in(array_column(Gender::cases(), 'value')),
             'phone'         => 'required|regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/|unique:users,phone,' . Request::input('id'),
             'role_id'       => ['required', 'numeric'],

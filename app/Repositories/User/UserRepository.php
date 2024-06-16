@@ -66,7 +66,7 @@ class UserRepository implements UserInterface
             $user->address          = $request->address;
 
             $user->gender           =  $request->gender;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth    =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->about            =  $request->about;
 
             $user->role_id          = $request->role_id;
@@ -89,7 +89,7 @@ class UserRepository implements UserInterface
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
 
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           =  $request->gender;
 
             $user->nid_number       = $request->nid_number;
@@ -148,7 +148,7 @@ class UserRepository implements UserInterface
         try {
             $user                   = $this->model::find(auth()->user()->id);
             $user->name             = $request->name;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           = $request->gender;
             $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
             $user->address          = $request->address;
@@ -202,7 +202,7 @@ class UserRepository implements UserInterface
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           =  $request->gender;
 
             $user->role_id          = 2;

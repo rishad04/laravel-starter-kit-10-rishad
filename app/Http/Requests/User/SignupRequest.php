@@ -29,7 +29,7 @@ class SignupRequest extends FormRequest
             'email'             => 'required|email|unique:users,email',
             'phone'             => 'required|regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/|unique:users,phone',
             'gender'            => 'required|' . Rule::in(array_column(Gender::cases(), 'value')),
-            'dob'               => 'required|date|before:10 years ago|after:100 years ago',
+            'date_of_birth'               => 'required|date|before:10 years ago|after:100 years ago',
             'password'          => 'required|string|min:6|max:32',
             'confirm_password'  => 'required|same:password',
         ];
@@ -38,7 +38,7 @@ class SignupRequest extends FormRequest
     public function attributes()
     {
         return [
-            'dob'       => 'Date of Birth',
+            'date_of_birth'       => 'Date of Birth',
             'email'     => 'E-mail address',
             'phone'     => 'Phone number',
         ];

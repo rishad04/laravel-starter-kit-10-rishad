@@ -64,8 +64,8 @@
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
-                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob',$user->dob) }}" placeholder="{{ ___('placeholder.enter_dob') }}">
-                                @error('dob') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth',$user->date_of_birth) }}" placeholder="{{ ___('placeholder.enter_dob') }}">
+                                @error('date_of_birth') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
 

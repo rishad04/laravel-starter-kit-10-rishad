@@ -34,8 +34,8 @@
                             <span>{{@$user->name}}</span>
                         </li>
                         <li>
-                            <h6 class="heading-6">{{ ___('label.dob') }}</h6>
-                            <span>{{ dateFormat(@$user->dob) }}</span>
+                            <h6 class="heading-6">{{ ___('label.date_of_birth') }}</h6>
+                            <span>{{ dateFormat(@$user->date_of_birth) }}</span>
                         </li>
                         <li>
                             <h6 class="heading-6">{{ ___('label.gender') }}</h6>

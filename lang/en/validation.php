@@ -166,7 +166,7 @@ return [
     */
 
     'attributes' => [
-        'dob'                   => 'Date of Birth',
+        'date_of_birth'                   => 'Date of Birth',
     ],
 
 ];

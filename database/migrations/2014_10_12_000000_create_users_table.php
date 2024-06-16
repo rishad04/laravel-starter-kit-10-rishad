@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('password');
 
-            $table->date('dob')->nullable()->comment('Birth date');
+            $table->date('date_of_birth')->nullable()->comment('Birth date');
             $table->enum('gender', array_column(Gender::cases(), 'value'));
 
             $table->string('address')->nullable();

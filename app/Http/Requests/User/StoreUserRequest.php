@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
 
             'name'          => ['required', 'string', 'min:4', 'max:50'],
             'email'         => 'required|string|unique:users,email,',
-            'dob'           => ['required', 'date', 'before:today'],
+            'date_of_birth'           => ['required', 'date', 'before:today'],
             'gender'        => 'required|' . Rule::in(array_column(Gender::cases(), 'value')),
             'phone'         => ['required', 'regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/', 'unique:users,phone'],
             // 'phone'         => 'required|regex:/^\+?[0-9]{1,4}-?[0-9]{7,14}$/|unique:users,phone,',
