@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('permissions.permissions') }}
+{{ ___('label.user') }} {{ ___('permissions.permissions') }}
 @endsection
 @section('maincontent')
 
@@ -13,7 +13,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('permissions.permissions') }}</a></li>
                         </ol>
                     </nav>
@@ -27,7 +27,7 @@
             <div class="card">
 
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('user.title') }}</h4>
+                    <h4 class="title-site">{{ ___('label.user') }}</h4>
                 </div>
 
                 <div class="card-body">

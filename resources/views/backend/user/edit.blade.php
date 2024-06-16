@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('label.edit') }}
+{{ ___('label.user') }} {{ ___('label.edit') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.edit') }}</a></li>
                         </ol>
                     </nav>
@@ -26,7 +26,7 @@
                 <div class="card-body">
 
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ ___('user.edit_user') }}</h4>
+                        <h4 class="title-site"> {{ ___('label.edit_user') }}</h4>
                     </div>
 
                     <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
@@ -95,7 +95,7 @@
                                 <select name="gender" id="gender" class="form-control input-style-1 select2">
                                     <option></option>
                                     @foreach(config('site.gender') as $key => $gender)
-                                    <option value="{{ $key }}" @selected(old('gender', $user->gender->value)==$key)>{{ ___('user.'.$gender) }}</option>
+                                    <option value="{{ $key }}" @selected(old('gender', $user->gender->value)==$key)>{{ ___('label.'.$gender) }}</option>
                                     @endforeach
                                 </select>
                                 @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror

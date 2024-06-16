@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('label.list') }}
+{{ ___('label.user') }} {{ ___('label.list') }}
 @endsection
 @section('maincontent')
 <!-- wrapper  -->
@@ -14,7 +14,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.list') }}</a></li>
                         </ol>
                     </nav>
@@ -66,7 +66,7 @@
 
             <div class="card">
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('user.title') }}
+                    <h4 class="title-site">{{ ___('label.user') }}
                     </h4>
                     @if (hasPermission('user_create'))
                     <a href="{{ route('user.create') }}" class="j-td-btn">

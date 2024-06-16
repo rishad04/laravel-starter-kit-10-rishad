@@ -37,9 +37,17 @@ class SignupRequest extends FormRequest
     public function attributes()
     {
         return [
-            'dob'                   => 'Date of Birth',
-            'email'                   => 'E-mail address',
-            'phone'                   => 'Phone number',
+            'dob'       => 'Date of Birth',
+            'email'     => 'E-mail address',
+            'phone'     => 'Phone number',
+        ];
+    }
+
+
+    public function messages()
+    {
+        return [
+            'dob.required' => ___("alert.Date of Birth is required."),
         ];
     }
 }

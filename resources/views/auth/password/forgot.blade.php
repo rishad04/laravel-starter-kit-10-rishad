@@ -1,5 +1,5 @@
 @extends('auth.master')
-@section('title') {{ ___('Forgot Password') }} @endsection
+@section('title') {{ ___('label.Forgot Password') }} @endsection
 
 @section('main')
 
@@ -7,6 +7,12 @@
     <div class="col-xl-12">
         <div class="auth-form">
             <div class="contact-page-3">
+
+                <div class="text-center mb-3">
+                    <img src="{{ logo(settings('light_logo') ) }}" alt="" class="rounded" height="40">
+                </div>
+
+
 
                 <div class="mb-3">
                     <h5 class="heading-5 mb-3 text-center"> Forgot Your Password ? </h5>
