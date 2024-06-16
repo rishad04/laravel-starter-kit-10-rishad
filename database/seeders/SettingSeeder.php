@@ -41,7 +41,7 @@ class SettingSeeder extends Seeder
 
             ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
             ['key' => 'dark_logo',                'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
-            ['key' => 'favicon',                  'value' => $this->uploadRepo->uploadSeederByPath("backend/images/favicon.png")],
+            ['key' => 'favicon',                  'value' => $this->uploadRepo->uploadSeederByPath("backend/images/favicon.ico")],
 
             ['key' => 'default_language',         'value' => 'en'],
             ['key' => 'address',                  'value' => fake()->address()],
