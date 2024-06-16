@@ -69,10 +69,7 @@
                     <h4 class="title-site">{{ ___('label.user') }}
                     </h4>
                     @if (hasPermission('user_create'))
-                    <a href="{{ route('user.create') }}" class="j-td-btn">
-                        <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
-                        <span>{{ ___('label.add') }}</span>
-                    </a>
+                    <a href="{{ route('user.create') }}" class="j-td-btn"> <img src="{{ asset('backend/icons/icon//plus-white.png') }}" class="jj" alt="no image"> <span>{{ ___('label.add') }}</span> </a>
                     @endif
                 </div>
 

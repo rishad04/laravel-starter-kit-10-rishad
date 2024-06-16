@@ -1,5 +1,5 @@
 {
-    "id": "#",
+    "id": "Id",
     "title": "Title",
     "add": "Add",
     "submit": "Submit",
@@ -175,5 +175,6 @@
     "Confirm Verification Code": "Confirm Verification Code",
     "Verification Code": "Verification Code",
     "Verify": "Verify",
-    "Resend Code": "Resend Code"
+    "Resend Code": "Resend Code",
+    "ACTIVE": "ACTIVE"
 }

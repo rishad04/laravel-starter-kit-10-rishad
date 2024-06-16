@@ -18,20 +18,12 @@
             <li> <a href="{{ route('todo.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.todo_list')}}</span> </a> </li>
             @endif
 
-            @if(hasPermission('faq_read'))
-            <li @class(['mm-active'=> request()->is('*faq*')])> <a href="{{ route('faq.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.faq_list')}}</span> </a> </li>
-            @endif
-
-            @if(hasPermission('stay_tuned_read'))
-            <li @class(['mm-active'=> request()->is('*stay-tuned*')])> <a href="{{ route('stayTuned.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.stay_tuned')}}</span> </a> </li>
-            @endif
-
             @if(hasPermission('activity_logs_read'))
             <li> <a href="{{route('activity.logs.index')}}" aria-expanded="true"> <i class="icon-list"></i> <span class="nav-text">{{___('menus.activity_logs')}}</span> </a> </li>
             @endif
 
             @if(hasPermission('login_activity_read'))
-            <li> <a href="{{route('login.activity.index')}}" aria-expanded="false"> <i class="fa fa-history font-size20"></i> <span class="nav-text">{{ ___('menus.login_activity') }}</span> </a> </li>
+            <li> <a href="{{route('login.activity.index')}}" aria-expanded="false"> <i class="icon-list"></i> <span class="nav-text">{{ ___('menus.login_activity') }}</span> </a> </li>
             @endif
 
             @if(hasPermission('language_read'))

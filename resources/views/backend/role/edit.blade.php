@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('role.title') }} {{ ___('label.edit') }}
+{{ ___('label.role') }} {{ ___('label.edit') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ ___('menus.user') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.edit') }}</a></li>
                         </ol>
                     </nav>
@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ ___('role.edit_role') }}</h4>
+                        <h4 class="title-site"> {{ ___('label.edit_role') }}</h4>
                     </div>
                     <form action="{{ route('role.update', ['id' => $role->id]) }}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf

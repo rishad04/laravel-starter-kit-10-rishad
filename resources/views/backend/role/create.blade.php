@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('role.title') }} {{ ___('label.add') }}
+{{ ___('label.role') }} {{ ___('label.add') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('label.user')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.create') }}</a></li>
                         </ol>
                     </nav>
@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ ___('role.create_role') }}</h4>
+                        <h4 class="title-site"> {{ ___('label.create_role') }}</h4>
                     </div>
 
                     <form action="{{route('role.store')}}" method="POST" enctype="multipart/form-data" id="basicform">

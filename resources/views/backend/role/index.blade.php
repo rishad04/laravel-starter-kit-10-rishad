@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('role.title') }} {{ ___('label.list') }}
+{{ ___('label.role') }} {{ ___('label.list') }}
 @endsection
 @section('maincontent')
 
@@ -12,9 +12,8 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('label.user')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.list') }}</a></li>
                         </ol>
                     </nav>
@@ -27,11 +26,9 @@
             <div class="card">
 
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('role.title') }}</h4>
+                    <h4 class="title-site">{{ ___('label.role') }}</h4>
                     @if(hasPermission('role_create') )
-                    <a href="{{route('role.create')}}" class="j-td-btn">
-                        <img src="{{ asset('backend') }}/assets/img/icon/plus-white.png" class="jj" alt="no image"> <span>{{ ___('label.add') }} </span>
-                    </a>
+                    <a href="{{route('role.create')}}" class="j-td-btn"> <img src="{{ asset('backend/icons/icon//plus-white.png') }}" class="jj" alt="no image"> <span>{{ ___('label.add') }} </span> </a>
                     @endif
 
                 </div>

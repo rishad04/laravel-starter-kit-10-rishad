@@ -11,7 +11,6 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('permissions.permissions') }}</a></li>
@@ -48,7 +47,7 @@
 
                                             @foreach ($permissions as $permission )
                                             <tr>
-                                                <td>{{ ___('permissions.'.$permission->attribute) }}</td>
+                                                <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                                 <td>
                                                     @foreach ($permission->keywords as $key=>$keyword)
                                                     <div class="row align-items-start permission-check-box py-2">
