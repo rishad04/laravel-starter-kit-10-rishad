@@ -73,8 +73,8 @@
                                 <select name="gender" id="gender" class="form-control input-style-1 select2">
                                     <option></option>
 
-                                    @foreach(config('site.gender') as $key => $gender)
-                                    <option value="{{ $key }}" @selected(old('gender', 1)==$key)>{{ ___('label.'.$gender) }}</option>
+                                    @foreach(App\Enums\Gender::cases() as $gender)
+                                    <option value="{{ $gender->value }}" @selected(old('gender')==$gender->value)>{{ ___("label.{$gender->name}") }}</option>
                                     @endforeach
 
                                 </select>

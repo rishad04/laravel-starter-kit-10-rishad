@@ -41,7 +41,7 @@
     <table style="width:100%;height:50px;max-width:650px;margin: auto;">
         <tr>
             <td style="text-align: center;padding:30px 10px">
-                <a href="{{ url('/') }}"><img src="{{ logo(settings('logo')) }}" style="height: 50px;" /></a>
+                <a href="{{ url('/') }}"><img src="{{ logo(settings('light_logo')) }}" style="height: 50px;" /></a>
             </td>
         </tr>
     </table>

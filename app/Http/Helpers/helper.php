@@ -119,10 +119,6 @@ function ___($key = null, $replace = [], $locale = null)
 
         $data        = json_decode($jsonString, true);
 
-        if ($data[$term]) {
-            return $data[$term];
-        }
-
         // if (config('app.env') == 'local') {
         //     $data[$term] =  ucwords(str_replace(['_', '-'], ' ', $term));
         //     $updatedJsonString = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

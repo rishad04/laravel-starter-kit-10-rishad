@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\User;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Enums\Gender;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -28,7 +30,7 @@ class UpdateUserRequest extends FormRequest
             'name'          => ['required', 'min:4'],
             'email'         => 'required|string|unique:users,email,' . Request::input('id'),
             'dob'           => ['required'],
-            'gender'        => ['required', 'numeric'],
+            'gender'        => 'required|' . Rule::in(array_column(Gender::cases(), 'value')),
             'phone'         => 'required|regex:/^(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})$/|unique:users,phone,' . Request::input('id'),
             'role_id'       => ['required', 'numeric'],
             'password'      => ['nullable', 'string', 'min:8'],

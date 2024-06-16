@@ -7,7 +7,7 @@
         <div class="auth-form">
 
             <div class="text-center mb-3">
-                <img src="{{ logo(settings('light_logo') ) }}" alt="" class="rounded" height="40">
+                <a href="{{ route('home')}}"> <img src="{{ logo(settings('light_logo') ) }}" alt="" class="rounded" height="40"></a>
             </div>
 
             <h4 class="text-center mb-4">Sign in your account</h4>
