@@ -172,20 +172,26 @@ function fileUploadEffect(event) {
         const uploader = element.closest(".ot_fileUploader");
         uploader.querySelector(".placeholder").value = file.name;
 
-        if (file.type.startsWith("image/")) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                let img = uploader.querySelector("img");
-
-                if (!img) {
-                    img = document.createElement("img");
-                    uploader.insertBefore(img, uploader.firstChild);
-                }
-
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
+        if (!file.type.startsWith("image/")) {
+            let img = uploader.querySelector("img");
+            if (img) {
+                img.remove();
+            }
+            return;
         }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            let img = uploader.querySelector("img");
+
+            if (!img) {
+                img = document.createElement("img");
+                uploader.insertBefore(img, uploader.firstChild);
+            }
+
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
     }
 }
 

@@ -53,7 +53,7 @@
                                 <select name="recaptcha_status" id="recaptcha_status" class="form-control input-style-1 input-style-1 select2" @disabled(!hasPermission('recaptcha_settings_update'))>
 
                                     @foreach(config('site.status.default') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('recaptcha_status',@settings('recaptcha_status'))==$key)>{{ ___('status.'.$status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('recaptcha_status',@settings('recaptcha_status'))==$key)>{{ ___('label.'.$status) }}</option>
                                     @endforeach
 
                                 </select>

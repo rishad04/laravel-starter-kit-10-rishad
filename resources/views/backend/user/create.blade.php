@@ -53,7 +53,7 @@
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
-                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth') }}" placeholder="{{ ___('placeholder.enter_dob') }}">
+                                <input type="date" id="dob" name="date_of_birth" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth') }}" placeholder="{{ ___('placeholder.enter_dob') }}">
                                 @error('date_of_birth') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
@@ -108,7 +108,7 @@
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(config('site.status.default') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status', 1)==$key)>{{ ___('status.'.$status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('status', 1)==$key)>{{ ___('label.'.$status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror

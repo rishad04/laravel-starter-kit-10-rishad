@@ -58,7 +58,7 @@
 
             <div class="col-xl-6 form-group">
                 <label class="label-style-1 mb-1" for="dob">{{ ___('label.date_of_birth') }} <span class="text-danger">*</span></label>
-                <input type="date" name="dob" id="dob" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth') }}" placeholder="{{ ___('placeholder.enter_dob')}}" min="{{ date('Y-m-d', strtotime('-100 years')) }}" max="{{ date('Y-m-d', strtotime('-10 years')) }}">
+                <input type="date" name="date_of_birth" id="dob" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth') }}" placeholder="{{ ___('placeholder.enter_dob')}}" min="{{ date('Y-m-d', strtotime('-100 years')) }}" max="{{ date('Y-m-d', strtotime('-10 years')) }}">
                 @error('date_of_birth') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
 
