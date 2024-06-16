@@ -17,8 +17,6 @@ use App\Repositories\Language\LanguageInterface;
 use App\Repositories\Settings\SettingsInterface;
 use App\Repositories\Language\LanguageRepository;
 use App\Repositories\Settings\SettingsRepository;
-use App\Repositories\Permission\PermissionInterface;
-use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\LoginActivity\LoginActivityInterface;
 use App\Repositories\LoginActivity\LoginActivityRepository;
 
@@ -32,8 +30,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(LoginActivityInterface::class,         LoginActivityRepository::class);
-
-        $this->app->bind(PermissionInterface::class,            PermissionRepository::class);
 
         $this->app->bind(SettingsInterface::class,              SettingsRepository::class);
 

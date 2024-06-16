@@ -126,10 +126,10 @@ class UserRepository implements UserInterface
         }
     }
 
-    public function permissionUpdate($id, $request)
+    public function permissionUpdate($request)
     {
         try {
-            $user = $this->model::where('id', $id)->first();
+            $user = $this->model::find($request->id);
             if ($request->permissions !== null) {
                 $user->permissions = $request->permissions;
             } else {
@@ -137,9 +137,9 @@ class UserRepository implements UserInterface
             }
             $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 

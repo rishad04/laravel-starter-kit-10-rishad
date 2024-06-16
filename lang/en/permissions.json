@@ -22,5 +22,6 @@
     "login_activity_read": "Login Activity Read",
     "database_backup": "Database Backup",
     "route": "Route",
-    "search": "Search"
+    "search": "Search",
+    "permission_update": "Permission Update"
 }

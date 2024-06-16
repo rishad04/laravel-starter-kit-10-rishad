@@ -83,11 +83,7 @@
                                     <th>{{ ___('label.role') }}</th>
                                     <th>{{ ___('permissions.permissions') }}</th>
                                     <th>{{ ___('label.status') }}</th>
-                                    @if(
-                                    hasPermission('permission_update') == true ||
-                                    hasPermission('user_update') == true ||
-                                    hasPermission('user_delete') == true
-                                    )
+                                    @if( hasPermission('permission_update') || hasPermission('user_update') || hasPermission('user_delete') )
                                     <th>{{ ___('label.actions') }}</th>
                                     @endif
                                 </tr>
@@ -118,11 +114,7 @@
                                         @endif
                                     </td>
                                     <td>{!! @$user->MyStatus !!}</td>
-                                    @if(
-                                    hasPermission('permission_update') == true ||
-                                    hasPermission('user_update') == true ||
-                                    hasPermission('user_delete') == true
-                                    )
+                                    @if( hasPermission('permission_update') || hasPermission('user_update') || hasPermission('user_delete') )
                                     <td>
                                         <div class="d-flex" data-toggle="dropdown">
                                             <a class="p-2" href="javascript:void()">
@@ -130,17 +122,15 @@
                                             </a>
                                         </div>
                                         <div class="dropdown-menu">
-                                            @if( hasPermission('permission_update') == true )
+                                            @if( hasPermission('permission_update') )
                                             <a href="{{route('user.permission',$user->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('permissions.permissions') }}</a>
                                             @endif
-                                            @if( hasPermission('user_update') == true )
+                                            @if( hasPermission('user_update') )
                                             <a href="{{route('user.edit',$user->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                             @endif
-                                            @if( hasPermission('user_delete') == true )
+                                            @if( hasPermission('user_delete') )
                                             @if($user->id != 1 && $user->id != @auth()->user->id)
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('user/delete', {{$user->id}})">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
-                                            </a>
+                                            <a class="dropdown-item" href="{{ route('user.delete', $user->id) }}" onclick="tryDelete(event)" data-remove-id="row_{{ $user->id }}" data-title="{{___('label.delete')}}" data-text="{{___('alert.this_action_cannot_be_reversed')}}" data-confirm-button-text="{{___('label.delete')}}" data-cancel-button-text="{{___('label.cancel')}}"> <i class="fa fa-trash"></i> {{ ___('label.delete') }} </a>
                                             @endif
                                             @endif
                                         </div>
@@ -167,5 +157,5 @@
 @endsection()
 
 @push('scripts')
-@include('backend.partials.delete-ajax')
+<script src="{{ asset('backend/js/custom/delete_ajax.js') }}"></script>
 @endpush

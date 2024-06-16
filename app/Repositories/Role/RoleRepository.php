@@ -90,10 +90,18 @@ class RoleRepository implements RoleInterface
         }
     }
 
-    //role delete
+    //role delete 
     public function delete($id)
     {
-        $item = $this->model::find($id);
-        $item->delete();
+        try {
+            $model  = $this->model::find($id);
+
+            $model->delete();
+
+            return $this->responseWithSuccess(___('alert.successfully_deleted'));
+        } catch (\Throwable $th) {
+
+            return $this->responseWithError(___('alert.something_went_wrong'));
+        }
     }
 }

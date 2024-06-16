@@ -63,17 +63,9 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        if ($this->repo->delete($id)) :
-            $success[0] = "Deleted Successfully";
-            $success[1] = 'success';
-            $success[2] = "Deleted";
-            return response()->json($success);
-        else :
-            $success[0] = "Something went wrong, please try again.";
-            $success[1] = 'error';
-            $success[2] = "oops";
-            return response()->json($success);
-        endif;
+        $result = $this->repo->delete($id);
+
+        return response()->json($result, $result['status_code']);
     }
 
     //user permissions
@@ -86,7 +78,7 @@ class UserController extends Controller
 
     public function permissionUpdate(Request $request)
     {
-        $result = $this->repo->permissionUpdate($request->id, $request);
+        $result = $this->repo->permissionUpdate($request);
         if ($result['status']) {
             return redirect()->route('user.index')->with('success', $result['message']);
         }

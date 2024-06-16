@@ -24,7 +24,7 @@
     "storage_settings": "Storage Settings",
     "recaptcha_settings": "Recaptcha Settings",
     "mail_setting": "Mail Setting",
-    "mail_settings": "Email Settings",
+    "mail_settings": "Mail Settings",
     "language_settings": "Language Settings",
     "faq_list": "Faq List",
     "todo": "Todo",
@@ -33,5 +33,7 @@
     "add": "Add",
     "login_activity": "Login Activity",
     "": "",
-    "edit": "Edit"
+    "edit": "Edit",
+    "user": "User",
+    "route": "Route"
 }

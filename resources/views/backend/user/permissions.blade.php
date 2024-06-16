@@ -49,12 +49,16 @@
                                             <tr>
                                                 <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                                 <td>
-                                                    @foreach ($permission->keywords as $key=>$keyword)
-                                                    <div class="row align-items-start permission-check-box py-2">
-                                                        <input id="{{ $keyword }}" class="read common-key mr-2" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if(in_array($keyword,$user->permissions)) checked @endif />
-                                                        <label for="{{ $keyword }}">{{ ___('permissions.'.$key) }}</label>
+
+                                                    <div class="row mt-1">
+                                                        @foreach ($permission->keywords as $key => $keyword)
+                                                        <div class="col-12 col-md-3">
+                                                            <input type="checkbox" id="{{ $keyword }}" class="read common-key" name="permissions[]" value="{{ $keyword }}" @checked(in_array($keyword, $user->permissions ?? []))>
+                                                            <label for="{{ $keyword }}">{{ ___("permissions.{$key}") }}</label>
+                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                    @endforeach
+
                                                 </td>
                                             </tr>
                                             @endforeach
