@@ -1,0 +1,202 @@
+
+/*-------------------------------------------------------
+10. Home 2 css 
+---------------------------------------------------------*/
+
+//Dashboard top box
+
+.j-data-box {
+	background: var(--clr-white);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0px 20px 50px 0px #00000008;
+	padding: 35px 20px 30px 20px;
+	border-radius: 8px;
+	.j-box-left {
+		.j-box-icon {
+			display: flex;
+			gap: 16px;
+			i {
+				height: 60px;
+				width: 60px;
+				line-height: 60px;
+				text-align: center;
+				display: inline-block;
+				border: 1px solid var(--clr-border);
+				border-radius: 4px;
+			}
+			.j-box-txt {
+				h6 {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 1;
+					color: var(--clr-body);
+					margin-bottom: 24px;
+				}
+				span {
+					font-size: 20px;
+					font-weight: 500;
+					line-height: 1;
+					color: var(--clr-heading);
+				}
+			}
+		}
+	}
+	.j-box-right {
+		display: flex;
+		gap: 19px;
+		flex-direction: column;
+		span {
+			display: flex;
+			justify-content: right;
+			align-items: center;
+			gap: 5px;
+			color: var(--clr-green);
+			i {
+				line-height: 1;
+			}
+		}
+		p {
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 1;
+		}
+	}
+}
+
+.j-clr-red {
+    color: var(--clr-red)!important;
+}
+
+//Charts
+
+.j-chart-parent {
+	display: grid;
+	grid-template-columns: 910px 1fr;
+	grid-gap: 20px;
+}
+
+.j-chart-box {
+	.card {
+		margin-bottom: 0;
+		padding: 20px 30px 20px 30px;
+		border-radius: 8px;
+		box-shadow: 0px 20px 50px 0px #00000008;
+		.card-header {
+			padding: 0;
+			margin-bottom: 20px;
+			.card-title {
+				font-size: 20px;
+				font-weight: 500;
+				line-height: 1;
+				letter-spacing: -1px;
+			}
+		}
+		.card-body {
+			padding: 0;
+		}
+	}
+}
+
+.ct-chart {
+    max-height: 240px;
+}
+
+.j-chart-box {
+	.btn {
+		background: transparent;
+		border: 1px solid #DEE5F0;
+		padding: 9px 15px 9px 15px;
+		border-radius: 6px;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 1;
+		color: var(--clr-body);
+	}
+}
+
+.j-card-flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.j-card-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	li {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		span {
+			height: 9px;
+			width: 9px;
+			line-height: 9px;
+			-webkit-border-radius: 50%;
+			border-radius: 50%;
+			background: var(--clr-primary-2);
+			display: inline-block;
+			&.clr-red {
+				background: var(--clr-red);
+			}
+			&.clr-green {
+				background: var(--clr-green);
+			}
+		}
+	}
+}
+
+.j-card-list-dir {
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+//Morris
+
+.j-crcl {
+	margin-right: -20px;
+}
+
+.j-crcl svg,
+.j-crcl svg {
+	width: 240px!important;
+}
+
+//Chart with area
+
+.ct-series-a .ct-area, .ct-series-a .ct-slice-pie {
+    fill: var(--clr-primary-2);
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-donut {
+    stroke: var(--clr-primary);
+}
+
+.ct-chart .ct-label {
+    fill: #a3afb7;
+    color: #97A0AE;
+    font-size: 12px;
+    line-height: 1;
+}
+
+svg text {
+	font-weight: 400 !important;
+	color: #97A0AE;
+	font-size: 12px;
+	line-height: 1;
+}
+
+.ct-chart .ct-series.ct-series-a .ct-bar, .ct-chart .ct-series.ct-series-a .ct-line, .ct-chart .ct-series.ct-series-a .ct-point, .ct-chart .ct-series.ct-series-a .ct-slice-donut {
+    stroke: var(--clr-primary);
+}
+
+.ct-chart .ct-series.ct-series-c .ct-bar, .ct-chart .ct-series.ct-series-c .ct-line, .ct-chart .ct-series.ct-series-c .ct-point, .ct-chart .ct-series.ct-series-c .ct-slice-donut {
+    stroke: var(--clr-red);
+}
+
+.ct-chart .ct-series.ct-series-b .ct-bar, .ct-chart .ct-series.ct-series-b .ct-line, .ct-chart .ct-series.ct-series-b .ct-point, .ct-chart .ct-series.ct-series-b .ct-slice-donut {
+    stroke: var(--clr-green);
+}

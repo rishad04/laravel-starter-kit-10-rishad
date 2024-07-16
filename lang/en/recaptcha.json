@@ -1,0 +1,8 @@
+{
+    "title": "Recaptcha",
+    "site_key": "Site Key",
+    "enter_site_key": "Enter Site Key",
+    "secret_key": "Secret Key",
+    "enter_secret_key": "Enter Secret Key",
+    "recaptcha_setting": "Recaptcha Setting"
+}

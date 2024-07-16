@@ -1,0 +1,32 @@
+{
+    "dashboard": "ড্যাশবোর্ড",
+    "users": "ব্যবহারকারীরা",
+    "roles": "ভূমিকা",
+    "staffs": "স্টাফ",
+    "user_roles": "ব্যবহারকারী & ভূমিকা",
+    "user_role": "ব্যবহারকারী এবং ভূমিকা",
+    "settings": "সেটিংস",
+    "setting": "সেটিং",
+    "general_settings": "সাধারণ সেটিং",
+    "email_settings": "ইমেইল সেটিং",
+    "recaptcha": "রিক্যাপচা",
+
+    "todo": "টুডু",
+    "todo_list": "টুডু লিস্ট",
+    "activity_logs": "কার্যকলাপ লগ",
+    "backup": "ব্যাকআপ",
+    "language": "ভাষা",
+    "login": "লগ ইন",
+    "registration": "নিবন্ধন",
+
+    "profile": "প্রোফাইল",
+    "change_password": "পাসওয়ার্ড পরিবর্তন",
+    "social_login_settings": "সামাজিক লগইন সেটিংস",
+    "payout_setup": "পেআউট সেটআপ",
+    "database_backup": "ডাটাবেস ব্যাকআপ",
+    "storage_settings": "স্টোরেজ সেটিংস",
+    "recaptcha_settings": "রিক্যাপচা সেটিংস",
+    "mail_setting": "ইমেইল সেটিং",
+    "mail_settings": "ইমেইল সেটিংস",
+    "language_settings": "ভাষা সেটিংস"
+}

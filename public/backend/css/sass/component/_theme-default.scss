@@ -1,0 +1,105 @@
+
+/*-------------------------------------------------------
+05. Theme Default css
+---------------------------------------------------------*/
+
+.column-2 {
+	column-count: 2;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.element-center {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.element-bottom {
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+
+//Animation
+
+.round-move {
+	animation: round-move 5s linear infinite;
+}
+
+@keyframes round-move {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.up-move {
+	animation: up-move 5s ease-in-out infinite;
+}
+
+@keyframes up-move {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-30px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+.small-big {
+	animation: small-big 5s ease-in-out infinite;
+}
+
+@keyframes small-big {
+	0% {
+		transform: scale(.5);
+	}
+	51% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(.5);
+	}
+}
+
+.to-left {
+	 animation: to-left 5s linear infinite alternate;
+}
+
+@-webkit-keyframes to-left {
+	0% { 
+		transform: translateX(0px);
+	}
+	50%{ 
+		transform: translateX(-30px);
+	}
+	100%{ 
+		transform: translateX(0px);
+	}
+}
+
+.car-run {
+	animation: run 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes run {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
