@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\Gender;
+use App\Enums\Status;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,9 +17,29 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->nullable()->unique();
             $table->string('password');
+
+            $table->date('date_of_birth')->nullable()->comment('Birth date');
+            $table->enum('gender', array_column(Gender::cases(), 'value'));
+
+            $table->string('address')->nullable();
+            $table->longText('about')->nullable();
+
+            $table->unsignedBigInteger('nid_number')->nullable();
+            $table->foreignId('nid')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
+
+            $table->timestamp('email_verified_at')->nullable()->comment('if null then verified, not null then not verified');
+            $table->string('token')->nullable()->comment('Token for email/phone verification, if null then verified, not null then not verified');
+            $table->longText('permissions')->nullable();
+
+            $table->foreignId('image_id')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
+            $table->foreignId('role_id')->nullable()->constrained('roles')->nullOnDelete();
+
+            $table->tinyInteger('status')->default(Status::ACTIVE->value);
+
             $table->rememberToken();
+            $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
     }

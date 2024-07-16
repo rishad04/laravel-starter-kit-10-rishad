@@ -1,0 +1,22 @@
+{
+    "title": "ভাষা",
+    "language_list": "ভাষা তালিকা",
+    "create_language": "ভাষা তৈরি করুন",
+    "update_language": "ভাষা আপডেট করুন",
+    "edit_phrase": "ফর্ম সম্পাদনা করুন",
+    "edit_language": "ভাষা সম্পাদনা করুন",
+    "language_name": "ভাষার নাম",
+    "enter_language_name": "ভাষার নাম লিখুন",
+    "language_code": "ভাষা কোড",
+    "enter_language_code": "ভাষা কোড লিখুন",
+    "script": "স্ক্রিপ্ট",
+    "enter_script": "জেএসওএন ফর্ম্যাটে স্ক্রিপ্ট লিখুন",
+    "native": "দেশীয়",
+    "enter_native": "দেশীয় লিখুন",
+    "regional": "আঞ্চলিক",
+    "enter_regional": "আঞ্চলিক লিখুন",
+    "flag_icon": "পতাকা আইকন",
+    "text_direction": "লেখার দিক",
+    "rtl": "ডান থেকে বাম",
+    "ltr": "বাম থেকে ডান"
+}

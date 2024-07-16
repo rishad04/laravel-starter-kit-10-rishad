@@ -53,7 +53,7 @@
         _page-user-lock
 
 */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
 @import url("./../icons/simple-line-icons/css/simple-line-icons.css");
 @import url("./../icons/font-awesome-old/css/font-awesome.min.css");
 @import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css");
@@ -306,7 +306,7 @@ section {
 
 body {
     margin: 0;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 28px;
@@ -315,7 +315,7 @@ body {
 }
 
 .content-body {
-	background: #EEF3FA;
+    background: #eef3fa;
 }
 
 [tabindex="-1"]:focus {
@@ -631,8 +631,8 @@ h6,
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
-    font-family: 'Josefin Sans', sans-serif;
-	color: #38414D;
+    font-family: "Josefin Sans", sans-serif;
+    color: #38414d;
 }
 
 h1,
@@ -4990,8 +4990,8 @@ input[type="button"].btn-block {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: #e9ecef;
-    border-radius: 0.25rem;
+    background-color: var(--clr-white);
+    border-radius: 8px;
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -13706,7 +13706,9 @@ html[dir="rtl"]
 }
 
 html[dir="rtl"]
-    [direction="rtl"][data-sidebar-style="compact"]:not([data-layout="horizontal"])
+    [direction="rtl"][data-sidebar-style="compact"]:not(
+        [data-layout="horizontal"]
+    )
     .footer {
     padding-right: 9.375rem;
 }
@@ -26329,7 +26331,9 @@ html[dir="rtl"]
 }
 
 html[dir="rtl"]
-    [direction="rtl"][data-sidebar-style="compact"]:not([data-layout="horizontal"])
+    [direction="rtl"][data-sidebar-style="compact"]:not(
+        [data-layout="horizontal"]
+    )
     .footer {
     padding-right: 9.375rem;
 }
@@ -26512,4 +26516,3 @@ html[dir="rtl"]
 }
 
 /*# sourceMappingURL=style.css.map */
-
