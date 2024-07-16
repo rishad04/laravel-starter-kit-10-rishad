@@ -44,7 +44,7 @@
     <!-- Required vendors -->
     <script src="{{asset('backend')}}/vendor/global/global.min.js"></script>
     <script src="{{asset('backend')}}/js/quixnav-init.js"></script>
-    <script src="{{asset('backend')}}/js/custom.min.js"></script>
+    {{-- <script src="{{asset('backend')}}/js/custom.min.js"></script> --}}
 
 
     <!-- select 2 js -->
