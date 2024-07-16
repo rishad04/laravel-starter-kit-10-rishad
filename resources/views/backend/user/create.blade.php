@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('label.add') }}
+{{ ___('label.user') }} {{ ___('label.add') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.create') }}</a></li>
                         </ol>
                     </nav>
@@ -26,7 +26,7 @@
                 <div class="card-body">
 
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ ___('user.create_user') }}</h4>
+                        <h4 class="title-site"> {{ ___('label.create_user') }}</h4>
                     </div>
 
                     <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
@@ -53,8 +53,8 @@
 
                             <div class="form-group col-md-6">
                                 <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
-                                <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob') }}" placeholder="{{ ___('placeholder.enter_dob') }}">
-                                @error('dob') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
+                                <input type="date" id="dob" name="date_of_birth" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth') }}" placeholder="{{ ___('placeholder.enter_dob') }}">
+                                @error('date_of_birth') <p class="pt-2 text-danger">{{ $message }}</p> @enderror
                             </div>
 
                             <div class="form-group col-md-6">
@@ -73,8 +73,8 @@
                                 <select name="gender" id="gender" class="form-control input-style-1 select2">
                                     <option></option>
 
-                                    @foreach(config('site.gender') as $key => $gender)
-                                    <option value="{{ $key }}" @selected(old('gender', 1)==$key)>{{ ___('user.'.$gender) }}</option>
+                                    @foreach(App\Enums\Gender::cases() as $gender)
+                                    <option value="{{ $gender->value }}" @selected(old('gender')==$gender->value)>{{ ___("label.{$gender->name}") }}</option>
                                     @endforeach
 
                                 </select>
@@ -96,10 +96,10 @@
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ ___('label.nid') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.nid') }}" readonly="" id="placeholder">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.nid') }}" readonly>
                                     <button class="primary-btn-small-input" type="button">
-                                        <label class="j-td-btn" for="nid">Browse</label>
-                                        <input type="file" class="d-none form-control" name="nid" id="nid" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                                        <label class="j-td-btn" for="nid">{{ ___('label.Browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="nid" id="nid" accept="image/jpg, image/jpeg, image/png, application/pdf">
                                     </button>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(config('site.status.default') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status', 1)==$key)>{{ ___('status.'.$status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('status', 1)==$key)>{{ ___('label.'.$status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
@@ -117,10 +117,10 @@
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ ___('label.image') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.image') }}" readonly>
                                     <button class="primary-btn-small-input" type="button">
-                                        <label class="j-td-btn" for="image">Browse</label>
-                                        <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                        <label class="j-td-btn" for="image">{{ ___('label.Browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png">
                                     </button>
                                 </div>
                             </div>

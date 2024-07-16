@@ -29,7 +29,7 @@ class PasswordResetToken extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            // from: globalSettings('mail_from_address'),
+            // from: settings('mail_from_address'),
             subject: 'Password Reset Token',
         );
     }

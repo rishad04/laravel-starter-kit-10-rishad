@@ -11,21 +11,21 @@ class UploadSeeder extends Seeder
 {
     public function run()
     {
-        Upload::create([
-            'original'              => 'backend/uploads/users/user.png',
-            'image_one'              => 'backend/uploads/users/user.png',
-        ]);
-        Upload::create([
-            'original'              => 'backend/uploads/users/user.png',
-            'image_one'              => 'backend/uploads/users/user.png',
-        ]);
-        Upload::create([
-            'original'              => 'backend/uploads/users/user.png',
-            'image_one'              => 'backend/uploads/users/user.png',
-        ]);
-        Upload::create([
-            'original'              => 'backend/uploads/users/user.png',
-            'image_one'              => 'backend/uploads/users/user.png',
-        ]);
+        // Upload::create([
+        //     'original'              => 'backend/uploads/users/user.png',
+        //     'image_one'              => 'backend/uploads/users/user.png',
+        // ]);
+        // Upload::create([
+        //     'original'              => 'backend/uploads/users/user.png',
+        //     'image_one'              => 'backend/uploads/users/user.png',
+        // ]);
+        // Upload::create([
+        //     'original'              => 'backend/uploads/users/user.png',
+        //     'image_one'              => 'backend/uploads/users/user.png',
+        // ]);
+        // Upload::create([
+        //     'original'              => 'backend/uploads/users/user.png',
+        //     'image_one'              => 'backend/uploads/users/user.png',
+        // ]);
     }
 }

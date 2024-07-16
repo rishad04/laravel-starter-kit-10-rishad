@@ -12,7 +12,7 @@
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text wel-flex">
                             <div class="wel-user-pic">
-                                <img src="{{ getImage($user->image_id) }}" class="profile-img" alt="">
+                                <img src="{{ getImage($user->image,'original') }}" class="profile-img" alt="">
                             </div>
                             <div class="wel-user-bio">
                                 <h5 class="heading-5">{{@$user->name}}</h5>
@@ -34,7 +34,7 @@
                             <span>{{@$user->name}}</span>
                         </li>
                         <li>
-                            <h6 class="heading-6">{{ ___('label.dob') }}</h6>
+                            <h6 class="heading-6">{{ ___('label.date_of_birth') }}</h6>
                             <span>{{ dateFormat(@$user->date_of_birth) }}</span>
                         </li>
                         <li>

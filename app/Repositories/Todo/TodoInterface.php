@@ -1,13 +1,18 @@
 <?php
+
 namespace App\Repositories\Todo;
 
-Interface TodoInterface {
-
+interface TodoInterface
+{
     public function all();
-    public function get($id);
-    public function store($request);
-    public function update($request);
-    public function delete($id);
-    public function statusUpdate($id);
 
+    public function get($id);
+
+    public function store($request);
+
+    public function update($request);
+
+    public function delete($id);
+
+    public function statusUpdate($id);
 }

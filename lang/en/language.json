@@ -18,5 +18,19 @@
     "flag_icon": "Flag Icon",
     "text_direction": "Text Direction",
     "rtl": "Right to Left",
-    "ltr": "Left to Right"
+    "ltr": "Left to Right",
+    "module": "Module",
+    "Alert": "Alert",
+    "Label": "Label",
+    "Language": "Language",
+    "Menus": "Menus",
+    "Permissions": "Permissions",
+    "Placeholder": "Placeholder",
+    "Recaptcha": "Recaptcha",
+    "Role": "Role",
+    "Status": "Status",
+    "User": "User",
+    "Website Setup": "Website Setup",
+    "phrase": "Phrase",
+    "translation": "Translation"
 }

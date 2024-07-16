@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('label.list') }}
+{{ ___('label.user') }} {{ ___('label.list') }}
 @endsection
 @section('maincontent')
 <!-- wrapper  -->
@@ -14,7 +14,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.list') }}</a></li>
                         </ol>
                     </nav>
@@ -66,13 +66,10 @@
 
             <div class="card">
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('user.title') }}
+                    <h4 class="title-site">{{ ___('label.user') }}
                     </h4>
                     @if (hasPermission('user_create'))
-                    <a href="{{ route('user.create') }}" class="j-td-btn">
-                        <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
-                        <span>{{ ___('label.add') }}</span>
-                    </a>
+                    <a href="{{ route('user.create') }}" class="j-td-btn"> <img src="{{ asset('backend/icons/icon//plus-white.png') }}" class="jj" alt="no image"> <span>{{ ___('label.add') }}</span> </a>
                     @endif
                 </div>
 
@@ -86,11 +83,7 @@
                                     <th>{{ ___('label.role') }}</th>
                                     <th>{{ ___('permissions.permissions') }}</th>
                                     <th>{{ ___('label.status') }}</th>
-                                    @if(
-                                    hasPermission('permission_update') == true ||
-                                    hasPermission('user_update') == true ||
-                                    hasPermission('user_delete') == true
-                                    )
+                                    @if( hasPermission('permission_update') || hasPermission('user_update') || hasPermission('user_delete') )
                                     <th>{{ ___('label.actions') }}</th>
                                     @endif
                                 </tr>
@@ -103,7 +96,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="pr-3">
-                                                <img src="{{ getImage($user->image_id,'original') }}" alt="user" class="rounded" width="40" height="40">
+                                                <img src="{{ getImage($user->image,'original') }}" alt="user" class="rounded" width="40" height="40">
                                             </div>
                                             <div>
                                                 <strong>{{$user->name}}</strong>
@@ -121,11 +114,7 @@
                                         @endif
                                     </td>
                                     <td>{!! @$user->MyStatus !!}</td>
-                                    @if(
-                                    hasPermission('permission_update') == true ||
-                                    hasPermission('user_update') == true ||
-                                    hasPermission('user_delete') == true
-                                    )
+                                    @if( hasPermission('permission_update') || hasPermission('user_update') || hasPermission('user_delete') )
                                     <td>
                                         <div class="d-flex" data-toggle="dropdown">
                                             <a class="p-2" href="javascript:void()">
@@ -133,17 +122,15 @@
                                             </a>
                                         </div>
                                         <div class="dropdown-menu">
-                                            @if( hasPermission('permission_update') == true )
+                                            @if( hasPermission('permission_update') )
                                             <a href="{{route('user.permission',$user->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('permissions.permissions') }}</a>
                                             @endif
-                                            @if( hasPermission('user_update') == true )
+                                            @if( hasPermission('user_update') )
                                             <a href="{{route('user.edit',$user->id)}}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                             @endif
-                                            @if( hasPermission('user_delete') == true )
+                                            @if( hasPermission('user_delete') )
                                             @if($user->id != 1 && $user->id != @auth()->user->id)
-                                            <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('user/delete', {{$user->id}})">
-                                                <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
-                                            </a>
+                                            <a class="dropdown-item" href="{{ route('user.delete', $user->id) }}" onclick="tryDelete(event)" data-remove-id="row_{{ $user->id }}" data-title="{{___('label.delete')}}" data-text="{{___('alert.this_action_cannot_be_reversed')}}" data-confirm-button-text="{{___('label.delete')}}" data-cancel-button-text="{{___('label.cancel')}}"> <i class="fa fa-trash"></i> {{ ___('label.delete') }} </a>
                                             @endif
                                             @endif
                                         </div>
@@ -170,5 +157,5 @@
 @endsection()
 
 @push('scripts')
-@include('backend.partials.delete-ajax')
+<script src="{{ asset('backend/js/custom/delete_ajax.js') }}"></script>
 @endpush

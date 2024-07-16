@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
+use App\Enums\Status;
+use App\Models\Currency;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MailTestRequest;
@@ -24,8 +26,9 @@ class SettingsController extends Controller
 
     public function generalSettings()
     {
-        $languages = $this->repoLang->activelang();
-        return view('backend.settings.general_settings.index', compact('languages'));
+        $currencies = Currency::all();
+        $languages  = $this->repoLang->all(status: Status::ACTIVE);
+        return view('backend.settings.general_settings.index', compact('currencies', 'languages'));
     }
 
     public function updateSettings(Request $request)

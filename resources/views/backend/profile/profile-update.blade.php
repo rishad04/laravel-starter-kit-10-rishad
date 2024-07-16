@@ -20,15 +20,15 @@
 
                 <div class="form-group col-md-6">
                     <label class="label-style-1">{{ ___('label.dob') }} <span class="text-danger">*</span></label>
-                    <input type="date" id="dob" name="dob" class="form-control input-style-1 flatpickr" value="{{ old('dob',$user->dob) }}" placeholder="{{ ___('placeholder.enter_dob') }}">
-                    @error('dob') <span class="pt-2 text-danger">{{ $message }}</span> @enderror
+                    <input type="date" id="dob" name="date_of_birth" class="form-control input-style-1 flatpickr" value="{{ old('date_of_birth',$user->date_of_birth) }}" placeholder="{{ ___('placeholder.enter_dob') }}">
+                    @error('date_of_birth') <span class="pt-2 text-danger">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="label-style-1">{{ ___('label.gender') }} <span class="text-danger">*</span></label>
                     <select name="gender" id="gender" class="form-control input-style-1 select2">
-                        @foreach(config('site.gender') as $key => $gender)
-                        <option value="{{ $key }}" @selected(old('gender',$user->gender) == $key)>{{ ___('user.'.$gender) }}</option>
+                        @foreach(App\Enums\Gender::cases() as $gender)
+                        <option value="{{ $gender->value }}" @selected(old('gender',$user->gender->value)==$gender->value)>{{ ___("label.{$gender->name}") }}</option>
                         @endforeach
                     </select>
                     @error('gender') <small class="text-danger mt-2">{{ $message }}</small> @enderror
@@ -37,10 +37,10 @@
                 <div class="col-md-6">
                     <label class="label-style-1" for="image">{{ ___('label.image') }}<span class="fillable"></span></label>
                     <div class="ot_fileUploader left-side mb-3">
-                        <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                        <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.image') }}" readonly>
                         <button class="primary-btn-small-input" type="button">
-                            <label class="j-td-btn" for="image">Browse</label>
-                            <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png, application/pdf" style="display: none;">
+                            <label class="j-td-btn" for="image">{{ ___('label.Browse') }}</label>
+                            <input type="file" class="d-none form-control" name="image" id="image" accept="image/jpg, image/jpeg, image/png, application/pdf">
                         </button>
                     </div>
                     @error('image') <small class="text-danger mt-2">{{ $message }}</small> @enderror

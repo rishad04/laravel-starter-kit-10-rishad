@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
 
             @if( hasPermission('dashboard_read'))
-            <li> <a href="{{route('dashboard')}}" aria-expanded="true"> <i class="icon icon-chart-bar-33"></i> <span class="nav-text">{{___('menus.dashboard') }}</span> </a> </li>
+            <li> <a href="{{route('dashboard')}}" aria-expanded="true"> <i class="icon-chart"></i> <span class="nav-text">{{___('menus.dashboard') }}</span> </a> </li>
             @endif
 
             <li class="{{ (request()->is('*user*','*role*')) ? 'mm-active' : '' }}">
@@ -18,14 +18,16 @@
             <li> <a href="{{ route('todo.index') }}" aria-expanded="true"> <i class="icon-notebook"></i> <span class="nav-text">{{___('menus.todo_list')}}</span> </a> </li>
             @endif
 
+            @if(hasPermission('activity_logs_read'))
             <li> <a href="{{route('activity.logs.index')}}" aria-expanded="true"> <i class="icon-list"></i> <span class="nav-text">{{___('menus.activity_logs')}}</span> </a> </li>
+            @endif
 
             @if(hasPermission('login_activity_read'))
-            <li> <a href="#" aria-expanded="false"> <i class="fa fa-history font-size20"></i> <span class="nav-text">{{ ___('menus.login_activity') }}</span> </a> </li>
+            <li> <a href="{{route('login.activity.index')}}" aria-expanded="false"> <i class="icon-list"></i> <span class="nav-text">{{ ___('menus.login_activity') }}</span> </a> </li>
             @endif
 
             @if(hasPermission('language_read'))
-            <li> <a href="{{route('language.index')}}" aria-expanded="true"> <i class="fa fa-language"></i> <span class="nav-text">{{___('menus.language')}}</span> </a> </li>
+            <li> <a href="{{route('language.index')}}" aria-expanded="true"> <i class="icon-flag"></i> <span class="nav-text">{{___('menus.language')}}</span> </a> </li>
             @endif
 
             <li>
@@ -44,13 +46,9 @@
                     <li> <a href="{{route('settings.recaptcha.index')}}">{{ ___('menus.recaptcha') }}</a> </li>
                     @endif
 
-                    @if(hasPermission('sms_settings_read'))
-                    <li> <a href="{{route('sms-settings.index')}}">{{ ___('menus.sms_settings') }}</a> </li>
-                    @endif
-
-                    {{-- @if(hasPermission('social_login_settings_update')== true)
+                    @if(hasPermission('social_login_settings_update')== true)
                     <li> <a href="{{route('social.login.settings.index')}}">{{ ___('menus.social_login_settings') }}</a> </li>
-                    @endif --}}
+                    @endif
 
                     @if(hasPermission('payout_setup_settings_read')== true)
                     <li> <a href="{{route('payout.setup.settings.index')}}">{{ ___('menus.payout_setup') }}</a> </li>

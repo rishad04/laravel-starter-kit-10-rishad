@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('role.title') }} {{ ___('label.edit') }}
+{{ ___('label.role') }} {{ ___('label.edit') }}
 @endsection
 @section('maincontent')
 <div class="container-fluid  dashboard-content">
@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{ ___('menus.user') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('role.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('role.index') }}" class="breadcrumb-link">{{ ___('label.role') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('label.edit') }}</a></li>
                         </ol>
                     </nav>
@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-input-header">
-                        <h4 class="title-site"> {{ ___('role.edit_role') }}</h4>
+                        <h4 class="title-site"> {{ ___('label.edit_role') }}</h4>
                     </div>
                     <form action="{{ route('role.update', ['id' => $role->id]) }}" method="POST" enctype="multipart/form-data" id="basicform">
                         @csrf
@@ -34,29 +34,27 @@
                         @endif
 
                         <div class="row">
-                            <div class="col-4">
-                                <div class="form-row">
-                                    <div class="form-group col-12">
-                                        <label class=" label-style-1" for="name">{{ ___('label.name') }}</label>
-                                        <span class="text-danger">*</span>
-                                        <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ ___('placeholder.enter_role_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name', $role->name) }}" require>
-                                        @error('name') <span class="text-danger mt-2">{{ $message }}</span> @enderror
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
-                                        <span class="text-danger">*</span>
-                                        <select name="status" class="form-control input-style-1 select2">
-                                            @foreach(config('site.status.default') as $key => $status)
 
-                                            <option value="{{ $key }}" @selected(old('status', @$role->status->value)==$key)>{{ ___('status.'.$status) }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
-                                    </div>
-                                </div>
-
+                            <div class="col-12 col-md-6 form-group">
+                                <label class=" label-style-1" for="name">{{ ___('label.name') }}</label>
+                                <span class="text-danger">*</span>
+                                <input id="name" type="text" name="name" data-parsley-trigger="change" placeholder="{{ ___('placeholder.enter_role_name') }}" autocomplete="off" class="form-control input-style-1" value="{{ old('name', $role->name) }}" require>
+                                @error('name') <span class="text-danger mt-2">{{ $message }}</span> @enderror
                             </div>
-                            <div class="col-8">
+
+                            <div class="col-12 col-md-6 form-group">
+                                <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
+                                <span class="text-danger">*</span>
+                                <select name="status" class="form-control input-style-1 select2">
+                                    @foreach(config('site.status.default') as $key => $status)
+
+                                    <option value="{{ $key }}" @selected(old('status', @$role->status->value)==$key)>{{ ___('label.'.$status) }}</option>
+                                    @endforeach
+                                </select>
+                                @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror
+                            </div>
+
+                            <div class="col-12">
                                 <table class="table border  permission-table">
                                     <thead class="bg">
                                         <tr>
@@ -69,12 +67,14 @@
                                         <tr>
                                             <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                             <td>
-                                                @foreach ($permission->keywords as $key => $keyword)
-                                                <div class="row align-items-center permission-check-box pb-2 pt-2">
-                                                    <input id="{{ $keyword }}" class="read common-key form-check-input" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if ($role->permissions !== null && in_array($keyword, $role->permissions)) checked @endif />
-                                                    <label class=" label-style-2" for="{{ $keyword }}">{{ ___('permissions.' . $key) }}</label>
+                                                <div class="row mt-1">
+                                                    @foreach ($permission->keywords as $key => $keyword)
+                                                    <div class="col-12 col-md-3">
+                                                        <input type="checkbox" id="{{ $keyword }}" class="read common-key" name="permissions[]" value="{{ $keyword }}" @checked($role->permissions !== null && in_array($keyword, $role->permissions))>
+                                                        <label for="{{ $keyword }}">{{ ___("permissions.{$key}") }}</label>
+                                                    </div>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
                                             </td>
                                         </tr>
                                         @endforeach
@@ -88,8 +88,7 @@
                         <div class="j-create-btns">
                             <div class="drp-btns">
                                 <button type="submit" class="j-td-btn">{{ ___('label.save_change') }}</button>
-                                <a href="{{ route('role.index') }}" class="j-td-btn btn-red">
-                                    <span>{{ ___('label.cancel') }}</span> </a>
+                                <a href="{{ route('role.index') }}" class="j-td-btn btn-red"> <span>{{ ___('label.cancel') }}</span> </a>
                             </div>
                         </div>
                     </form>

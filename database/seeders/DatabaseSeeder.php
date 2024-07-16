@@ -18,17 +18,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RouteListSeeder::class,
-            FlagIconSeeder::class,
+            CurrencySeeder::class,
             LanguageSeeder::class,
+            FlagIconSeeder::class,
+
+            SettingSeeder::class,
             PermissionSeeder::class,
-            UploadSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-
         ]);
 
-
-        $this->call(SettingSeeder::class);
         $this->call(TodoSeeder::class);
     }
 }

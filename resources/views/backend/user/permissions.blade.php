@@ -1,6 +1,6 @@
 @extends('backend.partials.master')
 @section('title')
-{{ ___('user.title') }} {{ ___('permissions.permissions') }}
+{{ ___('label.user') }} {{ ___('permissions.permissions') }}
 @endsection
 @section('maincontent')
 
@@ -11,9 +11,8 @@
                 <div class="page-breadcrumb">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="breadcrumb-link">{{ ___('label.dashboard') }}</a></li>
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">{{___('menus.user_role')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('user.title') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}" class="breadcrumb-link">{{ ___('label.user') }}</a></li>
                             <li class="breadcrumb-item"><a href="" class="breadcrumb-link active">{{ ___('permissions.permissions') }}</a></li>
                         </ol>
                     </nav>
@@ -27,7 +26,7 @@
             <div class="card">
 
                 <div class="card-header mb-3">
-                    <h4 class="title-site">{{ ___('user.title') }}</h4>
+                    <h4 class="title-site">{{ ___('label.user') }}</h4>
                 </div>
 
                 <div class="card-body">
@@ -48,14 +47,18 @@
 
                                             @foreach ($permissions as $permission )
                                             <tr>
-                                                <td>{{ ___('permissions.'.$permission->attribute) }}</td>
+                                                <td>{{ ___('permissions.' . $permission->attribute) }}</td>
                                                 <td>
-                                                    @foreach ($permission->keywords as $key=>$keyword)
-                                                    <div class="row align-items-start permission-check-box py-2">
-                                                        <input id="{{ $keyword }}" class="read common-key mr-2" type="checkbox" value="{{ $keyword }}" name="permissions[]" @if(in_array($keyword,$user->permissions)) checked @endif />
-                                                        <label for="{{ $keyword }}">{{ ___('permissions.'.$key) }}</label>
+
+                                                    <div class="row mt-1">
+                                                        @foreach ($permission->keywords as $key => $keyword)
+                                                        <div class="col-12 col-md-3">
+                                                            <input type="checkbox" id="{{ $keyword }}" class="read common-key" name="permissions[]" value="{{ $keyword }}" @checked(in_array($keyword, $user->permissions ?? []))>
+                                                            <label for="{{ $keyword }}">{{ ___("permissions.{$key}") }}</label>
+                                                        </div>
+                                                        @endforeach
                                                     </div>
-                                                    @endforeach
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -82,5 +85,5 @@
 @endsection()
 
 @push('scripts')
-<script src="{{ static_asset('backend/js/roles/roles.js') }}"></script>
+<script src="{{ asset('backend/js/roles/roles.js') }}"></script>
 @endpush

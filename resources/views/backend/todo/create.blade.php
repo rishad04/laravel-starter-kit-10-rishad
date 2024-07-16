@@ -64,10 +64,10 @@
                             <div class="col-md-6">
                                 <label class="label-style-1">{{ ___('label.image') }}<span class="fillable"></span></label>
                                 <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control input-style-1" type="text" placeholder="{{ ___('label.image') }}" readonly="" id="placeholder">
+                                    <input class="form-control input-style-1 placeholder" type="text" placeholder="{{ ___('label.image') }}" readonly>
                                     <button class="primary-btn-small-input" type="button">
-                                        <label class="j-td-btn" for="todoFile">Browse</label>
-                                        <input type="file" class="d-none form-control" name="todoFile" id="todoFile" accept="image/jpg, image/jpeg, image/png" style="display: none;">
+                                        <label class="j-td-btn" for="todoFile">{{ ___('label.Browse') }}</label>
+                                        <input type="file" class="d-none form-control" name="todoFile" id="todoFile" accept="image/jpg, image/jpeg, image/png">
                                     </button>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <label class=" label-style-1" for="status">{{ ___('label.status') }}</label>
                                 <select name="status" id="status" class="form-control input-style-1 select2">
                                     @foreach(config('site.status.Todo') as $key => $status)
-                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\StatusEnum::ACTIVE->value)==$key)>{{ ___('status.' .  $status) }}</option>
+                                    <option value="{{ $key }}" @selected(old('status',\App\Enums\Status::ACTIVE->value)==$key)>{{ ___('status.' .  $status) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status') <small class="text-danger mt-2">{{ $message }}</small> @enderror

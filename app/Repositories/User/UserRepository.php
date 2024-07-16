@@ -3,7 +3,7 @@
 namespace App\Repositories\User;
 
 use App\Enums\ImageSize;
-use App\Enums\StatusEnum;
+use App\Enums\Status;
 use App\Mail\PasswordResetToken;
 use App\Mail\Signup;
 use App\Mail\TokenResend;
@@ -66,7 +66,7 @@ class UserRepository implements UserInterface
             $user->address          = $request->address;
 
             $user->gender           =  $request->gender;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth    =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->about            =  $request->about;
 
             $user->role_id          = $request->role_id;
@@ -89,7 +89,7 @@ class UserRepository implements UserInterface
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
 
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           =  $request->gender;
 
             $user->nid_number       = $request->nid_number;
@@ -126,10 +126,10 @@ class UserRepository implements UserInterface
         }
     }
 
-    public function permissionUpdate($id, $request)
+    public function permissionUpdate($request)
     {
         try {
-            $user = $this->model::where('id', $id)->first();
+            $user = $this->model::find($request->id);
             if ($request->permissions !== null) {
                 $user->permissions = $request->permissions;
             } else {
@@ -137,9 +137,9 @@ class UserRepository implements UserInterface
             }
             $user->save();
 
-            return $this->responseWithSuccess(__('alert.successfully_updated'), []);
+            return $this->responseWithSuccess(___('alert.successfully_updated'), []);
         } catch (\Throwable $th) {
-            return $this->responseWithError(__('alert.something_went_wrong'), []);
+            return $this->responseWithError(___('alert.something_went_wrong'), []);
         }
     }
 
@@ -148,7 +148,7 @@ class UserRepository implements UserInterface
         try {
             $user                   = $this->model::find(auth()->user()->id);
             $user->name             = $request->name;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           = $request->gender;
             $user->image_id         = $this->upload->uploadImage($request->image, 'users', [ImageSize::IMAGE_80x80, ImageSize::IMAGE_370x240], $user->image_id);
             $user->address          = $request->address;
@@ -202,34 +202,34 @@ class UserRepository implements UserInterface
             $user->email            = $request->email;
             $user->password         = Hash::make($request->password);
             $user->phone            = $request->phone;
-            $user->dob              =  Carbon::parse($request->dob)->format('Y-m-d');
+            $user->date_of_birth              =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user->gender           =  $request->gender;
 
             $user->role_id          = 2;
             $user->permissions      = Role::find($user->role_id)->permissions;
 
-            $user->status           = StatusEnum::INACTIVE->value;
+            $user->status           = Status::INACTIVE->value;
             $user->token            = rand(100000, 999999);;
 
             $user->save();
 
             session(['user_id' => $user->id, 'email' => $user->email, 'password' => $request->password,]);
 
-            if (globalSettings('mail_driver') == 'sendmail') :
+            if (settings('mail_driver') == 'sendmail') :
                 \config([
-                    'mail.mailers.sendmail.path' => globalSettings('sendmail_path'),
+                    'mail.mailers.sendmail.path' => settings('sendmail_path'),
                 ]);
             endif;
 
             \config([
-                'mail.default'                 => globalSettings('mail_driver'),
-                'mail.mailers.smtp.host'       => globalSettings('mail_host'),
-                'mail.mailers.smtp.port'       => globalSettings('mail_port'),
-                'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
-                'mail.mailers.smtp.username'   => globalSettings('mail_username'),
-                'mail.mailers.smtp.password'   => globalSettings('mail_password'),
-                'mail.from.address'            => globalSettings('mail_address'),
-                'mail.from.name'               => globalSettings('mail_name')
+                'mail.default'                 => settings('mail_driver'),
+                'mail.mailers.smtp.host'       => settings('mail_host'),
+                'mail.mailers.smtp.port'       => settings('mail_port'),
+                'mail.mailers.smtp.encryption' => settings('mail_encryption'),
+                'mail.mailers.smtp.username'   => settings('mail_username'),
+                'mail.mailers.smtp.password'   => settings('mail_password'),
+                'mail.from.address'            => settings('mail_address'),
+                'mail.from.name'               => settings('mail_name')
             ]);
 
             Mail::to($user->email)->send(new Signup($user));
@@ -252,7 +252,7 @@ class UserRepository implements UserInterface
 
             $user->email_verified_at    = now();
             $user->token                = null;
-            $user->status               = StatusEnum::ACTIVE;
+            $user->status               = Status::ACTIVE;
             $user->save();
 
             return $this->responseWithSuccess(___('alert.verified'), []);
@@ -268,21 +268,21 @@ class UserRepository implements UserInterface
             $user->token    = random_int(10000, 99999);
             $user->save();
 
-            if (globalSettings('mail_driver') == 'sendmail') :
+            if (settings('mail_driver') == 'sendmail') :
                 \config([
-                    'mail.mailers.sendmail.path' => globalSettings('sendmail_path'),
+                    'mail.mailers.sendmail.path' => settings('sendmail_path'),
                 ]);
             endif;
 
             \config([
-                'mail.default'                 => globalSettings('mail_driver'),
-                'mail.mailers.smtp.host'       => globalSettings('mail_host'),
-                'mail.mailers.smtp.port'       => globalSettings('mail_port'),
-                'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
-                'mail.mailers.smtp.username'   => globalSettings('mail_username'),
-                'mail.mailers.smtp.password'   => globalSettings('mail_password'),
-                'mail.from.address'            => globalSettings('mail_address'),
-                'mail.from.name'               => globalSettings('mail_name')
+                'mail.default'                 => settings('mail_driver'),
+                'mail.mailers.smtp.host'       => settings('mail_host'),
+                'mail.mailers.smtp.port'       => settings('mail_port'),
+                'mail.mailers.smtp.encryption' => settings('mail_encryption'),
+                'mail.mailers.smtp.username'   => settings('mail_username'),
+                'mail.mailers.smtp.password'   => settings('mail_password'),
+                'mail.from.address'            => settings('mail_address'),
+                'mail.from.name'               => settings('mail_name')
             ]);
 
             Mail::to($user->email)->send(new TokenResend($user));
@@ -302,21 +302,21 @@ class UserRepository implements UserInterface
 
             session(['user_id' => $user->id, 'email' => $user->email]);
 
-            if (globalSettings('mail_driver') == 'sendmail') :
+            if (settings('mail_driver') == 'sendmail') :
                 \config([
-                    'mail.mailers.sendmail.path' => globalSettings('sendmail_path'),
+                    'mail.mailers.sendmail.path' => settings('sendmail_path'),
                 ]);
             endif;
 
             \config([
-                'mail.default'                 => globalSettings('mail_driver'),
-                'mail.mailers.smtp.host'       => globalSettings('mail_host'),
-                'mail.mailers.smtp.port'       => globalSettings('mail_port'),
-                'mail.mailers.smtp.encryption' => globalSettings('mail_encryption'),
-                'mail.mailers.smtp.username'   => globalSettings('mail_username'),
-                'mail.mailers.smtp.password'   => globalSettings('mail_password'),
-                'mail.from.address'            => globalSettings('mail_address'),
-                'mail.from.name'               => globalSettings('mail_name')
+                'mail.default'                 => settings('mail_driver'),
+                'mail.mailers.smtp.host'       => settings('mail_host'),
+                'mail.mailers.smtp.port'       => settings('mail_port'),
+                'mail.mailers.smtp.encryption' => settings('mail_encryption'),
+                'mail.mailers.smtp.username'   => settings('mail_username'),
+                'mail.mailers.smtp.password'   => settings('mail_password'),
+                'mail.from.address'            => settings('mail_address'),
+                'mail.from.name'               => settings('mail_name')
             ]);
 
             Mail::to($user->email)->send(new PasswordResetToken($user));

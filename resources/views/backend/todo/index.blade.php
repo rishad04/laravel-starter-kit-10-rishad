@@ -24,13 +24,9 @@
             <div class="j-parcel-main j-parcel-res">
                 <div class="card">
                     <div class="card-header mb-3">
-                        <h4 class="title-site">{{ ___('label.to_do_list') }}
-                        </h4>
+                        <h4 class="title-site">{{ ___('label.to_do_list') }} </h4>
                         @if (hasPermission('todo_create'))
-                        <a href="{{ route('todo.create') }}" class="j-td-btn">
-                            <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image">
-                            <span>{{ ___('website_setup.add') }}</span>
-                        </a>
+                        <a href="{{ route('todo.create') }}" class="j-td-btn"> <img src="{{ asset('backend') }}/icons/icon//plus-white.png" class="jj" alt="no image"> <span>{{ ___('menus.add') }}</span> </a>
                         @endif
                     </div>
 
@@ -64,20 +60,21 @@
                                         <td>
                                             <div class="input-group">
                                                 <div class="input-group-prepend be-addon">
+
                                                     <div class="d-flex" data-toggle="dropdown">
-                                                        <a class="p-2" href="javascript:void()">
-                                                            <i class="fa fa-ellipsis-v"></i>
-                                                        </a>
+                                                        <a class="p-2" href="javascript:void()"> <i class="fa fa-ellipsis-v"></i> </a>
                                                     </div>
+
                                                     <div class="dropdown-menu">
-                                                        @if(hasPermission('todo_update')== true)
+
+                                                        @if(hasPermission('todo_update') )
                                                         <a href="{{ route('todo.edit',$todo->id) }}" class="dropdown-item"><i class="fa fa-edit" aria-hidden="true"></i> {{ ___('label.edit') }}</a>
                                                         @endif
-                                                        @if(hasPermission('todo_delete')== true)
-                                                        <a class="dropdown-item" href="javascript:void(0);" onclick="delete_row('todo/delete', {{$todo->id}})">
-                                                            <i class="fa fa-trash" aria-hidden="true"></i> {{ ___('label.delete') }}
-                                                        </a>
+
+                                                        @if(hasPermission('todo_delete') )
+                                                        <a class="dropdown-item" href="{{ route('todo.delete', $todo->id) }}" onclick="tryDelete(event)" data-remove-id="row_{{ $todo->id }}" data-title="{{___('label.delete')}}" data-text="{{___('alert.this_action_cannot_be_reversed')}}" data-confirm-button-text="{{___('label.delete')}}" data-cancel-button-text="{{___('label.cancel')}}"> <i class="fa fa-trash"></i> {{ ___('label.delete') }} </a>
                                                         @endif
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,5 +113,6 @@
 
 </script>
 
-@include('backend.partials.delete-ajax')
+<script src="{{ asset('backend/js/custom/delete_ajax.js') }}"></script>
+
 @endpush

@@ -1,7 +1,7 @@
 <?php
 
-use App\Enums\GenderEnum;
-use App\Enums\StatusEnum;
+use App\Enums\Gender;
+use App\Enums\Status;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,17 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable()->unique();
             $table->string('password');
-            $table->date('dob')->nullable()->comment('Birth date');
-            $table->tinyInteger('gender')->default(GenderEnum::MALE->value);
+
+            $table->date('date_of_birth')->nullable()->comment('Birth date');
+            $table->enum('gender', array_column(Gender::cases(), 'value'));
 
             $table->string('address')->nullable();
-
             $table->longText('about')->nullable();
-
 
             $table->unsignedBigInteger('nid_number')->nullable();
             $table->foreignId('nid')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
@@ -37,7 +36,7 @@ return new class extends Migration
             $table->foreignId('image_id')->nullable()->comment('upload id')->constrained('uploads')->nullOnDelete();
             $table->foreignId('role_id')->nullable()->constrained('roles')->nullOnDelete();
 
-            $table->tinyInteger('status')->default(StatusEnum::ACTIVE->value);
+            $table->tinyInteger('status')->default(Status::ACTIVE->value);
 
             $table->rememberToken();
             $table->timestamp('last_login')->nullable();

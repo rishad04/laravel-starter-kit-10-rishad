@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\StatusEnum;
+use App\Enums\Status;
 use App\Traits\CommonHelperTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +13,6 @@ class Role extends Model
 
     protected $casts = [
         'permissions' => 'array',
-        'status' => StatusEnum::class,
+        'status' => Status::class,
     ];
 }

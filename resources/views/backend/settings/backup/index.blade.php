@@ -33,9 +33,11 @@
                                 <p>{{ ___('alert.database_backup_description') }}</p>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <a href="{{ route('database.backup.download') }}" class="j-td-btn" data-toggle="tooltip" data-placement="top" title="download">{{ ___('menus.database_backup') }}</a>
-                        </div>
+
+                    </div>
+
+                    <div class="drp-btns">
+                        <a href="{{ route('database.backup.download') }}" class="j-td-btn" data-toggle="tooltip" data-placement="top" title="download">{{ ___('menus.database_backup') }}</a>
                     </div>
 
                 </div>

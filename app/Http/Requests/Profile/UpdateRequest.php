@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Profile;
 
+use App\Enums\Gender;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -23,8 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'          => 'required|string|min:4|max:50',
-            'dob'           => 'required|date|before:today',
-            'gender'        => 'required|integer',
+            'date_of_birth' => 'required|date|before:today',
+            'gender'        => 'required|' . Rule::in(array_column(Gender::cases(), 'value')),
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5098',
             'address'       => 'required|string|min:5|max:100',
             'about'         => 'nullable|string|min:5|max:200',

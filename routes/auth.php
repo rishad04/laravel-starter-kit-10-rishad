@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('XSS', 'guest')->group(function () {
     Route::get('login',                         [AuthController::class, 'loginForm'])->name('loginForm');
     Route::post('login',                        [AuthController::class, 'login'])->name('login');
+
     // token resend 
     Route::post('token/resend',                 [AuthController::class, 'resendToken'])->name('token.resend')->withoutMiddleware('guest');
 

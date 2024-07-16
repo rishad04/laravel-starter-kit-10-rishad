@@ -1,11 +1,8 @@
 <!--**********************************            Nav header start        ***********************************-->
 <div class="nav-header">
-    <a href="{{ url('/')}}" class="brand-logo">
-        <img src="{{ getImage(globalSettings('logo'),'image_one') }}" alt="Logo" />
-    </a>
-    <a class="logo-icon" href="{{ url('/')}}">
-        <img src="{{ getImage(globalSettings('favicon'),'image_one') }}" alt="Logo" />
-    </a>
+
+    <a href="{{ url('/')}}" class="brand-logo"> <img src="{{ logo(settings('light_logo'),'original') }}" alt="Logo" class="w-100" /> </a>
+    <a href="{{ url('/')}}" class="logo-icon"> <img src="{{ favicon(settings('favicon')) }}" alt="Logo" class="w-100" /> </a>
 
     <div class="nav-control">
         <div class="hamburger ham-nav">
@@ -40,50 +37,40 @@
                         <div class="nav-lang">
                             <div class="dropdown custom-dropdown">
                                 <button type="button" class="btn-ami" data-toggle="dropdown">
-                                    <span>
-                                        {{-- <i class="{{ language(Session::get('locale'))->icon_class }}"></i> {{ Str::upper(Session::get('locale')) }} <i class="fa fa-angle-down"></i> --}}
-                                        <i class="{{ defaultLanguage()->icon_class }}"></i> {{ Str::upper(defaultLanguage()->code) }} <i class="fa fa-angle-down"></i>
-                                    </span>
+                                    <span> <i class="{{ defaultLanguage()->icon_class }}"></i> {{ Str::upper(defaultLanguage()->code) }} <i class="fa fa-angle-down"></i> </span>
                                 </button>
+
                                 <div class="dropdown-menu dropdown-menu-right">
                                     @foreach ($languages as $lang)
-                                    <a class="dropdown-item" href="{{ route('setLocalization',$lang->code) }}">
-                                        <span class="flg-lfex"> <i class="{{ @$lang->icon_class }}"></i> {{ @$lang->name }} </span>
-                                    </a>
-
+                                    <a class="dropdown-item" href="{{ route('setLocalization',$lang->code) }}"> <span class="flg-lfex"> <i class="{{ @$lang->icon_class }}"></i> {{ @$lang->name }} </span> </a>
                                     @endforeach
-
                                 </div>
+
                             </div>
                         </div>
 
-
                         <div class="day-night">
-                            <a class="j-nav-lk" href="#">
-                                <i class="nav-bell">
-                                    <img src="{{ asset('backend') }}/icons/icon//d.png" alt="no image" />
-                                </i>
-                            </a>
+                            <a class="j-nav-lk" href="#"> <i class="nav-bell"> <img src="{{ asset('backend') }}/icons/icon//d.png" alt="no image" /> </i> </a>
                         </div>
 
                         <div class="dropdown notification_dropdown">
-                            <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown">
-                                <i class="nav-bell">
-                                    <img src="{{ asset('backend') }}/icons/icon//bell.png" alt="no image" />
-                                </i>
-                            </a>
+                            <a class="j-nav-lk" href="#" role="button" data-toggle="dropdown"> <i class="nav-bell"> <img src="{{ asset('backend') }}/icons/icon//bell.png" alt="no image" /> </i> </a>
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="list-unstyled">
 
                                     <li class="media dropdown-item">
                                         <span class="success"> <i class="ti-user"></i> </span>
+
                                         <div class="media-body">
                                             <a href="#">
                                                 <p> <strong>Martin</strong> has added a <strong>customer</strong> Successfully </p>
                                             </a>
                                         </div>
+
                                         <span class="notify-time">3:20 am</span>
                                     </li>
+
                                     <li class="media dropdown-item">
                                         <span class="primary"> <i class="ti-shopping-cart"></i> </span>
                                         <div class="media-body">
@@ -101,25 +88,22 @@
 
 
                         <div class="dropdown header-profile">
-                            <a class="nav-np" href="#" role="button" data-toggle="dropdown">
-                                <img src="{{ getImage(auth()->user()->image_id,'original') }}" class="np" alt="" />
+                            <a class="nav-np" href="#" role="button" data-toggle="dropdown"> <img src="{{ getImage(auth()->user()->image,'original') }}" class="np" alt="" />
                                 <h6 class="heading-6 mb-0"> {{Auth::user()->name}} </h6>
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('profile')}}" class="dropdown-item">
-                                    <i class="icon-user"></i> <span class="ml-2">{{ ___('menus.profile') }} </span>
-                                </a>
-                                <a href="{{route('password.update')}}" class="dropdown-item">
-                                    <i class=" icon-key"></i> <span class="ml-2">{{ ___('menus.change_password') }} </span>
-                                </a>
-                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    <i class="icon-logout"></i> <span class="ml-2">Logout </span>
-                                </a>
+                                <a href="{{route('profile')}}" class="dropdown-item"> <i class="icon-user"></i> <span class="ml-2">{{ ___('menus.profile') }} </span> </a>
+
+                                <a href="{{route('password.update')}}" class="dropdown-item"> <i class=" icon-key"></i> <span class="ml-2">{{ ___('menus.change_password') }} </span> </a>
+
+                                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> <i class="icon-logout"></i> <span class="ml-2">{{ ___('label.Logout') }} </span> </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-
                             </div>
+
                         </div>
                     </div>
                 </div>

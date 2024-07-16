@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Upload;
+<<<<<<< HEAD
 use App\Enums\StatusEnum;
+=======
+use App\Enums\Status;
+>>>>>>> origin/master
 use App\Models\Backend\Setting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +22,11 @@ class SettingSeeder extends Seeder
     {
         $this->uploadRepo = $uploadRepo;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
     /**
      * Run the database seeds.
      */
@@ -36,9 +45,24 @@ class SettingSeeder extends Seeder
             ['key' => 'email',                  'value' => 'info@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
+<<<<<<< HEAD
             ['key' => 'logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],
             ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo_dark.png")],
             ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_favicon.png")],
+=======
+
+            ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
+            ['key' => 'dark_logo',                'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
+            ['key' => 'favicon',                  'value' => $this->uploadRepo->uploadSeederByPath("backend/images/favicon.ico")],
+
+            ['key' => 'default_language',         'value' => 'en'],
+            ['key' => 'address',                  'value' => fake()->address()],
+            ['key' => 'paginate_value',           'value' => 10],
+            ['key' => 'date_format',              'value' => 'M j, Y'],
+            ['key' => 'time_format',              'value' => 'g:i a'],
+            ['key' => 'currency_code',            'value' => 'USD'],
+            ['key' => 'currency_symbol',          'value' => '$'],
+>>>>>>> origin/master
 
 
             ['key' => 'sendmail_path',          'value' => '/usr/sbin/sendmail -bs -i'],
@@ -55,11 +79,11 @@ class SettingSeeder extends Seeder
 
             ['key' => 'facebook_client_id',     'value' => '456479846546456456'],
             ['key' => 'facebook_client_secret', 'value' => '45d4fsd454dgd465g4'],
-            ['key' => 'facebook_status',        'value' => StatusEnum::ACTIVE],
+            ['key' => 'facebook_status',        'value' => Status::ACTIVE],
 
             ['key' => 'google_client_id',       'value' => '73uou5.dg54df.google-user-content.com'],
             ['key' => 'google_client_secret',   'value' => 'gdg4d5g4fg5d4g6d4g546'],
-            ['key' => 'google_status',          'value' => StatusEnum::ACTIVE],
+            ['key' => 'google_status',          'value' => Status::ACTIVE],
 
 
 

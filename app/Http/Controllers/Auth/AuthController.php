@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\User\UserInterface;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cookie;
+use App\Repositories\User\UserInterface;
+use App\Repositories\LoginActivity\LoginActivityInterface;
 
 class AuthController extends Controller
 {
 
-    private  $userRepo;
+    private  $userRepo, $LoginActivity;
 
-    public function __construct(UserInterface $userRepo)
+
+    public function __construct(UserInterface $userRepo, LoginActivityInterface $LoginActivity)
     {
         $this->userRepo = $userRepo;
+        $this->LoginActivity = $LoginActivity;
     }
 
 
@@ -58,6 +61,13 @@ class AuthController extends Controller
                 Cookie::queue(Cookie::forget('email'));
                 Cookie::queue(Cookie::forget('password'));
             }
+
+            //add user  login activity
+            if (Auth::check()) :
+                $this->LoginActivity->addLoginActivity(request()->header('user_agent'), 'user_logged_in');
+            endif;
+            //add user  login activity
+
             return redirect('/dashboard');
         }
         return redirect('/');
@@ -65,9 +75,20 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Session()->flush();
+        //add user  logout activity
+        if (Auth::check()) :
+            $this->LoginActivity->addLoginActivity(request()->header('user_agent'), 'user_logged_out');
+        endif;
+        //add user  logout activity
+
+        session()->flush();
+
         Auth::logout();
-        return redirect('/');
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return request()->wantsJson() ? response()->json(status: 204) : redirect('/');
     }
 
     public function resendToken(Request $request)

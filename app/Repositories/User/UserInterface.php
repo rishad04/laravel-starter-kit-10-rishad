@@ -12,7 +12,7 @@ interface UserInterface
     public function update($request);
     public function delete($id);
 
-    public function permissionUpdate($id, $request);
+    public function permissionUpdate($request);
 
     public function profileUpdate($request);
     public function passwordUpdate($request);

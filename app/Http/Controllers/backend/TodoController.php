@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\backend;
 
 use App\Enums\Status;
-use App\Enums\StatusEnum;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Todo\TodoInterface;
 use App\Repositories\User\UserInterface;
@@ -33,7 +31,7 @@ class TodoController extends Controller
 
     public function create()
     {
-        $users      = $this->userRepo->all(status: StatusEnum::ACTIVE->value);
+        $users      = $this->userRepo->all(status: Status::ACTIVE->value);
         return view('backend.todo.create', compact('users'));
     }
 
@@ -50,7 +48,7 @@ class TodoController extends Controller
     public function edit($id)
     {
         $todo          = $this->repo->get($id);
-        $users         = $this->userRepo->all(status: StatusEnum::ACTIVE->value);
+        $users         = $this->userRepo->all(status: Status::ACTIVE->value);
         return view('backend.todo.edit', compact('todo', 'users'));
     }
 
@@ -65,18 +63,10 @@ class TodoController extends Controller
         return back()->with('danger', $result['message']);
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
-        if ($this->repo->delete($id)) :
-            $success[0] = "Deleted Successfully";
-            $success[1] = 'success';
-            $success[2] = "Deleted";
-            return response()->json($success);
-        else :
-            $success[0] = "Something went wrong, please try again.";
-            $success[1] = 'error';
-            $success[2] = "oops";
-            return response()->json($success);
-        endif;
+        $result = $this->repo->delete($id);
+
+        return response()->json($result, $result['status_code']);
     }
 }
