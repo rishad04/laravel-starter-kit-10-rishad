@@ -3,11 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Upload;
-<<<<<<< HEAD
-use App\Enums\StatusEnum;
-=======
 use App\Enums\Status;
->>>>>>> origin/master
 use App\Models\Backend\Setting;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,11 +18,8 @@ class SettingSeeder extends Seeder
     {
         $this->uploadRepo = $uploadRepo;
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> origin/master
     /**
      * Run the database seeds.
      */
@@ -45,11 +38,6 @@ class SettingSeeder extends Seeder
             ['key' => 'email',                  'value' => 'info@parcelfly.com'],
             ['key' => 'copyright',              'value' => 'All rights reserved. Development by Parcel Fly Developers.'],
 
-<<<<<<< HEAD
-            ['key' => 'logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo.png")],
-            ['key' => 'dark_logo',          'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_logo_dark.png")],
-            ['key' => 'favicon',            'value' => $this->uploadRepo->uploadSeederByPath("backend/assets/img/logo/starter_kit_title_favicon.png")],
-=======
 
             ['key' => 'light_logo',               'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
             ['key' => 'dark_logo',                'value' => $this->uploadRepo->uploadSeederByPath("backend/images/logo.png")],
@@ -62,7 +50,6 @@ class SettingSeeder extends Seeder
             ['key' => 'time_format',              'value' => 'g:i a'],
             ['key' => 'currency_code',            'value' => 'USD'],
             ['key' => 'currency_symbol',          'value' => '$'],
->>>>>>> origin/master
 
 
             ['key' => 'sendmail_path',          'value' => '/usr/sbin/sendmail -bs -i'],

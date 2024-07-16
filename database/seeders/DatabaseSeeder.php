@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\UploadSeeder;
+use Database\Seeders\SettingSeeder;
 use Database\Seeders\PermissionSeeder;
 
 class DatabaseSeeder extends Seeder

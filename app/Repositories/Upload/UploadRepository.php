@@ -123,12 +123,8 @@ class UploadRepository implements UploadInterface
         return true;
     }
 
-<<<<<<< HEAD
-    function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy')
-=======
 
     public function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy')
->>>>>>> origin/master
     {
         $uploadDirectory = "uploads/{$uploadDirectory}/";
 
@@ -146,19 +142,12 @@ class UploadRepository implements UploadInterface
 
         $upload              = new Upload();
         $upload->original    = $destinationPath;
-<<<<<<< HEAD
-=======
 
         // Set the same destination path for image fields
->>>>>>> origin/master
         $upload->image_one   = $destinationPath;
         $upload->image_two   = $destinationPath;
         $upload->image_three = $destinationPath;
 
-<<<<<<< HEAD
-        $fileType            = pathinfo($destinationPath, PATHINFO_EXTENSION);
-        $upload->type        = in_array($fileType, ['jpg', 'jpeg', 'png', 'gif']) ? 'image' : null;
-=======
         // Determine the file type and set the type field accordingly
         $fileType            = pathinfo($destinationPath, PATHINFO_EXTENSION);
         if (in_array($fileType, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
@@ -168,7 +157,6 @@ class UploadRepository implements UploadInterface
         } else {
             $upload->type = 'file';
         }
->>>>>>> origin/master
 
         $upload->save();
 

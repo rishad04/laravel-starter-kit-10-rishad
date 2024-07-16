@@ -8,9 +8,5 @@ interface UploadInterface
 
     public function deleteImage($old_upload_id, $slug);
 
-<<<<<<< HEAD
-    function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy');
-=======
     public function uploadSeederByPath(string $sourcePath = null, string $uploadDirectory = "assets", string $namePrefix = 'copy');
->>>>>>> origin/master
 }
